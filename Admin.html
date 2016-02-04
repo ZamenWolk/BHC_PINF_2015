@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Administration</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js"></script>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="jquery-2.2.0.min.js"></script>
+    <style>
+    div {
+    	border:1px solid black;
+    	background-color:lightgrey;
+    }
+    h1,h3,h4 {
+    	text-align:center;
+    	text-decoration:underline;
+    }
+    
+    #menu {
+    	text-align:center;
+    }
+	
+	.separator {
+		margin:5px;
+		padding:5px;
+	}
+    </style>
+    <script>
+    
+    $(document).ready(function () {
+   		$("#createUser").click( function() {
+   			$("#content").html("<p>Créer un utilisateur</p>");
+   		});
+		
+		$("#createModo").click( function() {
+   			$("#content").html("<p>Créer un modérateur</p>");
+   		});
+   		
+   		$("#banUser").click( function() {
+   			$("#content").html("<p>Bannir un utilisateur</p>");
+   		});
+   		
+   		$("#createOrder").click( function() {
+   			$("#content").html("<p>Creér une commande</p>");
+   		});
+   		
+   		$("#delOrder").click( function() {
+   			$("#content").html("<p>Supprimer une commande</p>");
+   		});
+   		
+   		$("#modifyOrder").click( function() {
+   			$("#content").html("<p>Modifier une commande</p>");
+   		});
+   		
+   		$("#acceptOrder").click( function() {
+   			$("#content").html("<p>Accepter une commande</p>");
+   		});
+   		
+   		$("#seeStats").click( function() {
+   			$("#content").html("<p>Voir les statistiques</p>");
+   		});
+   		
+   		$("#goMenu").click( function() {
+   			$("#content").html("<p>Menu</p>");
+   		});
+   	});
+   	
+   	
+   	
+   	</script>
+  </head>
+  <body>
+		<div class="container"> 
+        <div class="row"> <!-- création d'une ligne -->
+            <h1>Administration</h1>
+            <div class="col-md-4" id="menu"> <!-- 8 colonnes pour la zone principale -->
+            	<h3>Menu</h3>
+            	<div class="separator">
+            		<h4>Gestion des comptes</h4>
+	            	<button id="createUser" type="button" class="btn btn-default btn-lg btn-block">Créer un compte utilisateur</button>
+					<button id="createModo" type="button" class="btn btn-default btn-lg btn-block">Créer un compte modérateur</button>
+					<button id="banUser" type="button" class="btn btn-default btn-lg btn-block">Bannir un compte</button>
+				</div>
+				<div class="separator">
+            		<h4>Gestion des commandes</h4>
+	            	<button id="createOrder" type="button" class="btn btn-default btn-lg btn-block">Créer une commande</button>
+	            	<button id="delOrder" type="button" class="btn btn-default btn-lg btn-block">Supprimer une commande</button>
+	            	<button id="modifyOrder" type="button" class="btn btn-default btn-lg btn-block">Modifier une commande</button>
+	            	<button id="acceptOrder" type="button" class="btn btn-default btn-lg btn-block">Valider une commande</button>
+				</div>
+				<div class="separator">
+            		<h4>Autre</h4>
+	            	<button id="seeStats" type="button" class="btn btn-default btn-lg btn-block">Accéder aux statistiques</button>
+	            	<button id="goMenu" type="button" class="btn btn-default btn-lg btn-block">Retour au menu</button>
+				</div>
+            </div> 
+            <div class="col-md-8" id="content"> 
+            	<div class="separator">
+	            	<p>Bienvenue dans le menu d'administration !</p>
+	            	<p>Pour commencer à administrer le site, cliquez sur le bouton correspondant à l'opération que vous souhaitez faire.</p>
+				</div>
+				<div class="separator">
+					<p>Quelques statistiques :</p>
+					<p>Nombre d'utilisateurs connectés : 543</p>
+					<p>Nombre de commandes passées ces 7 derniers jours : 54</p>
+				</div>
+            </div> 
+      </div>
+      </div>
+  </body>
+</html>
