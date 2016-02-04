@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TODO supply a title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/flat-ui.css">
+    <script src="js/script.js"></script>
+    <link href="css/checkbox.css" rel="stylesheet">
+    <style>
+        body {
+            background: url(04.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .panel {
+            border: outset 2px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-1 ">
+            <img id="logo" src="ressources/logo.svg"/>
+        </div>
+        <div class="col-md-3 col-md-offset-1" >
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Rechercher...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                 </span>
+
+            </div>
+
+        </div>
+        <div class="col-md-2 col-md-offset-2">
+
+            <button class="btn btn-default">Mon compte   <span class="glyphicon glyphicon-user " aria-hidden="true"></span></button>
+
+
+        </div>
+        <div class="col-md-2 ">
+            <button class="btn btn-default">Mon panier   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li class="active"> <a href="#">Accueil</a> </li>
+                <li> <a href="#">Pneus Auto</a> </li>
+                <li> <a href="#">Pneus Poids Lourd</a> </li>
+                <li> <a href="#">Pneus Moto</a> </li>
+            </ul>
+        </div>
+    </div>
+    <br/>
+    <div class="row" >
+
+    </div>
+
+
+
