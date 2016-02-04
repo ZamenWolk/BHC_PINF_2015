@@ -55,6 +55,30 @@ include('config.php')
               <input class="form-control" type="text" value="EntrepriseActuelle"><!-- INSERT PHP HERE  -->
             </div>
           </div>
+		  <div class="form-group">
+            <label class="col-lg-3 control-label">Téléphone:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="012323232323"><!-- INSERT PHP HERE  -->
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-lg-3 control-label">Adresse:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="Ma maison"><!-- INSERT PHP HERE  -->
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-lg-3 control-label">Ville:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="Ma maison"><!-- INSERT PHP HERE  -->
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-lg-3 control-label">Code postal:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="59000"><!-- INSERT PHP HERE  -->
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
