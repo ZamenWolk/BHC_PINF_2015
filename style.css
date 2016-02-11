@@ -45,3 +45,26 @@
 #recherche{
 	color:grey;
 }
+.annonce{
+	max-height:100px;
+	max-width:100px;
+}
+
+.panier{
+	right: 30px;
+	position: absolute;
+}
+
+.contenu{
+	float: right;
+
+}
+
+.filtre{
+	margin-right: 10px;
+}
+
+.pages{
+	text-align: center;
+
+}
