@@ -10,11 +10,17 @@ else
     $choix = "";
 switch($choix)
 {
+    case "accueil":
+        include_once ("accueil.php");
+        break;
     case "recherche":
         include_once("recherche.html");
         break;
     case "admin":
         include_once ("Admin.html");
+        break;
+    case "connection":
+        include_once ("connection.php");
         break;
     case "inscription":
         include_once ("subscribe.html");
@@ -23,7 +29,7 @@ switch($choix)
         include_once("Mon_Compte.php");
         break;
     default: //TODO : A définir
-        //include_once("accueil.php");
+        include_once("accueil.php");
         break;
 }
 include_once("footer.html");
