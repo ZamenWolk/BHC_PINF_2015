@@ -48,7 +48,9 @@
         </div>
         <div class="col-md-2 col-md-offset-2">
 
-            <button class="btn btn-default">Mon compte   <span class="glyphicon glyphicon-user " aria-hidden="true"></span></button>
+            <button class="btn btn-default"><?php
+                /* Verifie si la personne est connécter et change le bouton en fonction */
+                if(isset($_SESSION['connecter'])) echo "Mon compte"; else echo "Se connecter";?>  <span class="glyphicon glyphicon-user " aria-hidden="true"></span></button>
 
 
         </div>
@@ -66,6 +68,7 @@
             </ul>
         </div>
     </div>
+
 
 
 

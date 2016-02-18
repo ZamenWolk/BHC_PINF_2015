@@ -1,21 +1,26 @@
 <?php
-include('config.php')
+//include('config.php') A quoi celà correspond t'il?
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<style>
-		</style>
         <title>Mon compte</title>
-		<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<!-- Latest compiled and minified CSS --><!--
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     </head>
     <body>
     	<br>
-<div class="container">
-    <h1>Mon compte</h1>
-  	<hr>
+<div class="container">-->
+    <div class="row">
+      <div class="col-md-offset-1 col-md-11"><h1>Mon compte</h1></div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+      </div>
+    </div>
 	<div class="row">
       <!-- Colonne de gauche si besoin est -->
      <!-- <div class="col-md-3">
@@ -27,14 +32,19 @@ include('config.php')
         </div>
       </div> -->
       
-      <!-- edit form column -->
-      <div class="col-md-9 personal-info">
+      <!-- edit form column --><!--TODO: rajouter un petit JQuery pour le supprimer aprés x temps-->
+      <div class="col-md-offset-1 col-md-9 personal-info">
         <div class="alert alert-info alert-dismissable">
           <a class="panel-close close" data-dismiss="alert">×</a> 
           <i class="fa fa-coffee"></i>
-          Mofidiez vos informations et sauvegardez les avec le boutons en bas de la page
+          Mofidiez vos informations et sauvegardez les avec le bouton en bas de la page
         </div>
-        <h3>Mes informations</h3>
+
+        <div class="row">
+          <div class="col-md-offset-1 col-md-11"><h3>Mes informations</h3></div>
+
+        </div>
+
         
         <form class="form-horizontal" role="form">
           <div class="form-group">
@@ -108,7 +118,4 @@ include('config.php')
         </form>
       </div>
   </div>
-</div>
-<hr>
-	</body>
-</html>
+
