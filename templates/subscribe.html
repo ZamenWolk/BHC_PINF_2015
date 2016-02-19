@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
-        <h3 class="text-center">Inscription</h3>
-        <form class="form-horizontal container-fluid" action="" method="post">
+        <h3 class="text-center">Créer un compte</h3>
+        <form class="form-horizontal container-fluid" action="interpretation.php" method="post">
             <div class="form-group">
                 <label for="ins_mail">Adresse mail</label>
 
@@ -43,7 +43,30 @@
                            placeholder="Confirmez le mot de passe">
                 </div>
             </div>
+            <div class="form-group">
+                <label for="ins_nom">Nom</label>
 
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text"
+                           class="form-control"
+                           id="ins_nom"
+                           name="ins_nom"
+                           placeholder="Entrez votre nom">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ins_prenom">Prenom</label>
+
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text"
+                           class="form-control"
+                           id="ins_prenom"
+                           name="ins_prenom"
+                           placeholder="Entrez votre prenom">
+                </div>
+            </div>
 
             <div class="form-group">
                 <label for="ins_adress">Adresse</label>
@@ -101,21 +124,21 @@
                 de recevoir des offres promotionnelles de JS Pneus</label></p>
 
 
-    <br/>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="form-group">
-                <button type="submit" name="action" value="subscribe"
-                        class="btn btn-success btn-lg btn-block">
-                    Inscription
-                </button>
+            <br/>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="form-group">
+                        <button type="submit" name="action" value="subscribe"
+                                class="btn btn-success btn-lg btn-block">
+                            Inscription
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    </form>
+        </form>
 
 
     <div class="col-md-6 col-md-offset-3">
-        <a href=""><p class="text-center">Déjà inscrit ? Connectez-vous</p></a><!-- Lien vers le form de connexion -->
+        <a href="?url=connection"><p class="text-center">Déjà inscrit ? Connectez-vous</p></a><!-- Lien vers le form de connexion -->
     </div>
 </div>

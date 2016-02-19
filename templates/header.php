@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,20 +10,11 @@
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/flat-ui.css">
+    <script src="js/star.js"></script>
     <script src="js/script.js"></script>
     <link href="css/checkbox.css" rel="stylesheet">
     <style>
-        body {
-            background: url(04.jpg) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
 
-        .panel {
-            border: outset 2px;
-        }
 
     </style>
     <script>
