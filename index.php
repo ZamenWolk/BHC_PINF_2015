@@ -3,7 +3,7 @@
 session_start();
 if(0)//TODO: implémentation de la connection au site Si mauvaise connection etc on détruis la session
     session_destroy();
-include_once("header.php");
+include_once("templates/header.php");
 if(isset($_GET["url"]))
     $choix = $_GET["url"];
 else
@@ -11,27 +11,27 @@ else
 switch($choix)
 {
     case "accueil":
-        include_once ("accueil.php");
+        include_once ("templates/accueil.php");
         break;
     case "recherche":
-        include_once("recherche.html");
+        include_once("templates/recherche.html");
         break;
     case "admin":
-        include_once ("Admin.html");
+        include_once ("templates/Admin.html");
         break;
     case "connection":
-        include_once ("connection.php");
+        include_once ("templates/connection.php");
         break;
     case "inscription":
-        include_once ("subscribe.html");
+        include_once ("templates/subscribe.html");
         break;
     case "monCompte":
-        include_once("Mon_Compte.php");
+        include_once("templates/Mon_Compte.php");
         break;
     default: //TODO : A définir
-        include_once("accueil.php");
+        include_once("templates/accueil.php");
         break;
 }
-include_once("footer.html");
+include_once("templates/footer.html");
 
 ?>
