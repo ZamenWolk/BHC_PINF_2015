@@ -29,6 +29,7 @@
                         document.location.href = "?url=monCompte";//rediriger vers Mon compte il faudrait inclure des sécurités dans la page mon compte
                 // ex : verifier que l'utiliateur est bien connecté si non on le redirige
                 });
+
         });
     </script>
 
@@ -51,20 +52,28 @@
             </div>
 
         </div>
-        <div class="col-md-2 col-md-offset-2">
+        <div class="col-md-2 col-md-offset-1">
 
             <button type="button" id="btn-connect" class="btn btn-default"><?php
                 /* Verifie si la personne est connécter et change le bouton en fonction */
                 if(isset($_SESSION['connecter'])) echo "Mon compte"; else echo "Se connecter";?>  <span class="glyphicon glyphicon-user " aria-hidden="true"></span></button>
 
-
         </div>
         <div class="col-md-2 ">
             <button class="btn btn-default">Mon panier   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
         </div>
+        <?php
+        if(isset($_SESSION['connecter']))/*Design à revoir on affiche un bouton de deconnection*/
+            echo '<div class="col-md-2">
+                    <form action="interpretation.php" method="post">
+                        <button type="submit" name="action" value="deconnection" id="btn-deconnect" class="btn btn-default">Se deconnecter</span></button>
+                    </form>
+
+                  </div>';
+?>
     </div>
     <div class="row">
-        <div class="navbar navbar-default navbar-static-top">
+        <div class="navbar navbar-default">
             <ul class="nav navbar-nav">
                 <li class="active"> <a href="?url=accueil">Accueil</a> </li>
                 <li> <a href="#">Pneus Auto</a> </li>
