@@ -10,18 +10,18 @@ switch($action)
     /* Inscription */
     case 'subscribe':
         //echo $_POST['ins_mail'],$_POST['ins_password'],$_POST['ins_nom'],$_POST['ins_prenom'];
-        /* TODO : rajouter les protections sur les entrés de l'utilisateur */
+        /* TODO : rajouter les protections sur les entrés de l'utilisateur - fait dans le fonction mkUser*/
         mkUser($_POST['ins_mail'],$_POST['ins_password'],$_POST['ins_nom'],$_POST['ins_prenom']);
         header("Location:index.php?url=connection");
         die();// On arréte l'interpretation du code
         break;
     case 'connection':
-        /* TODO : rajouter les protections sur les entrés de l'utilisateur */
+        /* TODO : rajouter les protections sur les entrées de l'utilisateur - fait */
         echo $_POST['conn_mail'],$_POST['conn_password'];
         if(isset($_POST['conn_mail']) && isset($_POST['conn_password']) ) {
             if($_POST['conn_mail'] != NULL && $_POST['conn_password']!= NULL) {
                 $mail = addslashes($_POST['conn_mail']);//Protection contre les entrées de l'utilisateur
-                $mdp = addslashes($_POST['conn_password']);//Protection contre les entrées de l'utilisateur
+                $mdp = $_POST['conn_password'];//Protection contre les entrées de l'utilisateur
 
                 $sql = "SELECT user_password FROM users WHERE user_mail='$mail'";//On pourrait faire un SELECT *
                 $sql2 = "SELECT user_id FROM users WHERE user_mail='$mail'";

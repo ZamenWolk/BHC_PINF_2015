@@ -103,7 +103,7 @@ function SQLGetChamp($sql)
 
 	$res = $dbh->query($sql);
 	if ($res === false) {
-		$e = $dbh->errorInfo(); 
+		$e = $dbh->errorInfo();
 		die("<font color=\"red\">SQLGetChamp: Erreur de requete : " . $e[2] . "</font>");
 	}
 
@@ -111,7 +111,7 @@ function SQLGetChamp($sql)
 	$dbh = null;
 
 	if ($num==0) return false;
-	
+
 	$res->setFetchMode(PDO::FETCH_NUM);
 
 	$ligne = $res->fetch();
@@ -128,11 +128,11 @@ function SQLGetChamp($sql)
  * @return boolean|resource
  */
 function SQLSelect($sql)
-{	
- 	global $BDD_host;
+{
+	global $BDD_host;
 	global $BDD_base;
- 	global $BDD_user;
- 	global $BDD_password;
+	global $BDD_user;
+	global $BDD_password;
 
 	try {
 		$dbh = new PDO("mysql:host=$BDD_host;dbname=$BDD_base", $BDD_user, $BDD_password);
@@ -140,15 +140,15 @@ function SQLSelect($sql)
 		die("<font color=\"red\">SQLSelect: Erreur de connexion : " . $e->getMessage() . "</font>");
 	}
 
+	$dbh->exec("SET CHARACTER SET utf8");
 	$res = $dbh->query($sql);
 	if ($res === false) {
-		$e = $dbh->errorInfo(); 
+		$e = $dbh->errorInfo();
 		die("<font color=\"red\">SQLSelect: Erreur de requete : " . $e[2] . "</font>");
 	}
-	
-	$num = $res->rowCount();
-	$dbh = null;
 
+	$num = $res->rowCount();
+	$dbh = null; 
 	if ($num==0) return false;
 	else return $res;
 }
