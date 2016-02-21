@@ -14,7 +14,7 @@ switch($choix)
         include_once ("templates/accueil.php");
         break;
     case "recherche":
-        include_once("templates/recherche.html");
+        include_once("templates/recherche.php");
         break;
     case "admin":
         include_once ("templates/Admin.html");

@@ -50,6 +50,12 @@ switch($action)
         header("Location:index.php?url=accueil");
         die();
         break;
+    case "recherche":
+        if(isset($_POST['recherche']))
+            echo $_POST['recherche'];
+        $data = $_POST['recherche'];
+        header("Location:index.php?url=recherche&marque=$data");
+        break;
     default:
         break;
 }

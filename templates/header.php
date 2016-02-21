@@ -30,26 +30,42 @@
                 // ex : verifier que l'utiliateur est bien connecté si non on le redirige
                 });
 
+
+
+
+
+
+
         });
     </script>
 
 </head>
 
 <body>
-<div class="container-fluid">
+<div class="container">
     <br>
     <div class="row">
         <div class="col-md-1 ">
             <img id="logo" src="ressources/logo.svg"/>
         </div>
         <div class="col-md-3 col-md-offset-1" >
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Rechercher...">
-                <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                 </span>
-
-            </div>
+            <form action="interpretation.php" method="post">
+                <div class="input-group">
+                    <select class="form-control" name="recherche">
+                        <?php
+                        include_once "lib/fonctionsBDD.php";
+                        $rch=rechercherMarque();//on recherche toutes le marques disponible et on les met dans le select
+                        foreach($rch AS $row){
+                            echo '<option value="'.$row['marque'].'">'.$row['marque'].'</option>';
+                        }
+                        ?>
+                    </select>
+                    <!--<input id="ipt-rch" name="recherche" type="text" class="form-control" placeholder="Rechercher une marque...">-->
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" id="btn-recherche" name="action" value="recherche" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                     </span>
+                </div>
+            </form>
 
         </div>
         <div class="col-md-2 col-md-offset-1">
@@ -73,7 +89,7 @@
 ?>
     </div>
     <div class="row">
-        <div class="navbar navbar-default">
+        <div class="navbar navbar-default navbar-static-top">
             <ul class="nav navbar-nav">
                 <li class="active"> <a href="?url=accueil">Accueil</a> </li>
                 <li> <a href="#">Pneus Auto</a> </li>
