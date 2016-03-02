@@ -9,7 +9,7 @@
     <script src="assets/js/jquery-1.11.3.min.js"></script>
     <script src="assets/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css"/>
-    <link rel="stylesheet" href="assets/css/flat-ui.css">
+    <link rel="stylesheet" href="assets/bootstrap/flat-ui.css">
     <script src="assets/js/star.js"></script>
     <script src="assets/js/script.js"></script>
     <link href="assets/css/checkbox.css" rel="stylesheet">
@@ -32,27 +32,6 @@
         }
 
     </style>
-    <script>
-        $(document).ready(function () {
-
-            /* Ici on gére les événements de click sur le bouton du header se connecter/ s'inscrire */
-            $("#btn-connect").click(function () {
-                // console.log($("#btn-connect").html());
-                if ($("#btn-connect").html() == "Se connecter  <span class=\"glyphicon glyphicon-user \" aria-hidden=\"true\"></span>")
-                    document.location.href = "?url=connection";//Rediriger vers la connection
-                else
-                    document.location.href = "?url=monCompte";//rediriger vers Mon compte il faudrait inclure des sécurités dans la page mon compte
-                // ex : verifier que l'utiliateur est bien connecté si non on le redirige
-            });
-
-            $("#search").click( function() {
-                $(".btn-search").addClass("btn-search-highlight");
-                console.log( $( this ).text() );
-            });
-
-
-        });
-    </script>
 
 </head>
 
