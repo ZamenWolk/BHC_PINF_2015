@@ -52,18 +52,18 @@
             </ul>
         </div>-->
 <?php
-        include_once "lib/fonctionsBDD.php";
+        include_once "libs/fonctionsBDD.php";
 
         //Ici on charge tous les pneus de la marque donnée à améliorer
 
         $marque = securite_bdd($_GET['marque']);
-        $rch = rechercherParMarque($marque);
+        $rch = SQLSelect("SELECT * FROM pneus WHERE marque=?", [$marque]);
         foreach($rch AS $row){
             echo '<div id="articles">
                 <div class="panel panel-default">
                     <div class="panel-heading">'.$row["marque"]." ".$row["dimension"].'</div>
                     <div class="panel-body">
-                        <div class="col-md-2"><img src="ressources/pneu.jpg" class="annonce"/></div>
+                        <div class="col-md-2"><img src="assets/img/pneu.jpg" class="annonce"/></div>
                         <div class="col-md-6">
                             <ul>
                                 <li>Catégorie:'.$row["categorie"].'</li>

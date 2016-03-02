@@ -26,7 +26,7 @@ switch($choix)
         include_once ("templates/subscribe.html");
         break;
     case "monCompte":
-        include_once("templates/Mon_Compte.php");
+        include_once("templates/mon_compte.php");
         break;
     default: //TODO : A définir
         include_once("templates/accueil.php");

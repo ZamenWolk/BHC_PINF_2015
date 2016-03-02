@@ -1,22 +1,4 @@
-﻿-- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
---
--- Client :  127.0.0.1
--- Généré le :  Dim 21 Février 2016 à 15:40
--- Version du serveur :  5.6.17-log
--- Version de PHP :  5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
+﻿--
 -- Base de données :  `jspneus`
 --
 
@@ -85,7 +67,3 @@ INSERT INTO `users` (`user_id`, `user_nom`, `user_prenom`, `user_mail`, `user_pa
 (5, 'Gui', 'Lo', 'hus@gmail.com', '$2y$10$zl8dfdlgf53gdGAxf8SOGOME3GoQkxk8Sx.MkSgQ2m7Th4zVAmJou', 1, 1),
 (6, 'Deb', 'Mada', 'debphil@hotmail.fr', '$2y$10$oiLrqvJmhiYWaFjRtwmutuE/ohLsWIAIOox6meTsFMgrNfvgFgI.W', 1, 1),
 (7, '', 'tes', 'samonil2@hotmail.fr', '$2y$10$Ny45bDNJHBE4dVX6hGYSkukbyarAKJVJfT5XTybP1R.sj3XUARO2C', 1, 1);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

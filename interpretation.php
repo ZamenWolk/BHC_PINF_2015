@@ -1,6 +1,6 @@
 <?php
-include_once "lib/fonctionsBDD.php";
-include_once "lib/maLibUtils.php";
+include_once "libs/fonctionsBDD.php";
+include_once "libs/maLibUtils.php";
 session_start();
 $action = $_POST['action'];/* Le boutton submit doit avoir comme nom : action avec des valeurs différentes
 echo $action;
@@ -31,8 +31,7 @@ switch($action)
                 {
                     $_SESSION['connecter'] = 1;
                     $_SESSION['user_mail']= $mail;
-                    $_SESSION['user_id'] = SQLGetChamp($sql2);
-                    connecte($_SESSION['user_id']);//peux poser problème quand l'utilisateur quitte son navigateur
+                    $_SESSION['user_id'] = SQLGetChamp($sql2, array());
                     header("Location:index.php?url=accueil");
                 }
                 else //sinon on revient à la page de connection
