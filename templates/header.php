@@ -32,6 +32,15 @@
         }
 
     </style>
+		<!-- PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE-->
+		<script type="text/javascript">
+		window.cookieconsent_options = {"message":"Ce site contient des cookies qui sont utilisés dans le but d'améliorer votre expérience de navigation.","dismiss":"D'accord","learnMore":"Plus d'informations","link":null,"theme":"dark-bottom"};
+		//Le "Link" peut être changé pour un lien de police d'utilisation des cookies à générer ou à faire soi même
+		//Le thème est changeable en fonction de la disposition ou de la couleur.
+		</script>
+
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+		<!-- FIN PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE- -->
 
 </head>
 
