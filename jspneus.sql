@@ -1,69 +1,134 @@
-﻿--
--- Base de données :  `jspneus`
---
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
 
--- --------------------------------------------------------
 
---
--- Structure de la table `pneus`
---
+#------------------------------------------------------------
+# Table: user
+#------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `pneus` (
-  `reference` int(11) NOT NULL DEFAULT '0',
-  `categorie` varchar(50) DEFAULT NULL,
-  `dimension` varchar(50) DEFAULT NULL,
-  `largeur` int(11) DEFAULT NULL,
-  `serie` int(11) DEFAULT NULL,
-  `jante` int(11) DEFAULT NULL,
-  `charge` int(11) DEFAULT NULL,
-  `vitesse` varchar(10) DEFAULT NULL,
-  `consommation` varchar(10) DEFAULT NULL,
-  `adherence` varchar(10) DEFAULT NULL,
-  `bruit` int(11) DEFAULT NULL,
-  `decibel` int(11) DEFAULT NULL,
-  `marque` varchar(50) DEFAULT NULL,
-  `profil` varchar(50) DEFAULT NULL,
-  `stock` int(11) DEFAULT NULL,
-  `prix` float DEFAULT NULL,
-  PRIMARY KEY (`reference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE user(
+        user_id         int (11) Auto_increment  NOT NULL ,
+        user_nom        Varchar (50) NOT NULL ,
+        user_prenom     Varchar (50) NOT NULL ,
+        user_mail       Varchar (50) NOT NULL ,
+        user_password   Varchar (128) NOT NULL ,
+        user_newsletter Bool NOT NULL ,
+        PRIMARY KEY (user_id )
+)ENGINE=InnoDB;
 
---
--- Contenu de la table `pneus`
---
 
-INSERT INTO `pneus` (`reference`, `categorie`, `dimension`, `largeur`, `serie`, `jante`, `charge`, `vitesse`, `consommation`, `adherence`, `bruit`, `decibel`, `marque`, `profil`, `stock`, `prix`) VALUES
-(24965, 'TOURISME HIVER', '155/80 R13 79T', 155, 80, 13, 79, 'T', 'E', 'E', 2, 71, 'INFINITY', 'INF 049', 71, 79.99),
-(24966, 'TOURISME HIVER', '155/80 R13 79T', 155, 80, 13, 79, 'T', 'E', 'E', 2, 71, 'INFINITY', 'INF 050', 50, 96.32),
-(24967, 'TOURISME HIVER', '160/80 R13 79T', 160, 80, 13, 79, 'T', 'E', 'E', 2, 71, 'INFINITY', 'INF 050', 71, 123.23),
-(24970, 'TOURISME HIVER', '155/80 R13 79T', 155, 80, 13, 79, 'T', 'E', 'E', 2, 71, 'TEST', 'INF 050', 50, 90),
-(92788, 'TOURISME HIVER', '155/70 R13 75T', 155, 70, 13, 75, 'T', 'F', 'C', 2, 71, 'ACHILLES', 'W101 DOT13', 2, 45.15);
+#------------------------------------------------------------
+# Table: adresse
+#------------------------------------------------------------
 
--- --------------------------------------------------------
+CREATE TABLE adresse(
+        adresse_id     int (11) Auto_increment  NOT NULL ,
+        adresse_ligne1 Varchar (255) NOT NULL ,
+        adresse_ligne2 Varchar (255) NOT NULL ,
+        adresse_codeP  Int NOT NULL ,
+        adresse_ville  Varchar (75) NOT NULL ,
+        user_id        Int NOT NULL ,
+        PRIMARY KEY (adresse_id )
+)ENGINE=InnoDB;
 
---
--- Structure de la table `users`
---
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_nom` varchar(255) DEFAULT NULL,
-  `user_prenom` varchar(255) DEFAULT NULL,
-  `user_mail` varchar(255) NOT NULL DEFAULT '',
-  `user_password` varchar(255) DEFAULT NULL,
-  `user_connecte` tinyint(1) NOT NULL DEFAULT '0',
-  `user_newsletter` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`user_id`,`user_mail`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+#------------------------------------------------------------
+# Table: commande
+#------------------------------------------------------------
 
---
--- Contenu de la table `users`
---
+CREATE TABLE commande(
+        commande_id   int (11) Auto_increment  NOT NULL ,
+        commande_date TimeStamp NOT NULL ,
+        adresse_id    Int NOT NULL ,
+        adresse_id_1  Int NOT NULL ,
+        PRIMARY KEY (commande_id )
+)ENGINE=InnoDB;
 
-INSERT INTO `users` (`user_id`, `user_nom`, `user_prenom`, `user_mail`, `user_password`, `user_connecte`, `user_newsletter`) VALUES
-(1, 'test_nom', 'test_prenom', 'test_mail', 'test_mdp', 0, 1),
-(3, 'Sam', 'Evo', 'test@testmail.com', '$2y$10$wc6TgjWtTdp7VhfukzHMLOBkBX6i/o98oAYcAj9CIVv6ISI6nZOpi', 0, 1),
-(4, 'Sam', 'GHFD', 'samonil@hotmail.fr', '$2y$10$hdEHiwfPAJX.RFY8rB78duZQCgYf1JtwAhTN0zeJh.Z3DmoXcwIU.', 0, 1),
-(5, 'Gui', 'Lo', 'hus@gmail.com', '$2y$10$zl8dfdlgf53gdGAxf8SOGOME3GoQkxk8Sx.MkSgQ2m7Th4zVAmJou', 1, 1),
-(6, 'Deb', 'Mada', 'debphil@hotmail.fr', '$2y$10$oiLrqvJmhiYWaFjRtwmutuE/ohLsWIAIOox6meTsFMgrNfvgFgI.W', 1, 1),
-(7, '', 'tes', 'samonil2@hotmail.fr', '$2y$10$Ny45bDNJHBE4dVX6hGYSkukbyarAKJVJfT5XTybP1R.sj3XUARO2C', 1, 1);
+
+#------------------------------------------------------------
+# Table: pneu
+#------------------------------------------------------------
+
+CREATE TABLE pneu(
+        pneu_ean                Varchar (25) ,
+        pneu_ref                Varchar (50) NOT NULL ,
+        pneu_marque             Varchar (50) ,
+        pneu_categorie          Varchar (50) ,
+        pneu_description        Varchar (150) ,
+        pneu_largeur            Int ,
+        pneu_serie              Int ,
+        pneu_jante              Int ,
+        pneu_charge             Varchar (15) ,
+        pneu_vitesse            Char (1) ,
+        pneu_profil             Varchar (150) ,
+        pneu_decibel            Int ,
+        pneu_bruit              Int ,
+        pneu_consommation       Char (1) ,
+        pneu_adherance          Char (1) ,
+        pneu_categorieEtiquette Char (2) ,
+        pneu_stock              Int ,
+        pneu_prix               Int ,
+        pneu_dateAjoutBDD       Datetime NOT NULL ,
+        pneu_derniereVersion    Bool NOT NULL ,
+        pneu_valable            Bool NOT NULL ,
+        PRIMARY KEY (pneu_ref ,pneu_dateAjoutBDD )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: admin
+#------------------------------------------------------------
+
+CREATE TABLE admin(
+        admin_id            int (11) Auto_increment  NOT NULL ,
+        admin_name          Varchar (30) NOT NULL ,
+        admin_pass          Varchar (128) NOT NULL ,
+        admin_autorisations Varchar (65000) NOT NULL ,
+        PRIMARY KEY (admin_id )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: config
+#------------------------------------------------------------
+
+CREATE TABLE config(
+        config_ratio_prix Int NOT NULL ,
+        PRIMARY KEY (config_ratio_prix )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: recuperation
+#------------------------------------------------------------
+
+CREATE TABLE recuperation(
+        recuperation_id         int (11) Auto_increment  NOT NULL ,
+        recuperation_token      Char (32) NOT NULL ,
+        recuperation_utilise    Bool NOT NULL ,
+        recuperation_dateLimite Datetime NOT NULL ,
+        user_id                 Int NOT NULL ,
+        PRIMARY KEY (recuperation_id )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: fait partie
+#------------------------------------------------------------
+
+CREATE TABLE fait_partie(
+        quantite          Int NOT NULL ,
+        pneu_ref          Varchar (50) NOT NULL ,
+        pneu_dateAjoutBDD Datetime NOT NULL ,
+        commande_id       Int NOT NULL ,
+        PRIMARY KEY (pneu_ref ,pneu_dateAjoutBDD ,commande_id )
+)ENGINE=InnoDB;
+
+ALTER TABLE adresse ADD CONSTRAINT FK_adresse_user_id FOREIGN KEY (user_id) REFERENCES user(user_id);
+ALTER TABLE commande ADD CONSTRAINT FK_commande_adresse_id FOREIGN KEY (adresse_id) REFERENCES adresse(adresse_id);
+ALTER TABLE commande ADD CONSTRAINT FK_commande_adresse_id_1 FOREIGN KEY (adresse_id_1) REFERENCES adresse(adresse_id);
+ALTER TABLE recuperation ADD CONSTRAINT FK_recuperation_user_id FOREIGN KEY (user_id) REFERENCES user(user_id);
+ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_pneu_ref FOREIGN KEY (pneu_ref) REFERENCES pneu(pneu_ref);
+ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_pneu_dateAjoutBDD FOREIGN KEY (pneu_dateAjoutBDD) REFERENCES pneu(pneu_dateAjoutBDD);
+ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_commande_id FOREIGN KEY (commande_id) REFERENCES commande(commande_id);

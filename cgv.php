@@ -40,7 +40,7 @@ include_once("templates/header.php");
 	</p>
 	<strong>EXCEPTIONS AU DROIT DE RETRACTATION</strong></br>
 	<p>Conformément aux dispositions de l'article L.121-21-8 du Code de la Consommation, le droit de rétractation ne s'applique pas à : </p> 
-	</div>
+</div>
 
 <?php
 include_once("templates/footer.html");
