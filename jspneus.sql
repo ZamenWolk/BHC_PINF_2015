@@ -69,7 +69,7 @@ CREATE TABLE pneu(
         pneu_categorieEtiquette Char (2) ,
         pneu_stock              Int ,
         pneu_prix               Int ,
-        pneu_dateAjoutBDD       Datetime NOT NULL ,
+        pneu_dateAjoutBDD       TimeStamp NOT NULL ,
         pneu_derniereVersion    Bool NOT NULL ,
         pneu_valable            Bool NOT NULL ,
         PRIMARY KEY (pneu_ref ,pneu_dateAjoutBDD )
@@ -107,7 +107,7 @@ CREATE TABLE recuperation(
         recuperation_id         int (11) Auto_increment  NOT NULL ,
         recuperation_token      Char (32) NOT NULL ,
         recuperation_utilise    Bool NOT NULL ,
-        recuperation_dateLimite Datetime NOT NULL ,
+        recuperation_dateLimite TimeStamp NOT NULL ,
         user_id                 Int NOT NULL ,
         PRIMARY KEY (recuperation_id )
 )ENGINE=InnoDB;
@@ -120,7 +120,7 @@ CREATE TABLE recuperation(
 CREATE TABLE fait_partie(
         quantite          Int NOT NULL ,
         pneu_ref          Varchar (50) NOT NULL ,
-        pneu_dateAjoutBDD Datetime NOT NULL ,
+        pneu_dateAjoutBDD TimeStamp NOT NULL ,
         commande_id       Int NOT NULL ,
         PRIMARY KEY (pneu_ref ,pneu_dateAjoutBDD ,commande_id )
 )ENGINE=InnoDB;
@@ -129,6 +129,5 @@ ALTER TABLE adresse ADD CONSTRAINT FK_adresse_user_id FOREIGN KEY (user_id) REFE
 ALTER TABLE commande ADD CONSTRAINT FK_commande_adresse_id FOREIGN KEY (adresse_id) REFERENCES adresse(adresse_id);
 ALTER TABLE commande ADD CONSTRAINT FK_commande_adresse_id_1 FOREIGN KEY (adresse_id_1) REFERENCES adresse(adresse_id);
 ALTER TABLE recuperation ADD CONSTRAINT FK_recuperation_user_id FOREIGN KEY (user_id) REFERENCES user(user_id);
-ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_pneu_ref FOREIGN KEY (pneu_ref) REFERENCES pneu(pneu_ref);
-ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_pneu_dateAjoutBDD FOREIGN KEY (pneu_dateAjoutBDD) REFERENCES pneu(pneu_dateAjoutBDD);
+ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_pneu_id FOREIGN KEY (pneu_ref, pneu_dateAjoutBDD) REFERENCES pneu(pneu_ref, pneu_dateAjoutBDD);
 ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_commande_id FOREIGN KEY (commande_id) REFERENCES commande(commande_id);
