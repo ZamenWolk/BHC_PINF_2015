@@ -9,11 +9,7 @@ session_start();
 if(!isset($_SESSION['panier'])) 
 { 
     /* Initialisation du panier */ 
-    $_SESSION['panier'] = array(); 
-    /* contenu du panier */ 
-    $_SESSION['panier']['qte'] = array(); 
-    $_SESSION['panier']['taille'] = array(); 
-    $_SESSION['panier']['prix'] = array(); 
+    $_SESSION['panier'] = array();
 } 
 
 /*Si le panier existe bien on pourra ajouter un article dedans
@@ -205,25 +201,4 @@ function nombre_article($ref_article)
     } 
     return $nombre; 
 } 
-?> 
-
-
-
-
- ?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<style>
-		</style>
-        <title>Mon panier</title>
-		<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    </head>
-    <body>
-	<div class="container">
-    <h1>Mon panier</h1>
-  	<hr>
-	</body>
-</html>
+?>
