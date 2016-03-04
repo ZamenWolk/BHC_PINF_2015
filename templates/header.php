@@ -9,14 +9,13 @@
     <script src="assets/js/jquery-1.11.3.min.js"></script>
     <script src="assets/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css"/>
-    <link rel="stylesheet" href="assets/bootstrap/flat-ui.css">
     <script src="assets/js/star.js"></script>
     <script src="assets/js/script.js"></script>
     <link href="assets/css/checkbox.css" rel="stylesheet">
     <style>
 
-        .btn-search {
-            background:none;
+        .btn-connect {
+            background: none;
             border-left-style: none;
         }
 
@@ -32,41 +31,32 @@
         }
 
     </style>
-		<!-- PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE-->
-		<script type="text/javascript">
-		window.cookieconsent_options = {"message":"Ce site contient des cookies qui sont utilisés dans le but d'améliorer votre expérience de navigation.","dismiss":"D'accord","learnMore":"Plus d'informations","link":null,"theme":"dark-bottom"};
-		//Le "Link" peut être changé pour un lien de police d'utilisation des cookies à générer ou à faire soi même
-		//Le thème est changeable en fonction de la disposition ou de la couleur.
-		</script>
+    <!-- PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE-->
+    <script type="text/javascript">
+        window.cookieconsent_options = {
+            "message": "Ce site contient des cookies qui sont utilisés dans le but d'améliorer votre expérience de navigation.",
+            "dismiss": "D'accord",
+            "learnMore": "Plus d'informations",
+            "link": null,
+            "theme": "dark-bottom"
+        };
+        //Le "Link" peut être changé pour un lien de police d'utilisation des cookies à générer ou à faire soi même
+        //Le thème est changeable en fonction de la disposition ou de la couleur.
+    </script>
 
-		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
-		<!-- FIN PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE- -->
+    <script type="text/javascript"
+            src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+    <!-- FIN PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE- -->
 
 </head>
 
 <body>
 <div class="container">
-    <br>
-
-    <div class="row">
-        <div class="col-md-8 ">
-            <img id="logo" src="assets/img/logo.svg"/>
-        </div>
-        <form class="form-inline" action="interpretation.php" method="post">
-            <div class="input-group">
-                <input class="form-control" id="search" name="search" placeholder="Rechercher ..." style="border-right-style:none; "><!-- Zone de texte où entrer les mots clés -->
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-search" name="recherche"
-                                    value="true"><span class="glyphicon glyphicon-search"
-                                                       aria-hidden="true"></span></button><!-- Bouton rechercher -->
-                </span>
-            </div>
-        </form>
-    </div>
-    <div class="row">
-        <div class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="navabr-header">
+                    <a href="?url=accueil" class="navbar-brand"><img id="logo" src="assets/img/logo.svg"/></a>
+                </div>
             <ul class="nav navbar-nav">
-                <li><a href="?url=accueil">Accueil</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogue de pneus<span
                             class="caret"></span></a>
@@ -91,23 +81,30 @@
                         <li class="dropdown-header">Prix total : 999 €</li>
                     </ul>
                 </li>
-                <li><a href=""><?php
-                        /* Verifie si la personne est connécter et change le bouton en fonction */
-                        if (isset($_SESSION['connecter'])) echo "Mon compte"; else echo "Se connecter"; ?>  <span
-                            class="glyphicon glyphicon-user " aria-hidden="true"></span></a></li>
 
+
+                <li><?php
+                    /* Verifie si la personne est connécter et change le bouton en fonction */
+                    if (isset($_SESSION['connecter'])) echo '<a>Mon compte';
+                    else echo '<a data-placement="bottom" data-toggle="popover" data-title="Login" data-container="body" type="button" data-html="true" href="#" data-trigger="focus" id="login">Se connecter';
+                    echo '<span class="glyphicon glyphicon-user " aria-hidden="true"></span></a>' ?>
+
+                </li>
+                <div id="popover-content" class="hide">
+                    <form class="form-inline" role="form">
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="mail" placeholder="Adresse Mail">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                        </div>
+                        <button type="submit" class="btn btn-connect">Se connecter</button>
+                    </form>
+                </div>
             </ul>
-            <form class="navbar-form navbar-right" role="search" style="display: none">
-                <div class="form-group">
-                    <input type="email" class="form-control" name="mail" placeholder="Mail">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="Mot de passe">
-                </div>
-                <button type="submit" class="btn btn-default">Connexion</button>
-            </form>
-        </div>
-    </div>
+            </nav>
 
 
 

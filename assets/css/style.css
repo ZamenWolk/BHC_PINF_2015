@@ -1,66 +1,84 @@
-.row{
-	padding-bottom: 5px;
+.row {
+    padding-bottom: 5px;
 }
 
 .footer {
-	font-size: smaller;
-	display: inline;
-	margin-left: 5px;
+    font-size: smaller;
+    display: inline;
+    margin-left: 5px;
 }
+
 #Cfooter {
-	text-align: center;
-	margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .container {
-	background-color: white;
+    background-color: white;
 }
+
 hr {
-	margin-bottom: 10px;
-}
-#logo{
-        max-height:50px;
-        max-width:100px;
-    }
-	
-#recherche{
-	color:grey;
-}
-.annonce{
-	max-height:100px;
-	max-width:100px;
+    margin-bottom: 10px;
 }
 
-.panier{
-	right: 30px;
-	position: absolute;
+#logo {
+    max-height: 50px;
+    max-width: 100px;
 }
 
-.contenu{
-	float: right;
+#recherche {
+    color: grey;
 }
 
-.filtre{
-	margin-right: 10px;
+.annonce {
+    max-height: 100px;
+    max-width: 100px;
 }
 
-.pages{
-	text-align: center;
+.panier {
+    right: 30px;
+    position: absolute;
+}
+
+.contenu {
+    float: right;
+}
+
+.filtre {
+    margin-right: 10px;
+}
+
+.pages {
+    text-align: center;
 
 }
+
 body {
-	background: url(../img/04.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+    background: url(../img/04.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .panel {
-	border: outset 2px;
+    border: outset 2px;
 }
 
 .dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
+}
+
+.form-control {
+    width: 120px;
+}
+
+.popover {
+    max-width: 400px;
+}
+
+input.form-control {
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
