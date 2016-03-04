@@ -1,5 +1,5 @@
 <?php
-include('config.php')
+include('../secret/credentials.php');
 ?>
 <?php // LES FONCTIONS QUE L'ON POURRAIT UTILISER POUR LA GESTION DU PANIER 
 
