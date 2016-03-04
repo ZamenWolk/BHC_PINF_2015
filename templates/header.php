@@ -95,7 +95,17 @@
                         /* Verifie si la personne est connécter et change le bouton en fonction */
                         if (isset($_SESSION['connecter'])) echo "Mon compte"; else echo "Se connecter"; ?>  <span
                             class="glyphicon glyphicon-user " aria-hidden="true"></span></a></li>
+
             </ul>
+            <form class="navbar-form navbar-right" role="search" style="display: none">
+                <div class="form-group">
+                    <input type="email" class="form-control" name="mail" placeholder="Mail">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                </div>
+                <button type="submit" class="btn btn-default">Connexion</button>
+            </form>
         </div>
     </div>
 
