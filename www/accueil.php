@@ -1,3 +1,7 @@
+<?php
+include_once("header.php");
+?>
+
 <div class="row">
     <div class="row carousel-holder">
         <div class="col-md-12">
@@ -157,6 +161,9 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
+<?php
+include_once("footer.php");
+?>

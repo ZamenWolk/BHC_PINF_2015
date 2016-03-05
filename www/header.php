@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+if(0)//TODO: implémentation de la connection au site Si mauvaise connection etc on détruis la session
+    session_destroy();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,13 +11,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JS Pneus</title>
-    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css"/>
-    <script src="assets/js/jquery-1.11.3.min.js"></script>
-    <script src="assets/bootstrap/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css"/>
-    <script src="assets/js/star.js"></script>
-    <script src="assets/js/script.js"></script>
-    <link href="assets/css/checkbox.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css"/>
+    <script src="../assets/js/jquery-1.11.3.min.js"></script>
+    <script src="../assets/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css"/>
+    <script src="../assets/js/script.js"></script>
+    <link href="../assets/css/checkbox.css" rel="stylesheet">
     <style>
 
         .btn-connect {
@@ -54,7 +59,7 @@
 <div class="container">
         <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="navabr-header">
-                    <a href="?url=accueil" class="navbar-brand"><img id="logo" src="assets/img/logo.svg"/></a>
+                    <a href="?url=accueil" class="navbar-brand"><img id="logo" src="../assets/img/logo.svg"/></a>
                 </div>
             <ul class="nav navbar-nav">
                 <li class="dropdown">
@@ -90,7 +95,7 @@
                     echo '<span class="glyphicon glyphicon-user " aria-hidden="true"></span></a>' ?>
 
                 </li>
-                <div id="popover-content" class="hide">
+                <li id="popover-content" class="hide">
                     <form class="form-inline" role="form">
 
                         <div class="form-group">
@@ -102,7 +107,7 @@
                         </div>
                         <button type="submit" class="btn btn-connect">Se connecter</button>
                     </form>
-                </div>
+                </li>
             </ul>
             </nav>
 

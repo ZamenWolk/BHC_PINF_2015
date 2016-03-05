@@ -1,12 +1,8 @@
-<?php 
-session_start();
-if(0)//TODO: implémentation de la connection au site Si mauvaise connection etc on détruis la session
-    session_destroy();
-	
-include_once("templates/header.php");
+<?php
+include_once("header.php");
 ?>
 
-<h3 style="text-align:center"> Conditions générales de vente </h2>
+<h3 style="text-align:center"> Conditions générales de vente </h3>
 <div>
 	<p> <strong>JSPneus</strong> </br>
 		Société (Donnez le statut) au capital de X euros </br>
@@ -80,6 +76,5 @@ include_once("templates/header.php");
 </div>
 
 <?php
-include_once("templates/footer.html");
-
+include_once("footer.php");
 ?>

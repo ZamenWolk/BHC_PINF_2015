@@ -1,5 +1,8 @@
-<div class="row">
+<?php
+include_once("header.php");
+?>
 
+<div class="row">
     <div class="col-md-2 filtre">
         <div class="panel panel-default" style="position: fixed; margin-top: 10px;">
             <div class="panel-heading">Affinage de la recherche</div>
@@ -52,18 +55,18 @@
             </ul>
         </div>-->
 <?php
-        include_once "php/fonctionsBDD.php";
+        include_once "../assets/php/fonctions/fonctionsBDD.php";
 
         //Ici on charge tous les pneus de la marque donnée à améliorer
 
         $marque = securite_bdd($_GET['marque']);
-        $rch = SQLSelect("SELECT * FROM pneus WHERE marque=?", [$marque]);
+        $rch = SQLSelect("SELECT * FROM jspneus.pneu WHERE pneu_marque=?", [$marque]);
         foreach($rch AS $row){
             echo '<div id="articles">
                 <div class="panel panel-default">
                     <div class="panel-heading">'.$row["marque"]." ".$row["dimension"].'</div>
                     <div class="panel-body">
-                        <div class="col-md-2"><img src="assets/img/pneu.jpg" class="annonce"/></div>
+                        <div class="col-md-2"><img src="../assets/img/pneu.jpg" class="annonce"/></div>
                         <div class="col-md-6">
                             <ul>
                                 <li>Catégorie:'.$row["categorie"].'</li>
@@ -95,3 +98,8 @@
 
         <div style="text-align: center; margin-bottom: 30px;"> <a href="#top" >Retour en haut de page</a></div>
     </div>
+</div>
+
+<?php
+include_once("footer.php");
+?>

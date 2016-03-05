@@ -1,0 +1,6 @@
+Options +FollowSymLinks -MultiViews
+# Turn mod_rewrite on
+RewriteEngine On
+RewriteBase /bhc_pinf_2015
+
+RewriteRule ^(.*)$ www/$1 [R]

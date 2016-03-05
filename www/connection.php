@@ -1,3 +1,7 @@
+<?php
+include_once("header.php");
+?>
+
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
@@ -44,3 +48,6 @@
     </div>
 </div>
 
+<?php
+include_once("footer.php");
+?>

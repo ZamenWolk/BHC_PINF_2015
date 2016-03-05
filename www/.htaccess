@@ -1,0 +1,13 @@
+Options +FollowSymLinks -MultiViews
+# Turn mod_rewrite on
+RewriteEngine On
+# RewriteBase /bhc_pinf_2015/www
+
+# Security + default rule
+RewriteRule ^$ accueil.php [L]
+RewriteRule ^header$ - [F]
+ReWriteRule ^header.php$ - [F]
+RewriteRule ^footer$ - [F]
+ReWriteRule ^footer.php$ - [F]
+
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
