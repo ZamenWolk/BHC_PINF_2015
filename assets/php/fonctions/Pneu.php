@@ -1,8 +1,10 @@
 <?php
 
+include_once "maLibSQL.pdo.php";
+
 class Pneu
 {
-    function Pneu($pneu)
+    public function Pneu($pneu)
     {
         $this->EAN = $pneu["pneu_ean"];
         $this->reference = $pneu["pneu_ref"];
@@ -23,6 +25,24 @@ class Pneu
         $this->stock = $pneu["pneu_stock"];
         $this->prix = $pneu["pneu_prix"];
         $this->dateAjoutBDD = $pneu["pneu_dateAjoutBDD"];
+    }
+
+    public static function getPneuFromDB($reference, $dateAjoutBDD = null)
+    {
+        $sql = "SELECT * FROM jspneus.pneu WHERE pneu_ref=:ref";
+        $param = array(":ref" => $reference);
+
+        if ($dateAjoutBDD == null)
+        {
+            $sql .= " AND pneu_derniereVersion=1";
+        }
+        else
+        {
+            $sql .= " AND pneu_dateAjoutBDD=:dateAjout";
+            $param[":dateAjout"] = $dateAjoutBDD;
+        }
+
+        return new Pneu(SQLSelect($sql, $param)[0]);
     }
 
     public $EAN;

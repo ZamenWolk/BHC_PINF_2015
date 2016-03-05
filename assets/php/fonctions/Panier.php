@@ -4,7 +4,7 @@ include_once "Pneu.php";
 
 class Panier
 {
-    function Panier($ratioPrix)
+    public function Panier($ratioPrix)
     {
         if ($ratioPrix <= 0)
             $ratioPrix = 1;
@@ -12,17 +12,17 @@ class Panier
         $this->ratioPrix = $ratioPrix;
     }
 
-    function vider()
+    public function vider()
     {
         $this->panier = array();
     }
 
-    function nbArticles()
+    public function nbArticles()
     {
         return count($this->panier);
     }
 
-    function ajouterArticle($pneu, $quantite)
+    public function ajouterArticle($pneu, $quantite)
     {
         if (get_class($pneu) != Pneu::class || $quantite < 1)
             return false;
@@ -39,7 +39,7 @@ class Panier
         }
     }
 
-    function retirerArticle($reference)
+    public function retirerArticle($reference)
     {
         if ($this->getArticle($reference))
         {
@@ -54,7 +54,7 @@ class Panier
         }
     }
 
-    function ajouterQuantite($reference, $quantite)
+    public function ajouterQuantite($reference, $quantite)
     {
         if (!$this->getArticle($reference) || $quantite < 0)
             return false;
@@ -66,7 +66,7 @@ class Panier
         }
     }
 
-    function retirerQuantite($reference, $quantite)
+    public function retirerQuantite($reference, $quantite)
     {
         if (!$this->getArticle($reference) || $quantite < 0)
             return 0;
@@ -88,7 +88,7 @@ class Panier
         }
     }
 
-    function prixArticle($reference)
+    public function prixArticle($reference)
     {
         $item = &$this->getArticle($reference);
         if (!$item)
@@ -97,7 +97,7 @@ class Panier
             return $item["pneu"]->prix * $this->ratioPrix * $item["quantite"];
     }
 
-    function prixTotal()
+    public function prixTotal()
     {
         $total = 0;
 
@@ -107,6 +107,11 @@ class Panier
         }
 
         return $total;
+    }
+
+    public function contenuPanier()
+    {
+        return $this->panier;
     }
 
     protected function &getArticle($reference)

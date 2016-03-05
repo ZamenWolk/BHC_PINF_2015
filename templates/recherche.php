@@ -52,7 +52,7 @@
             </ul>
         </div>-->
 <?php
-        include_once "libs/fonctionsBDD.php";
+        include_once "php/fonctionsBDD.php";
 
         //Ici on charge tous les pneus de la marque donnée à améliorer
 

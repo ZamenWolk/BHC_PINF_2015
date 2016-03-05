@@ -57,7 +57,7 @@ function SQLDelete($sql, $param) {return SQLUpdate($sql, $param);}
  * @param string $sql requete a executer
  * @param array $param parametres de la requete
  * @pre Les variables  $BDD_login, $BDD_password $BDD_chaine doivent exister
- * @return Renvoie l'insert ID ... utile quand c'est un numéro auto
+ * @return int Renvoie l'insert ID ... utile quand c'est un numéro auto
  */
 function SQLInsert($sql, $param)
 {
@@ -132,7 +132,7 @@ function SQLGetChamp($sql, $param)
  * Renvoie FALSE si pas de resultats, ou la ressource sinon
  * @pre Les variables  $BDD_login, $BDD_password $BDD_chaine doivent exister
  * @param string $SQL
- * @return boolean|resource
+ * @return boolean|array
  */
 function SQLSelect($sql, $param)
 {
