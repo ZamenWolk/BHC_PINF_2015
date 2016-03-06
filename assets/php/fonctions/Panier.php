@@ -4,12 +4,10 @@ include_once "Pneu.php";
 
 class Panier
 {
-    public function Panier($ratioPrix)
+    public function Panier()
     {
-        if ($ratioPrix <= 0)
-            $ratioPrix = 1;
         $this->panier = array();
-        $this->ratioPrix = $ratioPrix;
+        $this->ratioPrix = SQLGetChamp("SELECT config_ratio_prix FROM jspneus.config");
     }
 
     public function vider()
@@ -61,30 +59,40 @@ class Panier
         else
         {
             $item = &$this->getArticle($reference);
-            $item["pneu"]->quantite += $quantite;
-            return $item["pneu"]->quantite;
+            return $this->changerQuantite($reference, $item["quantite"] + $quantite);
         }
     }
 
     public function retirerQuantite($reference, $quantite)
     {
         if (!$this->getArticle($reference) || $quantite < 0)
-            return 0;
+            return false;
         else
         {
             $item = &$this->getArticle($reference);
-            if ($item["pneu"]->quantite - $quantite < 0)
-                return false;
-            else if ($item["pneu"]->quantite == $quantite)
-            {
-                $this->retirerArticle($reference);
-                return 0;
-            }
-            else
-            {
-                $item["pneu"]->quantite -= $quantite;
-                return $item["pneu"]->quantite;
-            }
+            return $this->changerQuantite($reference, $item["quantite"] - $quantite);
+        }
+    }
+
+    public function changerQuantite($reference, $quantite)
+    {
+        if (!$this->getArticle($reference) || $quantite < 0)
+            return false;
+
+        if (Pneu::getStock($reference) < $quantite)
+            return $this->changerQuantite($reference, Pneu::getStock($reference));
+
+        $item = &$this->getArticle($reference);
+
+        if ($quantite == 0)
+        {
+            $this->retirerArticle($reference);
+            return 0;
+        }
+        else
+        {
+            $item["quantite"] = $quantite;
+            return $quantite;
         }
     }
 

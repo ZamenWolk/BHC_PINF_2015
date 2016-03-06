@@ -42,7 +42,18 @@ class Pneu
             $param[":dateAjout"] = $dateAjoutBDD;
         }
 
-        return new Pneu(SQLSelect($sql, $param)[0]);
+        $pneus = SQLSelect($sql, $param);
+
+        if ($pneus === false)
+            return false;
+        else
+            return new Pneu($pneus[0]);
+    }
+
+    //TODO Peut-être modifier cette fonction pour afficher le stock suivant les commandes précédantes ?
+    public static function getStock($reference, $dateAjoutBDD = null)
+    {
+        return Pneu::getPneuFromDB($reference, $dateAjoutBDD)["pneu_stock"];
     }
 
     public $EAN;

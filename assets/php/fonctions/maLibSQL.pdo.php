@@ -1,6 +1,6 @@
 <?php 
 
-include_once "../secret/credentials.php";
+include_once "../../../secret/credentials.php";
 
 /**
  * @file maLibSQL.php
@@ -20,7 +20,7 @@ include_once "../secret/credentials.php";
  * @param array $param les parametres de la requete
  * @pre Les variables  $BDD_login, $BDD_password $BDD_chaine doivent exister
  */
-function SQLUpdate($sql, $param)
+function SQLUpdate($sql, $param = null)
 {
 	global $BDD_host;
 	global $BDD_base;
@@ -49,7 +49,7 @@ function SQLUpdate($sql, $param)
 }
 
 // Un delete c'est comme un Update
-function SQLDelete($sql, $param) {return SQLUpdate($sql, $param);}
+function SQLDelete($sql, $param = null) {return SQLUpdate($sql, $param);}
 
 
 /**
@@ -59,7 +59,7 @@ function SQLDelete($sql, $param) {return SQLUpdate($sql, $param);}
  * @pre Les variables  $BDD_login, $BDD_password $BDD_chaine doivent exister
  * @return int Renvoie l'insert ID ... utile quand c'est un numéro auto
  */
-function SQLInsert($sql, $param)
+function SQLInsert($sql, $param = null)
 {
 	global $BDD_host;
 	global $BDD_base;
@@ -95,7 +95,7 @@ function SQLInsert($sql, $param)
 * @param array $param parametres de la requete
 * @return false|string
 */
-function SQLGetChamp($sql, $param)
+function SQLGetChamp($sql, $param = null)
 {
 	global $BDD_host;
 	global $BDD_base;
@@ -134,7 +134,7 @@ function SQLGetChamp($sql, $param)
  * @param string $SQL
  * @return boolean|array
  */
-function SQLSelect($sql, $param)
+function SQLSelect($sql, $param = null)
 {
 	global $BDD_host;
 	global $BDD_base;
