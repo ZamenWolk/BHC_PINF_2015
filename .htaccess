@@ -3,4 +3,4 @@ Options +FollowSymLinks -MultiViews
 RewriteEngine On
 RewriteBase /bhc_pinf_2015
 
-RewriteRule ^(.*)$ www/$1 [R]
+RewriteRule ^$ www/ [R]
