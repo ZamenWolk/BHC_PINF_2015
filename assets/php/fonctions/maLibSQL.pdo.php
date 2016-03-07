@@ -1,6 +1,4 @@
-<?php 
-
-include_once "../../../secret/credentials.php";
+<?php
 
 /**
  * @file maLibSQL.php
@@ -36,7 +34,7 @@ function SQLUpdate($sql, $param = null)
 	$req = $dbh->prepare($sql);
 
 	if ($req->execute($param) === false) {
-		$e = $dbh->errorInfo(); 
+		$e = $req->errorInfo();
 		die("<font color=\"red\">SQLUpdate/Delete: Erreur de requete : " . $e[2] . "</font>");
 	}
 
@@ -75,7 +73,7 @@ function SQLInsert($sql, $param = null)
 	$req = $dbh->prepare($sql);
 
 	if ($req->execute($param) === false) {
-		$e = $dbh->errorInfo(); 
+		$e = $req->errorInfo();
 		die("<font color=\"red\">SQLInsert: Erreur de requete : " . $e[2] . "</font>");
 	}
 
@@ -111,7 +109,7 @@ function SQLGetChamp($sql, $param = null)
 	$req = $dbh->prepare($sql);
 
 	if ($req->execute($param) === false) {
-		$e = $dbh->errorInfo();
+		$e = $req->errorInfo();
 		die("<font color=\"red\">SQLGetChamp: Erreur de requete : " . $e[2] . "</font>");
 	}
 
@@ -152,7 +150,7 @@ function SQLSelect($sql, $param = null)
 	$req = $dbh->prepare($sql);
 
 	if ($req->execute($param) === false) {
-		$e = $dbh->errorInfo();
+		$e = $req->errorInfo();
 		die("<font color=\"red\">SQLSelect: Erreur de requete : " . $e[2] . "</font>");
 	}
 

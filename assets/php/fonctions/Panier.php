@@ -1,6 +1,7 @@
 <?php
 
 include_once "Pneu.php";
+include_once "../../../secret/credentials.php";
 
 class Panier
 {
@@ -46,10 +47,12 @@ class Panier
                 if ($item["pneu"]->reference == $reference)
                 {
                     unset($this->panier[$key]);
-                    return;
+                    return true;
                 }
             }
         }
+
+        return false;
     }
 
     public function ajouterQuantite($reference, $quantite)
@@ -99,10 +102,12 @@ class Panier
     public function prixArticle($reference)
     {
         $item = &$this->getArticle($reference);
-        if (!$item)
-            return false;
-        else
+        if (isset($item))
+        {
             return $item["pneu"]->prix * $this->ratioPrix * $item["quantite"];
+        }
+        else
+            return false;
     }
 
     public function prixTotal()
@@ -119,6 +124,11 @@ class Panier
 
     public function contenuPanier()
     {
+        foreach($this->panier as &$item)
+        {
+            $item["prixLot"] = $this->prixArticle($item["pneu"]->reference);
+        }
+
         return $this->panier;
     }
 
@@ -126,13 +136,14 @@ class Panier
     {
         $panier = &$this->panier;
 
-        foreach ($panier as $item)
+        foreach ($panier as $key=>$item)
         {
             if ($item["pneu"]->reference == $reference)
-                return $item;
+                return $panier[$key];
         }
 
-        return false;
+        $null = null;
+        return $null;
     }
 
     protected $panier;
