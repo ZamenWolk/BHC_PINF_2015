@@ -1,9 +1,5 @@
 body {
-    background: url(../img/04.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url(../img/footer_lodyas.png) repeat center center fixed; /* Background pattern from subtlepatterns.com */
 
     padding-top: 70px;
 }
@@ -61,9 +57,50 @@ p.centered {
     font-size: 120%;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0;
+.navbar-default {
+    border:none;
+}
+
+.navbar-nav>.open>a, .navbar-nav>.open>a:focus, .navbar-nav>.open>a:hover,
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover,
+.navbar-default .navbar-nav>.open>a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a.btn-order:hover,
+.dropdown-menu > li > a.btn-order:focus,
+#headNavbar > ul > li > a:hover,
+#headNavbar > ul > li > a:focus,
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus {
+    background-color: transparent;
+    color: rgba(243, 156, 18, 1.0);
+    box-shadow: none;
+    border: none;
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    top: 59px;
+    background-color: rgba(44, 62, 80, 0.8);
+}
+
+.dropdown-menu > li > a {
+    font-size: 120%;
+    color: rgba(189, 195, 199, 1.0);
+}
+
+.dropdown-menu > li > a.btn-order {
+    font-size: 120%;
+    background-color: rgba(243, 156, 18, 1.0);
+    color: rgba(44, 62, 80, 1);
+    box-shadow: none;
+    border: none;
+    text-decoration: none;
+}
+
+.dropdown-header {
+    font-size: 120%;
+    color: rgba(189, 195, 199, 1.0);
 }
 
 input.form-control {
@@ -87,23 +124,20 @@ input.form-control {
 }
 
 .navbar-default {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.glyphicon {
-    vertical-align: middle;
+    background-color: rgba(44, 62, 80, 0.8);
 }
 
 .navbar-brand {
     margin-bottom: 10px;
 }
 
-#navHeader {
+#headNavbar > ul > li > a {
     font-size: 150%;
+    color: rgba(189, 195, 199, 1.0);
 }
 
 #navFooter {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(44, 62, 80, 0.8);
     border-radius: 0;
     margin-bottom: 0;
     border: 0;
@@ -111,16 +145,7 @@ input.form-control {
 
 .nav-pills > li > a {
     font-size: 120%;
-    color: #777;
-}
-
-.nav-pills > li > a:hover,
-.nav-pills > li > a:focus,
-#headNavbar > ul > li > a:hover,
-#headNavbar > ul > li > a:focus {
-    text-decoration: none;
-    background-color: transparent;
-    color: #2aabd2;
+    color: rgba(189, 195, 199, 1.0);
 }
 
 #searchLink {
@@ -129,5 +154,52 @@ input.form-control {
 
 .searchWell {
     padding-top: 0;
+}
+
+.item-info {
+    font-size: 110%;
+}
+
+ul.dropdown-cart{
+    min-width:250px;
+}
+
+ul.dropdown-cart li .item{
+    display:block;
+    padding:3px 10px;
+    margin: 3px 0;
+}
+
+.item-right > button {
+    margin-top: 8px;
+}
+
+ul.dropdown-cart li .item:after{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+ul.dropdown-cart li .item-left{
+    float:left;
+}
+ul.dropdown-cart li .item-left img,
+ul.dropdown-cart li .item-left span.item-info{
+    float:left;
+}
+ul.dropdown-cart li .item-left span.item-info{
+    margin-left:10px;
+}
+ul.dropdown-cart li .item-left span.item-info span{
+    display:block;
+}
+ul.dropdown-cart li .item-right{
+    float:right;
+}
+ul.dropdown-cart li .item-right button{
+    margin-top:14px;
 }
 

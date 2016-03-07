@@ -12,6 +12,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JS Pneus</title>
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css"/>
     <script src="../assets/js/jquery-1.11.3.min.js"></script>
     <script src="../assets/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css"/>
@@ -52,7 +53,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
             <div class="collapse navbar-collapse" id="headNavbar">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogue de pneus<span
+                        <a href="#" class="dropdown-toggle">Catalogue de pneus<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" style="width:120%;">
                             <li><a href="#">Catégorie 1</a></li>
@@ -67,15 +68,55 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="">Panier<span class="glyphicon glyphicon-shopping-cart"
-                                               aria-hidden="true"></span></a>
+                        <a href="#" class="dropdown-toggle">Panier <span
+                                class="fa fa-shopping-cart"
+                                aria-hidden="true"></span></a>
                         <ul class="dropdown-menu" role="menu" style="width:400%;">
-                            <li><a href="#">Article 1</a></li>
-                            <li><a href="#">Article 2</a></li>
-                            <li><a href="#">Article 3</a></li>
+                            <li><a href="#">
+                                <span class="item">
+                                    <span class="item-left">
+                                        <img src="http://placehold.it/50x50" alt=""/>
+                                        <span class="item-info">
+                                            <span>Item name</span>
+                                            <span>23$</span>
+                                        </span>
+                                    </span>
+                                    <span class="item-right">
+                                        <button class="btn btn-danger pull-right">x</button>
+                                    </span>
+                                </span>
+                            </a></li>
+                            <li><a href="#">
+                                <span class="item">
+                                    <span class="item-left">
+                                        <img src="http://placehold.it/50x50" alt=""/>
+                                        <span class="item-info">
+                                            <span>Item name</span>
+                                            <span>23$</span>
+                                        </span>
+                                    </span>
+                                    <span class="item-right">
+                                        <button class="btn btn-danger pull-right">x</button>
+                                    </span>
+                                </span>
+                                </a></li>
+                            <li><a href="#">
+                                <span class="item">
+                                    <span class="item-left">
+                                        <img src="http://placehold.it/50x50" alt=""/>
+                                        <span class="item-info">
+                                            <span>Item name</span>
+                                            <span>23$</span>
+                                        </span>
+                                    </span>
+                                    <span class="item-right">
+                                        <button class="btn btn-danger pull-right">x</button>
+                                    </span>
+                                </span>
+                                </a></li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Prix total : 999 €</li>
-                            <li class="dropdown-header"><a role="button" href="" class="btn btn-warning">Passer
+                            <li class="dropdown-header"><a role="button" href="" class="btn btn-order">Passer
                                     commande</a>
                             </li>
                         </ul>
@@ -83,8 +124,8 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                     <li><?php
                         /* Verifie si la personne est connécter et change le bouton en fonction */
                         if (isset($_SESSION['connecter'])) echo '<a>Mon compte';
-                        else echo '<a data-placement="bottom" data-toggle="popover" data-title="Login" data-container="body" type="button" data-html="true" href="#" id="login">Se connecter';
-                        echo '<span class="glyphicon glyphicon-user " aria-hidden="true"></span></a>' ?>
+                        else echo '<a data-placement="bottom" data-toggle="popover" data-title="Login" data-container="body" type="button" data-html="true" href="#" id="login">Se connecter ';
+                        echo '<span class="fa fa-user " aria-hidden="true"></span></a>' ?>
                     </li>
                     <li id="popover-content" class="hide">
                         <form class="form-inline" role="form">
