@@ -1,4 +1,8 @@
 <?php
+
+
+
+include_once "../../../secret/credentials.php";
 include_once "maLibSQL.pdo.php";
 
 /** mkUser
