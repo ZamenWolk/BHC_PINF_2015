@@ -9,7 +9,6 @@
  * @todo On pourrait tracer les requêtes dans une table de logs
  */
 
-
 /**
  * Exécuter une requête UPDATE. Renvoie le nb de modifs ou faux si pb
  * On testera donc avec === pour différencier faux de 0 
