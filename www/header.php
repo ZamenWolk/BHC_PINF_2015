@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(0)//TODO: implémentation de la connection au site Si mauvaise connection etc on détruis la session
+if (0)//TODO: implémentation de la connection au site Si mauvaise connection etc on détruis la session
     session_destroy();
 ?>
 <!DOCTYPE html>
@@ -16,25 +16,7 @@ if(0)//TODO: implémentation de la connection au site Si mauvaise connection etc
     <script src="../assets/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css"/>
     <script src="../assets/js/script.js"></script>
-    <style>
 
-        .btn-connect {
-            background: none;
-            border-left-style: none;
-        }
-
-        .btn-search-highlight {
-            border-right-style: solid;
-            border-right-color: #2ecc71;
-
-            border-top-style: solid;
-            border-top-color: #2ecc71;
-
-            border-bottom-style: solid;
-            border-bottom-color: #2ecc71;
-        }
-
-    </style>
     <!-- PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE-->
     <script type="text/javascript">
         window.cookieconsent_options = {
@@ -56,119 +38,139 @@ if(0)//TODO: implémentation de la connection au site Si mauvaise connection etc
 
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top" id="navHeader">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="?url=accueil" class="navbar-brand"><img id="logo" src="../assets/img/logo.svg"/></a>
+        <div id="navHeader">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="?url=accueil" class="navbar-brand"><img id="logo" src="../assets/img/logo.svg"/></a>
+            </div>
+            <div class="collapse navbar-collapse" id="headNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogue de pneus<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" style="width:120%;">
+                            <li><a href="#">Catégorie 1</a></li>
+                            <li><a href="#">Catégorie 2</a></li>
+                            <li><a href="#">Catégorie 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="searchLink">Recherche</a>
+                    </li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="">Panier<span class="glyphicon glyphicon-shopping-cart"
+                                               aria-hidden="true"></span></a>
+                        <ul class="dropdown-menu" role="menu" style="width:400%;">
+                            <li><a href="#">Article 1</a></li>
+                            <li><a href="#">Article 2</a></li>
+                            <li><a href="#">Article 3</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Prix total : 999 €</li>
+                            <li class="dropdown-header"><a role="button" href="" class="btn btn-warning">Passer
+                                    commande</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><?php
+                        /* Verifie si la personne est connécter et change le bouton en fonction */
+                        if (isset($_SESSION['connecter'])) echo '<a>Mon compte';
+                        else echo '<a data-placement="bottom" data-toggle="popover" data-title="Login" data-container="body" type="button" data-html="true" href="#" id="login">Se connecter';
+                        echo '<span class="glyphicon glyphicon-user " aria-hidden="true"></span></a>' ?>
+                    </li>
+                    <li id="popover-content" class="hide">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="mail" placeholder="Adresse Mail">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password"
+                                       placeholder="Mot de passe">
+                            </div>
+                            <button type="submit" class="btn btn-default">Se connecter</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="collapse navbar-collapse" id="headNavbar">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogue de pneus<span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu" style="width:120%;">
-                        <li><a href="#">Catégorie 1</a></li>
-                        <li><a href="#">Catégorie 2</a></li>
-                        <li><a href="#">Catégorie 3</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a id="searchLink">Recherche</a>
-                </li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="">Panier<span class="glyphicon glyphicon-shopping-cart"
-                                           aria-hidden="true"></span></a>
-                    <ul class="dropdown-menu" role="menu" style="width:400%;">
-                        <li><a href="#">Article 1</a></li>
-                        <li><a href="#">Article 2</a></li>
-                        <li><a href="#">Article 3</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Prix total : 999 €</li>
-                        <li class="dropdown-header"><a role="button" href="" class="btn btn-warning">Passer
-                                commande</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><?php
-                    /* Verifie si la personne est connécter et change le bouton en fonction */
-                    if (isset($_SESSION['connecter'])) echo '<a>Mon compte';
-                    else echo '<a data-placement="bottom" data-toggle="popover" data-title="Login" data-container="body" type="button" data-html="true" href="#" data-trigger="focus" id="login">Se connecter';
-                    echo '<span class="glyphicon glyphicon-user " aria-hidden="true"></span></a>' ?>
-                </li>
-                <li id="popover-content" class="hide">
-                    <form class="form-inline" role="form">
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="mail" placeholder="Adresse Mail">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="password"
-                                   placeholder="Mot de passe">
-                        </div>
-                        <button type="submit" class="btn btn-default">Se connecter</button>
-                    </form>
-                </li>
-            </ul>
+
+        <div class="well searchWell">
+            <form class="form-inline" role="form">
+
+                <h3>Filtres de recherche : </h3>
+
+                <label class="control-label" for="sel1">Catégorie :</label>
+
+                <select class="form-control" id="sel1">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+
+
+                <label class="control-label" for="sel2">Marque:</label>
+
+                <select class="form-control" id="sel2">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+
+                <label class="control-label" for="sel3">Largeur :</label>
+
+                <select class="form-control" id="sel3">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+
+                <label class="control-label" for="sel5">Série :</label>
+
+                <select class="form-control" id="sel5">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+
+                <label class="control-label" for="sel5">Diamètre :</label>
+
+                <select class="form-control" id="sel5">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+
+                <label for="sel4">Charge :</label>
+
+                <select class="form-control" id="sel4">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+
+                <label class="control-label" for="sel5">Vitesse :</label>
+
+                <select class="form-control" id="sel5">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+
+                <a role="button" href="" class="btn btn-warning pull-right">Rechercher</a>
+
+            </form>
         </div>
     </div>
 </nav>
 
-<div class="well searchWell">
-    <form class="form-inline" role="form" style="margin-top: 60px;">
-
-        <label for="sel1">Catégorie :</label>
-
-        <select class="selectpicker" data-style="btn-primary" id="sel1">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
-        </select>
-
-
-
-        <label for="sel2">Marque:</label>
-
-        <select class="selectpicker" data-style="btn-primary" id="sel2">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
-        </select>
-
-        <label for="sel3">Largeur :</label>
-
-        <select class="selectpicker" data-style="btn-primary" id="sel3">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
-        </select>
-
-        <label for="sel4">Hauteur :</label>
-
-        <select class="selectpicker" data-style="btn-primary" id="sel4">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
-        </select>
-
-        <label for="sel5">Diamètre :</label>
-
-        <select class="selectpicker" data-style="btn-primary" id="sel5">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
-        </select>
-
-        <a role="button" href="" class="btn btn-warning pull-right">Rechercher</a>
-
-    </form>
-</div>
 
 <div class="container">
 
