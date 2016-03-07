@@ -1,24 +1,15 @@
+body {
+    background: url(../img/04.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    padding-top: 70px;
+}
+
 .row {
     padding-bottom: 5px;
-}
-
-.footer {
-    font-size: smaller;
-    display: inline;
-    margin-left: 5px;
-}
-
-#Cfooter {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.container {
-    background-color: white;
-}
-
-hr {
-    margin-bottom: 10px;
 }
 
 #logo {
@@ -53,14 +44,6 @@ hr {
 
 }
 
-body {
-    background: url(../img/04.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
 .panel {
     border: outset 2px;
 }
@@ -76,9 +59,57 @@ body {
 
 .popover {
     max-width: 400px;
+    position: fixed;
 }
 
 input.form-control {
     margin-top: 2px;
     margin-bottom: 2px;
 }
+
+.navbar-collapse {
+    text-align: center;
+    line-height: 28px;
+    margin-top: 5px;
+}
+
+.glyphicon {
+    vertical-align: middle;
+}
+
+.navbar-brand {
+    margin-bottom: 10px;
+}
+
+#navHeader {
+    font-size: 150%;
+    margin-bottom: 0;
+}
+
+#navFooter {
+    background-color: rgba(0,0,0,0.4);
+    border-radius:0;
+    margin-bottom:0;
+    border:0;
+}
+
+.nav-pills > li > a {
+    font-size: 120%;
+    color: #0f0f0f;
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+    text-decoration: none;
+    background-color: transparent;
+    color: #2aabd2;
+}
+
+#searchLink {
+    cursor: pointer;
+}
+
+#searchWell {
+    padding: 0;
+}
+

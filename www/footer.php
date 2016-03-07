@@ -1,23 +1,15 @@
-    <div class="row">
-        <div class="col-md-12">
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12" id="Cfooter">
-
-            <a class="footer" href="footer.php">Plan du site</a>
-            |
-            <a class="footer" href="cgv.php">CGV</a>
-
-            |
-            <a class="footer" href="footer.php">Informations légales</a>
-
-            |
-            <a class="footer" href="footer.php">Protection des données</a>
-
-        </div>
-    </div>
 </div>
+<nav class="navbar navbar-default" id="navFooter">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse">
+                <ul class="nav nav-pills nav-justified">
+                    <li><a href="#">C.G.V</a></li>
+                    <li><a href="#">Informations légales</a></li>
+                    <li><a href="#">Protection des données</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+        </div>
+    </div>
+</nav>
 </body>
 </html>
