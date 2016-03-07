@@ -71,8 +71,8 @@ CREATE TABLE pneu(
         pneu_stock              Int NOT NULL ,
         pneu_prix               Decimal (5,2) NOT NULL ,
         pneu_dateAjoutBDD       Int NOT NULL ,
-        pneu_derniereVersion    Bool NOT NULL ,
-        pneu_valable            Bool NOT NULL ,
+        pneu_derniereVersion    Bool NOT NULL DEFAULT 1,
+        pneu_valable            Bool NOT NULL DEFAULT 1,
         PRIMARY KEY (pneu_ref ,pneu_dateAjoutBDD )
 )ENGINE=InnoDB;
 
