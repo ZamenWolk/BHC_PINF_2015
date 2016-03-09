@@ -34,7 +34,7 @@ class Pneu
 
         if ($dateAjoutBDD == null)
         {
-            $sql .= " AND pneu_derniereVersion=1";
+            $sql .= " AND pneu_valable=1";
         }
         else
         {
@@ -53,7 +53,12 @@ class Pneu
     //TODO Peut-être modifier cette fonction pour afficher le stock suivant les commandes précédantes ?
     public static function getStock($reference, $dateAjoutBDD = null)
     {
-        return Pneu::getPneuFromDB($reference, $dateAjoutBDD)["pneu_stock"];
+        $pneu = Pneu::getPneuFromDB($reference, $dateAjoutBDD);
+
+        if ($pneu === false)
+            return false;
+        else
+            return $pneu->stock;
     }
 
     public $EAN;
