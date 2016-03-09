@@ -73,6 +73,7 @@ CREATE TABLE pneu(
         pneu_dateAjoutBDD       Int NOT NULL ,
         pneu_derniereVersion    Bool NOT NULL DEFAULT 1,
         pneu_valable            Bool NOT NULL DEFAULT 1,
+        pneu_dateDerniereModif  Int NOT NULL ,
         PRIMARY KEY (pneu_ref ,pneu_dateAjoutBDD )
 )ENGINE=InnoDB;
 
