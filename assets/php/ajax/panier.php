@@ -10,7 +10,7 @@ if (!isset($_SESSION["panier"]))
 $panier = $_SESSION["panier"];
 
 /**
- * Fichier utiliant la méthode "GET"
+ * Fichier utiliant la méthode "POST"
  * Actions possibles :
  *
  * "vider"
@@ -123,12 +123,12 @@ $panier = $_SESSION["panier"];
  *      "prixTotal" => prix total du produit ]
  */
 
-if (!isset($_GET["action"]))
+if (!isset($_POST["action"]))
 {
     ajaxError("Action non définie");
 }
 
-$action = $_GET["action"];
+$action = $_POST["action"];
 
 switch ($action)
 {
@@ -147,11 +147,11 @@ switch ($action)
 
     case "ajouterArticle":
 
-        if (!isset($_GET["referencePneu"]))
-            ajaxError('$_GET["referencePneu"] est vide');
+        if (!isset($_POST["referencePneu"]))
+            ajaxError('$_POST["referencePneu"] est vide');
 
-        $referencePneu = $_GET["referencePneu"];
-        $quantite = isset($_GET["quantite"]) ? $_GET["quantite"] : 1;
+        $referencePneu = $_POST["referencePneu"];
+        $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
 
         if ($quantite < 1)
             ajaxError('La quantité à ajouter est negative ou nulle');
@@ -172,10 +172,10 @@ switch ($action)
 
     case "retirerArticle":
 
-        if (!isset($_GET["referencePneu"]))
-            ajaxError('$_GET["referencePneu"] est vide');
+        if (!isset($_POST["referencePneu"]))
+            ajaxError('$_POST["referencePneu"] est vide');
 
-        $referencePneu = $_GET["referencePneu"];
+        $referencePneu = $_POST["referencePneu"];
 
         $result = $panier->retirerArticle($referencePneu);
 
@@ -188,11 +188,11 @@ switch ($action)
 
     case "ajouterQuantite":
 
-        if (!isset($_GET["referencePneu"]))
-            ajaxError('$_GET["referencePneu"] est vide');
+        if (!isset($_POST["referencePneu"]))
+            ajaxError('$_POST["referencePneu"] est vide');
 
-        $referencePneu = $_GET["referencePneu"];
-        $quantite = isset($_GET["quantite"]) ? $_GET["quantite"] : 1;
+        $referencePneu = $_POST["referencePneu"];
+        $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
 
         if ($quantite < 1)
             ajaxError('La quantité à ajouter est inférieure à 1');
@@ -212,11 +212,11 @@ switch ($action)
 
     case "retirerQuantite":
 
-        if (!isset($_GET["referencePneu"]))
-            ajaxError('$_GET["referencePneu"] est vide');
+        if (!isset($_POST["referencePneu"]))
+            ajaxError('$_POST["referencePneu"] est vide');
 
-        $referencePneu = $_GET["referencePneu"];
-        $quantite = isset($_GET["quantite"]) ? $_GET["quantite"] : 1;
+        $referencePneu = $_POST["referencePneu"];
+        $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
 
         if ($quantite < 1)
             ajaxError('La quantité à ajouter est inférieure à 1');
@@ -237,11 +237,11 @@ switch ($action)
 
     case "changerQuantite":
 
-        if (!isset($_GET["referencePneu"]))
-            ajaxError('$_GET["referencePneu"] est vide');
+        if (!isset($_POST["referencePneu"]))
+            ajaxError('$_POST["referencePneu"] est vide');
 
-        $referencePneu = $_GET["referencePneu"];
-        $quantite = isset($_GET["quantite"]) ? $_GET["quantite"] : 1;
+        $referencePneu = $_POST["referencePneu"];
+        $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
 
         if ($quantite < 0)
             ajaxError('La nouvelle quantité est negative');
@@ -259,10 +259,10 @@ switch ($action)
 
     case "prixLot":
 
-        if (!isset($_GET["referencePneu"]))
+        if (!isset($_POST["referencePneu"]))
             ajaxError("La référence du pneu n'est pas définie");
 
-        $referencePneu = $_GET["referencePneu"];
+        $referencePneu = $_POST["referencePneu"];
 
         ajaxSuccess(["referencePneu" => $referencePneu, "prixLot" => $panier->prixArticle($referencePneu)]);
 

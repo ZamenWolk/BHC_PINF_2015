@@ -2,23 +2,23 @@
 include_once("../fonctions/AJAX.php");
 include_once("../fonctions/Pneu.php");
 
-if (!isset($_GET["action"]))
+if (!isset($_POST["action"]))
 {
     ajaxError("Action non définie");
 }
 
-$action = $_GET["action"];
+$action = $_POST["action"];
 
 switch ($action)
 {
     case "stockPneu":
 
-        if (!isset($_GET["referencePneu"]))
-            ajaxError('$_GET["referencePneu"] est vide');
+        if (!isset($_POST["referencePneu"]))
+            ajaxError('$_POST["referencePneu"] est vide');
 
-        $referencePneu = $_GET["referencePneu"];
+        $referencePneu = $_POST["referencePneu"];
 
-        $dateAjoutBDD = (isset($_GET["dateAjoutBDD"]) ? $_GET["dateAjoutBDD"] : null);
+        $dateAjoutBDD = (isset($_POST["dateAjoutBDD"]) ? $_POST["dateAjoutBDD"] : null);
 
         $stock = Pneu::getStock($referencePneu, $dateAjoutBDD);
 

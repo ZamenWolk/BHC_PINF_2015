@@ -23,7 +23,7 @@ class Panier
 
     public function ajouterArticle($pneu, $quantite)
     {
-        if (get_class($pneu) != Pneu::class || $quantite < 1)
+        if (!($pneu instanceof Pneu) || $quantite < 1)
             return false;
 
         if (!$this->getArticle($pneu->reference))
