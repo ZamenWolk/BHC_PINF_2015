@@ -29,6 +29,20 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         };
         //Le "Link" peut être changé pour un lien de police d'utilisation des cookies à générer ou à faire soi même
         //Le thème est changeable en fonction de la disposition ou de la couleur.
+        /* Charge la recherche dans la navbar
+         * Pour l'instant seulement la marque*/
+        $(document).ready(function(){
+            $.get( "../assets/php/ajax/rechercheNav.php",{action: "test"}, function(data){
+                data = JSON.parse(data);
+                console.log(data);
+                //alert( "Load was performed."+ data );
+                for(var i =0;i<113 ;i++){
+                    var option = $("<option>"+data.marques[i]+"</option>");
+                    $("#nav_marque").append(option);
+                }
+            });
+
+        });
     </script>
 
     <script type="text/javascript"
@@ -161,12 +175,10 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
             </select>
 
 
-            <label class="control-label" for="sel2">Marque:</label>
+            <label  class="control-label" for="sel2">Marque:</label>
 
-            <select class="form-control" id="sel2">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
+            <select id="nav_marque" class="form-control" id="sel2">
+                
             </select>
 
             <label class="control-label" for="sel3">Largeur :</label>
