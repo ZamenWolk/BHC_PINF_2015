@@ -38,3 +38,27 @@ function rechercherMarque()
     $sql="SELECT DISTINCT pneu_marque FROM jspneus.pneu";
     return SQLSelect($sql, array());
 }
+
+/** verifDescription
+ * @param $ref
+ * @param $desc
+ * @return int
+ * On verifie si la description $desc et le prix $prix est la même que celle du pneu de reference $ref en bdd, si c'est ok on renvoie 1 sinon 0
+ */
+
+function verifDescription($ref, $desc, $prix)
+{
+    $sql="SELECT pneu_description FROM jspneus.pneu WHERE pneu_ref=:ref AND pneu_valable=1";
+    $sql1="SELECT pneu_prix FROM jspneus.pneu WHERE pneu_ref=:ref AND pneu_valable=1";
+    $param=[
+        ":ref" => $ref
+    ];
+
+    $descBDD = SQLGetChamp($sql,$param);
+    $prixBDD = SQLGetChamp($sql1,$param);
+
+    if($desc == $descBDD && $prix == $prixBDD)
+        return 1;
+    else
+        return 0;
+}
