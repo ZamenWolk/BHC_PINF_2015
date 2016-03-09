@@ -5,12 +5,12 @@ include_once("header.php");
         <h1> Conditions générales de vente </h1>
         </br>
         <p class="centered"><strong>JSPneus</strong> </br>
-            Société (Donnez le statut) au capital de X euros </br>
-            Siège social (Donnez l'adresse) </br>
-            N° de téléphone X </br>
-            Adresse du courrier électronique : bonpneus1@hotmail.fr </br>
-            RCS (ou Répertoire des métiers) de .........(lieu) n°...............  </br>
-            N° individuel d'identification fiscal X </br>
+            Personne physique (Code:1900) </br>
+            Siège social : Siège social 103 boulevard Marcel Wacheux 62620  BARLIN </br> 
+            N° de téléphone : 06 98 45 35 44 </br>
+            Adresse du courrier électronique : bonpneus1@hotmail.fr  </br>
+            SIRET : 53302835300027
+			CODE :4532Z </br> Commerce de détail d'équipement automobiles. </br>
             Conditions générales de vente des produits vendus sur <a href="http://www.js-pneus.fr">js-pneus.fr</a> </br>
             Date de dernière mise à jour 02 Mars 2016 </br>
         </p>
@@ -30,8 +30,7 @@ include_once("header.php");
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
 
-                    <p> Les présentes conditions régissent les ventes par la société JSPneus, MAGNICOURT EN COMTE
-                        (62127) de pneus.
+                    <p> Les présentes conditions régissent les ventes par la société JSPneus, à BARLIN (62620) Boulevard Marcel Wacheux, de pneus
                     </p>
                 </div>
             </div>
@@ -276,9 +275,7 @@ include_once("header.php");
                         annulée. En
                         outre, le site Internet <a href="http://www.js-pneus.fr">js-pneus.fr</a> n'a pas vocation à
                         vendre ses
-                        produits en quantités importantes. Par conséquent la société <strong>JSPneus</strong> se
-                        réserve le
-                        droit de refuser les commandes de pneus en quantité supérieure à X
+                        produits en quantités importantes. Par conséquent la société <strong>JSPneus</strong> se réserve le droit de refuser les commandes de pneus en quantité à 20 pneus.
                     </p>
                 </div>
             </div>
