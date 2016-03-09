@@ -82,8 +82,9 @@ class Panier
         if (!$this->getArticle($reference) || $quantite < 0)
             return false;
 
-        if (Pneu::getStock($reference) < $quantite)
-            return $this->changerQuantite($reference, Pneu::getStock($reference));
+        $stock = Pneu::getStock($reference);
+        if ($stock < $quantite)
+            return $this->changerQuantite($reference, $stock);
 
         $item = &$this->getArticle($reference);
 
@@ -130,6 +131,26 @@ class Panier
         }
 
         return $this->panier;
+    }
+
+    public function getQuantite($reference)
+    {
+        $item = &$this->getArticle($reference);
+
+        if (isset($item))
+            return $item["quantite"];
+        else
+            return false;
+    }
+
+    public function estPresent($reference)
+    {
+        $item = &$this->getArticle($reference);
+
+        if (isset($item))
+            return true;
+        else
+            return false;
     }
 
     protected function &getArticle($reference)
