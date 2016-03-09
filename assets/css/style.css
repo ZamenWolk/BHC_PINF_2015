@@ -1,6 +1,5 @@
 body {
     background: url(../img/footer_lodyas.png) repeat center center fixed; /* Background pattern from subtlepatterns.com */
-
     padding-top: 70px;
 }
 
@@ -10,6 +9,10 @@ h1 {
 
 h3 {
     margin-top: 10px;
+}
+
+.container {
+    background-color: #f6f6f6;
 }
 
 p.centered {
@@ -80,8 +83,9 @@ p.centered {
 }
 
 .dropdown-menu {
-    top: 59px;
-    background-color: rgba(44, 62, 80, 0.8);
+    top: 66px;
+    background-color: rgba(44, 62, 80, 1);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .dropdown-menu > li > a {
@@ -103,18 +107,20 @@ p.centered {
     color: rgba(189, 195, 199, 1.0);
 }
 
-input.form-control {
-    width: 120px;
+#mailLogin, #passeLogin {
+    width: 130%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.subLink {
+    cursor: pointer;
+    text-align: center;
 }
 
 .popover {
     max-width: 400px;
     position: fixed;
-}
-
-input.form-control {
-    margin-top: 2px;
-    margin-bottom: 2px;
 }
 
 .navbar-collapse {
@@ -124,7 +130,7 @@ input.form-control {
 }
 
 .navbar-default {
-    background-color: rgba(44, 62, 80, 0.8);
+    background-color: rgba(44, 62, 80, 1);
 }
 
 .navbar-brand {
@@ -134,10 +140,11 @@ input.form-control {
 #headNavbar > ul > li > a {
     font-size: 150%;
     color: rgba(189, 195, 199, 1.0);
+    padding-top: 21px;
 }
 
 #navFooter {
-    background-color: rgba(44, 62, 80, 0.8);
+    background-color: rgba(44, 62, 80, 1);
     border-radius: 0;
     margin-bottom: 0;
     border: 0;
@@ -153,7 +160,13 @@ input.form-control {
 }
 
 .searchWell {
-    padding-top: 0;
+    background-color: rgba(189, 195, 199, 1.0);
+    border: 10px solid rgba(44, 62, 80, 1);
+    border-top: none;
+}
+
+.searchForm {
+    padding-bottom: 15px;
 }
 
 .item-info {
@@ -203,3 +216,22 @@ ul.dropdown-cart li .item-right button{
     margin-top:14px;
 }
 
+.carousel-holder {
+    padding-top: 5px;
+}
+
+.popover {
+    background-color: rgba(44, 62, 80, 1);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-connect {
+    background-color: rgba(243, 156, 18, 1.0);
+    font-size: 120%;
+    margin-bottom: 5px;
+}
+
+.popover-title {
+    background-color: rgba(243, 156, 18, 1.0);
+    border-bottom: none;
+}

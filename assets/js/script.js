@@ -1,9 +1,22 @@
 /**
  * Created by Arnaud on 04/03/2016.
  */
+
+function navResize() {
+    var win = $(this); //this = window
+    if (win.width() <= 800) {
+        $('#navHeader').removeClass("navbar-fixed-top").addClass("navbar-static-top");
+        $("body").css({"padding-top" : "0px"});
+        return true;
+    }
+    return false;
+}
+
 $(document).ready(function() {
 
-    $(".searchWell").hide();
+    navResize();
+
+    $(".searchForm").hide();
 
     $('li.dropdown a').on('click', function (event) {
         $(this).parent().toggleClass('open');
@@ -35,10 +48,18 @@ $(document).ready(function() {
     });
 
     $("#searchLink").click(function() {
-        if ($(".searchWell").css('display') == 'none') {
-            $(".searchWell").slideDown();
+        $(".searchForm").slideToggle();
+    });
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+
+    $(window).on('resize', function(){
+        if(!navResize()) {
+            $('#navHeader').removeClass("navbar-static-top").addClass("navbar-fixed-top");
+            $("body").css({"top" : "70px"});
         }
-        else $(".searchWell").slideUp();
     });
 
 });

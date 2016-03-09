@@ -47,17 +47,6 @@ include_once("header.php");
                                                                            href="http://www.bootsnipp.com">Bootsnipp
                             - http://bootsnipp.com</a>.</p>
                 </div>
-                <div class="ratings">
-                    <p class="pull-right">15 reviews</p>
-
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </p>
-                </div>
             </div>
         </div>
 
@@ -71,17 +60,6 @@ include_once("header.php");
                     </h4>
 
                     <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="ratings">
-                    <p class="pull-right">12 reviews</p>
-
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </p>
                 </div>
             </div>
         </div>
@@ -97,17 +75,6 @@ include_once("header.php");
 
                     <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
-                <div class="ratings">
-                    <p class="pull-right">31 reviews</p>
-
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </p>
-                </div>
             </div>
         </div>
 
@@ -122,17 +89,6 @@ include_once("header.php");
 
                     <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
-                <div class="ratings">
-                    <p class="pull-right">6 reviews</p>
-
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </p>
-                </div>
             </div>
         </div>
 
@@ -146,17 +102,6 @@ include_once("header.php");
                     </h4>
 
                     <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="ratings">
-                    <p class="pull-right">18 reviews</p>
-
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </p>
                 </div>
             </div>
         </div>
