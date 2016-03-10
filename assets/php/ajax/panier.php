@@ -264,7 +264,7 @@ switch ($action)
 
         $referencePneu = $_POST["referencePneu"];
 
-        ajaxSuccess(["referencePneu" => $referencePneu, "prixLot" => $panier->prixArticle($referencePneu)]);
+        ajaxSuccess(["referencePneu" => $referencePneu, "prixLot" => $panier->prixLot($referencePneu)]);
 
         break;
 

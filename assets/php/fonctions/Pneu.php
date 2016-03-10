@@ -61,6 +61,13 @@ class Pneu
             return $pneu->stock;
     }
 
+    public function getPrix($ratioID = null)
+    {
+        if (Config::getRatioPrix($ratioID) === false)
+            return false;
+        return $this->prix * Config::getRatioPrix($ratioID);
+    }
+
     public $EAN;
     public $reference;
     public $marque;

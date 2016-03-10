@@ -2,13 +2,13 @@
 
 include_once "Pneu.php";
 include_once "../../../secret/credentials.php";
+include_once "Config.php";
 
 class Panier
 {
     public function Panier()
     {
         $this->panier = array();
-        $this->ratioPrix = SQLGetChamp("SELECT config_ratio_prix FROM jspneus.config");
     }
 
     public function vider()
@@ -100,12 +100,12 @@ class Panier
         }
     }
 
-    public function prixArticle($reference)
+    public function prixLot($reference)
     {
         $item = &$this->getArticle($reference);
         if (isset($item))
         {
-            return $item["pneu"]->prix * $this->ratioPrix * $item["quantite"];
+            return $item->getPrix() * $item["quantite"];
         }
         else
             return false;
@@ -117,7 +117,7 @@ class Panier
 
         foreach ($this->panier as $item)
         {
-            $total += $this->prixArticle($item["pneu"]->reference);
+            $total += $this->prixLot($item["pneu"]->reference);
         }
 
         return $total;
@@ -127,7 +127,7 @@ class Panier
     {
         foreach($this->panier as &$item)
         {
-            $item["prixLot"] = $this->prixArticle($item["pneu"]->reference);
+            $item["prixLot"] = $this->prixLot($item["pneu"]->reference);
         }
 
         return $this->panier;
@@ -163,10 +163,8 @@ class Panier
                 return $panier[$key];
         }
 
-        $null = null;
-        return $null;
+        return null;
     }
 
     protected $panier;
-    protected $ratioPrix;
 }

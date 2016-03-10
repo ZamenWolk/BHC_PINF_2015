@@ -9,15 +9,28 @@ include_once("../fonctions/Pneu.php");
  * "stockPneu"
  * Permet de récupérer le stock d'un pneu en BDD
  * Arguments :
- * [    "referencePneu" => Référence du pneu,
- *      "dateAjoutBDD"  => Date d'ajout du pneu en BDD *optionnel, cherche un pneu valable par défaut*]
+ * [    "referencePneu" => Référence du pneu ]
  * Renvoi :
  * [    "referencePneu" => Référence du pneu,
- *      "dateAjoutBDD"  => Date d'ajout du pneu en BDD *absent si l'argument "dateAjoutBDD" n'a pas été précisé*,
  *      "stock"         => Stock du pneu en BDD ]
  * Echoue si :
  *      - La référence du pneu est vide
- *      - La référence n'existe pas en BDD
+ *      - Aucun pneu correspondant n'a été trouvé en BDD
+ *
+ *
+ *
+ * "prixPneu"
+ * Permet de récupérer le prix d'un pneu en BDD selon un ratio de prix à un temps donné
+ * Arguments :
+ * [    "referencePneu" => Référence du pneu,
+ *      "dateAjoutBDD"  => Date d'ajout du pneu en BDD *facultatif, utilise le pneu valable avec référence donnée par défaut*,
+ *      "ratioID"       => ID du ratio du prix utilisé pour calculer le prix *facultatif, dernier ratio en date par défaut]
+ * Renvoi :
+ * [    "referencePneu" => Référence du pneu,
+ *      "stock"         => Stock du pneu en BDD ]
+ * Echoue si :
+ *      - La référence du pneu est vide
+ *      - Aucun pneu correspondant n'a été trouvé en BDD
  */
 
 if (!isset($_POST["action"]))
@@ -36,21 +49,46 @@ switch ($action)
 
         $referencePneu = $_POST["referencePneu"];
 
-        $dateAjoutBDD = (isset($_POST["dateAjoutBDD"]) ? $_POST["dateAjoutBDD"] : null);
-
-        $stock = Pneu::getStock($referencePneu, $dateAjoutBDD);
+        $stock = Pneu::getStock($referencePneu);
 
         if ($stock === false)
-            ajaxError("Cette référence n'a pas été trouvée");
+            ajaxError("Aucun pneu correspondant n'a été trouvée");
         else
         {
             $json = ["referencePneu" => $referencePneu, "stock" => $stock];
 
-            if ($dateAjoutBDD !== null)
-                $json["dateAjoutBDD"] = $dateAjoutBDD;
-
             ajaxSuccess($json);
         }
+
+        break;
+
+    case "prixPneu":
+        if (!isset($_POST["referencePneu"]))
+            ajaxError('$_POST["referencePneu"] est vide');
+
+        $referencePneu = $_POST["referencePneu"];
+        $dateAjoutBDD = (isset($_POST["dateAjoutBDD"]) ? $_POST["dateAjoutBDD"] : null);
+        $IDratio = (isset($_POST["ratioID"]) ? $_POST["ratioID"] : null);
+
+        $pneu = Pneu::getPneuFromDB($referencePneu, $dateAjoutBDD);
+
+        if ($pneu === false)
+            ajaxError("Aucun pneu correspondant n'a été trouvé");
+
+        $prix = $pneu->getPrix($IDratio);
+
+        if ($prix === false)
+            ajaxError("Ratio de prix non trouvé");
+
+        $json = ["referencePneu" => $referencePneu, "prix" => $prix];
+
+        if ($dateAjoutBDD != null)
+            $json["dateAjoutBDD"] = $dateAjoutBDD;
+
+        if ($IDratio != null)
+            $json["ratioID"] = $IDratio;
+
+        ajaxSuccess($json);
 
         break;
 
