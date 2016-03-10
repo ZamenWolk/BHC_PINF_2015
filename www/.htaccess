@@ -10,4 +10,5 @@ ReWriteRule ^header.php$ - [F]
 RewriteRule ^footer$ - [F]
 ReWriteRule ^footer.php$ - [F]
 
+RewriteRule ^([^\.]+)\?([^\.]+)$ $1.php?$2 [NC,L]
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
