@@ -14,8 +14,8 @@ include_once("../fonctions/Pneu.php");
  * [    "referencePneu" => Référence du pneu,
  *      "stock"         => Stock du pneu en BDD ]
  * Echoue si :
- *      - La référence du pneu est vide
- *      - Aucun pneu correspondant n'a été trouvé en BDD
+ *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
+ *      - Aucun pneu correspondant n'a été trouvé en BDD (code NO_CORRESPONDENCE)
  *
  *
  *
@@ -24,18 +24,19 @@ include_once("../fonctions/Pneu.php");
  * Arguments :
  * [    "referencePneu" => Référence du pneu,
  *      "dateAjoutBDD"  => Date d'ajout du pneu en BDD *facultatif, utilise le pneu valable avec référence donnée par défaut*,
- *      "ratioID"       => ID du ratio du prix utilisé pour calculer le prix *facultatif, dernier ratio en date par défaut]
+ *      "ratioID"       => ID du ratio du prix utilisé pour calculer le prix *facultatif, dernier ratio en date par défaut* ]
  * Renvoi :
  * [    "referencePneu" => Référence du pneu,
  *      "stock"         => Stock du pneu en BDD ]
  * Echoue si :
- *      - La référence du pneu est vide
- *      - Aucun pneu correspondant n'a été trouvé en BDD
+ *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
+ *      - Aucun pneu correspondant n'a été trouvé en BDD (code NO_CORRESPONDENCE)
+ *      - Le ratio du prix n'a pas pu être trouvé        (code CANT_FIND_RATIO)
  */
 
 if (!isset($_POST["action"]))
 {
-    ajaxError("Action non définie");
+    ajaxError("Action non définie", "UNDEFINED_ACTION");
 }
 
 $action = $_POST["action"];
@@ -45,14 +46,14 @@ switch ($action)
     case "stockPneu":
 
         if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide');
+            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
         $referencePneu = $_POST["referencePneu"];
 
         $stock = Pneu::getStock($referencePneu);
 
         if ($stock === false)
-            ajaxError("Aucun pneu correspondant n'a été trouvée");
+            ajaxError("Aucun pneu correspondant n'a été trouvée", "NO_CORRESPONDENCE");
         else
         {
             $json = ["referencePneu" => $referencePneu, "stock" => $stock];
@@ -64,7 +65,7 @@ switch ($action)
 
     case "prixPneu":
         if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide');
+            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
         $referencePneu = $_POST["referencePneu"];
         $dateAjoutBDD = (isset($_POST["dateAjoutBDD"]) ? $_POST["dateAjoutBDD"] : null);
@@ -73,12 +74,12 @@ switch ($action)
         $pneu = Pneu::getPneuFromDB($referencePneu, $dateAjoutBDD);
 
         if ($pneu === false)
-            ajaxError("Aucun pneu correspondant n'a été trouvé");
+            ajaxError("Aucun pneu correspondant n'a été trouvé", "NO_CORRESPONDENCE");
 
         $prix = $pneu->getPrix($IDratio);
 
         if ($prix === false)
-            ajaxError("Ratio de prix non trouvé");
+            ajaxError("Ratio de prix non trouvé", "CANT_FIND_RATIO");
 
         $json = ["referencePneu" => $referencePneu, "prix" => $prix];
 
@@ -93,5 +94,5 @@ switch ($action)
         break;
 
     default:
-        ajaxError("Action inconnue");
+        ajaxError("Action inconnue", "UNKNOWN_ACTION");
 }
