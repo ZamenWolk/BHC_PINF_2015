@@ -8,13 +8,20 @@ include_once "maLibSQL.pdo.php";
 
 class Recherche{
     /** rechercherMarque
-     * @return bool|resource
+     * @return array
      * Recherche toutes les marques diponibles
      */
     public static function rechercherMarque()
     {
         $sql="SELECT DISTINCT pneu_marque FROM jspneus.pneu ORDER BY pneu_marque ASC";
-        return SQLSelect($sql, array());
+        $res = SQLSelect($sql, array());
+        $tab = array();
+
+        foreach($res as $row)
+        {
+            array_push($tab, $row["pneu_marque"]);
+        }
+        return $tab;
     }
 
     /** rechercherCategorie

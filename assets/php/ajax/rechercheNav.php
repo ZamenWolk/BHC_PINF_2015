@@ -16,12 +16,6 @@ if(isset($_POST["action"]))
             $tabVitesse = Recherche::rechercherVitesse();
             $tabJante = Recherche::rechercherJante();
             $tabSerie= Recherche::rechercherSerie();
-            $i = 0;
-            $tab = array();
-            foreach ($tabMarque as $row) {
-                $tab[$i] = $row[0];
-                $i++;
-            }
             $i=0;
             $tabCat1 = array();
             foreach ($tabCat as $row) {
@@ -58,8 +52,8 @@ if(isset($_POST["action"]))
                 $tabSerie1[$i] = $row[0];
                 $i++;
             }
-            $data["marques"] = $tab;
-            $data["nbrMarque"] = count($tab);
+            $data["marques"] = $tabMarque;
+            $data["nbrMarque"] = count($tabMarque);
             $data["categorie"] = $tabCat1;
             $data["nbrCategorie"] = count($tabCat1);
             $data["largeur"] = $tabLargeur1;
