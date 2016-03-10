@@ -1,6 +1,5 @@
 <?php
 include_once('header.php');
-
 ?>
 
 
@@ -32,27 +31,19 @@ include_once('header.php');
 <script>
 $('#BoutonEnvoi').click(function(){
 	$.ajax({
-	type: “POST”,
-	url: “send_mail.php”,
-	data: {
-    ‘message’: {
-      ‘from_email’: martin.canivez@gmail.com’,
-      ‘to’: [
-          {
-            ‘email’: ‘$('#ContactMail').val();’,
-            ‘name’: ‘$('#ContactNom').val()’,
-            ‘type’: ‘to’
-          },
-        ],
-      ‘autotext’: ‘true’,
-      ‘subject’: ‘$('#ContactObj').val();’,
-      ‘html’: ‘$('#ContactMessage').val();’
-    }
-  }
- }).done(function(response) {
-   console.log(response);
+	'type' : "POST",
+	'url':"./asset/php/ajax/mail.php",
+	'data':{
+		'action':"mail_contact",
+		'from_email':$('#ContactMail').val(),
+		'from_name':$('#ContactNom').val(),
+		'subject':$('#ContactObj').val(),
+		'html':$('#ContactMessage').val(),
+		},
+	});
  });
 </script>
+
 <?php
 include_once('footer.php');
 ?>

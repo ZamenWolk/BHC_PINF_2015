@@ -31,9 +31,10 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         //Le thème est changeable en fonction de la disposition ou de la couleur.
         /* Charge la recherche dans la navbar
          * Pour l'instant seulement la marque*/
-        $(document).ready(function(){
+		 	
+			$(document).ready(function(){
             $.post( "../assets/php/ajax/rechercheNav.php",{action: "test"}, function(data){
-                data = JSON.parse(data);
+				data = JSON.parse(data);
                 console.log(data);
                 //alert( "Load was performed."+ data );
                 for(var i =0;i<113 ;i++){
@@ -46,7 +47,8 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
     </script>
 
     <script type="text/javascript"
-            src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+            src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js">
+	</script>
     <!-- FIN PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE- -->
 
 </head>
