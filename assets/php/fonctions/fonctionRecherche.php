@@ -25,60 +25,147 @@ class Recherche{
     }
 
     /** rechercherCategorie
-     * @return bool|resource
+     * @return array
      * Recherche toutes les categorie diponibles
      */
     public static function rechercherCategorie()
     {
         $sql="SELECT DISTINCT pneu_categorie FROM jspneus.pneu ORDER BY pneu_categorie ASC";
-        return SQLSelect($sql, array());
+        $res = SQLSelect($sql, array());
+        $tab = array();
+
+        foreach($res as $row)
+        {
+            array_push($tab, $row["pneu_categorie"]);
+        }
+        return $tab;
     }
     /** rechercherLargeur
-     * @return bool|resource
+     * @return array
      * Recherche toutes les largeurs diponibles
      */
     public static function rechercherLargeur()
         {
             $sql="SELECT DISTINCT pneu_largeur FROM jspneus.pneu ORDER BY pneu_largeur ASC";
-            return SQLSelect($sql, array());
+            $res = SQLSelect($sql, array());
+            $tab = array();
+
+            foreach($res as $row)
+            {
+                array_push($tab, $row["pneu_largeur"]);
+            }
+            return $tab;
         }
 
     /** rechercherJante
-     * @return bool|resource
+     * @return array
      * Recherche toutes les jantes diponibles
      */
     public static function rechercherJante()
         {
             $sql="SELECT DISTINCT pneu_jante FROM jspneus.pneu ORDER BY  pneu_jante ASC";
-            return SQLSelect($sql, array());
+            $res = SQLSelect($sql, array());
+            $tab = array();
+
+            foreach($res as $row)
+            {
+                array_push($tab, $row["pneu_jante"]);
+            }
+            return $tab;
         }
 
         /** rechercherCharge
-         * @return bool|resource
+         * @return array
          * Recherche toutes les charges diponibles
          */
     public static function rechercherCharge()
         {
             $sql="SELECT DISTINCT pneu_charge FROM jspneus.pneu ORDER BY pneu_charge ASC";
-            return SQLSelect($sql, array());
+            $res = SQLSelect($sql, array());
+            $tab = array();
+
+            foreach($res as $row)
+            {
+                array_push($tab, $row["pneu_charge"]);
+            }
+            return $tab;
         }
 
         /** rechercherVitesse
-         * @return bool|resource
+         * @return array
          * Recherche toutes les vitesses diponibles
          */
     public static function rechercherVitesse()
         {
             $sql="SELECT DISTINCT pneu_vitesse FROM jspneus.pneu ORDER BY pneu_vitesse ASC";
-            return SQLSelect($sql, array());
+            $res = SQLSelect($sql, array());
+            $tab = array();
+
+            foreach($res as $row)
+            {
+                array_push($tab, $row["pneu_vitesse"]);
+            }
+            return $tab;
         }
     /** rechercherSerie
-     * @return bool|resource
+     * @return array
      * Recherche toutes les series diponibles
      */
     public static function rechercherSerie()
     {
         $sql="SELECT DISTINCT pneu_serie FROM jspneus.pneu ORDER BY pneu_serie ASC";
-        return SQLSelect($sql, array());
+        $res = SQLSelect($sql, array());
+        $tab = array();
+
+        foreach($res as $row)
+        {
+            array_push($tab, $row["pneu_serie"]);
+        }
+        return $tab;
+    }
+
+    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse)
+    {
+        $sql = "SELECT * FROM pneu WHERE pneu_valable=1";
+        $param = array();
+
+        if ("defini cat")
+        {
+            $sql .= " AND pneu_categorie=:categorie";
+            $param[":categorie"] = $cat;
+        }
+
+        if($cat != "Toutes")
+        {
+
+        }
+        if($marque != "Toutes")
+        {
+
+        }
+
+        if($largeur != "Toutes")
+        {
+
+        }
+        if($serie != "Toutes")
+        {
+
+        }
+        if($jante != "Toutes")
+        {
+
+        }
+        if($charge != "Toutes")
+        {
+
+        }
+        if($vitesse != "Toutes")
+        {
+
+        }
+
+
+
     }
 }

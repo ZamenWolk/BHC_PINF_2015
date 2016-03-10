@@ -9,6 +9,7 @@ if(isset($_POST["action"]))
     $action = $_POST["action"];
     switch($action) {
         case "chargement":
+
             $tabMarque = Recherche::rechercherMarque();
             $tabCat = Recherche::rechercherCategorie();
             $tabLargeur = Recherche::rechercherLargeur();
@@ -16,57 +17,22 @@ if(isset($_POST["action"]))
             $tabVitesse = Recherche::rechercherVitesse();
             $tabJante = Recherche::rechercherJante();
             $tabSerie= Recherche::rechercherSerie();
-            $i=0;
-            $tabCat1 = array();
-            foreach ($tabCat as $row) {
-                $tabCat1[$i] = $row[0];
-                $i++;
-            }
-            $i=0;
-            $tabLargeur1 = array();
-            foreach ($tabLargeur as $row) {
-                $tabLargeur1[$i] = $row[0];
-                $i++;
-            }
-            $i=0;
-            $tabCharge1 = array();
-            foreach ($tabCharge as $row) {
-                $tabCharge1[$i] = $row[0];
-                $i++;
-            }
-            $i=0;
-            $tabVitesse1 = array();
-            foreach ($tabVitesse as $row) {
-                $tabVitesse1[$i] = $row[0];
-                $i++;
-            }
-            $i=0;
-            $tabJante1 = array();
-            foreach ($tabJante as $row) {
-                $tabJante1[$i] = $row[0];
-                $i++;
-            }
-            $i=0;
-            $tabSerie1 = array();
-            foreach ($tabSerie as $row) {
-                $tabSerie1[$i] = $row[0];
-                $i++;
-            }
+
             $data["marques"] = $tabMarque;
             $data["nbrMarque"] = count($tabMarque);
-            $data["categorie"] = $tabCat1;
-            $data["nbrCategorie"] = count($tabCat1);
-            $data["largeur"] = $tabLargeur1;
-            $data["nbrLargeur"] = count($tabLargeur1);
-            $data["charge"] = $tabCharge1;
-            $data["nbrCharge"] = count($tabCharge1);
-            $data["vitesse"] = $tabVitesse1;
-            $data["nbrVitesse"] = count($tabVitesse1);
-            $data["jante"] = $tabJante1;
-            $data["nbrJante"] = count($tabJante1);
-            $data["serie"] = $tabSerie1;
-            $data["nbrSerie"] = count($tabSerie1);
-            $data["success"] = 1;
+            $data["categorie"] = $tabCat;
+            $data["nbrCategorie"] = count($tabCat);
+            $data["largeur"] = $tabLargeur;
+            $data["nbrLargeur"] = count($tabLargeur);
+            $data["charge"] = $tabCharge;
+            $data["nbrCharge"] = count($tabCharge);
+            $data["vitesse"] = $tabVitesse;
+            $data["nbrVitesse"] = count($tabVitesse);
+            $data["jante"] = $tabJante;
+            $data["nbrJante"] = count($tabJante);
+            $data["serie"] = $tabSerie;
+            $data["nbrSerie"] = count($tabSerie);
+            //$data["success"] = 1;
             ajaxSuccess($data);
             break;
 }

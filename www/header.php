@@ -91,7 +91,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="?url=accueil" class="navbar-brand"><img id="logo" src="../assets/img/logo.svg"/></a>
+            <a href="./accueil" class="navbar-brand"><img id="logo" src="../assets/img/logo.svg"/></a>
         </div>
         <div class="collapse navbar-collapse" id="headNavbar">
             <ul class="nav navbar-nav">
@@ -192,54 +192,54 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
     </div>
 
     <div class="container-fluid searchWell">
-        <form class="form-inline searchForm" role="form" method="post">
+        <form action="./recherche" class="form-inline searchForm" role="form" method="post">
 
             <h3>Filtres de recherche : </h3>
 
-            <label class="control-label" for="sel1">Catégorie :</label>
+            <label  class="control-label" for="sel1">Catégorie :</label>
 
-            <select class="form-control nav_categorie" id="sel1">
+            <select name="categorie" class="form-control nav_categorie" id="sel1">
                 <option>Tous</option>
             </select>
 
 
-            <label class="control-label" for="sel2">Marque:</label>
+            <label  class="control-label" for="sel2">Marque:</label>
 
-            <select class="form-control nav_marque" id="sel2">
+            <select name="marque" class="form-control nav_marque" id="sel2">
                 <option>Toutes</option>
             </select>
 
             <label class="control-label" for="sel3">Largeur :</label>
 
-            <select class="form-control nav_largeur" id="sel3">
+            <select name="largeur"  class="form-control nav_largeur" id="sel3">
                 <option>Toutes</option>
             </select>
 
             <label class="control-label" for="sel5">Série :</label>
 
-            <select class="form-control nav_serie" id="sel5">
+            <select name="serie" class="form-control nav_serie" id="sel5">
                 <option>Toutes</option>
             </select>
 
-            <label class="control-label" for="sel5">Jante :</label>
+            <label  class="control-label" for="sel5">Jante :</label>
 
-            <select class="form-control nav_jante" id="sel5">
+            <select name="jante" class="form-control nav_jante" id="sel5">
                 <option>Tous</option>
             </select>
 
             <label for="sel4">Charge :</label>
 
-            <select class="form-control nav_charge" id="sel4">
+            <select name="charge" class="form-control nav_charge" id="sel4">
                 <option>Toutes</option>
             </select>
 
             <label class="control-label" for="sel5">Vitesse :</label>
 
-            <select class="form-control nav_vitesse" id="sel5">
+            <select name="vitesse" class="form-control nav_vitesse" id="sel5">
                 <option>Toutes</option>
             </select>
 
-            <button type="submit" class="btn btn-warning pull-right">Rechercher</button>
+            <input type="submit" value="Rechercher" class="btn btn-warning pull-right">
 
         </form>
     </div>
