@@ -4,7 +4,7 @@ include_once "../fonctions/fonctionsBDD.php";
 include_once "../fonctions/AJAX.php";
 
 
-if(isset($_GET["action"]))
+if(isset($_POST["action"]))
 {
     $tabMarque = rechercherMarque();
     $i = 0;

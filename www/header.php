@@ -32,7 +32,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         /* Charge la recherche dans la navbar
          * Pour l'instant seulement la marque*/
         $(document).ready(function(){
-            $.get( "../assets/php/ajax/rechercheNav.php",{action: "test"}, function(data){
+            $.post( "../assets/php/ajax/rechercheNav.php",{action: "test"}, function(data){
                 data = JSON.parse(data);
                 console.log(data);
                 //alert( "Load was performed."+ data );
@@ -77,7 +77,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <li>
                     <a id="searchLink">Recherche</a>
                 </li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="./contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
