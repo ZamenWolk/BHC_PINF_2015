@@ -198,37 +198,44 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
             <label class="control-label" for="sel1">Catégorie :</label>
 
             <select class="form-control nav_categorie" id="sel1">
+                <option>Tous</option>
             </select>
 
 
             <label  class="control-label" for="sel2">Marque:</label>
 
             <select class="form-control nav_marque" id="sel2">
+                <option>Toutes</option>
             </select>
 
             <label class="control-label" for="sel3">Largeur :</label>
 
             <select class="form-control nav_largeur" id="sel3">
+                <option>Toutes</option>
             </select>
 
             <label class="control-label" for="sel5">Série :</label>
 
             <select class="form-control nav_serie" id="sel5">
+                <option>Toutes</option>
             </select>
 
             <label class="control-label" for="sel5">Diamètre :</label>
 
             <select class="form-control nav_jante" id="sel5">
+                <option>Tous</option>
             </select>
 
             <label for="sel4">Charge :</label>
 
             <select class="form-control nav_charge" id="sel4">
+                <option>Toutes</option>
             </select>
 
             <label class="control-label" for="sel5">Vitesse :</label>
 
             <select class="form-control nav_vitesse" id="sel5">
+                <option>Toutes</option>
             </select>
 
             <a role="button" href="" class="btn btn-warning pull-right">Rechercher</a>
