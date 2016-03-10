@@ -192,7 +192,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
     </div>
 
     <div class="container-fluid searchWell">
-        <form class="form-inline searchForm" role="form">
+        <form class="form-inline searchForm" role="form" method="post">
 
             <h3>Filtres de recherche : </h3>
 
@@ -239,7 +239,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <option>Toutes</option>
             </select>
 
-            <a role="button" href="" class="btn btn-warning pull-right">Rechercher</a>
+            <button type="submit" class="btn btn-warning pull-right">Rechercher</button>
 
         </form>
     </div>
