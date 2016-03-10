@@ -32,14 +32,43 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         /* Charge la recherche dans la navbar
          * Pour l'instant seulement la marque*/
         $(document).ready(function(){
-            $.post( "../assets/php/ajax/rechercheNav.php",{action: "test"}, function(data){
+            $.post( "../assets/php/ajax/rechercheNav.php",{action: "chargement"}, function(data){
                 data = JSON.parse(data);
                 console.log(data);
                 //alert( "Load was performed."+ data );
-                for(var i =0;i<113 ;i++){
+                for(var i =0;i<data.nbrMarque ;i++){
                     var option = $("<option>"+data.marques[i]+"</option>");
-                    $("#nav_marque").append(option);
+                    $(".nav_marque").append(option);
                 }
+
+                for(i =0;i<data.nbrCategorie ;i++){
+                    var option1 = $("<option>"+data.categorie[i]+"</option>");
+                    $(".nav_categorie").append(option1);
+                }
+
+                for(i =0;i<data.nbrCharge ;i++){
+                    var option2 = $("<option>"+data.charge[i]+"</option>");
+                    $(".nav_charge").append(option2);
+                }
+
+                for(i =0;i<data.nbrJante ;i++){
+                    var option3 = $("<option>"+data.jante[i]+"</option>");
+                    $(".nav_jante").append(option3);
+                }
+                for(i =0;i<data.nbrSerie ;i++){
+                    var option4 = $("<option>"+data.serie[i]+"</option>");
+                    $(".nav_serie").append(option4);
+                }
+
+                for(i =0;i<data.nbrVitesse ;i++){
+                    var option5 = $("<option>"+data.vitesse[i]+"</option>");
+                    $(".nav_vitesse").append(option5);
+                }
+                for(i =0;i<data.nbrLargeur ;i++){
+                    var option6 = $("<option>"+data.largeur[i]+"</option>");
+                    $(".nav_largeur").append(option6);
+                }
+
             });
 
         });
@@ -168,57 +197,38 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
 
             <label class="control-label" for="sel1">Catégorie :</label>
 
-            <select class="form-control" id="sel1">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
+            <select class="form-control nav_categorie" id="sel1">
             </select>
 
 
             <label  class="control-label" for="sel2">Marque:</label>
 
-            <select id="nav_marque" class="form-control" id="sel2">
-                
+            <select class="form-control nav_marque" id="sel2">
             </select>
 
             <label class="control-label" for="sel3">Largeur :</label>
 
-            <select class="form-control" id="sel3">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
+            <select class="form-control nav_largeur" id="sel3">
             </select>
 
             <label class="control-label" for="sel5">Série :</label>
 
-            <select class="form-control" id="sel5">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
+            <select class="form-control nav_serie" id="sel5">
             </select>
 
             <label class="control-label" for="sel5">Diamètre :</label>
 
-            <select class="form-control" id="sel5">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
+            <select class="form-control nav_jante" id="sel5">
             </select>
 
             <label for="sel4">Charge :</label>
 
-            <select class="form-control" id="sel4">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
+            <select class="form-control nav_charge" id="sel4">
             </select>
 
             <label class="control-label" for="sel5">Vitesse :</label>
 
-            <select class="form-control" id="sel5">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
+            <select class="form-control nav_vitesse" id="sel5">
             </select>
 
             <a role="button" href="" class="btn btn-warning pull-right">Rechercher</a>
