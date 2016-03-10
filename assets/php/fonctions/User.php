@@ -16,14 +16,17 @@ class User
 
     public function connecter($mdpEntre)
     {
-        if (isset($_SESSION["connecte"]) && $_SESSION["connecte"] == true)
-            return false;
+        if (isset($_SESSION["connexion"]))
+            if (array_key_exists("connecte", $_SESSION["connexion"]))
+                return false;
 
         if (password_verify($mdpEntre, $this->password))
         {
-            $_SESSION["connecte"] = true;
-            $_SESSION["connecte_id"] = $this->ID;
-            $_SESSION["connecte_admib"] = false;
+            $_SESSION["connexion"] = array();
+            $connexion = &$_SESSION["connexion"];
+            $connexion["connecte"] = true;
+            $connexion["id"] = $this->ID;
+            $connexion["admin"] = false;
 
             return true;
         }
@@ -31,11 +34,27 @@ class User
         return false;
     }
 
+    public function verifierMDP($mdp)
+    {
+        return password_verify($mdp, $this->password);
+    }
+
+    public static function getIDConnecte()
+    {
+        if (!isset($_SESSION["connexion"]))
+            return false;
+
+        $connexion = $_SESSION["connexion"];
+
+        if ($connexion["connecte"] == false || $connexion["admin"] = true)
+            return false;
+
+        return $connexion["id"];
+    }
+
     public static function deconnecter()
     {
-        unset($_SESSION["connecter"]);
-        unset($_SESSION["connecter_id"]);
-        unset($_SESSION["connecter_admin"]);
+        unset($_SESSION["connexion"]);
     }
 
     public static function getUserFromID($id)
@@ -60,29 +79,19 @@ class User
             return new User($res[0]);
     }
 
-    public function getID()
+    public function getUser($withPass = false)
     {
-        return $this->ID;
-    }
+        $user = array();
+        $user["ID"] = $this->ID;
+        $user["nom"] = $this->nom;
+        $user["prenom"] = $this->prenom;
+        $user["mail"] = $this->mail;
+        $user["newsletter"] = $this->newsletter;
 
-    public function getNom()
-    {
-        return $this->nom;
-    }
+        if ($withPass)
+            $user["password"] = $this->password;
 
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    public function getMail()
-    {
-        return $this->mail;
-    }
-
-    public function getNewsletter()
-    {
-        return $this->newsletter;
+        return $user;
     }
 
     private $ID;
