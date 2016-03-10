@@ -5,7 +5,6 @@ include_once('header.php');
 
 <div class=" well well-lg">
 <h1> Contact </h1>
-<form action="" method="post">
 <div>
         <label id = "ContactObj" for="nom">Objet :</label></br>
         <input type="text" id="obj" style="width:40%;" />
@@ -24,24 +23,39 @@ include_once('header.php');
     </div>
     
     <div id="BoutonEnvoi" class="button">
-        <button type="submit">Envoyer votre message</button>
+        <button>Envoyer votre message</button>
     </div>
-</form>
 </div>
 <script>
-$('#BoutonEnvoi').click(function(){
-	$.ajax({
-	'type' : "POST",
-	'url':"./asset/php/ajax/mail.php",
-	'data':{
-		'action':"mail_contact",
-		'from_email':$('#ContactMail').val(),
-		'from_name':$('#ContactNom').val(),
-		'subject':$('#ContactObj').val(),
-		'html':$('#ContactMessage').val(),
+
+$(document).ready(function(){
+	$("#BoutonEnvoi").click(function(){
+        $.post('../assets/php/ajax/mail.php',
+        {action:"mail_contact",
+		from_email:$('#ContactMail').val(),
+		from_name:$('#ContactNom').val(),
+		subject:$('#ContactObj').val(),
+		html:$('#ContactMessage').val(),
 		},
-	});
- });
+		function(data){
+			console.log(data);
+		});
+		
+        });
+    });
+	/*
+	console.log("on est là");	
+	$.ajax({
+	type : "POST",
+	url:"../assets/php/ajax/mail.php",
+	data:{
+		action:"mail_contact",
+		from_email:$('#ContactMail').val(),
+		from_name:$('#ContactNom').val(),
+		subject:$('#ContactObj').val(),
+		html:$('#ContactMessage').val(),
+		},
+	});*/
 </script>
 
 <?php
