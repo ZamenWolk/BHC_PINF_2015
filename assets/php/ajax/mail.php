@@ -6,11 +6,15 @@ session_start();
 
 if (!isset($_POST["action"]))
 {
+	echo("Il manque des actions");
     ajaxError("Action non définie");
 }
-
 $action = $_POST["action"];
+$headers = 'From: andoslash@hotmail.fr' . "\r\n" .
+     'Reply-To: andoslash@hotmail.fr' . "\r\n" .
+     'X-Mailer: PHP/' . phpversion();
 
+$tab["message"]="Votre mail a bien été envoyé";
 switch ($action)
 {
 	case "mail_contact" :
@@ -19,8 +23,8 @@ switch ($action)
 			ajaxError("Des informations sont manquantes");
 		}
 		else{
-			mail("andoslash@hotmail.fr", $_POST["subject"], $_POST["html"]);
-			alert("Merci" + $_POST["from_name"] + "votre mail a bien été envoyé.");
+			mail("andoslash@hotmail.fr", $_POST["subject"], $_POST["html"], $headers);
+			ajaxSuccess($tab);
 		}
 		
 		break;
