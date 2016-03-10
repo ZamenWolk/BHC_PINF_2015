@@ -38,10 +38,10 @@ $panier = $_SESSION["panier"];
  * [    "panier"    => contenu du panier,
  *      "prixTotal" => prix total du panier ]
  * Echoue si :
- *      - La référence du pneu n'est pas définie
- *      - La quantité à ajouter est inferieure à 1
- *      - La référence n'existe pas
- *      - la variable passée à Panier::ajouterArticle n'est pas une instance de Pneu (ne devrait pas arriver)
+ *      - La référence du pneu n'est pas définie                                                              (code MISSING_ARGUMENT)
+ *      - La quantité à ajouter est inferieure à 1                                                            (code INVALID_QUANTITY)
+ *      - La référence n'existe pas                                                                           (code UNKNOWN_REFERENCE)
+ *      - la variable passée à Panier::ajouterArticle n'est pas une instance de Pneu (ne devrait pas arriver) (code INTERN_ERROR)
  *
  *
  * "retirerArticle"
@@ -52,9 +52,9 @@ $panier = $_SESSION["panier"];
  * [    "panier"    => contenu du panier,
  *      "prixTotal" => prix total du produit ]
  * Avertit si :
- *      - La référence du pneu n'était pas présente dans le panier avant la suppression
+ *      - La référence du pneu n'était pas présente dans le panier avant la suppression (code MISSING_ARGUMENT)
  * Echoue si :
- *      - La référence du pneu n'est pas définie
+ *      - La référence du pneu n'est pas définie                                        (code NOT_IN_CART)
  *
  *
  * "ajouterQuantite"
@@ -66,11 +66,11 @@ $panier = $_SESSION["panier"];
  * [    "panier"    => contenu du panier,
  *      "prixTotal" => prix total du produit ]
  * Avertit si :
- *      - Le stock en BDD est inferieur à la quantité voulue. Dans ce cas, la nouvelle quantité est celle en BDD
+ *      - Le stock en BDD est inferieur à la quantité voulue. Dans ce cas, la nouvelle quantité est celle en BDD (code NOT_ENOUGH_STOCK)
  * Echoue si :
- *      - La référence du pneu n'est pas définie
- *      - La quantité à ajouter est inferieure à 1
- *      - La référence du pneu n'est pas présente dans le panier
+ *      - La référence du pneu n'est pas définie                                                                 (code MISSING_ARGUMENT)
+ *      - La quantité à ajouter est inferieure à 1                                                               (code INVALID_QUANTITY)
+ *      - La référence du pneu n'est pas présente dans le panier                                                 (code NOT_IN_CART)
  *
  *
  * "retirerQuantite"
@@ -82,10 +82,10 @@ $panier = $_SESSION["panier"];
  * [    "panier"    => contenu du panier,
  *      "prixTotal" => prix total du produit ]
  * Echoue si :
- *      - La référence du pneu n'est pas définie
- *      - La quantité à retirer est inferieure à 1
- *      - La référence du pneu n'est pas présente dans le panier
- *      - La quantité à retirer est superieure à la quantité dans le panier
+ *      - La référence du pneu n'est pas définie                            (code MISSING_ARGUMENT)
+ *      - La quantité à retirer est inferieure à 1                          (code INVALID_QUANTITY)
+ *      - La référence du pneu n'est pas présente dans le panier            (code NOT_IN_CART)
+ *      - La quantité à retirer est superieure à la quantité dans le panier (code CANT_TAKE_AWAY_ENOUGH)
  *
  *
  * "changerQuantite"
@@ -97,11 +97,11 @@ $panier = $_SESSION["panier"];
  * [    "panier"    => contenu du panier,
  *      "prixTotal" => prix total du produit ]
  * Avertit si :
- *      - Le stock en BDD est inferieur à la quantité voulue. Dans ce cas, la nouvelle quantité est le stock en BDD
+ *      - Le stock en BDD est inferieur à la quantité voulue. Dans ce cas, la nouvelle quantité est le stock en BDD (code NOT_ENOUGH_STOCK)
  * Echoue si :
- *      - La référence du pneu n'est pas définie
- *      - La nouvelle quantité est inferieure à 0
- *      - La référence du pneu n'est pas présente dans le panier
+ *      - La référence du pneu n'est pas définie                                                                    (code MISSING_ARGUMENT)
+ *      - La nouvelle quantité est inferieure à 0                                                                   (code INVALID_QUANTITY)
+ *      - La référence du pneu n'est pas présente dans le panier                                                    (code NOT_IN_CART)
  *
  *
  * "prixLot"
@@ -112,7 +112,7 @@ $panier = $_SESSION["panier"];
  * [    "referencePneu" => référence du pneu,
  *      "prixLot"       => prix du lot ]
  * Echoue si :
- *      - La référence du pneu n'est pas définie
+ *      - La référence du pneu n'est pas définie (code MISSING_ARGUMENT)
  *
  *
  * "contenuPanier"
@@ -125,7 +125,7 @@ $panier = $_SESSION["panier"];
 
 if (!isset($_POST["action"]))
 {
-    ajaxError("Action non définie");
+    ajaxError("Action non définie", "UNDEFINED_ACTION");
 }
 
 $action = $_POST["action"];
@@ -148,23 +148,23 @@ switch ($action)
     case "ajouterArticle":
 
         if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide');
+            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
         $referencePneu = $_POST["referencePneu"];
         $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
 
         if ($quantite < 1)
-            ajaxError('La quantité à ajouter est negative ou nulle');
+            ajaxError('La quantité à ajouter est negative ou nulle', "INVALID_QUANTITY");
 
         $pneu = Pneu::getPneuFromDB($referencePneu);
 
         if ($pneu === false)
-            ajaxError("Cette référence n'existe pas");
+            ajaxError("Cette référence n'existe pas", "UNKNOWN_REFERENCE");
 
         $result = $panier->ajouterArticle($pneu, $quantite);
 
         if ($result === false)
-            ajaxError("Erreur du fichier ajax, veuillez contacter l'administrateur réseau");
+            ajaxError("Erreur interne, veuillez contacter l'administrateur réseau", "INTERN_ERROR");
 
         ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
 
@@ -173,7 +173,7 @@ switch ($action)
     case "retirerArticle":
 
         if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide');
+            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
         $referencePneu = $_POST["referencePneu"];
 
@@ -182,20 +182,20 @@ switch ($action)
         if ($result)
             ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
         else
-            ajaxWarning("La référence n'était pas présente dans le panier", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
+            ajaxWarning("La référence n'était pas présente dans le panier", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_IN_CART");
 
         break;
 
     case "ajouterQuantite":
 
         if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide');
+            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
         $referencePneu = $_POST["referencePneu"];
         $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
 
         if ($quantite < 1)
-            ajaxError('La quantité à ajouter est inférieure à 1');
+            ajaxError('La quantité à ajouter est inférieure à 1', "INVALID_QUANTITY");
 
         $qtActuel = $panier->getQuantite($referencePneu);
 
@@ -204,22 +204,22 @@ switch ($action)
         if ($result)
             ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
         else if (!$panier->estPresent($referencePneu))
-            ajaxError("La référence n'est pas présente dans le panier");
+            ajaxError("La référence n'est pas présente dans le panier", "NOT_IN_CART");
         else
-            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
+            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_ENOUGH_STOCK");
 
         break;
 
     case "retirerQuantite":
 
         if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide');
+            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
         $referencePneu = $_POST["referencePneu"];
         $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
 
         if ($quantite < 1)
-            ajaxError('La quantité à ajouter est inférieure à 1');
+            ajaxError('La quantité à retirer est inférieure à 1', "INVALID_QUANTITY");
 
         $result = $panier->retirerQuantite($referencePneu, $quantite);
 
@@ -228,9 +228,9 @@ switch ($action)
         else
         {
             if (!$panier->estPresent($referencePneu))
-                ajaxError("La référence n'est pas présente dans le panier");
+                ajaxError("La référence n'est pas présente dans le panier", "NOT_IN_CART");
             else
-                ajaxError("La quantité à retirer est superieure à la quantité dans le panier");
+                ajaxError("La quantité à retirer est superieure à la quantité dans le panier", "CANT_TAKE_AWAY_ENOUGH");
         }
 
         break;
@@ -238,20 +238,20 @@ switch ($action)
     case "changerQuantite":
 
         if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide');
+            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
         $referencePneu = $_POST["referencePneu"];
         $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
 
         if ($quantite < 0)
-            ajaxError('La nouvelle quantité est negative');
+            ajaxError('La nouvelle quantité est negative', "INVALID_QUANTITY");
 
         $result = $panier->changerQuantite($referencePneu, $quantite);
 
         if ($result === false)
-            ajaxError("La référence n'est pas présente dans le panier");
+            ajaxError("La référence n'est pas présente dans le panier", "NOT_IN_CART");
         else if ($result != $quantite)
-            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
+            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_ENOUGH_STOCK");
         else
             ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
 
@@ -260,7 +260,7 @@ switch ($action)
     case "prixLot":
 
         if (!isset($_POST["referencePneu"]))
-            ajaxError("La référence du pneu n'est pas définie");
+            ajaxError("La référence du pneu n'est pas définie", "MISSING_ARGUMENT");
 
         $referencePneu = $_POST["referencePneu"];
 
@@ -275,5 +275,5 @@ switch ($action)
         break;
 
     default :
-        ajaxError("Action inconnue");
+        ajaxError("Action inconnue", "UNKNOWN_ACTION");
 }
