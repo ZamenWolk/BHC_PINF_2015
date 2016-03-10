@@ -28,64 +28,7 @@ function mkUser($mail, $mdp, $nom, $prenom)//Permet la création d'un utilisateu
     SQLInsert($sql, $param);
 }
 
-/** rechercherMarque
- * @return bool|resource
- * Recherche toutes les marques diponibles
- */
-function rechercherMarque()
-{
-    $sql="SELECT DISTINCT pneu_marque FROM jspneus.pneu ORDER BY pneu_marque ASC";
-    return SQLSelect($sql, array());
-}
 
-/** rechercherCategorie
- * @return bool|resource
- * Recherche toutes les categorie diponibles
- */
-function rechercherCategorie()
-{
-    $sql="SELECT DISTINCT pneu_categorie FROM jspneus.pneu ORDER BY pneu_categorie ASC";
-    return SQLSelect($sql, array());
-}
-/** rechercherLargeur
- * @return bool|resource
- * Recherche toutes les largeurs diponibles
- */
-function rechercherLargeur()
-{
-    $sql="SELECT DISTINCT pneu_largeur FROM jspneus.pneu ORDER BY pneu_largeur ASC";
-    return SQLSelect($sql, array());
-}
-
-/** rechercherJante
- * @return bool|resource
- * Recherche toutes les jantes diponibles
- */
-function rechercherJante()
-{
-    $sql="SELECT DISTINCT pneu_jante FROM jspneus.pneu ORDER BY  pneu_jante ASC";
-    return SQLSelect($sql, array());
-}
-
-/** rechercherCharge
- * @return bool|resource
- * Recherche toutes les charges diponibles
- */
-function rechercherCharge()
-{
-    $sql="SELECT DISTINCT pneu_charge FROM jspneus.pneu ORDER BY pneu_charge ASC";
-    return SQLSelect($sql, array());
-}
-
-/** rechercherVitesse
- * @return bool|resource
- * Recherche toutes les vitesses diponibles
- */
-function rechercherVitesse()
-{
-    $sql="SELECT DISTINCT pneu_vitesse FROM jspneus.pneu ORDER BY pneu_vitesse ASC";
-    return SQLSelect($sql, array());
-}
 
 /** verifDescription
  * @param $ref

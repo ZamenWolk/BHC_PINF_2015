@@ -2,6 +2,7 @@
 include_once "../../../secret/credentials.php";
 include_once "maLibSQL.pdo.php";
 include_once "fonctionsBDD.php";
+include_once "fonctionRecherche.php";
 
 
 set_time_limit(1000);
