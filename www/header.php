@@ -31,41 +31,41 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         //Le thème est changeable en fonction de la disposition ou de la couleur.
         /* Charge la recherche dans la navbar
          * Pour l'instant seulement la marque*/
-        $(document).ready(function(){
-            $.post( "../assets/php/ajax/rechercheNav.php",{action: "chargement"}, function(data){
+        $(document).ready(function () {
+            $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
                 data = JSON.parse(data);
                 console.log(data);
                 //alert( "Load was performed."+ data );
-                for(var i =0;i<data.nbrMarque ;i++){
-                    var option = $("<option>"+data.marques[i]+"</option>");
+                for (var i = 0; i < data.nbrMarque; i++) {
+                    var option = $("<option>" + data.marques[i] + "</option>");
                     $(".nav_marque").append(option);
                 }
 
-                for(i =0;i<data.nbrCategorie ;i++){
-                    var option1 = $("<option>"+data.categorie[i]+"</option>");
+                for (i = 0; i < data.nbrCategorie; i++) {
+                    var option1 = $("<option>" + data.categorie[i] + "</option>");
                     $(".nav_categorie").append(option1);
                 }
 
-                for(i =0;i<data.nbrCharge ;i++){
-                    var option2 = $("<option>"+data.charge[i]+"</option>");
+                for (i = 0; i < data.nbrCharge; i++) {
+                    var option2 = $("<option>" + data.charge[i] + "</option>");
                     $(".nav_charge").append(option2);
                 }
 
-                for(i =0;i<data.nbrJante ;i++){
-                    var option3 = $("<option>"+data.jante[i]+"</option>");
+                for (i = 0; i < data.nbrJante; i++) {
+                    var option3 = $("<option>" + data.jante[i] + "</option>");
                     $(".nav_jante").append(option3);
                 }
-                for(i =0;i<data.nbrSerie ;i++){
-                    var option4 = $("<option>"+data.serie[i]+"</option>");
+                for (i = 0; i < data.nbrSerie; i++) {
+                    var option4 = $("<option>" + data.serie[i] + "</option>");
                     $(".nav_serie").append(option4);
                 }
 
-                for(i =0;i<data.nbrVitesse ;i++){
-                    var option5 = $("<option>"+data.vitesse[i]+"</option>");
+                for (i = 0; i < data.nbrVitesse; i++) {
+                    var option5 = $("<option>" + data.vitesse[i] + "</option>");
                     $(".nav_vitesse").append(option5);
                 }
-                for(i =0;i<data.nbrLargeur ;i++){
-                    var option6 = $("<option>"+data.largeur[i]+"</option>");
+                for (i = 0; i < data.nbrLargeur; i++) {
+                    var option6 = $("<option>" + data.largeur[i] + "</option>");
                     $(".nav_largeur").append(option6);
                 }
 
@@ -76,7 +76,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
 
     <script type="text/javascript"
             src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js">
-	</script>
+    </script>
     <!-- FIN PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE- -->
 
 </head>
@@ -203,7 +203,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
             </select>
 
 
-            <label  class="control-label" for="sel2">Marque:</label>
+            <label class="control-label" for="sel2">Marque:</label>
 
             <select class="form-control nav_marque" id="sel2">
                 <option>Toutes</option>
@@ -221,7 +221,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <option>Toutes</option>
             </select>
 
-            <label class="control-label" for="sel5">Diamètre :</label>
+            <label class="control-label" for="sel5">Jante :</label>
 
             <select class="form-control nav_jante" id="sel5">
                 <option>Tous</option>
@@ -245,7 +245,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
     </div>
 </nav>
 
-
-<div class="container">
+<div class="warper">
+    <div class="container main">
 
 

@@ -12,11 +12,19 @@ function navResize() {
     return false;
 }
 
+function searchHide() {
+    var pathname = window.location.pathname; // Returns path only
+    var lastpath = pathname.substr(pathname.lastIndexOf("/")+1);
+    if(!(lastpath == "recherche")) {
+        $(".searchForm").hide();
+    }
+}
+
+
 $(document).ready(function() {
 
     navResize();
-
-    $(".searchForm").hide();
+    searchHide();
 
     $('li.dropdown a').on('click', function (event) {
         $(this).parent().toggleClass('open');

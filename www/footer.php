@@ -1,4 +1,7 @@
+<div class="push"></div>
 </div>
+</div>
+
 <nav class="navbar navbar-default navbar-static-bottom" id="navFooter">
     <div class="container-fluid">
         <div class="collapse navbar-collapse">
@@ -133,7 +136,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="checkbox" name="checkbox2" id="checkbox2" autocomplete="off" />
+                        <input type="checkbox" name="checkbox2" id="checkbox2" autocomplete="off"/>
                         <div class="btn-group">
                             <label for="checkbox2" class="btn btn-warning">
                                 <span class=" fa fa-check"></span>
@@ -145,7 +148,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" name="checkbox1" id="checkbox1" autocomplete="off" />
+                        <input type="checkbox" name="checkbox1" id="checkbox1" autocomplete="off"/>
                         <div class="btn-group">
                             <label for="checkbox1" class="btn btn-warning">
                                 <span class="fa fa-check"></span>
