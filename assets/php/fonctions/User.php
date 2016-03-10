@@ -14,6 +14,28 @@ class User
         $this->newsletter = $user["user_newsletter"];
     }
 
+    public function UserFromData($nom, $prenom, $mail, $password, $newsletter)
+    {
+        $this->ID = 0;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->mail = $mail;
+        $this->password = password_hash($password, PASSWORD_BCRYPT);
+        $this->newsletter = $newsletter;
+    }
+
+    public function inscrireEnBDD()
+    {
+        if (SQLSelect("SELECT * FROM jspneus.user WHERE user_mail=?", [$this->mail]))
+            return false;
+        else
+        {
+            SQLInsert("INSERT INTO jspneus.user(user_nom, user_prenom, user_mail, user_password, user_newsletter) VALUES (?, ?, ?, ?, ?)", [$this->nom, $this->prenom, $this->mail, $this->password, $this->newsletter]);
+            $this->User(SQLSelect("SELECT * FROM jspneus.user WHERE user_mail=?", [$this->mail])[0]);
+            return $this->ID;
+        }
+    }
+
     public function connecter($mdpEntre)
     {
         if (isset($_SESSION["connexion"]))
