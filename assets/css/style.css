@@ -13,6 +13,7 @@ h3 {
 
 .container {
     background-color: #f6f6f6;
+    padding: 15px;
 }
 
 p.centered {
@@ -123,6 +124,10 @@ p.centered {
     position: fixed;
 }
 
+.popover.bottom .arrow:after {
+    border-bottom-color: rgba(243, 156, 18, 1.0);
+}
+
 .navbar-collapse {
     text-align: center;
     line-height: 28px;
@@ -220,18 +225,104 @@ ul.dropdown-cart li .item-right button{
     padding-top: 5px;
 }
 
-.popover {
+.popover,
+.modal-content {
     background-color: rgba(44, 62, 80, 1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.btn-connect {
+.btn-connect,
+.btn-subscribe {
     background-color: rgba(243, 156, 18, 1.0);
     font-size: 120%;
     margin-bottom: 5px;
 }
 
-.popover-title {
+.btn-warning {
     background-color: rgba(243, 156, 18, 1.0);
+}
+
+.well-lg {
+    background-color: rgb(153, 159, 163);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.popover-title,
+.modal-header,
+.modal-title {
+    background-color: rgba(243, 156, 18, 1.0);
+    font-size: 120%;
     border-bottom: none;
+}
+
+.modal-body {
+    color: rgba(243, 156, 18, 1.0);
+    font-size: 120%;
+}
+
+.form-group input[type="checkbox"] {
+    display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 20px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;
+}
+
+.gal-container{
+    padding: 12px;
+    padding-top :75px;
+    padding-bottom:75px;
+}
+.gal-item{
+    overflow: hidden;
+    padding: 3px;
+}
+.gal-item .box{
+    height: 350px;
+    overflow: hidden;
+}
+.box img{
+    height: 100%;
+    width: 100%;
+    object-fit:cover;
+    -o-object-fit:cover;
+}
+.gal-item a:focus{
+    outline: none;
+}
+
+.gal-item a:after{
+    content:"\e003";
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    right: 3px;
+    left: 3px;
+    top: 3px;
+    bottom: 3px;
+    text-align: center;
+    line-height: 350px;
+    font-size: 30px;
+    color: #fff;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+}
+
+.gal-item a:hover:after{
+    opacity: 1;
 }

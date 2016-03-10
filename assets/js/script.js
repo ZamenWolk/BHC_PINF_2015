@@ -22,7 +22,7 @@ $(document).ready(function() {
         $(this).parent().toggleClass('open');
     });
 
-    $('body').on('click', function (e) {
+    $("body").on('click', function (e) {
         if (!$('li.dropdown').is(e.target)
             && $('li.dropdown').has(e.target).length === 0
             && $('.open').has(e.target).length === 0
@@ -31,7 +31,6 @@ $(document).ready(function() {
         }
     });
 
-
     $("[data-toggle=popover]").popover({
         html: true,
         content: function() {
@@ -39,7 +38,7 @@ $(document).ready(function() {
         }
     });
 
-    $('body').on('click', function (e) {
+    $("body").on('click', function (e) {
         $('[data-toggle="popover"]').each(function () {
             if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
                 $(this).popover('hide');
