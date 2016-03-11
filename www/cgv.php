@@ -162,6 +162,7 @@ include_once("header.php");
                         de vos achats peut s'effectuer en chèque bancaire ou en espèce lors de la réception de vos
                         produits,
                         directement chez vous ou chez <strong>JSPneus</strong>
+						Aucun paiement ne vous sera demandé sur le site <a href="http://www.js-pneus.fr">js-pneus.fr</a>.
                     </p>
                 </div>
             </div>

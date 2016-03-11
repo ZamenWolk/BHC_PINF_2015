@@ -9,7 +9,7 @@
                 <li><a href="./cgv">C.G.V.</a></li>
                 <li><a href="./mentions_legales">Mentions légales</a></li>
                 <li><a href="#">Protection des données</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="./faq">FAQ</a></li>
             </ul>
         </div>
     </div>
