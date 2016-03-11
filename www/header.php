@@ -34,7 +34,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         $(document).ready(function () {
             $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
                 data = JSON.parse(data);
-                console.log(data);
+                //console.log(data);
                 //alert( "Load was performed."+ data );
                 for (var i = 0; i < data.nbrMarque; i++) {
                     var option = $("<option>" + data.marques[i] + "</option>");

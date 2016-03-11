@@ -164,19 +164,17 @@ class Recherche{
             $sql .= " AND pneu_vitesse=:vitesse";
             $param[":vitesse"] = $vitesse;
         }
-        $numeroPage = ($numeroPage - 1)*25;
+        $numeroPage = ($numeroPage - 1)*$itemParPage;
         $sql.=" ORDER BY pneu_marque ASC LIMIT ".$numeroPage.", ".$itemParPage;
         //print_r($param);
         //return $sql;
         $res = SQLSelect($sql, $param);
-        $tab= array();
 
+        $tab= array();
         foreach($res as $row)
         {
             array_push($tab, $row);
         }
         return $tab;
-
-
     }
 }
