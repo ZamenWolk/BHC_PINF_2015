@@ -192,14 +192,14 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
     </div>
 
     <div class="container-fluid searchWell">
-        <form action="./recherche" class="form-inline searchForm" role="form" method="post">
+        <form action="./recherche" class="form-inline searchForm" role="form" method="get">
 
             <h3>Filtres de recherche : </h3>
 
             <label  class="control-label" for="sel1">Catégorie :</label>
 
             <select name="categorie" class="form-control nav_categorie" id="sel1">
-                <option>Tous</option>
+                <option>Toutes</option>
             </select>
 
 
@@ -224,7 +224,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
             <label  class="control-label" for="sel5">Jante :</label>
 
             <select name="jante" class="form-control nav_jante" id="sel5">
-                <option>Tous</option>
+                <option>Toutes</option>
             </select>
 
             <label for="sel4">Charge :</label>
