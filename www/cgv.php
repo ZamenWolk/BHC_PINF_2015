@@ -159,9 +159,10 @@ include_once("header.php");
                 <div class="panel-body">
                     <p>Le fait de valider votre commande implique pour vous l'obligation de payer le prix indiqué.
                         Le réglement
-                        de vos achats peut s'effectuer en chèque bancaire ou en espèce lors de la réception de vos
+                        de vos achats peut s'effectuer en chèque bancaire ou par carte bancaire lors de la réception de vos
                         produits,
                         directement chez vous ou chez <strong>JSPneus</strong>
+						Aucun paiement ne vous sera demandé sur le site <a href="http://www.js-pneus.fr">js-pneus.fr</a>.
                     </p>
                 </div>
             </div>
@@ -296,7 +297,7 @@ include_once("header.php");
                 <div class="panel-body">
                     <p>Les produits sont livrés à l'adresse de livraison indiquée au cours du processus de commande,
                         dans un
-                        délai établi par <strong>JSPneus</strong>. En cas de retard d'expédition, un mail vous sera
+                        délai établi par <strong>JSPneus</strong>. En cas de retard d'expédition, un mail, un appel téléphonique ou un SMS vous sera
                         adressé pour
                         vous informer d'une éventuelle conséquence sur le délai de livraison qui vous a été indiqué.
                         Conformément aux dispositions légales, en cas de retard de livraison, vous bénéficiez de la

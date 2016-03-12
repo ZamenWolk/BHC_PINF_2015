@@ -1,7 +1,7 @@
 <?php
 
 
-include_once "../../../secret/credentials.php";
+
 include_once "maLibSQL.pdo.php";
 
 
@@ -124,48 +124,57 @@ class Recherche{
         return $tab;
     }
 
-    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse)
+    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$numeroPage, $itemParPage = 25)
     {
-        $sql = "SELECT * FROM pneu WHERE pneu_valable=1";
+        $sql = "SELECT * FROM jspneus.pneu WHERE pneu_valable=1";
         $param = array();
-
-        if ("defini cat")
+        if($cat != "Toutes")
         {
             $sql .= " AND pneu_categorie=:categorie";
             $param[":categorie"] = $cat;
         }
-
-        if($cat != "Toutes")
-        {
-
-        }
         if($marque != "Toutes")
         {
-
+            $sql .= " AND pneu_marque=:marque";
+            $param[":marque"] = $marque;
         }
 
         if($largeur != "Toutes")
         {
-
+            $sql .= " AND pneu_largeur=:largeur";
+            $param[":largeur"] = $largeur;
         }
         if($serie != "Toutes")
         {
-
+            $sql .= " AND pneu_serie=:serie";
+            $param[":serie"] = $serie;
         }
         if($jante != "Toutes")
         {
-
+            $sql .= " AND pneu_jante=:jante";
+            $param[":jante"] = $jante;
         }
         if($charge != "Toutes")
         {
-
+            $sql .= " AND pneu_charge=:charge";
+            $param[":charge"] = $charge;
         }
         if($vitesse != "Toutes")
         {
-
+            $sql .= " AND pneu_vitesse=:vitesse";
+            $param[":vitesse"] = $vitesse;
         }
+        $numeroPage = ($numeroPage - 1)*$itemParPage;
+        $sql.=" ORDER BY pneu_marque ASC LIMIT ".$numeroPage.", ".$itemParPage;
+        //print_r($param);
+        //return $sql;
+        $res = SQLSelect($sql, $param);
 
-
-
+        $tab= array();
+        foreach($res as $row)
+        {
+            array_push($tab, $row);
+        }
+        return $tab;
     }
 }

@@ -43,19 +43,6 @@ $(document).ready(function(){
 		
         });
     });
-	/*
-	console.log("on est là");	
-	$.ajax({
-	type : "POST",
-	url:"../assets/php/ajax/mail.php",
-	data:{
-		action:"mail_contact",
-		from_email:$('#ContactMail').val(),
-		from_name:$('#ContactNom').val(),
-		subject:$('#ContactObj').val(),
-		html:$('#ContactMessage').val(),
-		},
-	});*/
 </script>
 
 <?php
