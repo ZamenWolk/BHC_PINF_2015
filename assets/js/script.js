@@ -8,16 +8,17 @@ function navResize() {
         $('#navHeader').removeClass("navbar-fixed-top").addClass("navbar-static-top");
         $("body").css({"padding-top" : "0px"});
         return true;
-    }
+    } else $("body").css({"padding-top" : "70px"});
     return false;
 }
 
 function searchHide() {
     var pathname = window.location.pathname; // Returns path only
     var lastpath = pathname.substr(pathname.lastIndexOf("/")+1);
-    if(!(lastpath == "recherche")) {
-        $(".searchForm").hide();
-    }
+    if(lastpath == "recherche") {
+        $("body").css({paddingTop: "+=105px"});
+        $(".searchForm").show();
+    } else $(".searchForm").hide();
 }
 
 
@@ -55,7 +56,13 @@ $(document).ready(function() {
     });
 
     $("#searchLink").click(function() {
-        $(".searchForm").slideToggle();
+        if($(".searchForm").is(":visible")) {
+            $(".searchForm").slideUp();
+            $("body").animate({paddingTop: "-=105px"});
+        } else {
+            $(".searchForm").slideDown();
+            $("body").animate({paddingTop: "+=105px"});
+        }
     });
 
     $('#myModal').on('shown.bs.modal', function () {

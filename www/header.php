@@ -182,9 +182,12 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                         </div>
                         <hr>
                         <button type="submit" class="btn btn-block btn-connect">Se connecter</button>
+
                     </form>
                     <div class="subLink">
                         <a data-toggle="modal" data-target="#myModal">Pas encore inscrit ?</a>
+                        <br>
+                        <a href="#" id="forgotten">Mot de passe oublié ?</a>
                     </div>
                 </li>
             </ul>

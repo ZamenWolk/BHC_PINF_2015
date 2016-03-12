@@ -1,19 +1,16 @@
 <div class="push"></div>
 </div>
+
 </div>
 
-<nav class="navbar navbar-default navbar-static-bottom" id="navFooter">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse">
-            <ul class="nav nav-pills nav-justified">
-                <li><a href="./cgv">C.G.V.</a></li>
-                <li><a href="./mentions_legales">Mentions légales</a></li>
-                <li><a href="#">Protection des données</a></li>
-                <li><a href="#">FAQ</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<footer class="footer">
+        <ul class="nav nav-pills nav-justified">
+            <li><a href="./cgv">C.G.V.</a></li>
+            <li><a href="./mentions_legales">Mentions légales</a></li>
+            <li><a href="#">Protection des données</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+</footer>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
