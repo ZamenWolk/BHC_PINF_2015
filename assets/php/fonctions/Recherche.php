@@ -177,7 +177,7 @@ class Recherche{
                 $sql .= " ORDER BY pneu_prix DESC LIMIT ".$numeroPage.", ".$itemParPage;
                 break;
             default:
-                $sql .= " ORDER BY pneu_marque ASC LIMIT ".$numeroPage.", ".$itemParPage;
+                $sql .= " LIMIT ".$numeroPage.", ".$itemParPage;
                 break;
         }
         $res = SQLSelect($sql, $param);

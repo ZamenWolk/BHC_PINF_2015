@@ -2,7 +2,7 @@
 
 include_once "../fonctions/fonctionsBDD.php";
 include_once "../fonctions/AJAX.php";
-include_once "../fonctions/fonctionRecherche.php";
+include_once "../fonctions/Recherche.php";
 
 if(isset($_POST["action"])) {
     $action = $_POST["action"];
