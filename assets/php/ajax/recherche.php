@@ -13,7 +13,7 @@ if(isset($_POST["action"])) {
         case "chargement":
             $tab=array();
             $LesPneus = Recherche::rechercher($_POST['categorie'],$_POST['marque'], $_POST['largeur'], $_POST['serie'],
-                $_POST['jante'],$_POST['charge'], $_POST['vitesse'],1);
+                $_POST['jante'],$_POST['charge'], $_POST['vitesse'],$_POST["numeroPage"],25,$_POST['order']);
             $tab = array();
             $tab['nbrResult'] = count($LesPneus);
             if($tab['nbrResult']  >0 )
