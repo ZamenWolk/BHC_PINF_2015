@@ -3,7 +3,9 @@
 include_once "../fonctions/fonctionsBDD.php";
 include_once "../fonctions/AJAX.php";
 include_once "../fonctions/Recherche.php";
-
+/**
+ * AJAX : Chargement des options possibles dans la navbar
+ */
 if(isset($_POST["action"]))
 {
     $action = $_POST["action"];

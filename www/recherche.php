@@ -15,7 +15,7 @@ include_once "../assets/php/fonctions/Recherche.php";
 
 
 ?>
-<div class="row">
+<div class="row paginat">
     <nav>
         <ul class="pager">
             <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Page précédente</a></li>
@@ -26,7 +26,6 @@ include_once "../assets/php/fonctions/Recherche.php";
 <div class="row">
     <div class="col-md-offset-2 col-md-8">
         <div id="articles">
-            <br>
                 <div class="panel panel-default model_article">
                     <div class="panel-heading"></div>
                     <div class="panel-body">
@@ -45,7 +44,7 @@ include_once "../assets/php/fonctions/Recherche.php";
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row paginat">
     <nav>
         <ul class="pager">
             <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Page précédente</a></li>
@@ -67,6 +66,11 @@ include_once "../assets/php/fonctions/Recherche.php";
         var order= "<?php echo $_GET['tri'];?>";
         var model= $(".model_article");
         var div_articles=$("#articles");
+
+       /**
+        * Chargement des pneus la première fois que l'on charge la page
+        * */
+
         $.post(
             "../assets/php/ajax/recherche.php",
             {
@@ -84,7 +88,7 @@ include_once "../assets/php/fonctions/Recherche.php";
             function (data){
             data = JSON.parse(data);
 
-            console.log(data);
+            //console.log(data);
             if(data["etat"]== "reussite") {
                 if (data["nbrResult"] > 0) {
                     for (var i = 0; i < data["nbrResult"]; i++) {
@@ -99,8 +103,9 @@ include_once "../assets/php/fonctions/Recherche.php";
                         var  pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
                         //console.log(marque);
                         //console.log("Je boucle" + i);
+                        var  pneu_ref = data["resultat"][i]["pneu_ref"];
                         var jQ = model.clone();
-                        jQ.removeClass("model_article").children(".panel-heading").html("<b>" + pneu_marque + "</b>   " +  pneu_description);
+                        jQ.removeClass("model_article").children(".panel-heading").html("<a href=\"./produit?ref="+pneu_ref+"\"><b>" + pneu_description + "</b></a>");
                         var panelBody = jQ.children(".panel-body");
                         //console.log(panelBody);
                         var div_panel = panelBody.children(".col-md-6");
@@ -109,7 +114,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                         ul_panel.children(".categorie").html("Categorie: " +  pneu_categorie);
                         ul_panel.children(".serie").html("Serie:  " +  pneu_serie);
                         ul_panel.children(".jante").html("Jante:  " +  pneu_jante);
-                        var  pneu_ref = data["resultat"][i]["pneu_ref"];
+
 
                         jQ.children(".panel-footer").html("Prix:" +pneu_prix+" € <button value=\""+ pneu_ref+"\" class='panier'> Ajouter au panier <span class=\"glyphicon glyphicon-shopping-cart\"> </button>"
                     );
@@ -117,13 +122,25 @@ include_once "../assets/php/fonctions/Recherche.php";
 
                         div_articles.append(jQ)
                     }
-                    model.hide();
+
                 }
                 else
                 {
-                    model.hide();
+
                     div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneus correspondant à vos critères de recherches.</h2>");
                 }
+                model.hide();
+            }
+            var pagination = $(".paginat");
+
+            //gestion de l'affichage de la pagination
+            if(data["nbrResult"] < 25 &&  numero_page == 1)
+            {
+                pagination.hide();
+            }
+            else
+            {
+                pagination.show();
             }
 
 
@@ -134,7 +151,11 @@ include_once "../assets/php/fonctions/Recherche.php";
             var activeNext =true;
             prev.addClass("disabled");
 
-            prev.click(function(){
+                /**
+                 * Gestion du chargement de la pqge précédente
+                 */
+
+                prev.click(function(){
                 if(activePrev){
                     numero_page--;
                     $.post(
@@ -153,11 +174,13 @@ include_once "../assets/php/fonctions/Recherche.php";
                         },
                         function (data) {
                             data = JSON.parse(data);
+                            //activation bouton précédent
                             if(numero_page == 1 )
                             {
                                 prev.addClass("disabled");
                                 activePrev = false;
                             }
+                            //Activation bouton suivant
                             if(data["nbrResult"]==25)
                             {
                                 suiv.removeClass("disabled");
@@ -178,8 +201,9 @@ include_once "../assets/php/fonctions/Recherche.php";
                                         var  pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
                                         //console.log(marque);
                                         //console.log("Je boucle" + i);
+                                        var  pneu_ref = data["resultat"][i]["pneu_ref"];
                                         var jQ = model.clone();
-                                        jQ.removeClass("model_article").children(".panel-heading").html("<b>" + pneu_marque + "</b>   " +  pneu_description);
+                                        jQ.removeClass("model_article").children(".panel-heading").html("<a href=\"./produit?ref="+pneu_ref+"\"><b>" + pneu_description + "</b></a>");
                                         var panelBody = jQ.children(".panel-body");
                                         //console.log(panelBody);
                                         var div_panel = panelBody.children(".col-md-6");
@@ -188,7 +212,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                                         ul_panel.children(".categorie").html("Categorie: " +  pneu_categorie);
                                         ul_panel.children(".serie").html("Serie:  " +  pneu_serie);
                                         ul_panel.children(".jante").html("Jante:  " +  pneu_jante);
-                                        var  pneu_ref = data["resultat"][i]["pneu_ref"];
+
 
                                         jQ.children(".panel-footer").html("Prix:" +pneu_prix+" € <button value=\""+ pneu_ref+"\" class='panier'> Ajouter au panier <span class=\"glyphicon glyphicon-shopping-cart\"> </button>"
                                         );
@@ -209,6 +233,9 @@ include_once "../assets/php/fonctions/Recherche.php";
                         });
                 }
             });
+                /**
+                 * Gestion du chargement de la page suivante
+                 */
             suiv.click(function(){
                 if(activeNext) {
                     numero_page++;
@@ -229,10 +256,12 @@ include_once "../assets/php/fonctions/Recherche.php";
                         },
                         function (data) {
                             data = JSON.parse(data);
+                            //Activation du bouton précédent
                             if (numero_page > 1) {
                                 prev.removeClass("disabled");
                                 activePrev = true;
                             }
+                            //désactivation du bouton suivant
                             if (data["nbrResult"] < 25) {
                                 suiv.addClass("disabled");
                                 activeNext = false;
@@ -249,11 +278,12 @@ include_once "../assets/php/fonctions/Recherche.php";
                                         var pneu_charge = data["resultat"][i]["pneu_charge"];
                                         var pneu_vitesse = data["resultat"][i]["pneu_vitesse"];
                                         var pneu_description = data["resultat"][i]["pneu_description"];
+                                        var pneu_ref = data["resultat"][i]["pneu_ref"];
                                         var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
                                         //console.log(marque);
                                         //console.log("Je boucle" + i);
                                         var jQ = model.clone();
-                                        jQ.removeClass("model_article").children(".panel-heading").html("<b>" + pneu_marque + "</b>   " + pneu_description);
+                                        jQ.removeClass("model_article").children(".panel-heading").html("<a href=\"./produit?ref="+pneu_ref+"\"><b>" + pneu_description + "</b></a>");
                                         var panelBody = jQ.children(".panel-body");
                                         //console.log(panelBody);
                                         var div_panel = panelBody.children(".col-md-6");
@@ -262,7 +292,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                                         ul_panel.children(".categorie").html("Categorie: " + pneu_categorie);
                                         ul_panel.children(".serie").html("Serie:  " + pneu_serie);
                                         ul_panel.children(".jante").html("Jante:  " + pneu_jante);
-                                        var pneu_ref = data["resultat"][i]["pneu_ref"];
+
 
                                         jQ.children(".panel-footer").html("Prix:" + pneu_prix + " € <button value=\"" + pneu_ref + "\" class='panier'> Ajouter au panier <span class=\"glyphicon glyphicon-shopping-cart\"> </button>"
                                         );

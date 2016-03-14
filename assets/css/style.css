@@ -508,7 +508,9 @@ ul.dropdown-cart li .item-right button {
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
 }
-
+#articles{
+    margin-top: 2%;
+}
 .search-col {
     padding-bottom: 20px;
 }

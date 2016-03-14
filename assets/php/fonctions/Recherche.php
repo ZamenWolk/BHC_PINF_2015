@@ -124,6 +124,22 @@ class Recherche{
         return $tab;
     }
 
+    public static function rechercherPneu($ref){
+        $sql ="SELECT * FROM jspneus.pneu WHERE pneu_ref=:ref AND pneu_valable=1";
+        $param = array();
+        $param[":ref"]=$ref;
+        $res = SQLSelect($sql, $param);
+        $tab  = array();
+        if($res != null) {
+            foreach ($res as $row) {
+                array_push($tab, $row);
+            }
+        }
+        else
+            array_push($tab,"Pas de résultat");
+        return $tab;
+    }
+
     public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$numeroPage, $itemParPage = 25,$order = 0)
     {
         $sql = "SELECT * FROM jspneus.pneu WHERE pneu_valable=1";

@@ -14,7 +14,6 @@ if(isset($_POST["action"])) {
             $tab=array();
             $LesPneus = Recherche::rechercher($_POST['categorie'],$_POST['marque'], $_POST['largeur'], $_POST['serie'],
                 $_POST['jante'],$_POST['charge'], $_POST['vitesse'],$_POST["numeroPage"],25,$_POST['order']);
-            $tab = array();
             $tab['nbrResult'] = count($LesPneus);
             if($tab['nbrResult']  >0 )
                 $tab["resultat"] = $LesPneus;
@@ -23,6 +22,19 @@ if(isset($_POST["action"])) {
             //TODO: Rajouter un cas en cas d'echec d'accés à la bdd par exemple avec ajaxError
 
             ajaxSuccess($tab);
+            die();
+            break;
+        case "chargementRef":
+            $tab=array();
+            $lePneus= Recherche::rechercherPneu($_POST["ref"]);
+            $tab["resultat"] = $lePneus;
+            $tab["nbrResult"] = count($tab["resultat"]);
+            if($tab["nbrResult"]==1)
+            {
+                ajaxSuccess($tab);
+            }
+            else
+                ajaxError("erreur");
             die();
             break;
     }

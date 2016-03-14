@@ -30,7 +30,8 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         //Le "Link" peut être changé pour un lien de police d'utilisation des cookies à générer ou à faire soi même
         //Le thème est changeable en fonction de la disposition ou de la couleur.
         /* Charge la recherche dans la navbar
-         * Pour l'instant seulement la marque*/
+         * Pour l'instant seulement la marque
+        */
         $(document).ready(function () {
             $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
                 data = JSON.parse(data);
