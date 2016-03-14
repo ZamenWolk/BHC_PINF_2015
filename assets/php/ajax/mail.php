@@ -6,7 +6,6 @@ session_start();
 
 if (!isset($_POST["action"]))
 {
-	echo("Il manque des actions");
     ajaxError("Action non définie");
 }
 $action = $_POST["action"];

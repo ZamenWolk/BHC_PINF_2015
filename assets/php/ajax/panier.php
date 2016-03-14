@@ -12,23 +12,27 @@ $panier = $_SESSION["panier"];
 /**
  * Fichier utiliant la méthode "POST"
  * Actions possibles :
- *
+ */
+
+/**
  * "vider"
  * Vide le panier
  * Aucun argument
  * Renvoi :
  *      ["vide" => true]
  * Ne peut échouer
- *
- *
+ */
+
+/**
  * "nbArticles"
  * Permet d'obtenir le nombre d'articles dans le panier
  * Aucun argument
  * Renvoi :
  * [    "nbArticles" => nombre d'articles ]
  * Ne peut échouer
- *
- *
+ */
+
+/**
  * "ajouterArticle"
  * Ajoute le pneu valable associé à une référence dans le panier
  * Arguments :
@@ -42,8 +46,9 @@ $panier = $_SESSION["panier"];
  *      - La quantité à ajouter est inferieure à 1                                                            (code INVALID_QUANTITY)
  *      - La référence n'existe pas                                                                           (code UNKNOWN_REFERENCE)
  *      - la variable passée à Panier::ajouterArticle n'est pas une instance de Pneu (ne devrait pas arriver) (code INTERN_ERROR)
- *
- *
+ */
+
+/**
  * "retirerArticle"
  * Retire le pneu associé à une référence dans le panier
  * Arguments :
@@ -55,8 +60,9 @@ $panier = $_SESSION["panier"];
  *      - La référence du pneu n'était pas présente dans le panier avant la suppression (code MISSING_ARGUMENT)
  * Echoue si :
  *      - La référence du pneu n'est pas définie                                        (code NOT_IN_CART)
- *
- *
+ */
+
+/**
  * "ajouterQuantite"
  * Ajoute une quantité à un pneu présent dans le panier
  * Arguments :
@@ -71,8 +77,9 @@ $panier = $_SESSION["panier"];
  *      - La référence du pneu n'est pas définie                                                                 (code MISSING_ARGUMENT)
  *      - La quantité à ajouter est inferieure à 1                                                               (code INVALID_QUANTITY)
  *      - La référence du pneu n'est pas présente dans le panier                                                 (code NOT_IN_CART)
- *
- *
+ */
+
+/**
  * "retirerQuantite"
  * Retire une quantité à un pneu présent dans le panier
  * Arguments :
@@ -86,8 +93,9 @@ $panier = $_SESSION["panier"];
  *      - La quantité à retirer est inferieure à 1                          (code INVALID_QUANTITY)
  *      - La référence du pneu n'est pas présente dans le panier            (code NOT_IN_CART)
  *      - La quantité à retirer est superieure à la quantité dans le panier (code CANT_TAKE_AWAY_ENOUGH)
- *
- *
+ */
+
+/**
  * "changerQuantite"
  * Change la quantité d'un pneu présent dans le panier
  * Arguments :
@@ -102,8 +110,9 @@ $panier = $_SESSION["panier"];
  *      - La référence du pneu n'est pas définie                                                                    (code MISSING_ARGUMENT)
  *      - La nouvelle quantité est inferieure à 0                                                                   (code INVALID_QUANTITY)
  *      - La référence du pneu n'est pas présente dans le panier                                                    (code NOT_IN_CART)
- *
- *
+ */
+
+/**
  * "prixLot"
  * Permet d'obtenir le prix du lot de pneu identifié par une référence
  * Arguments :
@@ -113,8 +122,9 @@ $panier = $_SESSION["panier"];
  *      "prixLot"       => prix du lot ]
  * Echoue si :
  *      - La référence du pneu n'est pas définie (code MISSING_ARGUMENT)
- *
- *
+ */
+
+/**
  * "contenuPanier"
  * Permet d'obtenir le contenu du panier
  * Aucun argument

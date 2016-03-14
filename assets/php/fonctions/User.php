@@ -14,14 +14,12 @@ class User
         $this->newsletter = $user["user_newsletter"];
     }
 
-    public function UserFromData($nom, $prenom, $mail, $password, $newsletter)
+    public static function UserFromData($nom, $prenom, $mail, $password, $newsletter)
     {
-        $this->ID = 0;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->mail = $mail;
-        $this->password = password_hash($password, PASSWORD_BCRYPT);
-        $this->newsletter = $newsletter;
+        $param = array("user_ID" => 0, "user_nom" => $nom, "user_prenom" => $prenom, "user_mail" => $mail, "user_password" => password_hash($password, PASSWORD_BCRYPT), "user_newsletter" => $newsletter);
+        $user = new User($param);
+
+        return $user;
     }
 
     public function inscrireEnBDD()
@@ -33,6 +31,17 @@ class User
             SQLInsert("INSERT INTO jspneus.user(user_nom, user_prenom, user_mail, user_password, user_newsletter) VALUES (?, ?, ?, ?, ?)", [$this->nom, $this->prenom, $this->mail, $this->password, $this->newsletter]);
             $this->User(SQLSelect("SELECT * FROM jspneus.user WHERE user_mail=?", [$this->mail])[0]);
             return $this->ID;
+        }
+    }
+
+    public function modifierInformations($id)
+    {
+        if (!SQLSelect("SELECT * FROM jspneus.user WHERE user_id=?", [$id]))
+            return false;
+        else
+        {
+            SQLUpdate("UPDATE jspneus.user SET user_nom=?, user_prenom=?, user_mail=?, user_newsletter=? WHERE user_id=?", [$this->nom, $this->prenom, $this->mail, $this->newsletter, $id]);
+            return true;
         }
     }
 
@@ -50,7 +59,7 @@ class User
             $connexion["id"] = $this->ID;
             $connexion["admin"] = false;
 
-            return true;
+            return $this->ID;
         }
 
         return false;
@@ -59,6 +68,22 @@ class User
     public function verifierMDP($mdp)
     {
         return password_verify($mdp, $this->password);
+    }
+
+    public static function changePassword($oldPass, $newPass, $id)
+    {
+        $res = SQLSelect("SELECT user_password FROM jspneus.user WHERE user_id=?", [$id]);
+
+        if ($res === false)
+            return false;
+
+        $currPass = $res[0]["user_password"];
+
+        if (!password_verify($oldPass, $currPass))
+            return false;
+
+        SQLUpdate("UPDATE jspneus.user SET user_password=? WHERE user_id=?", [password_hash($newPass, PASSWORD_BCRYPT), $id]);
+        return true;
     }
 
     public static function getIDConnecte()
@@ -84,7 +109,7 @@ class User
         $sql = "SELECT * FROM jspneus.user WHERE user_id=?";
         $res = SQLSelect($sql, [$id]);
 
-        if ($res === null)
+        if ($res === false)
             return $res;
         else
             return new User($res[0]);
@@ -95,7 +120,7 @@ class User
         $sql = "SELECT * FROM jspneus.user WHERE user_mail=?";
         $res = SQLSelect($sql, [$mail]);
 
-        if ($res === null)
+        if ($res === false)
             return $res;
         else
             return new User($res[0]);

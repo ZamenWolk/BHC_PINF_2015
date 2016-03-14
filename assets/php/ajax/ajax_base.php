@@ -3,7 +3,9 @@
 /**
  * Fichier utilisant la méthode "#methode utilisée#"
  * Actions possible :
- *
+ */
+
+/**
  * "#action1#"
  * #description de l'action#
  * Arguments : #Remplacer bloc par "Aucun argument si pas d'arguments#

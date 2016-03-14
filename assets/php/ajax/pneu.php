@@ -5,7 +5,9 @@ include_once("../fonctions/Pneu.php");
 /**
  * Fichier utilisant la méthode "POST"
  * Actions possible :
- *
+ */
+
+/**
  * "stockPneu"
  * Permet de récupérer le stock d'un pneu en BDD
  * Arguments :
@@ -16,9 +18,9 @@ include_once("../fonctions/Pneu.php");
  * Echoue si :
  *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
  *      - Aucun pneu correspondant n'a été trouvé en BDD (code NO_CORRESPONDENCE)
- *
- *
- *
+ */
+
+/**
  * "prixPneu"
  * Permet de récupérer le prix d'un pneu en BDD selon un ratio de prix à un temps donné
  * Arguments :

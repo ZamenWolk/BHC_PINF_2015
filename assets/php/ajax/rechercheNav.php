@@ -34,7 +34,6 @@ if(isset($_POST["action"]))
             $data["nbrJante"] = count($tabJante);
             $data["serie"] = $tabSerie;
             $data["nbrSerie"] = count($tabSerie);
-            //$data["success"] = 1;
             ajaxSuccess($data);
             break;
 
