@@ -30,6 +30,14 @@ switch ($action)
 
         break;
 
+    case "changerInformations":
+
+        break;
+
+    case "changePassword":
+
+        break;
+
     default:
         ajaxError("Action inconnue");
 }
