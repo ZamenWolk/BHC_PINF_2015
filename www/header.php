@@ -95,14 +95,8 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         </div>
         <div class="collapse navbar-collapse" id="headNavbar">
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Catalogue de pneus<span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu" style="width:120%;">
-                        <li><a href="#">Catégorie 1</a></li>
-                        <li><a href="#">Catégorie 2</a></li>
-                        <li><a href="#">Catégorie 3</a></li>
-                    </ul>
+                <li>
+                    <a href="./catalogue">Catalogue de pneus</a>
                 </li>
                 <li>
                     <a id="searchLink">Recherche</a>
@@ -199,52 +193,100 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
 
             <h3>Filtres de recherche : </h3>
 
-            <label  class="control-label" for="sel1">Catégorie :</label>
+            <div class="row">
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel1">Catégorie</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="categorie" class="form-control search-select nav_categorie" id="sel1">
+                                <option>Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel2">Marque</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="marque" class="form-control search-select nav_marque" id="sel2">
+                                <option>Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel3">Largeur</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="largeur" class="form-control search-select nav_largeur" id="sel3">
+                                <option>Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel4">Série</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="serie" class="form-control search-select nav_serie" id="sel4">
+                                <option>Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel5">Jante</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="jante" class="form-control search-select nav_jante" id="sel5">
+                                <option>Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel6">Charge</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="charge" class="form-control search-select nav_charge" id="sel6">
+                                <option>Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel7">Vitesse</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="vitesse" class="form-control search-select nav_vitesse" id="sel7">
+                                <option>Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 search-col">
+                    <input type="submit" value="Rechercher" class="btn btn-warning btn-block pull-left">
+                </div>
+            </div>
+    </div>
 
-            <select name="categorie" class="form-control nav_categorie" id="sel1">
-                <option>Toutes</option>
-            </select>
-
-
-            <label  class="control-label" for="sel2">Marque:</label>
-
-            <select name="marque" class="form-control nav_marque" id="sel2">
-                <option>Toutes</option>
-            </select>
-
-            <label class="control-label" for="sel3">Largeur :</label>
-
-            <select name="largeur"  class="form-control nav_largeur" id="sel3">
-                <option>Toutes</option>
-            </select>
-
-            <label class="control-label" for="sel5">Série :</label>
-
-            <select name="serie" class="form-control nav_serie" id="sel5">
-                <option>Toutes</option>
-            </select>
-
-            <label  class="control-label" for="sel5">Jante :</label>
-
-            <select name="jante" class="form-control nav_jante" id="sel5">
-                <option>Toutes</option>
-            </select>
-
-            <label for="sel4">Charge :</label>
-
-            <select name="charge" class="form-control nav_charge" id="sel4">
-                <option>Toutes</option>
-            </select>
-
-            <label class="control-label" for="sel5">Vitesse :</label>
-
-            <select name="vitesse" class="form-control nav_vitesse" id="sel5">
-                <option>Toutes</option>
-            </select>
-
-            <input type="submit" value="Rechercher" class="btn btn-warning pull-right">
-
-        </form>
+    </form>
     </div>
 </nav>
 

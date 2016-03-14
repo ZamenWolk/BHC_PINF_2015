@@ -46,9 +46,9 @@ h3 {
     min-height: 100%;
 }
 
-/*.container.main {
+.container.main {
     background-color: #f6f6f6;
-}*/
+}
 
 .img-gal {
     padding: 0;
@@ -195,7 +195,6 @@ p.centered {
 
 .footer {
     height: 55px;
-    margin-top: 55px;
     background-color: rgba(44, 62, 80, 1);
     border-radius: 0;
     margin-bottom: 0;
@@ -298,6 +297,7 @@ ul.dropdown-cart li .item-right button {
 
 .btn-warning {
     background-color: rgba(243, 156, 18, 1.0);
+    font-size: 120%;
 }
 
 .well-lg {
@@ -407,9 +407,24 @@ ul.dropdown-cart li .item-right button {
     z-index: 10;
     padding-top: 20px;
     padding-bottom: 20px;
-    color: #fff;
+    color: rgba(189, 195, 199, 1.0);
     text-align: center;
     background: rgba(0, 0, 0, 0.4);
+    font-size: 130%;
+}
+
+.carousel-caption > h2 {
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(189, 195, 199, 1.0);
+    text-shadow:
+            3px 3px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+    font-size: 200%;
 }
 
 .img-col {
@@ -465,6 +480,12 @@ ul.dropdown-cart li .item-right button {
     text-align: center;
     margin: 0;
     color: rgba(189, 195, 199, 1.0);
+    text-shadow:
+            3px 3px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
     position: absolute;
     width: auto;
     top: 50%;
@@ -486,4 +507,13 @@ ul.dropdown-cart li .item-right button {
 .hovereffect:hover h2:after {
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
+}
+
+.search-col {
+    padding-bottom: 20px;
+}
+
+.control-label {
+    font-size: 120%;
+    padding-top: 5px;
 }

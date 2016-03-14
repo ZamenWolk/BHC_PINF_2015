@@ -16,7 +16,7 @@ function searchHide() {
     var pathname = window.location.pathname; // Returns path only
     var lastpath = pathname.substr(pathname.lastIndexOf("/")+1);
     if(lastpath == "recherche") {
-        $("body").css({paddingTop: "+=105px"});
+        $("body").css({paddingTop: "+=183px"});
         $(".searchForm").show();
     } else $(".searchForm").hide();
 }
@@ -58,10 +58,12 @@ $(document).ready(function() {
     $("#searchLink").click(function() {
         if($(".searchForm").is(":visible")) {
             $(".searchForm").slideUp();
-            $("body").animate({paddingTop: "-=105px"});
+            $("body").animate({paddingTop: "-=183px"});
+            $(".dropdown-menu").css({top: "+=12px"});
         } else {
             $(".searchForm").slideDown();
-            $("body").animate({paddingTop: "+=105px"});
+            $("body").animate({paddingTop: "+=183px"});
+            $(".dropdown-menu").css({top: "-=12px"});
         }
     });
 

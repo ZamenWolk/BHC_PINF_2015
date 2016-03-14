@@ -29,8 +29,8 @@ include_once("header.php");
             <div class="item">
                 <img src="../assets/img/car3.jpg" class="car-img img-responsive">
                 <div class="carousel-caption">
-                    <h2>Des prix défiant toute concurrence</h2>
-                    <p>Ici, c'est prix bas garanti !</p>
+                    <h2>Les prix les plus bas</h2>
+                    <p>Des prix défiant toute concurrence !</p>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@ include_once("header.php");
                 <a href="#">
                     <img class="img-responsive" src="../assets/img/home1.png">
                     <div class="overlay">
-                        <h2>Effect 12</h2>
+                        <h2>Catalogue</h2>
                     </div>
                 </a>
             </div>
@@ -65,7 +65,7 @@ include_once("header.php");
                 <a href="#">
                     <img class="img-responsive" src="../assets/img/home2.png">
                     <div class="overlay">
-                        <h2>Effect 12</h2>
+                        <h2>F.A.Q.</h2>
                     </div>
                 </a>
             </div>
@@ -76,7 +76,7 @@ include_once("header.php");
                 <a href="#">
                     <img class="img-responsive" src="../assets/img/home3.png">
                     <div class="overlay">
-                        <h2>Effect 12</h2>
+                        <h2>Contact</h2>
                     </div>
                 </a>
             </div>
