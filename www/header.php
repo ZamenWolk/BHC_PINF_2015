@@ -242,6 +242,14 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <option>Toutes</option>
             </select>
 
+            <label class="control-label" for="sel6">Trier par :</label>
+
+            <select name="tri" class="form-control nav_tri" id="sel6">
+                <option value="0">Marque</option>
+                <option value="1">Prix croissant</option>
+                <option value="2">Prix décroissant</option>
+            </select>
+
             <input type="submit" value="Rechercher" class="btn btn-warning pull-right">
 
         </form>

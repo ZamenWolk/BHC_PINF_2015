@@ -124,7 +124,7 @@ class Recherche{
         return $tab;
     }
 
-    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$numeroPage, $itemParPage = 25)
+    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$numeroPage, $itemParPage = 25,$order = 0)
     {
         $sql = "SELECT * FROM jspneus.pneu WHERE pneu_valable=1";
         $param = array();
@@ -165,15 +165,29 @@ class Recherche{
             $param[":vitesse"] = $vitesse;
         }
         $numeroPage = ($numeroPage - 1)*$itemParPage;
-        $sql.=" ORDER BY pneu_marque ASC LIMIT ".$numeroPage.", ".$itemParPage;
-        //print_r($param);
-        //return $sql;
+        switch($order) {
+            case 0:
+                $sql .= " ORDER BY pneu_marque ASC LIMIT ".$numeroPage.", ".$itemParPage;
+                break;
+
+            case 1:
+                $sql .= " ORDER BY pneu_prix ASC LIMIT ".$numeroPage.", ".$itemParPage;
+                break;
+            case 2:
+                $sql .= " ORDER BY pneu_prix DESC LIMIT ".$numeroPage.", ".$itemParPage;
+                break;
+            default:
+                $sql .= " LIMIT ".$numeroPage.", ".$itemParPage;
+                break;
+        }
         $res = SQLSelect($sql, $param);
 
         $tab= array();
-        foreach($res as $row)
-        {
-            array_push($tab, $row);
+        //Si il n'y a pas de résultat on passe le foreach
+        if($res != null) {
+            foreach ($res as $row) {
+                array_push($tab, $row);
+            }
         }
         return $tab;
     }
