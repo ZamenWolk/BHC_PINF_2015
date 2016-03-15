@@ -17,6 +17,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
     <script src="../assets/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css"/>
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/panier.js"></script>
 
     <!-- PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE-->
     <script type="text/javascript">
