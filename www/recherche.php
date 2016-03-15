@@ -63,7 +63,9 @@ include_once "../assets/php/fonctions/Recherche.php";
         var jante = "<?php echo $_GET['jante']; ?>";
         var charge= "<?php echo $_GET['charge'];?>";
         var vitesse= "<?php echo $_GET['vitesse'];?>";
-        var order= "<?php echo $_GET['tri'];?>";
+        var decibel="<?php echo $_GET['decibel'];?>";
+        var consommation = "<?php echo $_GET['consommation'];?>";
+        var order= 1;
         var model= $(".model_article");
         var div_articles=$("#articles");
 
@@ -82,6 +84,8 @@ include_once "../assets/php/fonctions/Recherche.php";
                 jante: jante,
                 charge: charge,
                 vitesse: vitesse,
+                decibel: decibel,
+                consommation: consommation,
                 numeroPage: numero_page,
                 order: order
             },

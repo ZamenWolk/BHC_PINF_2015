@@ -19,6 +19,8 @@ if(isset($_POST["action"]))
             $tabVitesse = Recherche::rechercherVitesse();
             $tabJante = Recherche::rechercherJante();
             $tabSerie= Recherche::rechercherSerie();
+            $tabDecibel = Recherche::rechercherDecibel();
+            $tabConso = Recherche::rechercherConsommation();
 
             $data["marques"] = $tabMarque;
             $data["nbrMarque"] = count($tabMarque);
@@ -34,6 +36,10 @@ if(isset($_POST["action"]))
             $data["nbrJante"] = count($tabJante);
             $data["serie"] = $tabSerie;
             $data["nbrSerie"] = count($tabSerie);
+            $data["decibel"] =  $tabDecibel;
+            $data["nbrDecibel"] = count($tabDecibel);
+            $data["consommation"] =$tabConso;
+            $data["nbrConso"] = count($tabConso);
             ajaxSuccess($data);
             break;
 

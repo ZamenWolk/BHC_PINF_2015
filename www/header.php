@@ -70,8 +70,31 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                     var option6 = $("<option>" + data.largeur[i] + "</option>");
                     $(".nav_largeur").append(option6);
                 }
+                for (i = 0; i < data.nbrDecibel; i++) {
+                    var option7 = $("<option>" + data.decibel[i] + "</option>");
+                    $(".nav_decibel").append(option7);
+                }
+                for (i = 0; i < data.nbrConso; i++) {
+                    var option8 = $("<option>" + data.consommation[i] + "</option>");
+                    $(".nav_consommation").append(option8);
+                }
+            });
+
+            $(document).on("click","#seConnecter",function(){
+                var i = 0;
+                var pass=$('#mailLogin').val();
+                var mail=$('#passeLogin').val();
+                console.log(pass +mail);
+                i++;
 
             });
+
+            /*$(document).on("keyup","#mailLogin",function(e){
+                var mailLogin=$("#mailLogin");
+                mailLogin.val(mailLogin.val()+e);
+            })*/
+
+
 
         });
     </script>
@@ -160,7 +183,8 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                         </li>
                     </ul>
                 </li>
-                <li><?php
+                <li>
+                <?php
                     /* Verifie si la personne est connécter et change le bouton en fonction */
                     if (isset($_SESSION['connecter'])) echo '<a>Mon compte';
                     else echo '<a data-placement="bottom" data-toggle="popover" data-title="Connexion" data-container="body" type="button" data-html="true" href="#" id="login">Se connecter ';
@@ -169,16 +193,16 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <li id="popover-content" class="hide">
                     <form class="form-inline" role="form">
                         <div class="form-group">
-                            <input id="mailLogin" type="email" class="form-control" name="mail"
-                                   placeholder="Adresse Mail">
+                           <!-- <input id="mailLogin" type="email" class="form-control" name="mail"
+                                   placeholder="Adresse Mail">-->
+                            <textarea id="mailLogin"></textarea>
                         </div>
                         <div class="form-group">
                             <input id="passeLogin" type="password" class="form-control" name="password"
                                    placeholder="Mot de passe">
                         </div>
                         <hr>
-                        <button type="submit" class="btn btn-block btn-connect">Se connecter</button>
-
+                        <button type="button" id="seConnecter" class="btn btn-block btn-connect">Se connecter</button>
                     </form>
                     <div class="subLink">
                         <a data-toggle="modal" data-target="#myModal">Pas encore inscrit ?</a>
@@ -199,23 +223,11 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <div class="col-md-3 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
-                            <label class="control-label" for="sel1">Catégorie</label>
-                        </div>
-                        <div class="col-md-3 col-sm-5 pull-left">
-                            <select name="categorie" class="form-control search-select nav_categorie" id="sel1">
-                                <option>Toutes</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 search-col">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-7">
                             <label class="control-label" for="sel2">Marque</label>
                         </div>
                         <div class="col-md-3 col-sm-5 pull-left">
                             <select name="marque" class="form-control search-select nav_marque" id="sel2">
-                                <option>Toutes</option>
+                                <option value="0">Toutes</option>
                             </select>
                         </div>
                     </div>
@@ -227,7 +239,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                         </div>
                         <div class="col-md-3 col-sm-5 pull-left">
                             <select name="largeur" class="form-control search-select nav_largeur" id="sel3">
-                                <option>Toutes</option>
+                                <option value="0">Toutes</option>
                             </select>
                         </div>
                     </div>
@@ -239,7 +251,19 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                         </div>
                         <div class="col-md-3 col-sm-5 pull-left">
                             <select name="serie" class="form-control search-select nav_serie" id="sel4">
-                                <option>Toutes</option>
+                                <option value="0">Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel5">Jante</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="jante" class="form-control search-select nav_jante" id="sel5">
+                                <option value="0">Toutes</option>
                             </select>
                         </div>
                     </div>
@@ -249,11 +273,11 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <div class="col-md-3 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
-                            <label class="control-label" for="sel5">Jante</label>
+                            <label class="control-label" for="sel1">Catégorie</label>
                         </div>
                         <div class="col-md-3 col-sm-5 pull-left">
-                            <select name="jante" class="form-control search-select nav_jante" id="sel5">
-                                <option>Toutes</option>
+                            <select name="categorie" class="form-control search-select nav_categorie" id="sel1">
+                                <option value="0">Toutes</option>
                             </select>
                         </div>
                     </div>
@@ -265,7 +289,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                         </div>
                         <div class="col-md-3 col-sm-5 pull-left">
                             <select name="charge" class="form-control search-select nav_charge" id="sel6">
-                                <option>Toutes</option>
+                                <option value="0">Toutes</option>
                             </select>
                         </div>
                     </div>
@@ -277,16 +301,42 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                         </div>
                         <div class="col-md-3 col-sm-5 pull-left">
                             <select name="vitesse" class="form-control search-select nav_vitesse" id="sel7">
-                                <option>Toutes</option>
+                                <option value="0">Toutes</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel8">Conso.</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="consommation" class="form-control search-select nav_consommation" id="sel8">
+                                <option value="0">Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class ="row">
+                <div class="col-md-3 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel9">Decibel</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="decibel" class="form-control search-select nav_decibel" id="sel9">
+                                <option value="0">Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 search-col pull-right">
                     <input type="submit" value="Rechercher" class="btn btn-warning btn-block pull-left">
                 </div>
             </div>
-    </div>
+
 
     </form>
     </div>

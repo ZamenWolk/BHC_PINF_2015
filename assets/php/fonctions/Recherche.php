@@ -107,6 +107,40 @@ class Recherche{
             }
             return $tab;
         }
+
+    /** rechercherVitesse
+     * @return array
+     * Recherche toutes les cat de décibel diponibles
+     */
+
+    public static function rechercherDecibel()
+    {
+        $sql="SELECT DISTINCT pneu_decibel FROM jspneus.pneu ORDER BY pneu_vitesse ASC";
+        $res = SQLSelect($sql, array());
+        $tab = array();
+
+        foreach($res as $row)
+        {
+            array_push($tab, $row["pneu_decibel"]);
+        }
+        return $tab;
+    }
+    /** rechercherConsommation
+     * @return array
+     * Recherche toutes les cat de consommation diponibles
+     */
+    public static function rechercherConsommation()
+    {
+        $sql="SELECT DISTINCT pneu_consommation FROM jspneus.pneu ORDER BY pneu_consommation ASC";
+        $res = SQLSelect($sql, array());
+        $tab = array();
+
+        foreach($res as $row)
+        {
+            array_push($tab, $row["pneu_consommation"]);
+        }
+        return $tab;
+    }
     /** rechercherSerie
      * @return array
      * Recherche toutes les series diponibles
@@ -140,45 +174,55 @@ class Recherche{
         return $tab;
     }
 
-    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$numeroPage, $itemParPage = 25,$order = 0)
+
+    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$consommation,$decibel,$numeroPage, $itemParPage = 25,$order = 0)
     {
         $sql = "SELECT * FROM jspneus.pneu WHERE pneu_valable=1";
         $param = array();
-        if($cat != "Toutes")
+        if($cat != 0)
         {
             $sql .= " AND pneu_categorie=:categorie";
             $param[":categorie"] = $cat;
         }
-        if($marque != "Toutes")
+        if($marque != 0)
         {
             $sql .= " AND pneu_marque=:marque";
             $param[":marque"] = $marque;
         }
 
-        if($largeur != "Toutes")
+        if($largeur != 0)
         {
             $sql .= " AND pneu_largeur=:largeur";
             $param[":largeur"] = $largeur;
         }
-        if($serie != "Toutes")
+        if($serie != 0)
         {
             $sql .= " AND pneu_serie=:serie";
             $param[":serie"] = $serie;
         }
-        if($jante != "Toutes")
+        if($jante != 0)
         {
             $sql .= " AND pneu_jante=:jante";
             $param[":jante"] = $jante;
         }
-        if($charge != "Toutes")
+        if($charge != 0)
         {
             $sql .= " AND pneu_charge=:charge";
             $param[":charge"] = $charge;
         }
-        if($vitesse != "Toutes")
+        if($vitesse != 0)
         {
             $sql .= " AND pneu_vitesse=:vitesse";
             $param[":vitesse"] = $vitesse;
+        }
+        if($consommation != 0){
+            $sql .= " AND pneu_consommation=:consommation";
+            $param[":consommation"] = $consommation;
+        }
+        if($decibel != 0)
+        {
+            $sql .= " AND pneu_decibel=:decibel";
+            $param[":decibel"] = $decibel;
         }
         $numeroPage = ($numeroPage - 1)*$itemParPage;
         switch($order) {
