@@ -22,7 +22,7 @@ $(document).ready(function() {
             	'	<div class="col-md-2 align"><u>Total</u></div>'+
             	'</div><hr>'+
             	'<div class="row item1" id="itemId1">'+
-            	'	<div class="col-md-1 align" id="imgItem1"><img src="assets/img/item1.jpg" height="60px" width="60px"/></div>'+
+            	'	<div class="col-md-1 align" id="imgItem1"><img src="../assets/img/item1.jpg" height="60px" width="60px"/></div>'+
             	'	<div class="col-md-2" id="infoItem1">Thor miniature - version plastique</div>'+
             	'	<div class="col-md-2 align" id="refItem1"">PN029438</div>'+
             	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="priceItem1">1.00</span><span class="spanStyleRight">€</span></div>'+
@@ -37,7 +37,7 @@ $(document).ready(function() {
             	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="totalPriceItem1">1.00</span><span class="spanStyleRight">€</span></div>'+
             	'</div><hr class="item1">'+
             	'<div class="row item2" id="itemId2">'+
-            	'	<div class="col-md-1 align" id="imgItem2"><img src="assets/img/item1.jpg" height="60px" width="60px"/></div>'+
+            	'	<div class="col-md-1 align" id="imgItem2"><img src="../assets/img/item1.jpg" height="60px" width="60px"/></div>'+
             	'	<div class="col-md-2" id="infoItem2">Thor miniature - version plomb</div>'+
             	'	<div class="col-md-2 align" id="refItem2"">PN029439</div>'+
             	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="priceItem2">2.50</span><span class="spanStyleRight">€</span></div>'+

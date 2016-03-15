@@ -111,7 +111,8 @@ include_once("header.php");
             </div>
             <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                 <div class="panel-body">
-                    <p>Les retours ne sont pas possibles.
+                    <p>Les retours sont possibles dans un délai de 14 jours après réception du produit  Les retours sont à
+                        effectuer dans leur état d'origine et complets (emballage, accessoires, notice). Pour plus d'informations veuillez vous référer aux conditions générales de vente. Veuillez contacter l'administrateur via le formulaire de contact pour le prévenir de vos retours éventuels.
                     </p>
                 </div>
             </div>
