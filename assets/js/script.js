@@ -1,81 +1,171 @@
 /**
  * Created by Arnaud on 04/03/2016.
  */
-
-function navResize() {
-    var win = $(this); //this = window
-    if (win.width() <= 800) {
-        $('#navHeader').removeClass("navbar-fixed-top").addClass("navbar-static-top");
-        $("body").css({"padding-top" : "0px"});
-        return true;
-    } else $("body").css({"padding-top" : "70px"});
-    return false;
-}
-
-function searchHide() {
-    var pathname = window.location.pathname; // Returns path only
-    var lastpath = pathname.substr(pathname.lastIndexOf("/")+1);
-    if(lastpath == "recherche") {
-        $("body").css({paddingTop: "+=183px"});
-        $(".searchForm").show();
-    } else $(".searchForm").hide();
-}
-
+ 
+var myItemId = 0;
+var maxId = 0;
+var i = 0;
+var modeTest = 1; // 1 = chargement de deux faux articles, 0 = chargement du vrai panier
 
 $(document).ready(function() {
-
-    navResize();
-    searchHide();
-
-    $('li.dropdown a').on('click', function (event) {
-        $(this).parent().toggleClass('open');
-    });
-
-    $("body").on('click', function (e) {
-        if (!$('li.dropdown').is(e.target)
-            && $('li.dropdown').has(e.target).length === 0
-            && $('.open').has(e.target).length === 0
-        ) {
-            $('li.dropdown').removeClass('open');
-        }
-    });
-
+	if (modeTest) {
+		
+		function gestionErreurs(err) {
+			$("#erreur").html('<h1>Erreur :&nbsp;' + err+ '</h1>');
+			return true;
+			}
+			
+		window.onerror = gestionErreurs;
+		
+		$("#myPanier").html('<h1 class="align">&nbsp;Mon panier</h1><hr>'+
+            	'<div class="row">'+ 
+            	'	<div class="col-md-1 align"><u>Produit</u></div>'+
+            	'	<div class="col-md-2 col-md-offset-2 align"><u>Référence</u></div>'+
+            	'	<div class="col-md-2 align"><u>Prix unitaire</u></div>'+
+            	'	<div class="col-md-3 align"><u>Quantité</u></div>'+
+            	'	<div class="col-md-2 align"><u>Total</u></div>'+
+            	'</div><hr>'+
+            	'<div class="row item1" id="itemId1">'+
+            	'	<div class="col-md-1 align" id="imgItem1"><img src="assets/img/item1.jpg" height="60px" width="60px"/></div>'+
+            	'	<div class="col-md-2" id="infoItem1">Thor miniature - version plastique</div>'+
+            	'	<div class="col-md-2 align" id="refItem1"">PN029438</div>'+
+            	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="priceItem1">1.00</span><span class="spanStyleRight">€</span></div>'+
+            	'	<div class="col-md-3 align">'+
+            	'		  <div class="input-group buttonGroup align">'+
+				'		      <input type="number" class="form-control qtField pull-right" placeholder="" min="0" id="qtItem1" value="1">'+
+				'		      <span class="input-group-btn">'+
+				'		      	<button class="btn btn-secondary glyphicon glyphicon-trash deleteButton" type="button" id="delItem1"></button>'+
+				'		      </span>'+
+				'		  </div>'+
+            	'	</div>'+
+            	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="totalPriceItem1">1.00</span><span class="spanStyleRight">€</span></div>'+
+            	'</div><hr class="item1">'+
+            	'<div class="row item2" id="itemId2">'+
+            	'	<div class="col-md-1 align" id="imgItem2"><img src="assets/img/item1.jpg" height="60px" width="60px"/></div>'+
+            	'	<div class="col-md-2" id="infoItem2">Thor miniature - version plomb</div>'+
+            	'	<div class="col-md-2 align" id="refItem2"">PN029439</div>'+
+            	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="priceItem2">2.50</span><span class="spanStyleRight">€</span></div>'+
+            	'	<div class="col-md-3 align">'+
+            	'		  <div class="input-group buttonGroup">'+
+				'		      <input type="number" class="form-control qtField pull-right" placeholder="" min="0" id="qtItem2" value="3">'+
+				'		      <span class="input-group-btn">'+
+				'		      	<button class="btn btn-secondary glyphicon glyphicon-trash deleteButton" type="button" id="delItem2"></button>'+
+				'		      </span>'+
+				'		  </div>'+
+            	'	</div>'+
+            	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="totalPriceItem2">7.50</span><span class="spanStyleRight">€</span></div>'+
+            	'</div><hr class="item2">');
+    	initId();
+    	isEmptyPanier();
+	}
+	
+	else {
+		isEmptyPanier();
+	}
+	//alert(maxId + "au debut");
     $("[data-toggle=popover]").popover({
         html: true,
         content: function() {
             return $('#popover-content').html();
         }
     });
-
-    $("body").on('click', function (e) {
-        $('[data-toggle="popover"]').each(function () {
-            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-                $(this).popover('hide');
-            }
-        });
+    
+    $("#confirmOrder").click(function() {
+    	alert("Commande confirmée !");
+    });
+    
+    $("#goAchat").click(function() {
+    	document.location.href="http://ent.ec-lille.fr"
     });
 
-    $("#searchLink").click(function() {
-        if($(".searchForm").is(":visible")) {
-            $(".searchForm").slideUp();
-            $("body").animate({paddingTop: "-=183px"});
-            $(".dropdown-menu").css({top: "+=12px"});
-        } else {
-            $(".searchForm").slideDown();
-            $("body").animate({paddingTop: "+=183px"});
-            $(".dropdown-menu").css({top: "-=12px"});
-        }
-    });
+	$(".qtField").change(function () {
+	    myItemIdTemp = $(this).attr('id').split("m");
+	    myItemId=myItemIdTemp[1];
+	    var qt = parseInt($("#qtItem".concat(myItemId)).val());
+	    $("#qtItem".concat(myItemId)).val(qt);
+		majPrix();
+		majPrixTotal();
+		majQt();
+	});
 
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').focus()
-    })
-
-    $(window).on('resize', function(){
-        if(!navResize()) {
-            $('#navHeader').removeClass("navbar-static-top").addClass("navbar-fixed-top");
-            $("body").css({"top" : "70px"});
-        }
-    });
-
+	$(".deleteButton").click(function () {
+		myItemIdTemp = $(this).attr('id').split("m");
+	    myItemId=".item".concat(myItemIdTemp[1]);
+	    $(myItemId).remove();
+	    majPrix();
+		majPrixTotal();
+		majQt();
+		isEmptyPanier();
+	});
+	
+	$("#throwPanier").click(function () {
+		$("#panierMenu").html(
+	    	'<h1>&nbsp;Mon panier</h1></br>'+
+	    	'<p>Votre panier est vide. Les articles que vous mettez dans votre panier sont affichés ici. Pour ajouter des articles dans votre panier, visitez le site et sélectionnez les articles qui vous intéressent.</p>');
+	    $("#blockValidate").remove();
+	});
+	
+	function majPrix() {
+		var price = $("#priceItem".concat(myItemId)).text();
+		var qt = $("#qtItem".concat(myItemId)).val();
+		//alert(totalPriceItemMaj + "///" + price * qt);
+		$("#totalPriceItem".concat(myItemId)).text((price * qt).toFixed(2));
+	}
+	
+	function majPrixTotal() {
+		var priceTot = 0;
+		var totalPriceItemId = "";
+		//alert(maxId+ "majPrixTotal");
+		for(var i = 1; i <= maxId; i++) {
+			if (parseFloat($("#totalPriceItem".concat(i)).text())) priceTot = priceTot + parseFloat($("#totalPriceItem".concat(i)).text());
+		}
+		$("#priceValidate").text(priceTot.toFixed(2));
+		$("#totalPrice").text(priceTot.toFixed(2));
+	}
+	
+	function majQt() {
+		var qtTot = 0;
+		var qtItemId = "";
+		for(var i = 1; i <= maxId; i++) {
+			qtItemId = "#qtItem".concat(i);
+			if (parseInt($(qtItemId).val())) qtTot = qtTot + parseInt($(qtItemId).val());
+			//alert(qtTot);
+		}
+		$("#amountValidate").text(qtTot);
+	}
+	
+	function initId() {
+    	i = 1;
+	    if ($("#itemId".concat(i)) == null) $("#myPanier").html(
+	    	'<h1>&nbsp;Mon panier</h1></br>'+
+	    	'<p>Votre panier est vide. Les articles que vous mettez dans votre panier sont affichés ici. Pour ajouter des articles dans votre panier, visitez le site et sélectionnez les articles qui vous intéressent.</p>'
+	    );
+	    
+	    else {
+	    	while($("#itemId".concat(i)).html() != null) {
+				maxId++;
+				i++;
+			}
+	    	majPrixTotal();
+			majQt();
+			//alert(maxId + "=initId");
+	    }
+    }
+    
+    function isEmptyPanier() {
+    		var vide = 1;
+    		var itemIdTest = "";
+    		
+			for(var i = 1; i <= maxId; i++) {
+				if ($("#itemId".concat(i)).html() != null) vide = 0;
+			}
+			
+			if (vide) {
+				$("#panierMenu").html(
+	    	'<h1>&nbsp;Mon panier</h1></br>'+
+	    	'<p>Votre panier est vide. Les articles que vous mettez dans votre panier sont affichés ici. Pour ajouter des articles dans votre panier, visitez le site et sélectionnez les articles qui vous intéressent.</p>');
+	    		$("#blockValidate").remove();
+			}
+    }
+    
 });
