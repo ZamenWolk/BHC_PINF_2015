@@ -14,7 +14,10 @@ if(file_exists ("../../../secret/catpnhbonpneus.csv")) {
     if (($handle = fopen("../../../secret/catpnhbonpneus.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
             $num = count($data);
-            echo "<p> $num champs à la ligne $row: <br /></p>\n";
+            echo "<p> $num champs à la ligne $row: </p><br />\n";
+            echo "<p>".$data[21]. " ";
+            $data[21] = str_replace(',', '', $data[21]);
+            echo $data[21]."</p><br />\n";
             $row++;/*
         for ($c=0; $c < $num; $c++) {
             echo "Champs".$c."  ".$data[$c] . "<br />\n";
