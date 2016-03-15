@@ -69,7 +69,7 @@ CREATE TABLE pneu(
         pneu_adherance          Char (1) ,
         pneu_categorieEtiquette Char (2) ,
         pneu_stock              Int NOT NULL ,
-        pneu_prix               Decimal (5,2) NOT NULL ,
+        pneu_prix               Decimal (7,2) NOT NULL ,
         pneu_dateAjoutBDD       Int NOT NULL ,
         pneu_derniereVersion    Bool NOT NULL DEFAULT 1,
         pneu_valable            Bool NOT NULL DEFAULT 1,
