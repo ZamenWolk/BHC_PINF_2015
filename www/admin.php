@@ -22,6 +22,7 @@ include_once("header.php");
 		<div class="separator">
 			<h4>Autre</h4>
 			<button id="seeStats" type="button" class="btn btn-default btn-lg btn-block">Accéder aux statistiques</button>
+			<button id="modifCoef" type="button" class="btn btn-default btn-lg btn-block">Modifier coefficient des prix</button>
 			<button id="goMenu" type="button" class="btn btn-default btn-lg btn-block">Retour au menu</button>
 		</div>
 	</div>

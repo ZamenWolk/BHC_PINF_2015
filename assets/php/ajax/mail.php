@@ -9,8 +9,8 @@ if (!isset($_POST["action"]))
     ajaxError("Action non définie");
 }
 $action = $_POST["action"];
-$headers = 'From: andoslash@hotmail.fr' . "\r\n" .
-     'Reply-To: andoslash@hotmail.fr' . "\r\n" .
+$headers = 'From: js-pneus@hotmail.fr' . "\r\n" .
+     'Reply-To: js-pneus@hotmail.fr' . "\r\n" .
      'X-Mailer: PHP/' . phpversion();
 
 $tab["message"]="Votre mail a bien été envoyé";
@@ -22,10 +22,11 @@ switch ($action)
 			ajaxError("Des informations sont manquantes");
 		}
 		else{
-			mail("andoslash@hotmail.fr", $_POST["subject"], $_POST["html"], $headers);
+			mail("martin.canivez@gmail.com", $_POST["subject"], $_POST["html"], $headers);
 			ajaxSuccess($tab);
 		}
-		
+		break;
+	case "newsletter_mail" : 
 		break;
 		
 	default:

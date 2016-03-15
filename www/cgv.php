@@ -157,9 +157,8 @@ include_once("header.php");
             </div>
             <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                 <div class="panel-body">
-                    <p>Le fait de valider votre commande implique pour vous l'obligation de payer le prix indiqué.
-                        Le réglement
-                        de vos achats peut s'effectuer en chèque bancaire ou par carte bancaire lors de la réception de vos
+                    <p>Le fait de valider votre commande implique pour vous l'obligation de payer le prix indiqué sauf en cas de rétractation ou retour.
+                        Le réglement de vos achats peut s'effectuer en chèque bancaire ou par carte bancaire lors de la réception de vos
                         produits,
                         directement chez vous ou chez <strong>JSPneus</strong>
 						Aucun paiement ne vous sera demandé sur le site <a href="http://www.js-pneus.fr">js-pneus.fr</a>.
