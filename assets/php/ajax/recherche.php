@@ -18,7 +18,7 @@ if(isset($_POST["action"])) {
             if($tab['nbrResult']  >0 )
                 $tab["resultat"] = $LesPneus;
             else
-                $tab["resultat"]="Pas de résultat";
+                $tab["resultat"]=null;
             //TODO: Rajouter un cas en cas d'echec d'accés à la bdd par exemple avec ajaxError
 
             ajaxSuccess($tab);
