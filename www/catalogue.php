@@ -6,24 +6,52 @@ include_once "../assets/php/fonctions/Recherche.php";
 // Refaire les étapes précédentes si on change  les critére ou si on change de page en actualisant les paramètres
 
 
-
-
-
-
-
-
-
-
 ?>
+    <nav>
+        <ul class="pager">
+            <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Page précédente</a></li>
+            <li class="next"><a href="#">Page suivante <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+    </nav>
+
     <div class="row">
-        <nav>
-            <ul class="pager">
-                <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Page précédente</a></li>
-                <li class="next"><a href="#">Page suivante <span aria-hidden="true">&rarr;</span></a></li>
-            </ul>
-        </nav>
+        <div class="well">
+            <h1 class="text-center">CATALOGUE</h1>
+            <div class="list-group" id="articles">
+                <div class="row">
+                    <div class="model_article">
+                    <div class="col-lg-10 list-group-item">
+                            <a href="#" id="item-link">
+                                <h3 class="list-group-item-heading"></h3>
+                                <div class="col-md-3">
+                                    <img src="../assets/img/pneu.jpg" class="annonce img-responsive"/>
+                                </div>
+                                <div class="col-md-5 list-group-desc">
+                                    <ul>
+                                        <li class="categorie">Catégorie:</li>
+                                        <li class="largeur">Largeur:</li>
+                                        <li class="serie">Serie:</li>
+                                        <li class="jante">Jante:</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3 text-center price-div">
+                                    <h2 id="price">Prix:</h2>
+                                </div>
+                            </a>
+                        </div>
+                    <div class="col-lg-2">
+                        <button type="button" class="btn btn-default pull-right shop-btn"><span
+                                class="fa fa-shopping-cart"
+                                aria-hidden="true"></span> Ajouter au panier
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
+
+    <!--<div class="row">
         <div class="col-md-offset-2 col-md-8">
             <div id="articles">
                 <br>
@@ -33,32 +61,33 @@ include_once "../assets/php/fonctions/Recherche.php";
                         <div class="col-md-2"><img src="../assets/img/pneu.jpg" class="annonce"/></div>
                         <div class="col-md-6">
                             <ul>
-                                <li class="categorie" >Catégorie:</li>
-                                <li class="largeur" >Largeur:</li>
+                                <li class="categorie">Catégorie:</li>
+                                <li class="largeur">Largeur:</li>
                                 <li class="serie">Serie:</li>
                                 <li class="jante">Jante:</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="panel-footer">Prix:<button class="panier"> Ajouter au panier <span class="glyphicon glyphicon-shopping-cart"></span></button></div>
+                    <div class="panel-footer">Prix:
+                        <button class="panier"> Ajouter au panier <span
+                                class="glyphicon glyphicon-shopping-cart"></span></button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <nav>
-            <ul class="pager">
-                <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Page précédente</a></li>
-                <li class="next"><a href="#">Page suivante <span aria-hidden="true">&rarr;</span></a></li>
-            </ul>
-        </nav>
-    </div>
+    </div>-->
+    <nav>
+        <ul class="pager">
+            <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Page précédente</a></li>
+            <li class="next"><a href="#">Page suivante <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+    </nav>
 
     <script>
-        $(document).ready(function(){
-            var numero_page=1;
-            var model= $(".model_article");
-            var div_articles=$("#articles");
+        $(document).ready(function () {
+            var numero_page = 1;
+            var model = $(".model_article");
+            var div_articles = $("#articles");
             $.post(
                 "../assets/php/ajax/recherche.php",
                 {
@@ -73,46 +102,48 @@ include_once "../assets/php/fonctions/Recherche.php";
                     numeroPage: numero_page,
                     order: null
                 },
-                function (data){
+                function (data) {
                     data = JSON.parse(data);
 
                     console.log(data);
-                    if(data["etat"]== "reussite") {
+                    if (data["etat"] == "reussite") {
                         if (data["nbrResult"] > 0) {
+                            $("#item-link").attr("href", "./produit?ref=" + data["resultat"][0]["pneu_ref"]);
                             for (var i = 0; i < data["nbrResult"]; i++) {
                                 var pneu_marque = data["resultat"][i]["pneu_marque"];
                                 var pneu_categorie = data["resultat"][i]["pneu_categorie"];
                                 var pneu_largeur = data["resultat"][i]["pneu_largeur"];
-                                var  pneu_serie = data["resultat"][i]["pneu_serie"];
-                                var  pneu_jante = data["resultat"][i]["pneu_jante"];
-                                var  pneu_charge = data["resultat"][i]["pneu_charge"];
-                                var  pneu_vitesse = data["resultat"][i]["pneu_vitesse"];
-                                var  pneu_description = data["resultat"][i]["pneu_description"];
-                                var  pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                                var pneu_serie = data["resultat"][i]["pneu_serie"];
+                                var pneu_jante = data["resultat"][i]["pneu_jante"];
+                                var pneu_charge = data["resultat"][i]["pneu_charge"];
+                                var pneu_vitesse = data["resultat"][i]["pneu_vitesse"];
+                                var pneu_description = data["resultat"][i]["pneu_description"];
+                                var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
                                 //console.log(marque);
                                 //console.log("Je boucle" + i);
-                                var  pneu_ref = data["resultat"][i]["pneu_ref"];
+                                var pneu_ref = data["resultat"][i]["pneu_ref"];
                                 var jQ = model.clone();
-                                jQ.removeClass("model_article").children(".panel-heading").html("<a href=\"./produit?ref="+pneu_ref+"\"><b>" + pneu_description + "</b></a>");
-                                var panelBody = jQ.children(".panel-body");
+                                $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
+                                var list = jQ.children(".list-group-item");
+                                var item = list.children("a");
+                                jQ.removeClass("model_article");
+                                item.children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
+                                var listBody = item.children(".list-group-desc");
                                 //console.log(panelBody);
-                                var div_panel = panelBody.children(".col-md-6");
-                                var ul_panel = div_panel.children("ul");
-                                ul_panel.children(".largeur").html("Largeur:  " +  pneu_largeur);
-                                ul_panel.children(".categorie").html("Categorie: " +  pneu_categorie);
-                                ul_panel.children(".serie").html("Serie:  " +  pneu_serie);
-                                ul_panel.children(".jante").html("Jante:  " +  pneu_jante);
+                                var ul_specs = listBody.children("ul");
+                                ul_specs.children(".largeur").html("Largeur:  " + pneu_largeur);
+                                ul_specs.children(".categorie").html("Categorie: " + pneu_categorie);
+                                ul_specs.children(".serie").html("Serie:  " + pneu_serie);
+                                ul_specs.children(".jante").html("Jante:  " + pneu_jante);
 
-                                jQ.children(".panel-footer").html("Prix:" +pneu_prix+" € <button value=\""+ pneu_ref+"\" class='panier'> Ajouter au panier <span class=\"glyphicon glyphicon-shopping-cart\"> </button>"
-                                );
-
+                                var priceDiv = item.children(".price-div");
+                                priceDiv.children("#price").html("Prix : " + pneu_prix + " € ");
 
                                 div_articles.append(jQ)
                             }
                             model.hide();
                         }
-                        else
-                        {
+                        else {
                             model.hide();
                             div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneus correspondant à vos critères de recherches.</h2>");
                         }
@@ -121,13 +152,13 @@ include_once "../assets/php/fonctions/Recherche.php";
 
                     /* Gestion des boutons suivant et précédent*/
                     var prev = $(".previous");
-                    var activePrev =false;
+                    var activePrev = false;
                     var suiv = $(".next");
-                    var activeNext =true;
+                    var activeNext = true;
                     prev.addClass("disabled");
 
-                    prev.click(function(){
-                        if(activePrev){
+                    prev.click(function () {
+                        if (activePrev) {
                             numero_page--;
                             $.post(
                                 "../assets/php/ajax/recherche.php",
@@ -145,54 +176,48 @@ include_once "../assets/php/fonctions/Recherche.php";
                                 },
                                 function (data) {
                                     data = JSON.parse(data);
-                                    if(numero_page == 1 )
-                                    {
+                                    if (numero_page == 1) {
                                         prev.addClass("disabled");
                                         activePrev = false;
                                     }
-                                    if(data["nbrResult"]==25)
-                                    {
+                                    if (data["nbrResult"] == 25) {
                                         suiv.removeClass("disabled");
                                         activeNext = true;
                                     }
                                     div_articles.html("");
-                                    if(data["etat"]== "reussite") {
+                                    if (data["etat"] == "reussite") {
                                         if (data["nbrResult"] > 0) {
                                             for (var i = 0; i < data["nbrResult"]; i++) {
                                                 var pneu_marque = data["resultat"][i]["pneu_marque"];
                                                 var pneu_categorie = data["resultat"][i]["pneu_categorie"];
                                                 var pneu_largeur = data["resultat"][i]["pneu_largeur"];
-                                                var  pneu_serie = data["resultat"][i]["pneu_serie"];
-                                                var  pneu_jante = data["resultat"][i]["pneu_jante"];
-                                                var  pneu_charge = data["resultat"][i]["pneu_charge"];
-                                                var  pneu_vitesse = data["resultat"][i]["pneu_vitesse"];
-                                                var  pneu_description = data["resultat"][i]["pneu_description"];
-                                                var  pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                                                var pneu_serie = data["resultat"][i]["pneu_serie"];
+                                                var pneu_jante = data["resultat"][i]["pneu_jante"];
+                                                var pneu_charge = data["resultat"][i]["pneu_charge"];
+                                                var pneu_vitesse = data["resultat"][i]["pneu_vitesse"];
+                                                var pneu_description = data["resultat"][i]["pneu_description"];
+                                                var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
                                                 //console.log(marque);
                                                 //console.log("Je boucle" + i);
                                                 var jQ = model.clone();
-                                                jQ.removeClass("model_article").children(".panel-heading").html("<b>" + pneu_marque + "</b>   " +  pneu_description);
-                                                var panelBody = jQ.children(".panel-body");
+                                                $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
+                                                jQ.removeClass("model_article").children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
+                                                var listBody = jQ.children(".list-group-desc");
                                                 //console.log(panelBody);
-                                                var div_panel = panelBody.children(".col-md-6");
-                                                var ul_panel = div_panel.children("ul");
-                                                ul_panel.children(".largeur").html("Largeur:  " +  pneu_largeur);
-                                                ul_panel.children(".categorie").html("Categorie: " +  pneu_categorie);
-                                                ul_panel.children(".serie").html("Serie:  " +  pneu_serie);
-                                                ul_panel.children(".jante").html("Jante:  " +  pneu_jante);
-                                                var  pneu_ref = data["resultat"][i]["pneu_ref"];
+                                                var ul_specs = listBody.children("ul");
+                                                ul_specs.children(".largeur").html("Largeur:  " + pneu_largeur);
+                                                ul_specs.children(".categorie").html("Categorie: " + pneu_categorie);
+                                                ul_specs.children(".serie").html("Serie:  " + pneu_serie);
+                                                ul_specs.children(".jante").html("Jante:  " + pneu_jante);
 
-                                                jQ.children(".panel-footer").html("Prix:" +pneu_prix+" € <button value=\""+ pneu_ref+"\" class='panier'> Ajouter au panier <span class=\"glyphicon glyphicon-shopping-cart\"> </button>"
-                                                );
-
+                                                jQ.children("#price").html("Prix:" + pneu_prix + " € ");
 
                                                 div_articles.append(jQ);
                                                 jQ.show();
                                             }
                                             model.hide();
                                         }
-                                        else
-                                        {
+                                        else {
                                             model.hide();
                                             div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneus correspondant à vos critères de recherches.</h2>");
                                         }
@@ -201,8 +226,8 @@ include_once "../assets/php/fonctions/Recherche.php";
                                 });
                         }
                     });
-                    suiv.click(function(){
-                        if(activeNext) {
+                    suiv.click(function () {
+                        if (activeNext) {
                             numero_page++;
                             activePrev = true;
                             $.post(
@@ -245,22 +270,19 @@ include_once "../assets/php/fonctions/Recherche.php";
                                                 //console.log(marque);
                                                 //console.log("Je boucle" + i);
                                                 var jQ = model.clone();
-                                                jQ.removeClass("model_article").children(".panel-heading").html("<b>" + pneu_marque + "</b>   " + pneu_description);
-                                                var panelBody = jQ.children(".panel-body");
+                                                $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
+                                                jQ.removeClass("model_article").children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
+                                                var listBody = jQ.children(".list-group-desc");
                                                 //console.log(panelBody);
-                                                var div_panel = panelBody.children(".col-md-6");
-                                                var ul_panel = div_panel.children("ul");
-                                                ul_panel.children(".largeur").html("Largeur:  " + pneu_largeur);
-                                                ul_panel.children(".categorie").html("Categorie: " + pneu_categorie);
-                                                ul_panel.children(".serie").html("Serie:  " + pneu_serie);
-                                                ul_panel.children(".jante").html("Jante:  " + pneu_jante);
-                                                var pneu_ref = data["resultat"][i]["pneu_ref"];
+                                                var ul_specs = listBody.children("ul");
+                                                ul_specs.children(".largeur").html("Largeur:  " + pneu_largeur);
+                                                ul_specs.children(".categorie").html("Categorie: " + pneu_categorie);
+                                                ul_specs.children(".serie").html("Serie:  " + pneu_serie);
+                                                ul_specs.children(".jante").html("Jante:  " + pneu_jante);
 
-                                                jQ.children(".panel-footer").html("Prix:" + pneu_prix + " € <button value=\"" + pneu_ref + "\" class='panier'> Ajouter au panier <span class=\"glyphicon glyphicon-shopping-cart\"> </button>"
-                                                );
+                                                jQ.children("#price").html("Prix:" + pneu_prix + " € ");
 
-
-                                                div_articles.append(jQ);
+                                                div_articles.append(jQ)
                                                 jQ.show();
                                             }
                                             model.hide();

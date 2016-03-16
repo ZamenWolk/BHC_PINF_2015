@@ -3,32 +3,32 @@ html, body {
 }
 
 body {
-    background: url(../img/footer_lodyas.png) repeat center center fixed; /* Background pattern from subtlepatterns.com */
+    background: rgb(73,55,89);
     padding-top: 70px;
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes font-change {
-    from {color: rgba(189, 195, 199, 1.0);}
-    to {color: rgba(243, 156, 18, 1.0);}
+    from {color: #f39c12;}
+    to {color: rgba(52, 73, 94,1.0);}
 }
 
 /* Standard syntax */
 @keyframes font-change {
-    from {color: rgba(189, 195, 199, 1.0);}
-    to {color: rgba(243, 156, 18, 1.0);}
+    from {color: #f39c12;}
+    to {color: rgba(52, 73, 94,1.0);}
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes arrow-change {
-    from {color: rgba(44, 62, 80, 1);}
-    to {color: rgba(243, 156, 18, 1.0);}
+    from {color: rgba(52, 73, 94,1.0);}
+    to {color: #f39c12;}
 }
 
 /* Standard syntax */
 @keyframes arrow-change {
-    from {color: rgba(44, 62, 80, 1);}
-    to {color: rgba(243, 156, 18, 1.0);}
+    from {color: rgba(52, 73, 94,1.0);}
+    to {color: #f39c12;}
 }
 
 h1 {
@@ -37,6 +37,10 @@ h1 {
 
 h3 {
     margin-top: 10px;
+}
+
+.col-md-6 > h3 {
+    text-align: center;
 }
 
 .warper {
@@ -63,10 +67,6 @@ p.centered {
 #logo {
     max-height: 50px;
     max-width: 100px;
-}
-
-#recherche {
-    color: grey;
 }
 
 .annonce {
@@ -112,7 +112,7 @@ p.centered {
 .nav-pills > li > a:hover,
 .nav-pills > li > a:focus {
     background-color: transparent;
-    color: rgba(243, 156, 18, 1.0);
+    color: #f39c12;
     box-shadow: none;
     border: none;
     text-decoration: none;
@@ -126,19 +126,19 @@ p.centered {
 
 .dropdown-menu {
     top: 67px;
-    background-color: rgba(44, 62, 80, 1);
+    background-color: rgba(236, 240, 241, 1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .dropdown-menu > li > a {
     font-size: 120%;
-    color: rgba(189, 195, 199, 1.0);
+    color: rgba(52, 73, 94,1.0);
 }
 
 .dropdown-menu > li > a.btn-order {
     font-size: 120%;
-    background-color: rgba(243, 156, 18, 1.0);
-    color: rgba(44, 62, 80, 1);
+    background-color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     box-shadow: none;
     border: none;
     text-decoration: none;
@@ -146,7 +146,7 @@ p.centered {
 
 .dropdown-header {
     font-size: 120%;
-    color: rgba(189, 195, 199, 1.0);
+    color: rgba(52, 73, 94,1.0);
 }
 
 #mailLogin, #passeLogin {
@@ -166,7 +166,7 @@ p.centered {
 }
 
 .popover.bottom .arrow:after {
-    border-bottom-color: rgba(243, 156, 18, 1.0);
+    border-bottom-color: #f39c12;
 }
 
 .navbar-collapse {
@@ -176,7 +176,8 @@ p.centered {
 }
 
 .navbar-default {
-    background-color: rgba(44, 62, 80, 1);
+    border-top: none;
+    background-color: rgba(236, 240, 241, 1);
 }
 
 .navbar-brand {
@@ -185,8 +186,7 @@ p.centered {
 
 #headNavbar > ul > li > a {
     font-size: 150%;
-    color: rgba(189, 195, 199, 1.0);
-    padding-top: 21px;
+    color: #f39c12;
 }
 
 .push {
@@ -195,7 +195,7 @@ p.centered {
 
 .footer {
     height: 55px;
-    background-color: rgba(44, 62, 80, 1);
+    background-color: rgba(236, 240, 241, 1);
     border-radius: 0;
     margin-bottom: 0;
     border: 0;
@@ -207,7 +207,7 @@ p.centered {
 
 .nav-pills > li > a {
     font-size: 120%;
-    color: rgba(189, 195, 199, 1.0);
+    color: #f39c12;
     vertical-align: center;
     padding: 15px;
 }
@@ -217,9 +217,11 @@ p.centered {
 }
 
 .searchWell {
-    background-color: rgba(189, 195, 199, 1.0);
-    border: 10px solid rgba(44, 62, 80, 1);
+    background-color: rgba(236, 240, 241,1.0);
+    border: 10px rgba(236, 240, 241, 0.3);
     border-top: none;
+    border-bottom: none;
+    color: #f39c12;
 }
 
 .searchForm {
@@ -284,19 +286,19 @@ ul.dropdown-cart li .item-right button {
 
 .popover,
 .modal-content {
-    background-color: rgba(44, 62, 80, 1);
+    background-color: rgba(236, 240, 241,1.0);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .btn-connect,
 .btn-subscribe {
-    background-color: rgba(243, 156, 18, 1.0);
+    background-color: #f39c12;
     font-size: 120%;
     margin-bottom: 5px;
 }
 
 .btn-warning {
-    background-color: rgba(243, 156, 18, 1.0);
+    background-color: #f39c12;
     font-size: 120%;
 }
 
@@ -308,13 +310,13 @@ ul.dropdown-cart li .item-right button {
 .popover-title,
 .modal-header,
 .modal-title {
-    background-color: rgba(243, 156, 18, 1.0);
+    background-color: #f39c12;
     font-size: 120%;
     border-bottom: none;
 }
 
 .modal-body {
-    color: rgba(243, 156, 18, 1.0);
+    color: #f39c12;
     font-size: 120%;
 }
 
@@ -347,26 +349,25 @@ ul.dropdown-cart li .item-right button {
     height: auto;
 }
 
-.carousel-control.left,
-.carousel-control.right {
+.main-car.carousel-control.left,
+.main-car.carousel-control.right {
     background-image: none;
 }
 
-.carousel-control {
+.main-car.carousel-control {
     position: absolute;
     top: 45%;
     bottom: 0;
-    left: 0;
     width: 15%;
-    color: rgba(44, 62, 80, 1);
+    color: rgba(52, 73, 94,1.0);
     text-align: center;
     opacity: 1;
     text-shadow: none;
 }
 
-.carousel-control:hover,
-.carousel-control:focus {
-    color: rgba(243, 156, 18, 1.0);
+.main-car.carousel-control:hover,
+.main-car.carousel-control:focus {
+    color: #f39c12;
     -webkit-animation-name: arrow-change; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
     animation-name: arrow-change;
@@ -375,30 +376,30 @@ ul.dropdown-cart li .item-right button {
     animation-fill-mode: forwards;
 }
 
-.carousel-control:after {
-    color: rgba(44, 62, 80, 1);
+.main-car.carousel-control:after {
+    color: rgba(52, 73, 94,1.0);
 }
 
-.carousel-indicators {
+.main-car.carousel-indicators {
     bottom: -5px;
 }
 
-.carousel-indicators li {
+.main-car.carousel-indicators li {
     display: inline-block;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid rgba(243, 156, 18, 1.0);
+    border: 1px solid #f39c12;
     border-radius: 50%;
 }
 
-.carousel-indicators .active {
+.main-car.carousel-indicators .active {
     width: 12px;
     height: 12px;
     margin: 0;
-    background-color: rgba(243, 156, 18, 1.0);
+    background-color: #f39c12;
 }
 
-.carousel-caption {
+.main-car.carousel-caption {
     height: auto;
     position: absolute;
     right: 0;
@@ -407,25 +408,80 @@ ul.dropdown-cart li .item-right button {
     z-index: 10;
     padding-top: 20px;
     padding-bottom: 20px;
-    color: rgba(189, 195, 199, 1.0);
+    color: #f39c12;
     text-align: center;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(236, 240, 241, 0.3);
     font-size: 130%;
 }
 
-.carousel-caption > h2 {
+.main-car.carousel-caption > h2 {
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
-    color: rgba(189, 195, 199, 1.0);
-    text-shadow:
-            3px 3px 0 #000,
-            -1px -1px 0 #000,
-            1px -1px 0 #000,
-            -1px 1px 0 #000,
-            1px 1px 0 #000;
+    color: #f39c12;
     font-size: 200%;
 }
+
+.prod.carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+
+.prod.carousel-control {
+    position: absolute;
+    top: 30%;
+    bottom: 0;
+    width: 25%;
+    color: rgba(52, 73, 94,1.0);
+    text-align: center;
+    opacity: 1;
+    text-shadow: none;
+}
+
+.prod.carousel-control:hover,
+.prod.carousel-control:focus {
+    color: #f39c12;
+    -webkit-animation-name: arrow-change; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
+    animation-name: arrow-change;
+    animation-duration: 0.6s;
+    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: forwards;
+}
+
+.prod.carousel-control.left,
+.prod.carousel-control.right {
+    background-image: none;
+}
+
+.prod.carousel-control.right {
+    right: -130px;
+}
+
+.prod.carousel-control.left {
+    left: -130px;
+}
+
+.prod.carousel-indicators {
+    right: 50%;
+    top: auto;
+}
+
+.prod.carousel-indicators li {
+    display: inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #f39c12;
+    border-radius: 50%;
+}
+
+.prod.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #f39c12;
+}
+
 
 .img-col {
     padding: 15px;
@@ -441,7 +497,7 @@ ul.dropdown-cart li .item-right button {
     position: relative;
     text-align: center;
     cursor: default;
-    background: rgba(44, 62, 80, 0.7);
+    background: rgba(236, 240, 241, 1);
 }
 
 .hovereffect .overlay {
@@ -479,13 +535,7 @@ ul.dropdown-cart li .item-right button {
     text-transform: uppercase;
     text-align: center;
     margin: 0;
-    color: rgba(189, 195, 199, 1.0);
-    text-shadow:
-            3px 3px 0 #000,
-            -1px -1px 0 #000,
-            1px -1px 0 #000,
-            -1px 1px 0 #000,
-            1px 1px 0 #000;
+    color: #f39c12;
     position: absolute;
     width: auto;
     top: 50%;
@@ -498,7 +548,7 @@ ul.dropdown-cart li .item-right button {
     -webkit-animation-name: font-change; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
     animation-name: font-change;
-    animation-duration: 0.6s;
+    animation-duration: 0.4s;
     -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
     animation-fill-mode: forwards;
 }
@@ -520,6 +570,19 @@ ul.dropdown-cart li .item-right button {
     padding-top: 5px;
 }
 
+a.list-group-item {
+    height:auto;
+    min-height:220px;
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+
+.fa-ul {
+    font-size: 150%;
+    text-align: center;
+    padding-bottom: 10px;
+}
 #titleValidate {
 	font-size:175%;	
 	text-align:center;
