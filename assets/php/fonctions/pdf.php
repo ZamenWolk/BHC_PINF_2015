@@ -707,8 +707,20 @@ function temporaire( $texte )
 }
 ?>
 <?php
+/*include_once("../fonctions/AJAX.php");
+
+session_start();
 
 
+if (!isset($_POST["action"]))
+{
+    ajaxError("Action non définie");
+}
+$action = $_POST["action"];
+switch($action)
+{
+	case "gen_commande" : 
+	*/
 $pdf = new PDF_Invoice( 'P', 'mm', 'A4' );
 $pdf->AddPage();
 $pdf->addSociete( "JSPneus",
@@ -717,11 +729,11 @@ $pdf->addSociete( "JSPneus",
 $pdf->fact_dev( "Devis ", "TEMPO" );
 $pdf->temporaire( "Devis de commande" );
 $pdf->addDate(date('d/m/y')); 
-$pdf->addClient("Le client X");
+$pdf->addClient(/*$_POST["le_client_nom"] . $_POST["le_client_prenom"]*/ "Pierre");
 $pdf->addPageNumber("1");
 $pdf->addClientAdresse("Mon cul sur la commode du PINF");
 //$pdf->addReglement("Chèque à réception de facture"); si on prévoit un type de réglement
-$pdf->addEcheance(mktime(date("d")+14  , date("m"), date("Y"))); //A revoir avec de la doc de MKTIme	
+$pdf->addEcheance(date('Y-m-d', strtotime("+7 day")));
 $pdf->addNumTVA("FR888777666");
 $pdf->addReference("Devis X du ".date('d/m/y') );
 $cols=array( "REFERENCE"    => 23,
@@ -742,9 +754,7 @@ $pdf->addLineFormat($cols);
 
 $y    = 109;
 $line = array( "REFERENCE"    => "REF1",
-               "DESIGNATION"  => "GOOD YEAR WRANGLER\n" .
-                                 "AT/R FP M+S\n" .
-                                 "245/65 R17 107T",
+               "DESIGNATION"  => wordwrap("Good year Cargo G26 8 245/6 R16 110/108R", 16, "\n", true),
                "QUANTITE"     => "1",
                "P.U. HT"      => "103.29",
                "MONTANT H.T." => "103.29",
@@ -753,9 +763,7 @@ $size = $pdf->addLine( $y, $line );
 $y   += $size + 2;
 
 $line = array( "REFERENCE"    => "REF2",
-               "DESIGNATION"  => "GOOD YEAR CARGO\n" .
-                                 "G26 8\n" .
-                                 "245/65 R16 110/108R",
+               "DESIGNATION"  => wordwrap("Good year Cargo G26 8 245/6 R16 110/108R", 8, "\n",true),
                "QUANTITE"     => "1",
                "P.U. HT"      => "83.21",
                "MONTANT H.T." => "83.21",
@@ -786,4 +794,9 @@ $params  = array( "RemiseGlobale" => 1,
 $pdf->addTVAs( $params, $tab_tva, $tot_prods);
 $pdf->addCadreEurosFrancs();
 $pdf->Output();
+/*break;
+default : 
+	echo("ça marche pas");
+}*/
+
 ?>

@@ -39,6 +39,23 @@ include_once("header.php");
 	</div>
 </div>
 
+<script>
+
+$(document).ready(function(){
+	$("#createOrder").click(function(){
+        $.post('../assets/php/fonctions/pdf.php',
+        {action:"gen_commande",
+		le_client_nom : "George",
+		le_client_prenom : "deLaJungle",
+		
+		},
+		function(data){
+			console.log(data);
+		});
+		
+        });
+    });
+</script>
 <?php
 include_once("footer.php");
 ?>
