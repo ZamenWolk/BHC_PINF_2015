@@ -79,22 +79,11 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                     $(".nav_consommation").append(option8);
                 }
             });
-<<<<<<< HEAD
-
-            $(document).on("click", "#seConnecter", function () {
-                var i = 0;
-                var pass = $('#mailLogin').val();
-                var mail = $('#passeLogin').val();
-                console.log(pass + mail);
-                i++;
-
-            });
 
             /*$(document).on("keyup","#mailLogin",function(e){
              var mailLogin=$("#mailLogin");
              mailLogin.val(mailLogin.val()+e);
              })*/
-=======
             var mailLogin;
             var passeLogin;
             $(document).on("change","#mailLogin", function(e){
@@ -112,10 +101,6 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 console.log(mailLogin + " "+passeLogin);
 
             });
-
-
-
->>>>>>> origin/master
 
 
         });
@@ -174,11 +159,10 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                             <input id="passeLogin" type="password" class="form-control" name="password"
                                    placeholder="Mot de passe">
                         </div>
-                        <hr>
                         <button type="button" id="seConnecter" class="btn btn-block btn-connect">Se connecter</button>
                     </form>
-                    <div class="subLink">
-                        <a data-toggle="modal" data-target="#myModal">Pas encore inscrit ?</a>
+                    <div class="login-footer">
+                        <a data-toggle="modal" data-target="#myModal" id="subLink">Pas encore inscrit ?</a>
                         <br>
                         <a href="#" id="forgotten">Mot de passe oublié ?</a>
                     </div>

@@ -95,141 +95,30 @@ include_once("header.php");
 
             <!-- Carousel items -->
             <div class="prod carousel-inner">
-
                 <div class="prod item active">
-                    <div class="row">
-                        <div class="col-md-3">
+                    <div class="row" id="home-articles">
+                        <div class="col-md-3 modele">
                             <a href="#" class="thumbnail">
                                 <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
                                 <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--.row-->
-                </div><!--.item-->
-
-                <div class="prod item">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!--.row-->
-                </div><!--.item-->
-
-                <div class="prod item">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
+                                    <h5></h5>
+                                    <p>Prix: </p>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
-
             </div>
             <a data-slide="prev" href="#prodCar" class="prod left carousel-control">
                 <span class="fa fa-angle-left fa-3x" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span></a>
+                <span class="sr-only previous">Previous</span></a>
             <a data-slide="next" href="#prodCar" class="prod right carousel-control">
                 <span class="fa fa-angle-right fa-3x" aria-hidden="true"></span>
-                <span class="sr-only">Next</span></a>
+                <span class="sr-only next">Next</span></a>
         </div>
-
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-6">
         <h3>Pneus par type de véhicule</h3>
@@ -249,6 +138,133 @@ include_once("header.php");
     </div>
 </div>
 <div class="push"></div>
+
+<script>
+    $(document).ready(function () {
+        var numero_page = 1;
+        var model = $(".modele");
+        var div_articles = $("#home-articles");
+        $.post(
+            "../assets/php/ajax/recherche.php",
+            {
+                action: "chargement",
+                categorie: 0,
+                marque: 0,
+                largeur: 0,
+                serie: 0,
+                jante: 0,
+                charge: 0,
+                vitesse: 0,
+                consommation: 0,
+                decibel: 0,
+                numeroPage: numero_page,
+                itempParPage: 4,
+                order: 10
+            },
+            function (data) {
+                data = JSON.parse(data);
+
+                console.log(data);
+                if (data["etat"] == "reussite") {
+                    if (data["nbrResult"] > 0) {
+                        for (var i = 0; i < data["nbrResult"]; i++) {
+                            var pneu_description = data["resultat"][i]["pneu_description"];
+                            var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                            var jQ = model.clone();
+                            jQ.show();
+                            var link = jQ.children(".thumbnail");
+                            var caption = link.children(".caption");
+                            jQ.removeClass("model_article");
+                            $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
+                            caption.children("h5").html(pneu_description);
+                            caption.children("p").html("Prix : " + pneu_prix + " € ");
+                            div_articles.append(jQ);
+                        }
+                        model.hide();
+                    }
+                    else {
+                        model.hide();
+                    }
+                }
+                var prev = $(".previous");
+                var activePrev = false;
+                var suiv = $(".next");
+                var activeNext = true;
+                prev.click(function () {
+                    $.post(
+                        "../assets/php/ajax/recherche.php",
+                        {
+                            action: "chargement",
+                            categorie: 0,
+                            marque: 0,
+                            largeur: 0,
+                            serie: 0,
+                            jante: 0,
+                            charge: 0,
+                            vitesse: 0,
+                            consommation: 0,
+                            decibel: 0,
+                            numeroPage: numero_page,
+                            itempParPage: 4,
+                            order: 10
+                        }, function (data) {
+                            if (activePrev) {
+                                if (data["etat"] == "reussite") {
+                                    if (data["nbrResult"] > 0) {
+                                        for (var i = 0; i < data["nbrResult"]; i++) {
+                                            var pneu_description = data["resultat"][i]["pneu_description"];
+                                            var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                                            var jQ = model.clone();
+                                            jQ.show();
+                                            var link = jQ.children(".thumbnail");
+                                            var caption = link.children(".caption");
+                                            jQ.removeClass("model_article");
+                                            $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
+                                            caption.children("h5").html(pneu_description);
+                                            caption.children("p").html("Prix : " + pneu_prix + " € ");
+                                            div_articles.append(jQ);
+                                        }
+                                        model.hide();
+                                    }
+                                    else {
+                                        model.hide();
+                                    }
+                                }
+                            }
+                        }
+                    );
+                });
+
+                suiv.click(function () {
+                    if (activePrev) {
+                        if (data["etat"] == "reussite") {
+                            if (data["nbrResult"] > 0) {
+                                for (var i = 0; i < data["nbrResult"]; i++) {
+                                    var pneu_description = data["resultat"][i]["pneu_description"];
+                                    var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                                    var jQ = model.clone();
+                                    jQ.show();
+                                    var link = jQ.children(".thumbnail");
+                                    var caption = link.children(".caption");
+                                    jQ.removeClass("model_article");
+                                    $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
+                                    caption.children("h5").html(pneu_description);
+                                    caption.children("p").html("Prix : " + pneu_prix + " € ");
+                                    div_articles.append(jQ);
+                                }
+                                model.hide();
+                            }
+                            else {
+                                model.hide();
+                            }
+                        }
+                    }
+                });
+            }
+        );
+    });
+</script>
+
 
 <?php
 include_once("footer.php");

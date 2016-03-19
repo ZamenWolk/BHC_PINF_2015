@@ -159,7 +159,7 @@ p.centered {
     margin-bottom: 2px;
 }
 
-.subLink {
+.login-footer {
     cursor: pointer;
     text-align: center;
 }
@@ -303,11 +303,9 @@ ul.dropdown-cart li .item-right button {
 
 .btn-warning {
     background-color: #f39c12;
-    font-size: 120%;
 }
 
 .well-lg {
-    background-color: rgb(153, 159, 163);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -385,7 +383,7 @@ ul.dropdown-cart li .item-right button {
 }
 
 .main-car.carousel-indicators {
-    bottom: -5px;
+    bottom: -30px;
 }
 
 .main-car.carousel-indicators li {
@@ -410,8 +408,7 @@ ul.dropdown-cart li .item-right button {
     bottom: 0;
     left: 0;
     z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 0;
     color: #f39c12;
     text-align: center;
     background: rgba(236, 240, 241, 0.3);

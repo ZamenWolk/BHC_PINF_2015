@@ -3,15 +3,10 @@ include_once("header.php");
 ?>
     <div class=" well well-lg">
         <h1> Foire Aux Questions (FAQ) </h1>
-        </br>
-        <p class="centered">
-            Sur cette page vous trouverez des réponses la majorité des questions que vous pourriez vous poser lors de votre visite que le site <a href="http://www.js-pneus.fr">js-pneus.fr</a>. </br>
-			Pour des informations complémentaires n'hésitez pas à nous contacter via la section prévue à cette effet.
-        </p>
     </div>
 	<div class="row"> 
 		<div class="col-lg-12">
-			<h2 style="color:white">Articles et commandes</h2>
+			<h2>Articles et commandes</h2>
 		</div>
 	</div>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -30,9 +25,9 @@ include_once("header.php");
                 <div class="panel-body">
 
                     <p>A tout moment vous pouvez accéder à l'option de recherche de produit depuis la barre de navigation située en haut du site sous le nom "Recherche".
-					</br>En cliquant sur cette option, une barre de filtre de recherche s'ouvrira et vous permettra de choisir différents critères pour vos pneus.
-					</br>Vous pouvez également passer par le biais du catalogue des pneus pour avoir une vision plus globale pour votre recherche.
-					</br>Pour ce faire cliquez sur "Catalogue de pneus" dans la barre de navigation, vous aurez ainsi le choix parmis les différentes catégories. En cliquant sur l'une d'entre elles, vous serez redirigé vers le catalogue de la catégorie en question.
+					<br/>En cliquant sur cette option, une barre de filtre de recherche s'ouvrira et vous permettra de choisir différents critères pour vos pneus.
+					<br/>Vous pouvez également passer par le biais du catalogue des pneus pour avoir une vision plus globale pour votre recherche.
+					<br/>Pour ce faire cliquez sur "Catalogue de pneus" dans la barre de navigation, vous aurez ainsi le choix parmis les différentes catégories. En cliquant sur l'une d'entre elles, vous serez redirigé vers le catalogue de la catégorie en question.
                     </p>
                 </div>
             </div>
@@ -119,7 +114,7 @@ include_once("header.php");
         </div>
 
 		
-		<h2 style="color:white">Livraison</h2>
+		<h2>Livraison</h2>
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingSix">
 
@@ -158,7 +153,7 @@ include_once("header.php");
             </div>
         </div>
 
-		<h2 style="color:white">Votre compte</h2>
+		<h2>Votre compte</h2>
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingEight">
 

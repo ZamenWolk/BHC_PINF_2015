@@ -93,6 +93,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                     consommation: 0,
                     decibel: 0,
                     numeroPage: numero_page,
+                    itemParPage: 10,
                     order: 10
                 },
                 function (data) {
@@ -168,6 +169,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                                     consommation: 0,
                                     decibel: 0,
                                     numeroPage: numero_page,
+                                    itemParPage: 10,
                                     order: 10
                                 },
                                 function (data) {
@@ -176,7 +178,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                                         prev.addClass("disabled");
                                         activePrev = false;
                                     }
-                                    if (data["nbrResult"] == 25) {
+                                    if (data["nbrResult"] == data["resultat"][0]["itemParPage"]) {
                                         suiv.removeClass("disabled");
                                         activeNext = true;
                                     }
@@ -245,6 +247,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                                     consommation: 0,
                                     decibel: 0,
                                     numeroPage: numero_page,
+                                    itemParPage: 10,
                                     order: 10
                                 },
                                 function (data) {
@@ -253,7 +256,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                                         prev.removeClass("disabled");
                                         activePrev = true;
                                     }
-                                    if (data["nbrResult"] < 25) {
+                                    if (data["nbrResult"] < data["resultat"][0]["itemParPage"]) {
                                         suiv.addClass("disabled");
                                         activeNext = false;
                                     }
