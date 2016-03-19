@@ -179,47 +179,47 @@ class Recherche{
     {
         $sql = "SELECT * FROM jspneus.pneu WHERE pneu_valable=1";
         $param = array();
-        if($cat != 0)
+        if($cat != "0")
         {
             $sql .= " AND pneu_categorie=:categorie";
             $param[":categorie"] = $cat;
         }
-        if($marque != 0)
+        if($marque != "0")
         {
             $sql .= " AND pneu_marque=:marque";
             $param[":marque"] = $marque;
         }
 
-        if($largeur != 0)
+        if($largeur != "0")
         {
             $sql .= " AND pneu_largeur=:largeur";
             $param[":largeur"] = $largeur;
         }
-        if($serie != 0)
+        if($serie != "0")
         {
             $sql .= " AND pneu_serie=:serie";
             $param[":serie"] = $serie;
         }
-        if($jante != 0)
+        if($jante != "0")
         {
             $sql .= " AND pneu_jante=:jante";
             $param[":jante"] = $jante;
         }
-        if($charge != 0)
+        if($charge != "0")
         {
             $sql .= " AND pneu_charge=:charge";
             $param[":charge"] = $charge;
         }
-        if($vitesse != 0)
+        if($vitesse != "0")
         {
             $sql .= " AND pneu_vitesse=:vitesse";
             $param[":vitesse"] = $vitesse;
         }
-        if($consommation != 0){
+        if($consommation != "0"){
             $sql .= " AND pneu_consommation=:consommation";
             $param[":consommation"] = $consommation;
         }
-        if($decibel != 0)
+        if($decibel != "0")
         {
             $sql .= " AND pneu_decibel=:decibel";
             $param[":decibel"] = $decibel;
@@ -247,8 +247,10 @@ class Recherche{
         if($res != null) {
             foreach ($res as $row) {
                 array_push($tab, $row);
+
             }
         }
+
         return $tab;
     }
 }
