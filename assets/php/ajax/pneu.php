@@ -21,14 +21,15 @@ include_once("../fonctions/Pneu.php");
  */
 
 /**
- * "prixPneu"
- * Permet de récupérer le prix d'un pneu en BDD selon un ratio de prix à un temps donné
+ * "getPneu"
+ * Permet de récupérer le pneu et son prix en BDD selon un ratio de prix à un temps donné
  * Arguments :
  * [    "referencePneu" => Référence du pneu,
  *      "dateAjoutBDD"  => Date d'ajout du pneu en BDD *facultatif, utilise le pneu valable avec référence donnée par défaut*,
  *      "ratioID"       => ID du ratio du prix utilisé pour calculer le prix *facultatif, dernier ratio en date par défaut* ]
  * Renvoi :
  * [    "referencePneu" => Référence du pneu,
+ *      "pneu"          => Informations du pneu,
  *      "stock"         => Stock du pneu en BDD ]
  * Echoue si :
  *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
@@ -65,7 +66,7 @@ switch ($action)
 
         break;
 
-    case "prixPneu":
+    case "getPneu":
         if (!isset($_POST["referencePneu"]))
             ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
@@ -83,7 +84,7 @@ switch ($action)
         if ($prix === false)
             ajaxError("Ratio de prix non trouvé", "CANT_FIND_RATIO");
 
-        $json = ["referencePneu" => $referencePneu, "prix" => $prix];
+        $json = ["referencePneu" => $referencePneu, "prix" => $prix, "pneu" => $pneu->getPneu()];
 
         if ($dateAjoutBDD != null)
             $json["dateAjoutBDD"] = $dateAjoutBDD;
