@@ -77,7 +77,7 @@ if(file_exists ("../../../secret/catpnhbonpneus.csv")) {
     }
 
     /*Permet de mettre en non valable les pneus supprimé du csv*/
-    $sql = "UPDATE pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
+    $sql = "UPDATE jspneus.pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
     $nbreUpdate = SQLUpdate($sql);
     echo $nbreUpdate;
     set_time_limit(120);

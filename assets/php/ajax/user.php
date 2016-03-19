@@ -79,7 +79,29 @@ session_start();
  * "changerInformations"
  * Change les informations d'un utilisateur
  * Arguments :
- * [
+ * [    "user_id"    => ID de l'utilisateur,
+ *      "nom"        => Nouveau nom de l'utilisateur,
+ *      "prenom"     => Nouveau prénom de l'utilisateur,
+ *      "mail"       => Nouveau mail de l'utilisateur,
+ *      "newsletter" => Nouvelle newsletter de l'utilisateur ]
+ * Aucun renvoi
+ * Echoue si :
+ *      - Il manque des paramètres                        (code MISSING_ARGUMENT)
+ *      - L'identifiant ne correspond à aucun utilisateur (code NO_USER)
+ */
+
+/**
+ * "changerPassword"
+ * Change le mot de passe d'un utilisateur
+ * Arguments :
+ * [    "user_id"  => ID de l'utilisateur,
+ *      "old_pass" => Ancien mot de passe,
+ *      "new_pass" => Nouveau mot de passe ]
+ * Aucun renvoi
+ * Echoue si :
+ *      - Il manque des paramètres                          (code MISSING_ARGUMENT)
+ *      - L'identifiant ne correspond à aucun utilisateur   (code NO_USER)
+ *      - Le mot de passe de vérification ne correspond pas (code WRONG_PASSWORD)
  */
 
 if (!isset($_POST["action"]))
@@ -190,7 +212,7 @@ switch ($action)
 
     case "changerInformations":
 
-        if (!isset($_POST["nom"]) || !isset($_POST["prenom"]) || !isset($_POST["mail"]) || !isset($_POST["password"]) || !isset($_POST["newsletter"]))
+        if (!isset($_POST["nom"]) || !isset($_POST["prenom"]) || !isset($_POST["mail"]) || !isset($_POST["newsletter"]))
             ajaxError("Tous les paramètres ne sont pas renseignés", "MISSING_ARGUMENT");
 
         if (!isset($_POST["user_id"]))
@@ -199,7 +221,7 @@ switch ($action)
         $nom = $_POST["nom"];
         $prenom = $_POST["prenom"];
         $mail = $_POST["mail"];
-        $password = $_POST["password"];
+        $password = "";
         $newsletter = $_POST["newsletter"];
 
         $user = User::UserFromData($nom, $prenom, $mail, $password, $newsletter);
@@ -208,9 +230,32 @@ switch ($action)
             ajaxSuccess();
         else
             ajaxError("Le paramètre d'identification ne correspond à aucun utilisateur", "NO_USER");
+
         break;
 
     case "changerPassword":
+
+        if (!isset($_POST["old_pass"]) || !isset($_POST["new_pass"]) || !isset($_POST["user_id"]))
+            ajaxError("Tous les paramètres ne sont pas renseignés", "MISSING_ARGUMENT");
+
+        $old_pass = $_POST["old_pass"];
+        $new_pass = $_POST["new_pass"];
+        $user_id = $_POST["user_id"];
+
+
+    $res = User::changePassword($old_pass, $new_pass, $user_id);
+
+        if ($res === true)
+        {
+            ajaxSuccess();
+        }
+        else
+        {
+            if (User::getUserFromID($user_id) === false)
+                ajaxError("Le paramètre d'identification ne correspond à aucun utilisateur", "NO_USER");
+            else
+                ajaxError("L'ancien mot de passe ne correspond pas", "WRONG_PASSWORD");
+        }
 
         break;
 
