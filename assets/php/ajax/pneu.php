@@ -8,19 +8,6 @@ include_once("../fonctions/Pneu.php");
  */
 
 /**
- * "stockPneu"
- * Permet de récupérer le stock d'un pneu en BDD
- * Arguments :
- * [    "referencePneu" => Référence du pneu ]
- * Renvoi :
- * [    "referencePneu" => Référence du pneu,
- *      "stock"         => Stock du pneu en BDD ]
- * Echoue si :
- *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
- *      - Aucun pneu correspondant n'a été trouvé en BDD (code NO_CORRESPONDENCE)
- */
-
-/**
  * "getPneu"
  * Permet de récupérer le pneu et son prix en BDD selon un ratio de prix à un temps donné
  * Arguments :
@@ -30,7 +17,7 @@ include_once("../fonctions/Pneu.php");
  * Renvoi :
  * [    "referencePneu" => Référence du pneu,
  *      "pneu"          => Informations du pneu,
- *      "stock"         => Stock du pneu en BDD ]
+ *      "prix"         => Prix du pneu en BDD ]
  * Echoue si :
  *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
  *      - Aucun pneu correspondant n'a été trouvé en BDD (code NO_CORRESPONDENCE)
@@ -46,26 +33,6 @@ $action = $_POST["action"];
 
 switch ($action)
 {
-    case "stockPneu":
-
-        if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
-
-        $referencePneu = $_POST["referencePneu"];
-
-        $stock = Pneu::getStock($referencePneu);
-
-        if ($stock === false)
-            ajaxError("Aucun pneu correspondant n'a été trouvée", "NO_CORRESPONDENCE");
-        else
-        {
-            $json = ["referencePneu" => $referencePneu, "stock" => $stock];
-
-            ajaxSuccess($json);
-        }
-
-        break;
-
     case "getPneu":
         if (!isset($_POST["referencePneu"]))
             ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
