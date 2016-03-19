@@ -32,7 +32,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
         //Le thème est changeable en fonction de la disposition ou de la couleur.
         /* Charge la recherche dans la navbar
          * Pour l'instant seulement la marque
-        */
+         */
         $(document).ready(function () {
             $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
                 data = JSON.parse(data);
@@ -80,20 +80,19 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 }
             });
 
-            $(document).on("click","#seConnecter",function(){
+            $(document).on("click", "#seConnecter", function () {
                 var i = 0;
-                var pass=$('#mailLogin').val();
-                var mail=$('#passeLogin').val();
-                console.log(pass +mail);
+                var pass = $('#mailLogin').val();
+                var mail = $('#passeLogin').val();
+                console.log(pass + mail);
                 i++;
 
             });
 
             /*$(document).on("keyup","#mailLogin",function(e){
-                var mailLogin=$("#mailLogin");
-                mailLogin.val(mailLogin.val()+e);
-            })*/
-
+             var mailLogin=$("#mailLogin");
+             mailLogin.val(mailLogin.val()+e);
+             })*/
 
 
         });
@@ -129,62 +128,14 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <li><a href="./contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Panier <span
+                <li>
+                    <a href="./panier">Panier <span
                             class="fa fa-shopping-cart"
                             aria-hidden="true"></span></a>
-                    <ul class="dropdown-menu" role="menu" style="width:400%;">
-                        <li><a href="#">
-                                <span class="item">
-                                    <span class="item-left">
-                                        <img src="http://placehold.it/50x50" alt=""/>
-                                        <span class="item-info">
-                                            <span>Item name</span>
-                                            <span>23$</span>
-                                        </span>
-                                    </span>
-                                    <span class="item-right">
-                                        <button class="btn btn-danger pull-right">x</button>
-                                    </span>
-                                </span>
-                            </a></li>
-                        <li><a href="#">
-                                <span class="item">
-                                    <span class="item-left">
-                                        <img src="http://placehold.it/50x50" alt=""/>
-                                        <span class="item-info">
-                                            <span>Item name</span>
-                                            <span>23$</span>
-                                        </span>
-                                    </span>
-                                    <span class="item-right">
-                                        <button class="btn btn-danger pull-right">x</button>
-                                    </span>
-                                </span>
-                            </a></li>
-                        <li><a href="#">
-                                <span class="item">
-                                    <span class="item-left">
-                                        <img src="http://placehold.it/50x50" alt=""/>
-                                        <span class="item-info">
-                                            <span>Item name</span>
-                                            <span>23$</span>
-                                        </span>
-                                    </span>
-                                    <span class="item-right">
-                                        <button class="btn btn-danger pull-right">x</button>
-                                    </span>
-                                </span>
-                            </a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Prix total : 999 €</li>
-                        <li class="dropdown-header"><a role="button" href="" class="btn btn-order">Passer
-                                commande</a>
-                        </li>
-                    </ul>
+
                 </li>
                 <li>
-                <?php
+                    <?php
                     /* Verifie si la personne est connécter et change le bouton en fonction */
                     if (isset($_SESSION['connecter'])) echo '<a>Mon compte';
                     else echo '<a data-placement="bottom" data-toggle="popover" data-title="Connexion" data-container="body" type="button" data-html="true" href="#" id="login">Se connecter ';
@@ -193,8 +144,8 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <li id="popover-content" class="hide">
                     <form class="form-inline" role="form">
                         <div class="form-group">
-                           <!-- <input id="mailLogin" type="email" class="form-control" name="mail"
-                                   placeholder="Adresse Mail">-->
+                            <!-- <input id="mailLogin" type="email" class="form-control" name="mail"
+                                    placeholder="Adresse Mail">-->
                             <textarea id="mailLogin"></textarea>
                         </div>
                         <div class="form-group">
@@ -319,7 +270,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                     </div>
                 </div>
             </div>
-            <div class ="row">
+            <div class="row">
                 <div class="col-md-3 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
@@ -338,7 +289,7 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
             </div>
 
 
-    </form>
+        </form>
     </div>
 </nav>
 

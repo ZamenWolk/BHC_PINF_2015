@@ -5,30 +5,42 @@ include_once("header.php");
 
 <div class="row">
     <div class="well">
-        <div class="list-group" id="articles">
-            <div class="model_article">
-                <a href="#" id="item-link" class="list-group-item">
-                    <h3 class="list-group-item-heading"></h3>
-                    <div class="media col-md-3">
-                        <figure class="pull-left">
-                            <img src="../assets/img/pneu.jpg" class="annonce img-responsive"/>
-                        </figure>
+        <h1 class="text-center">CATALOGUE</h1>
+        <div class="list-group">
+            <div class="row" id="articles">
+
+
+                <div class="model_article">
+                    <div class="col-lg-10 list-group-item">
+                        <a href="#" id="item-link">
+                            <div class="col-md-3">
+                                <img src="../assets/img/pneu.jpg" class="annonce img-responsive"/>
+                            </div>
+                            <div class="col-md-7 list-group-desc">
+                                <h4 class="list-group-item-heading"></h4>
+                                <dl class="dl-horizontal">
+                                    <dt>Catégorie:</dt>
+                                    <dd class="categorie"></dd>
+                                    <dt>Largeur:</dt>
+                                    <dd class="largeur"></dd>
+                                    <dt>Série:</dt>
+                                    <dd class="serie"></dd>
+                                    <dt>Jante:</dt>
+                                    <dd class="jante"></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-2 text-center price-div">
+                                <h4 id="price">Prix:</h4>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col-md-6 list-group-desc">
-                        <ul>
-                            <li class="categorie">Catégorie:</li>
-                            <li class="largeur">Largeur:</li>
-                            <li class="serie">Serie:</li>
-                            <li class="jante">Jante:</li>
-                        </ul>
+                    <div class="col-lg-2">
+                        <button type="button" class="btn btn-default btn-block pull-right shop-btn"><span
+                                class="fa fa-shopping-cart"
+                                aria-hidden="true"></span> Ajouter au panier
+                        </button>
                     </div>
-                    <div class="col-md-3 text-center price-div">
-                        <h2 id="price">Prix:</h2>
-                    </div>
-                </a>
-                <button type="button" class="btn btn-default btn-lg btn-block shop-btn"><span
-                        class="fa fa-shopping-cart"
-                        aria-hidden="true"></span> Ajouter au panier </button>
+                </div>
             </div>
         </div>
     </div>
@@ -62,16 +74,17 @@ include_once("header.php");
                     var pneu_ref = data["resultat"][0]["pneu_ref"];
                     var jQ = $(".model_article");
                     $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
-                    var item = jQ.children("a");
+                    var list = jQ.children(".list-group-item");
+                    var item = list.children("a");
                     jQ.removeClass("model_article");
-                    item.children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
                     var listBody = item.children(".list-group-desc");
+                    listBody.children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
                     //console.log(panelBody);
-                    var ul_specs = listBody.children("ul");
-                    ul_specs.children(".largeur").html("Largeur:  " + pneu_largeur);
-                    ul_specs.children(".categorie").html("Categorie: " + pneu_categorie);
-                    ul_specs.children(".serie").html("Serie:  " + pneu_serie);
-                    ul_specs.children(".jante").html("Jante:  " + pneu_jante);
+                    var dl_specs = listBody.children("dl");
+                    dl_specs.children(".largeur").html(pneu_largeur);
+                    dl_specs.children(".categorie").html(pneu_categorie);
+                    dl_specs.children(".serie").html(pneu_serie);
+                    dl_specs.children(".jante").html(pneu_jante);
 
                     var priceDiv = item.children(".price-div");
                     priceDiv.children("#price").html("Prix : " + pneu_prix + " € ");

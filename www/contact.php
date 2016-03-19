@@ -3,7 +3,7 @@ include_once('header.php');
 ?>
 
 
-<div class=" well well-lg">
+
 <h1> Contact </h1>
 <div>
         <label id = "ContactObj" for="nom">Objet :</label></br>
@@ -25,7 +25,6 @@ include_once('header.php');
     <div id="BoutonEnvoi" class="button">
         <button>Envoyer votre message</button>
     </div>
-</div>
 <script>
 
 $(document).ready(function(){
