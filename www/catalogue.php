@@ -9,8 +9,8 @@ include_once "../assets/php/fonctions/Recherche.php";
 ?>
     <nav>
         <ul class="pager">
-            <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Page précédente</a></li>
-            <li class="next"><a href="#">Page suivante <span aria-hidden="true">&rarr;</span></a></li>
+            <li class="previous"><a href="#"><i class="fa fa-arrow-left fa-fw"></i>Page précédente</a></li>
+            <li class="next"><a href="#">Page suivante<i class="fa fa-arrow-right fa-fw"></i></a></li>
         </ul>
     </nav>
 
@@ -19,15 +19,13 @@ include_once "../assets/php/fonctions/Recherche.php";
             <h1 class="text-center">CATALOGUE</h1>
             <div class="list-group">
                 <div class="row" id="articles">
-
-
                     <div class="model_article">
-                        <div class="col-lg-10 list-group-item">
+                        <div class="col-md-10 list-group-item">
                             <a href="#" id="item-link">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <img src="../assets/img/pneu.jpg" class="annonce img-responsive"/>
                                 </div>
-                                <div class="col-md-7 list-group-desc">
+                                <div class="col-md-8 list-group-desc">
                                     <h4 class="list-group-item-heading"></h4>
                                     <dl class="dl-horizontal">
                                         <dt>Catégorie:</dt>
@@ -45,10 +43,23 @@ include_once "../assets/php/fonctions/Recherche.php";
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-default btn-block btn-lg pull-right shop-btn"><span
+                        <div class="col-md-2 catalog-cart-div">
+                            <label for="qte">Quantité: </label>
+                            <select class="form-control" id="qte">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                            <button type="button" class="btn btn-default btn-block pull-right shop-btn"><span
                                     class="fa fa-shopping-cart"
-                                    aria-hidden="true"></span> Ajouter
+                                    aria-hidden="true"></span> Ajouter au panier
                             </button>
                         </div>
                     </div>

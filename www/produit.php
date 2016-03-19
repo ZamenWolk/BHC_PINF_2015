@@ -2,48 +2,52 @@
 include_once "../secret/credentials.php";
 include_once("header.php");
 ?>
+<div class="model_article container-fluid">
 
-<div class="row">
-    <div class="well">
-        <h1 class="text-center">CATALOGUE</h1>
-        <div class="list-group">
-            <div class="row" id="articles">
-
-
-                <div class="model_article">
-                    <div class="col-lg-10 list-group-item">
-                        <a href="#" id="item-link">
-                            <div class="col-md-3">
-                                <img src="../assets/img/pneu.jpg" class="annonce img-responsive"/>
-                            </div>
-                            <div class="col-md-7 list-group-desc">
-                                <h4 class="list-group-item-heading"></h4>
-                                <dl class="dl-horizontal">
-                                    <dt>Catégorie:</dt>
-                                    <dd class="categorie"></dd>
-                                    <dt>Largeur:</dt>
-                                    <dd class="largeur"></dd>
-                                    <dt>Série:</dt>
-                                    <dd class="serie"></dd>
-                                    <dt>Jante:</dt>
-                                    <dd class="jante"></dd>
-                                </dl>
-                            </div>
-                            <div class="col-md-2 text-center price-div">
-                                <h4 id="price">Prix:</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-2">
-                        <button type="button" class="btn btn-default btn-block pull-right shop-btn"><span
-                                class="fa fa-shopping-cart"
-                                aria-hidden="true"></span> Ajouter au panier
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <div class="row heading">
+        <div class="col-md-2">
+            <img src="../assets/img/pneu.jpg" class="annonce img-responsive"/>
+        </div>
+        <div class="col-md-10 item-heading-container pull-right">
+            <h1 class="item-heading"></h1>
         </div>
     </div>
+    <div class="row item-rest">
+
+        <div class="col-md-6 col-md-offset-3">
+            <dl class="dl-horizontal">
+                <dt>Catégorie:</dt>
+                <dd class="categorie"></dd>
+                <dt>Largeur:</dt>
+                <dd class="largeur"></dd>
+                <dt>Série:</dt>
+                <dd class="serie"></dd>
+                <dt>Jante:</dt>
+                <dd class="jante"></dd>
+            </dl>
+        </div>
+        <div class="col-md-3 add-cart-div">
+            <h3 id="price"></h3>
+            <label for="qte">Quantité: </label>
+            <select class="form-control" id="qte">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+            <button type="button" class="btn btn-default btn-block pull-right shop-btn"><span
+                    class="fa fa-shopping-cart"
+                    aria-hidden="true"></span> Ajouter au panier
+            </button>
+        </div>
+    </div>
+    <a href="./catalogue" type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Retour au catalogue</a>
 </div>
 
 <script>
@@ -73,20 +77,21 @@ include_once("header.php");
                     var pneu_prix = data["resultat"][0]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
                     var pneu_ref = data["resultat"][0]["pneu_ref"];
                     var jQ = $(".model_article");
-                    $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
+                    var heading = jQ.children(".heading");
                     var list = jQ.children(".list-group-item");
-                    var item = list.children("a");
+                    var itemRest = jQ.children(".item-rest");
+                    var desc = itemRest.children(".col-md-6");
+                    var title = heading.children(".item-heading-container");
                     jQ.removeClass("model_article");
-                    var listBody = item.children(".list-group-desc");
-                    listBody.children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
+                    title.children(".item-heading").html(pneu_description);
                     //console.log(panelBody);
-                    var dl_specs = listBody.children("dl");
+                    var dl_specs = desc.children("dl");
                     dl_specs.children(".largeur").html(pneu_largeur);
                     dl_specs.children(".categorie").html(pneu_categorie);
                     dl_specs.children(".serie").html(pneu_serie);
                     dl_specs.children(".jante").html(pneu_jante);
 
-                    var priceDiv = item.children(".price-div");
+                    var priceDiv = itemRest.children(".add-cart-div");
                     priceDiv.children("#price").html("Prix : " + pneu_prix + " € ");
 
                 }

@@ -167,15 +167,8 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                 <li id="popover-content" class="hide">
                     <form class="form-inline" role="form">
                         <div class="form-group">
-<<<<<<< HEAD
-                            <!-- <input id="mailLogin" type="email" class="form-control" name="mail"
-                                    placeholder="Adresse Mail">-->
-                            <textarea id="mailLogin"></textarea>
-=======
                            <input id="mailLogin" type="email" class="form-control" name="mail"
                                    placeholder="Adresse Mail">
-
->>>>>>> origin/master
                         </div>
                         <div class="form-group">
                             <input id="passeLogin" type="password" class="form-control" name="password"
