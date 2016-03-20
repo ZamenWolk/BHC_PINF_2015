@@ -100,7 +100,15 @@ session_start();
                 $.post("../assets/php/ajax/user.php",{action: "connecter", user_mail: mailLogin, password: passeLogin}, function(data){
                     data = JSON.parse(data);
                     console.log(data);
+
+                    /* on enlève le popover */
+                    $(".popover").hide();
+
+                    /*On enlève  le message d'erreur */
                     $('div#wrong_id').hide("slow");
+
+
+
                     if(data.etat == "echec")
                     {
                         $('div#wrong_id').show("slow");
@@ -108,9 +116,21 @@ session_start();
                     }
                     else {
                         $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
-                        var jQ = $("<a href=\"./mon_compte\">Mon Compte </a>");
-                        $(".popover").hide();
-                        $("#btn-connect-account").html(jQ);
+                        var jQ = $(
+                            '<li>' +
+                            '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                            'Mon compte'+
+                            '<span class="caret"></span>' +
+                            '</a>'+
+                            '<ul class="dropdown-menu" aria-labelledby="dLabel">'+
+                            '<li><a href="./compte" id="acc_inf">Mes informations </a></li>'+
+                            '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>'+
+                            '<li class="divider" role="separator"></li>'+
+                            '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
+                            '</ul>'+
+                            '</li>' +
+                            '');
+                        $(".part_connect").html(jQ);
                     }
                 });
             });
@@ -130,27 +150,53 @@ session_start();
                         if(data2.etat == "echec" && data2.code == "ALREADY_CONNECTED")
                         {
                             $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
+
                         }
                     });
                 }
                 else
                 {
-                    var jQ = $("<a href=\"./mon_compte\">Mon Compte </a>");
-                    $("#btn-connect-account").html(jQ);
-
+                    var jQ = $(
+                        '<li>' +
+                            '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                                    'Mon compte'+
+                                    '<span class="caret"></span>' +
+                            '</a>'+
+                            '<ul class="dropdown-menu" aria-labelledby="dLabel">'+
+                                '<li><a href="./compte" id="acc_inf">Mes informations </a></li>'+
+                                '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>'+
+                                '<li class="divider" role="separator"></li>'+
+                                '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
+                            '</ul>'+
+                        '</li>' +
+                        '');
+                    $(".part_connect").html(jQ);
                 }
 
             });
-
+            /* Deconnexion */
+            $(document).on("click","a#acc_dec",function(){
+                console.log("deco");
+                $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
+                setTimeout(
+                    function()
+                    {
+                        document.location = "./accueil";
+                    }, 50);
+               //document.location="./accueil";
+            });
 
 
             /* ----- inscription -----*/
+
+            //Variable ou on stocke les information d'inscription
             var ins_mail;
             var ins_password;
             var ins_password2;
             var ins_nom;
             var ins_prenom;
 
+            /* Actualisation des variables */
             $(document).on("change","#ins_mail", function(){
                 ins_mail = $(this).val();
             });
@@ -166,7 +212,7 @@ session_start();
             $(document).on("change","#ins_prenom", function(){
                 ins_prenom = $(this).val();
             });
-
+            /* Requête asynchrone pour inscription */
             $(document).on("click", "#ins_submit", function(){
                 var newsletter = 0;
                 if($('#checkbox2').prop('checked')) {
@@ -188,24 +234,25 @@ session_start();
                         }, function (data) {
                             data = JSON.parse(data);
                             console.log(data);
-                            switch(data.code)
-                            {
-                                case "MISSING_ARGUMENT":
-                                    $("#ins_alert_champs").show('slow');
-                                    $("#ins_alert_success").hide('slow');
-                                    $("#ins_alert_mail").hide('slow');
-                                    break;
-                                case "MAIL_IN_USE":
-                                    $("#ins_alert_mail").show('slow');
-                                    $("#ins_alert_success").hide('slow');
-                                    $("#ins_alert_champs").hide('slow');
-                                    break;
-                                default:
-                                    $("#ins_alert_success").show('slow');
-                                    $("#ins_alert_champs").hide('slow');
-                                    $("#ins_alert_mail").hide('slow');
-                                    break;
+                            if(data.etat == "echec") {
+                                switch (data.code) {
+                                    case "MISSING_ARGUMENT":
+                                        $("#ins_alert_champs").show('slow');
+                                        $("#ins_alert_success").hide('slow');
+                                        $("#ins_alert_mail").hide('slow');
+                                        break;
+                                    case "MAIL_IN_USE":
+                                        $("#ins_alert_mail").show('slow');
+                                        $("#ins_alert_success").hide('slow');
+                                        $("#ins_alert_champs").hide('slow');
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
+                            else
+                                $("#ins_alert_succes").show('slow');
+
                         });
                     }
                     else
@@ -246,13 +293,7 @@ session_start();
                 </li>
                 <li><a href="./contact">Contact</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="./panier">Panier <span
-                            class="fa fa-shopping-cart"
-                            aria-hidden="true"></span></a>
-
-                </li>
+            <ul class="nav navbar-nav navbar-right part_connect">
                 <li id="btn-connect-account">
                     <a data-placement="bottom" data-toggle="popover" data-title="Connexion" data-container="body"
                         type="button" data-html="true" href="#" id="login">
@@ -281,6 +322,14 @@ session_start();
                         <br>
                         <a href="#" id="forgotten">Mot de passe oublié ?</a>
                     </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="./panier">Panier <span
+                            class="fa fa-shopping-cart"
+                            aria-hidden="true"></span></a>
+
                 </li>
             </ul>
         </div>

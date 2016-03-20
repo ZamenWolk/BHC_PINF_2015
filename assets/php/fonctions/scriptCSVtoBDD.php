@@ -9,7 +9,8 @@ set_time_limit(1000);
 $row = 1;
 $time = time();
 echo $time;
-if(file_exists ("../../../secret/catpnhbonpneus.csv")) {
+$fichier = "../../../secret/catpnhbonpneus.csv";
+if(file_exists ($fichier)) {
     /*Module d'insertion dans la base*/
     if (($handle = fopen("../../../secret/catpnhbonpneus.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
@@ -81,5 +82,6 @@ if(file_exists ("../../../secret/catpnhbonpneus.csv")) {
     $nbreUpdate = SQLUpdate($sql);
     echo $nbreUpdate;
     set_time_limit(120);
+    unlink($fichier); // Supprime le fichier
 }
 ?>

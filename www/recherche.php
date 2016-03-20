@@ -180,7 +180,7 @@ include_once "../assets/php/fonctions/Recherche.php";
             prev.addClass("disabled");
 
                 /**
-                 * Gestion du chargement de la pqge précédente
+                 * Gestion du chargement de la page précédente
                  */
 
                 prev.click(function(){
