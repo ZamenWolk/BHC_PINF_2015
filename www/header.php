@@ -29,7 +29,7 @@ session_start();
         //Le thème est changeable en fonction de la disposition ou de la couleur.
         /* Charge la recherche dans la navbar
          * Pour l'instant seulement la marque
-        */
+         */
         $(document).ready(function () {
             $("#wrong_id").hide();
            // $("#wrong_id").show();
@@ -81,7 +81,9 @@ session_start();
                 }
             });
 
+
             /* ------ Connexion ------ */
+
             var mailLogin;
             var passeLogin;
             $(document).on("change","#mailLogin", function(){
@@ -100,7 +102,7 @@ session_start();
                     console.log(data);
                     if(data.etat == "echec")
                     {
-                        $('div#wrong_id').show();
+                        $('div#wrong_id').show("slow");
                         console.log("erreur");
                     }
                     else {
@@ -205,9 +207,6 @@ session_start();
             });
 
 
-
-
-
         });
     </script>
 
@@ -241,59 +240,11 @@ session_start();
                 <li><a href="./contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Panier <span
+                <li>
+                    <a href="./panier">Panier <span
                             class="fa fa-shopping-cart"
                             aria-hidden="true"></span></a>
-                    <ul class="dropdown-menu" role="menu" style="width:400%;">
-                        <li><a href="#">
-                                <span class="item">
-                                    <span class="item-left">
-                                        <img src="http://placehold.it/50x50" alt=""/>
-                                        <span class="item-info">
-                                            <span>Item name</span>
-                                            <span>23$</span>
-                                        </span>
-                                    </span>
-                                    <span class="item-right">
-                                        <button class="btn btn-danger pull-right">x</button>
-                                    </span>
-                                </span>
-                            </a></li>
-                        <li><a href="#">
-                                <span class="item">
-                                    <span class="item-left">
-                                        <img src="http://placehold.it/50x50" alt=""/>
-                                        <span class="item-info">
-                                            <span>Item name</span>
-                                            <span>23$</span>
-                                        </span>
-                                    </span>
-                                    <span class="item-right">
-                                        <button class="btn btn-danger pull-right">x</button>
-                                    </span>
-                                </span>
-                            </a></li>
-                        <li><a href="#">
-                                <span class="item">
-                                    <span class="item-left">
-                                        <img src="http://placehold.it/50x50" alt=""/>
-                                        <span class="item-info">
-                                            <span>Item name</span>
-                                            <span>23$</span>
-                                        </span>
-                                    </span>
-                                    <span class="item-right">
-                                        <button class="btn btn-danger pull-right">x</button>
-                                    </span>
-                                </span>
-                            </a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Prix total : 999 €</li>
-                        <li class="dropdown-header"><a role="button" href="" class="btn btn-order">Passer
-                                commande</a>
-                        </li>
-                    </ul>
+
                 </li>
                 <li id="btn-connect-account">
                     <a data-placement="bottom" data-toggle="popover" data-title="Connexion" data-container="body"
@@ -306,20 +257,20 @@ session_start();
                         <div class="form-group">
                            <input id="mailLogin" type="email" class="form-control" name="mail"
                                    placeholder="Adresse Mail">
-
                         </div>
                         <div class="form-group">
                             <input id="passeLogin" type="password" class="form-control" name="password"
                                    placeholder="Mot de passe">
                         </div>
+
                         <hr>
                         <div id="wrong_id" class="alert-danger alert" role="alert">Mauvais mail ou mot de passe</div>
                         <button type="button" id="seConnecter" class="btn btn-block btn-connect">Se connecter</button>
                     </form>
 
 
-                    <div class="subLink">
-                        <a data-toggle="modal" data-target="#myModal">Pas encore inscrit ?</a>
+                    <div class="login-footer">
+                        <a data-toggle="modal" id="subLink" data-target="#myModal">Pas encore inscrit ?</a>
                         <br>
                         <a href="#" id="forgotten">Mot de passe oublié ?</a>
                     </div>
@@ -433,7 +384,7 @@ session_start();
                     </div>
                 </div>
             </div>
-            <div class ="row">
+            <div class="row">
                 <div class="col-md-3 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
@@ -452,7 +403,7 @@ session_start();
             </div>
 
 
-    </form>
+        </form>
     </div>
 </nav>
 

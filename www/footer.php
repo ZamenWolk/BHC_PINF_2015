@@ -135,24 +135,20 @@
                         <input type="checkbox" name="checkbox2" id="checkbox2" autocomplete="off"/>
                         <div class="btn-group">
                             <label for="checkbox2" class="btn btn-warning">
-                                <span class=" fa fa-check"></span>
+                                <span class=" fa fa-check fa-fw"></span>
                                 <span> </span>
                             </label>
-                            <label for="checkbox2" class="btn btn-default active">
-                                J'accepte les conditions d'utilisations
-                            </label>
+                            <label for="checkbox2" class="btn btn-default active">J'accepte les conditions d'utilisations</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="checkbox1" id="checkbox1" autocomplete="off"/>
                         <div class="btn-group">
                             <label for="checkbox1" class="btn btn-warning">
-                                <span class="fa fa-check"></span>
+                                <span class="fa fa-check fa-fw"></span>
                                 <span> </span>
                             </label>
-                            <label for="checkbox1" class="btn btn-default active">
-                                J'accepte de recevoir des offres promotionnelles de JS Pneus
-                            </label>
+                            <label for="checkbox1" class="btn btn-default active">J'accepte de recevoir des offres promotionnelles de JS Pneus</label>
                         </div>
                     </div>
                 </div>

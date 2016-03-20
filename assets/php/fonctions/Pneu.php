@@ -68,6 +68,31 @@ class Pneu
         return $this->prix * Config::getRatioPrix($ratioID);
     }
 
+    public function getPneu()
+    {
+        $pneu = array();
+
+        $pneu["EAN"] = $this->EAN;
+        $pneu["reference"] = $this->reference;
+        $pneu["marque"] = $this->marque;
+        $pneu["categorie"] = $this->categorie;
+        $pneu["description"] = $this->description;
+        $pneu["largeur"] = $this->largeur;
+        $pneu["serie"] = $this->serie;
+        $pneu["jante"] = $this->jante;
+        $pneu["charge"] = $this->charge;
+        $pneu["vitesse"] = $this->vitesse;
+        $pneu["profil"] = $this->profil;
+        $pneu["decibel"] = $this->decibel;
+        $pneu["bruit"] = $this->bruit;
+        $pneu["consommation"] = $this->consommation;
+        $pneu["adherance"] = $this->adherance;
+        $pneu["categorieEtiquette"] = $this->categorieEtiquette;
+        $pneu["stock"] = $this->stock;
+
+        return $pneu;
+    }
+
     public $EAN;
     public $reference;
     public $marque;

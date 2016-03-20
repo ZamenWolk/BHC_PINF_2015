@@ -175,7 +175,7 @@ class Recherche{
     }
 
 
-    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$consommation,$decibel,$numeroPage, $itemParPage = 25,$order = 0)
+    public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$consommation,$decibel,$numeroPage, $itemParPage,$order = 0)
     {
         $sql = "SELECT * FROM jspneus.pneu WHERE pneu_valable=1";
         $param = array();
