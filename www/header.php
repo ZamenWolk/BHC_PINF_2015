@@ -1,8 +1,5 @@
 <?php
 session_start();
-
-if (0)//TODO: implémentation de la connection au site Si mauvaise connection etc on détruis la session
-    session_destroy();
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,6 +31,10 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
          * Pour l'instant seulement la marque
         */
         $(document).ready(function () {
+            $("#wrong_id").hide();
+           // $("#wrong_id").show();
+            //$.post("../assets/php/ajax/user.php", {action: "deconnecter"});
+
             $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
                 data = JSON.parse(data);
                 //console.log(data);
@@ -79,22 +80,128 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                     $(".nav_consommation").append(option8);
                 }
             });
+
+            /* ------ Connexion ------ */
             var mailLogin;
             var passeLogin;
-            $(document).on("change","#mailLogin", function(e){
-                //console.log($(this).val());
+            $(document).on("change","#mailLogin", function(){
                 mailLogin = $(this).val();
-                console.log(mailLogin);
             });
-            $(document).on("change","#passeLogin", function(){
-                //console.log($(this).val());
-                passeLogin = $(this).val();
-                console.log(mailLogin);
-            });
-            $(document).on("click","#seConnecter",function(){
-               //console.log($('#passeLogin').val()+ $("#mailLogin").val());
-                console.log(mailLogin + " "+passeLogin);
 
+            $(document).on("change","#passeLogin", function(){
+                passeLogin = $(this).val();
+            });
+
+            $(document).on("click","#seConnecter",function(){
+
+              //  console.log(mailLogin + " "+passeLogin);//On récupère les informations de connexion ds la console
+                $.post("../assets/php/ajax/user.php",{action: "connecter", user_mail: mailLogin, password: passeLogin}, function(data){
+                    data = JSON.parse(data);
+                    console.log(data);
+                    if(data.etat == "echec")
+                    {
+                        $('div#wrong_id').show();
+                        console.log("erreur");
+                    }
+                    else {
+                        $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
+                        var jQ = $("<a href=\"./mon_compte\">Mon Compte </a>");
+                        $("#btn-connect-account").html(jQ);
+                    }
+                });
+            });
+
+            $.post("../assets/php/ajax/user.php",{action:"getConnectedUser"}, function(data){
+                data = JSON.parse(data);
+                console.log(data);
+                if(data.etat == "echec"){
+                    $.post("../assets/php/ajax/user.php",{action: "connecter", user_mail: "test", password: "test"}, function(data2){
+                        data2 = JSON.parse(data2);
+                        console.log(data2);
+                        if(data2.etat == "echec" && data2.code == "ALREADY_CONNECTED")
+                        {
+                            $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
+                        }
+                    });
+                }
+                else
+                {
+                    var jQ = $("<a href=\"./mon_compte\">Mon Compte </a>");
+                    $("#btn-connect-account").html(jQ);
+
+                }
+
+            });
+
+
+
+            /* ----- inscription -----*/
+            var ins_mail;
+            var ins_password;
+            var ins_password2;
+            var ins_nom;
+            var ins_prenom;
+
+            $(document).on("change","#ins_mail", function(){
+                ins_mail = $(this).val();
+            });
+            $(document).on("change","#ins_password", function(){
+                ins_password = $(this).val();
+            });
+            $(document).on("change","#ins_password2", function(){
+                ins_password2 = $(this).val();
+            });
+            $(document).on("change","#ins_nom", function(){
+                ins_nom = $(this).val();
+            });
+            $(document).on("change","#ins_prenom", function(){
+                ins_prenom = $(this).val();
+            });
+
+            $(document).on("click", "#ins_submit", function(){
+                var newsletter = 0;
+                if($('#checkbox2').prop('checked')) {
+                    if($('#checkbox1').prop('checked'))
+                        newsletter = 1;
+                    /*  "nom"        => Nom de l'utilisateur,
+                     *      "prenom"     => Prénom de l'utilisateur,
+                     *      "mail"       => Adresse mail de l'utilisateur,
+                     *      "password"   => Mot de passe de l'utilisateur,
+                     *      "newsletter" => Abonnement à la newsletter de l'utilisateur ]*/
+                    if(ins_password == ins_password2) {
+                        $.post("../assets/php/ajax/user.php", {
+                            action: "inscrire",
+                            nom: ins_nom,
+                            prenom: ins_prenom,
+                            mail: ins_mail,
+                            password: ins_password,
+                            newsletter: newsletter
+                        }, function (data) {
+                            data = JSON.parse(data);
+                            console.log(data);
+                            switch(data.code)
+                            {
+                                case "MISSING_ARGUMENT":
+                                    $("#ins_alert_champs").show('slow');
+                                    $("#ins_alert_success").hide('slow');
+                                    $("#ins_alert_mail").hide('slow');
+                                    break;
+                                case "MAIL_IN_USE":
+                                    $("#ins_alert_mail").show('slow');
+                                    $("#ins_alert_success").hide('slow');
+                                    $("#ins_alert_champs").hide('slow');
+                                    break;
+                                default:
+                                    $("#ins_alert_success").show('slow');
+                                    $("#ins_alert_champs").hide('slow');
+                                    $("#ins_alert_mail").hide('slow');
+                                    break;
+                            }
+                        });
+                    }
+                    else
+                        console.log("Mots de passe différent")
+                }
             });
 
 
@@ -188,12 +295,11 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                         </li>
                     </ul>
                 </li>
-                <li>
-                <?php
-                    /* Verifie si la personne est connécter et change le bouton en fonction */
-                    if (isset($_SESSION['connecter'])) echo '<a>Mon compte';
-                    else echo '<a data-placement="bottom" data-toggle="popover" data-title="Connexion" data-container="body" type="button" data-html="true" href="#" id="login">Se connecter ';
-                    echo '<span class="fa fa-user " aria-hidden="true"></span></a>' ?>
+                <li id="btn-connect-account">
+                    <a data-placement="bottom" data-toggle="popover" data-title="Connexion" data-container="body"
+                        type="button" data-html="true" href="#" id="login">
+                        Se connecter<span class="fa fa-user " aria-hidden="true"></span>
+                    </a>
                 </li>
                 <li id="popover-content" class="hide">
                     <form class="form-inline" role="form">
@@ -207,8 +313,11 @@ if (0)//TODO: implémentation de la connection au site Si mauvaise connection et
                                    placeholder="Mot de passe">
                         </div>
                         <hr>
+                        <div id="wrong_id" class="alert-danger alert" role="alert">Mauvais mail ou mot de passe</div>
                         <button type="button" id="seConnecter" class="btn btn-block btn-connect">Se connecter</button>
                     </form>
+
+
                     <div class="subLink">
                         <a data-toggle="modal" data-target="#myModal">Pas encore inscrit ?</a>
                         <br>

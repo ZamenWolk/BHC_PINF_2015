@@ -1,5 +1,4 @@
 <?php
-
 include_once("../fonctions/AJAX.php");
 include_once("../fonctions/User.php");
 
@@ -93,6 +92,11 @@ switch ($action)
 {
     case "connecter":
 
+        if (isset($_SESSION["connexion"]))
+            if (array_key_exists("connecte", $_SESSION["connexion"]))
+                ajaxError("Un utilisateur est déja connecté", "ALREADY_CONNECTED");
+
+
         if (!isset($_POST["user_id"]) && !isset($_POST["user_mail"]))
             ajaxError("Aucun paramètre d'identification de l'utilisateur reçu", "MISSING_ARGUMENT");
 
@@ -114,12 +118,9 @@ switch ($action)
 
         if ($res)
             ajaxSuccess(["id_connecte" => $res]);
-
-        if (isset($_SESSION["connexion"]))
-            if (array_key_exists("connecte", $_SESSION["connexion"]))
-                ajaxError("Un utilisateur est déja connecté", "ALREADY_CONNECTED");
-
         ajaxError("Le mot de passe renseigné est eronné", "WRONG_PASSWORD");
+
+
 
         break;
 

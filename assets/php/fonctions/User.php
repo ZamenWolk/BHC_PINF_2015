@@ -1,12 +1,13 @@
 <?php
 
-session_start();
-
+//session_start();
+include_once "maLibSQL.pdo.php";
+include_once "../../../secret/credentials.php";
 class User
 {
     public function User($user)
     {
-        $this->ID = $user["user_ID"];
+        $this->ID = $user["user_id"];
         $this->nom = $user["user_nom"];
         $this->prenom = $user["user_prenom"];
         $this->mail = $user["user_mail"];
@@ -16,7 +17,7 @@ class User
 
     public static function UserFromData($nom, $prenom, $mail, $password, $newsletter)
     {
-        $param = array("user_ID" => 0, "user_nom" => $nom, "user_prenom" => $prenom, "user_mail" => $mail, "user_password" => password_hash($password, PASSWORD_BCRYPT), "user_newsletter" => $newsletter);
+        $param = array("user_id" => 0, "user_nom" => $nom, "user_prenom" => $prenom, "user_mail" => $mail, "user_password" => password_hash($password, PASSWORD_BCRYPT), "user_newsletter" => $newsletter);
         $user = new User($param);
 
         return $user;
@@ -54,11 +55,13 @@ class User
         if (password_verify($mdpEntre, $this->password))
         {
             $_SESSION["connexion"] = array();
-            $connexion = &$_SESSION["connexion"];
+            /*$connexion = &$_SESSION["connexion"];
             $connexion["connecte"] = true;
             $connexion["id"] = $this->ID;
-            $connexion["admin"] = false;
-
+            $connexion["admin"] = false;*/
+            $_SESSION["connexion"]["connecte"] = true;
+            $_SESSION["connexion"]["id"] = $this->ID;
+            $_SESSION["connexion"]["admin"] = false;
             return $this->ID;
         }
 

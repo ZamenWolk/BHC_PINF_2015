@@ -156,9 +156,11 @@
                         </div>
                     </div>
                 </div>
-
+                <div  style="display:none" id="ins_alert_succes" class="alert alert-success" role="alert">Bravo, vous vous êtes bien inscris!</div>
+                <div  style="display:none" id="ins_alert_mail" class="alert alert-danger" role="alert">Cette e-mail est déja utilisé.</div>
+                <div  style="display:none" id="ins_alert_champs" class="alert alert-danger" role="alert">Des champs sont manquants!</div>
                 <div class="modal-footer">
-                    <button type="submit" name="action" value="subscribe"
+                    <button id="ins_submit" type="button" name="action" value="subscribe"
                             class="btn btn-subscribe btn-lg btn-block">
                         Inscription
                     </button>
