@@ -100,6 +100,7 @@ session_start();
                 $.post("../assets/php/ajax/user.php",{action: "connecter", user_mail: mailLogin, password: passeLogin}, function(data){
                     data = JSON.parse(data);
                     console.log(data);
+                    $('div#wrong_id').hide("slow");
                     if(data.etat == "echec")
                     {
                         $('div#wrong_id').show("slow");
@@ -108,10 +109,16 @@ session_start();
                     else {
                         $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
                         var jQ = $("<a href=\"./mon_compte\">Mon Compte </a>");
+                        $(".popover").hide();
                         $("#btn-connect-account").html(jQ);
                     }
                 });
             });
+
+
+
+
+
 
             $.post("../assets/php/ajax/user.php",{action:"getConnectedUser"}, function(data){
                 data = JSON.parse(data);

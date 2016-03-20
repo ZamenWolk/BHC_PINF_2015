@@ -96,7 +96,7 @@ class User
 
         $connexion = $_SESSION["connexion"];
 
-        if ($connexion["connecte"] == false || $connexion["admin"] = true)
+        if ($connexion["connecte"] == false || $connexion["admin"] == true)
             return false;
 
         return $connexion["id"];
