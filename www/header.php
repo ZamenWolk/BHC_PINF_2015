@@ -283,7 +283,7 @@ session_start();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="./accueil" class="navbar-brand"><img id="logo" src="../assets/img/logo-flat.png"/></a>
+            <a href="./accueil" class="navbar-brand"><img id="logo" src="../assets/img/home.png"/></a>
         </div>
         <div class="collapse navbar-collapse" id="headNavbar">
             <ul class="nav navbar-nav">

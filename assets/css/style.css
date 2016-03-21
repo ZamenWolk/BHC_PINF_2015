@@ -20,6 +20,18 @@ body {
 }
 
 /* Chrome, Safari, Opera */
+@-webkit-keyframes font-change2 {
+    from {color: rgba(236, 240, 241, 1);}
+    to {color: #f39c12;}
+}
+
+/* Standard syntax */
+@keyframes font-change2 {
+    from {color: rgba(236, 240, 241, 1);}
+    to {color: #f39c12;}
+}
+
+/* Chrome, Safari, Opera */
 @-webkit-keyframes arrow-change {
     from {color: rgba(52, 73, 94,1.0);}
     to {color: #f39c12;}
@@ -185,7 +197,7 @@ p.centered {
 }
 
 .navbar-brand {
-    margin-bottom: 10px;
+    padding: 0;
 }
 
 #headNavbar > ul > li > a {
@@ -409,9 +421,9 @@ ul.dropdown-cart li .item-right button {
     left: 0;
     z-index: 10;
     padding: 0;
-    color: rgba(52, 73, 94,1.0);
+    color: rgba(236, 240, 241, 1);
     text-align: center;
-    background: rgba(236, 240, 241, 0.3);
+    background: rgba(52, 73, 94, 0.3);
     font-size: 130%;
 }
 
@@ -419,7 +431,12 @@ ul.dropdown-cart li .item-right button {
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
-    color: rgba(52, 73, 94,1.0);
+    color: rgba(236, 240, 241, 1);
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
     font-size: 200%;
 }
 
@@ -536,7 +553,12 @@ ul.dropdown-cart li .item-right button {
     text-transform: uppercase;
     text-align: center;
     margin: 0;
-    color: rgba(52, 73, 94,1.0);
+    color: rgba(236, 240, 241, 1);
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
     position: absolute;
     width: auto;
     top: 50%;
@@ -546,9 +568,9 @@ ul.dropdown-cart li .item-right button {
 }
 
 .hovereffect:hover h2 {
-    -webkit-animation-name: font-change; /* Chrome, Safari, Opera */
+    -webkit-animation-name: font-change2; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.4s; /* Chrome, Safari, Opera */
-    animation-name: font-change;
+    animation-name: font-change2;
     animation-duration: 0.4s;
     -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
     animation-fill-mode: forwards;
@@ -688,10 +710,6 @@ button[id*="delItem"] {
 	color:black;
 }
 
-hr { 
-	margin-bottom:15px;
-}
-
 #erreur {
 	color:red;
 }
@@ -729,4 +747,9 @@ textarea#message {
     width: 170%;
     font-size: 120%;
     color: rgba(52, 73, 94,1.0);;
+}
+
+.caption > h5 {
+    overflow: hidden;
+    width: 230px;
 }
