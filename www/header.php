@@ -102,7 +102,10 @@ session_start();
                     console.log(data);
 
                     /* on enlève le popover */
-                    $(".popover").hide();
+                    if(data.etat == "reussite") {
+                        $(".popover").hide();
+                    }
+
 
                     /*On enlève  le message d'erreur */
                     $('div#wrong_id').hide("slow");
@@ -119,10 +122,10 @@ session_start();
                         var jQ = $(
                             '<li>' +
                             '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                            'Mon compte'+
-                            '<span class="caret"></span>' +
+                            'Mon compte '+
+                            '<span class="fa fa-user " aria-hidden="true"></span>' +
                             '</a>'+
-                            '<ul class="dropdown-menu" aria-labelledby="dLabel">'+
+                            '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">'+
                             '<li><a href="./compte" id="acc_inf">Mes informations </a></li>'+
                             '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>'+
                             '<li class="divider" role="separator"></li>'+
@@ -159,10 +162,10 @@ session_start();
                     var jQ = $(
                         '<li>' +
                             '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                                    'Mon compte'+
-                                    '<span class="caret"></span>' +
+                                    'Mon compte '+
+                                    '<span class="fa fa-user " aria-hidden="true"></span>' +
                             '</a>'+
-                            '<ul class="dropdown-menu" aria-labelledby="dLabel">'+
+                            '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">'+
                                 '<li><a href="./compte" id="acc_inf">Mes informations </a></li>'+
                                 '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>'+
                                 '<li class="divider" role="separator"></li>'+
@@ -237,14 +240,12 @@ session_start();
                             if(data.etat == "echec") {
                                 switch (data.code) {
                                     case "MISSING_ARGUMENT":
-                                        $("#ins_alert_champs").show('slow');
                                         $("#ins_alert_success").hide('slow');
                                         $("#ins_alert_mail").hide('slow');
                                         break;
                                     case "MAIL_IN_USE":
                                         $("#ins_alert_mail").show('slow');
                                         $("#ins_alert_success").hide('slow');
-                                        $("#ins_alert_champs").hide('slow');
                                         break;
                                     default:
                                         break;
@@ -257,7 +258,8 @@ session_start();
                     }
                     else
                         console.log("Mots de passe différent")
-                }
+                } else $("#ins_alert_conditions").show('slow');
+
             });
 
 
@@ -281,7 +283,7 @@ session_start();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="./accueil" class="navbar-brand"><img id="logo" src="../assets/img/logo.svg"/></a>
+            <a href="./accueil" class="navbar-brand"><img id="logo" src="../assets/img/logo-flat.png"/></a>
         </div>
         <div class="collapse navbar-collapse" id="headNavbar">
             <ul class="nav navbar-nav">
@@ -297,7 +299,7 @@ session_start();
                 <li id="btn-connect-account">
                     <a data-placement="bottom" data-toggle="popover" data-title="Connexion" data-container="body"
                         type="button" data-html="true" href="#" id="login">
-                        Se connecter<span class="fa fa-user " aria-hidden="true"></span>
+                        Se connecter <span class="fa fa-user " aria-hidden="true"></span>
                     </a>
                 </li>
                 <li id="popover-content" class="hide">
@@ -457,7 +459,6 @@ session_start();
                         <i class="fa fa-search fa-fw"></i>Rechercher</button>
                 </div>
             </div>
-
 
         </form>
     </div>

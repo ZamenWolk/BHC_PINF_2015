@@ -9,14 +9,14 @@ body {
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes font-change {
-    from {color: #f39c12;}
-    to {color: rgba(52, 73, 94,1.0);}
+    from {color: rgba(52, 73, 94,1.0);}
+    to {color: #f39c12;}
 }
 
 /* Standard syntax */
 @keyframes font-change {
-    from {color: #f39c12;}
-    to {color: rgba(52, 73, 94,1.0);}
+    from {color: rgba(52, 73, 94,1.0);}
+    to {color: #f39c12;}
 }
 
 /* Chrome, Safari, Opera */
@@ -116,14 +116,14 @@ p.centered {
 .nav-pills > li > a:hover,
 .nav-pills > li > a:focus {
     background-color: transparent;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     box-shadow: none;
     border: none;
     text-decoration: none;
     -webkit-animation-name: font-change; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
     animation-name: font-change;
-    animation-duration: 0.6s;
+    animation-duration: 0.4s;
     -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
     animation-fill-mode: forwards;
 }
@@ -170,7 +170,7 @@ p.centered {
 }
 
 .popover.bottom .arrow:after {
-    border-bottom-color: #f39c12;
+    border-bottom-color: rgba(52, 73, 94,1.0);
 }
 
 .navbar-collapse {
@@ -190,7 +190,7 @@ p.centered {
 
 #headNavbar > ul > li > a {
     font-size: 150%;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
 }
 
 .push {
@@ -211,7 +211,7 @@ p.centered {
 
 .nav-pills > li > a {
     font-size: 120%;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     vertical-align: center;
     padding: 15px;
 }
@@ -225,7 +225,7 @@ p.centered {
     border: 10px rgba(236, 240, 241, 0.3);
     border-top: none;
     border-bottom: none;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
 }
 
 .searchForm {
@@ -312,13 +312,13 @@ ul.dropdown-cart li .item-right button {
 .popover-title,
 .modal-header,
 .modal-title {
-    background-color: #f39c12;
-    font-size: 120%;
-    border-bottom: none;
+    background-color: rgba(236, 240, 241, 1);
+    font-size: 140%;
+    text-align: center;
 }
 
 .modal-body {
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     font-size: 120%;
 }
 
@@ -409,7 +409,7 @@ ul.dropdown-cart li .item-right button {
     left: 0;
     z-index: 10;
     padding: 0;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     text-align: center;
     background: rgba(236, 240, 241, 0.3);
     font-size: 130%;
@@ -419,7 +419,7 @@ ul.dropdown-cart li .item-right button {
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     font-size: 200%;
 }
 
@@ -536,7 +536,7 @@ ul.dropdown-cart li .item-right button {
     text-transform: uppercase;
     text-align: center;
     margin: 0;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     position: absolute;
     width: auto;
     top: 50%;
@@ -547,7 +547,7 @@ ul.dropdown-cart li .item-right button {
 
 .hovereffect:hover h2 {
     -webkit-animation-name: font-change; /* Chrome, Safari, Opera */
-    -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.4s; /* Chrome, Safari, Opera */
     animation-name: font-change;
     animation-duration: 0.4s;
     -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
@@ -720,4 +720,12 @@ textarea#message {
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px;
+}
+
+.account-menu {
+    top: 55px;
+    border: none;
+    width: 170%;
+    font-size: 120%;
+    color: rgba(52, 73, 94,1.0);;
 }

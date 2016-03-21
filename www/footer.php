@@ -29,10 +29,9 @@
                                    class="form-control"
                                    id="ins_mail"
                                    name="ins_mail"
-                                   placeholder="Entrez votre email">
+                                   placeholder="Entrez votre email" required>
                         </div>
                     </div>
-                    <br/>
                     <div class="form-group">
                         <label for="ins_password">Mot de passe</label>
                         <div class="input-group">
@@ -42,7 +41,8 @@
                                    class="form-control"
                                    id="ins_password"
                                    name="ins_password"
-                                   placeholder="Entrez un mot de passe">
+                                   placeholder="Entrez un mot de passe"
+                                    required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,7 +53,7 @@
                                    class="form-control"
                                    id="ins_password2"
                                    name="ins_password2"
-                                   placeholder="Confirmez le mot de passe">
+                                   placeholder="Confirmez le mot de passe" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -65,7 +65,7 @@
                                    class="form-control"
                                    id="ins_nom"
                                    name="ins_nom"
-                                   placeholder="Entrez votre nom">
+                                   placeholder="Entrez votre nom" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -77,7 +77,7 @@
                                    class="form-control"
                                    id="ins_prenom"
                                    name="ins_prenom"
-                                   placeholder="Entrez votre prenom">
+                                   placeholder="Entrez votre prenom"required>
                         </div>
                     </div>
 
@@ -90,7 +90,7 @@
                                    class="form-control"
                                    id="ins_adress"
                                    name="ins_adress"
-                                   placeholder="Entrez votre adresse">
+                                   placeholder="Entrez votre adresse" required>
                         </div>
                     </div>
                     <div class="row">
@@ -101,7 +101,7 @@
                                        class="form-control"
                                        id="ins_postal"
                                        name="ins_postal"
-                                       placeholder="Code postal">
+                                       placeholder="Code postal" required>
                             </div>
                         </div>
 
@@ -112,7 +112,7 @@
                                        class="form-control"
                                        id="ins_ville"
                                        name="ins_ville"
-                                       placeholder="Ville">
+                                       placeholder="Ville" required>
                             </div>
                         </div>
                     </div>
@@ -122,11 +122,11 @@
                         <div class="input-group">
                                         <span class="input-group-addon"><i
                                                 class="fa fa-phone fa-fw"></i></span>
-                            <input type="text"
+                            <input type="tel"
                                    class="form-control"
                                    id="ins_phone"
                                    name="ins_phone"
-                                   placeholder="Entrez votre numéro de téléphone">
+                                   placeholder="Entrez votre numéro de téléphone" required>
                         </div>
                         <br/>
                     </div>
@@ -134,30 +134,30 @@
                     <div class="form-group">
                         <input type="checkbox" name="checkbox2" id="checkbox2" autocomplete="off"/>
                         <div class="btn-group">
-                            <label for="checkbox2" class="btn btn-warning">
+                            <label for="checkbox2" class="btn btn-default active">
                                 <span class=" fa fa-check fa-fw"></span>
                                 <span> </span>
                             </label>
-                            <label for="checkbox2" class="btn btn-default active">J'accepte les conditions d'utilisations</label>
+                            <label for="checkbox2" class="btn btn-default">J'accepte les conditions d'utilisations</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="checkbox1" id="checkbox1" autocomplete="off"/>
                         <div class="btn-group">
-                            <label for="checkbox1" class="btn btn-warning">
+                            <label for="checkbox1" class="btn btn-default active">
                                 <span class="fa fa-check fa-fw"></span>
                                 <span> </span>
                             </label>
-                            <label for="checkbox1" class="btn btn-default active">J'accepte de recevoir des offres promotionnelles de JS Pneus</label>
+                            <label for="checkbox1" class="btn btn-default">J'accepte de recevoir des offres promotionnelles de JS Pneus</label>
                         </div>
                     </div>
                 </div>
+                <div  style="display:none" id="ins_alert_conditions" class="alert alert-danger" role="alert">Vous devez accepter les conditions d'utilisations.</div>
                 <div  style="display:none" id="ins_alert_succes" class="alert alert-success" role="alert">Bravo, vous vous êtes bien inscris!</div>
-                <div  style="display:none" id="ins_alert_mail" class="alert alert-danger" role="alert">Cette e-mail est déja utilisé.</div>
-                <div  style="display:none" id="ins_alert_champs" class="alert alert-danger" role="alert">Des champs sont manquants!</div>
+                <div  style="display:none" id="ins_alert_mail" class="alert alert-danger" role="alert">Cet e-mail est déja utilisé.</div>
                 <div class="modal-footer">
-                    <button id="ins_submit" type="button" name="action" value="subscribe"
-                            class="btn btn-subscribe btn-lg btn-block">
+                    <button id="ins_submit" type="submit" name="action" value="subscribe"
+                            class="btn btn-default btn-lg btn-block">
                         Inscription
                     </button>
                 </div>
