@@ -23,7 +23,7 @@ session_start();
  *      - Aucun identifiant n'est renseigné (ni ID ni mail)                         (code MISSING_ARGUMENT)
  *      - Le mot de passe n'est pas renseigné                                       (code MISSING_ARGUMENT)
  *      - Le paramètre d'identification n'a pas permis de trouver un utilisateur    (code NO_USER)
- *      - Un utilisateur est déja connecté                                          (code ALREADY_CONNECTED)
+ *      - Un compte est déja connecté                                               (code ALREADY_CONNECTED)
  *      - Le mot de passe renseigné n'est pas celui de l'utilisateur                (code WRONG_PASSWORD)
  */
 
@@ -56,7 +56,8 @@ session_start();
  * Arguments :
  * [    "user_id" => ID de l'utilisateur à connecter
  *          OU                     *si les deux sont renseignés, l'ID est utilisée*
- *      "user_mail" => mail de l'utilisateur à connecter ]
+ *      "user_mail" => mail de l'utilisateur à connecter,
+ *      "withPass"   => booléen, informe de la volonté ou non d'obtenir le passwordHash *facultatif, false par défaut* ]
  * Renvoi :
  * [    "user" => Tableau des données de l'utilisateur ]
  * Echoue si :
@@ -67,7 +68,8 @@ session_start();
 /**
  * "getConnectedUser"
  * Récupère les informations de l'utilisateur connecté
- * Aucun argument
+ * Arguments :
+ * [    "withPass"   => booléen, informe de la volonté ou non d'obtenir le passwordHash *facultatif, false par défaut* ]
  * Renvoi :
  * [    "user" => Informations de l'utilisateur ]
  * Echoue si :
@@ -116,7 +118,7 @@ switch ($action)
 
         if (isset($_SESSION["connexion"]))
             if (array_key_exists("connecte", $_SESSION["connexion"]))
-                ajaxError("Un utilisateur est déja connecté", "ALREADY_CONNECTED");
+                ajaxError("Un compte est déja connecté", "ALREADY_CONNECTED");
 
 
         if (!isset($_POST["user_id"]) && !isset($_POST["user_mail"]))
