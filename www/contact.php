@@ -40,7 +40,7 @@ include_once('header.php');
             <label for="message" class="sr-only">Message</label>
             <textarea id="message" class="form-control" placeholder="Composez votre message ici ..."></textarea>
         </div>
-        <button type="button" class="btn btn-block btn-lg"><i class="fa fa-envelope-o"></i>
+        <button type="button" class="btn btn-block btn-default btn-lg"><i class="fa fa-envelope-o"></i>
             Envoyer votre message
         </button>
 

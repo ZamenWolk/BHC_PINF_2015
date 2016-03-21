@@ -2,19 +2,18 @@
 include_once "../secret/credentials.php";
 include_once("header.php");
 ?>
+<a href="./catalogue" type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Retour au catalogue</a>
 <div class="model_article container-fluid">
-
     <div class="row heading">
-        <div class="col-md-2">
-            <img src="../assets/img/pneu.jpg" class="annonce img-responsive"/>
-        </div>
-        <div class="col-md-10 item-heading-container pull-right">
+        <div class="col-md-10 col-md-offset-2 item-heading-container pull-right">
             <h1 class="item-heading"></h1>
         </div>
     </div>
     <div class="row item-rest">
-
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-3">
+            <img src="../assets/img/pneu.jpg" class="annonce img-responsive"/>
+        </div>
+        <div class="col-md-6">
             <dl class="dl-horizontal">
                 <dt>Catégorie:</dt>
                 <dd class="categorie"></dd>
@@ -47,7 +46,6 @@ include_once("header.php");
             </button>
         </div>
     </div>
-    <a href="./catalogue" type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Retour au catalogue</a>
 </div>
 
 <script>

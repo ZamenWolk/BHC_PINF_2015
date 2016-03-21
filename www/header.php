@@ -353,7 +353,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 search-col">
+                <div class="col-md-2 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
                             <label class="control-label" for="sel3">Largeur</label>
@@ -365,7 +365,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 search-col">
+                <div class="col-md-2 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
                             <label class="control-label" for="sel4">Série</label>
@@ -377,13 +377,25 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 search-col">
+                <div class="col-md-2 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
                             <label class="control-label" for="sel5">Jante</label>
                         </div>
                         <div class="col-md-3 col-sm-5 pull-left">
                             <select name="jante" class="form-control search-select nav_jante" id="sel5">
+                                <option value="0">Toutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 search-col">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-7">
+                            <label class="control-label" for="sel6">Charge</label>
+                        </div>
+                        <div class="col-md-3 col-sm-5 pull-left">
+                            <select name="charge" class="form-control search-select nav_charge" id="sel6">
                                 <option value="0">Toutes</option>
                             </select>
                         </div>
@@ -403,19 +415,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 search-col">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-7">
-                            <label class="control-label" for="sel6">Charge</label>
-                        </div>
-                        <div class="col-md-3 col-sm-5 pull-left">
-                            <select name="charge" class="form-control search-select nav_charge" id="sel6">
-                                <option value="0">Toutes</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 search-col">
+                <div class="col-md-2 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
                             <label class="control-label" for="sel7">Vitesse</label>
@@ -427,7 +427,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 search-col">
+                <div class="col-md-2 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
                             <label class="control-label" for="sel8">Conso.</label>
@@ -439,9 +439,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 search-col">
+                <div class="col-md-2 search-col">
                     <div class="row">
                         <div class="col-md-3 col-sm-7">
                             <label class="control-label" for="sel9">Decibel</label>
@@ -453,8 +451,10 @@ session_start();
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3 search-col pull-right">
-                    <input type="submit" value="Rechercher" class="btn btn-warning btn-block pull-left">
+                    <button class="btn btn-warning btn-block pull-left" type="submit" value="Rechercher">
+                        <i class="fa fa-search fa-fw"></i>Rechercher</button>
                 </div>
             </div>
 

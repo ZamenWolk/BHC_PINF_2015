@@ -122,18 +122,18 @@ include_once("header.php");
 <div class="row">
     <div class="col-md-6">
         <h3>Pneus par type de véhicule</h3>
-        <ul class="fa-ul">
-            <li><i class="fa-li fa fa-car fa-3x"></i><a href="#">Tourisme</a></li>
-            <li><i class="fa-li fa fa-car fa-3x"></i><a href="#">4X4</a></li>
-            <li><i class="fa-li fa fa-car fa-3x"></i><a href="#">Utilitaire</a></li>
+        <ul>
+            <li><img src="../assets/img/tourisme.png"><a href="#">Tourisme</a></li>
+            <li><img src="../assets/img/4x4.png"><a href="#">4X4</a></li>
+            <li><img src="../assets/img/utilitaire.png"><a href="#">Utilitaire</a></li>
         </ul>
     </div>
     <div class="col-md-6">
         <h3>Pneus par saison</h3>
-        <ul class="fa-ul">
-            <li><i class="fa-li fa fa-car fa-3x"></i><a href="#">Hiver</a></li>
-            <li><i class="fa-li fa fa-car fa-3x"></i><a href="#">&Eacute;té</a></li>
-            <li><i class="fa-li fa fa-car fa-3x"></i><a href="#">Toutes saisons</a></li>
+        <ul>
+            <li style="padding-top: 8px"><img src="../assets/img/hiver.png"><a href="#">Hiver</a></li>
+            <li style="padding-top: 8px"><img src="../assets/img/été.png"><a href="#">&Eacute;té</a></li>
+            <li style="padding-top: 8px"><img src="../assets/img/4saisons.png"><a href="#">Toutes saisons</a></li>
         </ul>
     </div>
 </div>
@@ -174,7 +174,7 @@ include_once("header.php");
                             jQ.show();
                             var link = jQ.children(".thumbnail");
                             var caption = link.children(".caption");
-                            jQ.removeClass("model_article");
+                            jQ.removeClass("modele");
                             $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
                             caption.children("h5").html(pneu_description);
                             caption.children("p").html("Prix : " + pneu_prix + " € ");
@@ -186,83 +186,9 @@ include_once("header.php");
                         model.hide();
                     }
                 }
-                var prev = $(".previous");
-                var activePrev = false;
-                var suiv = $(".next");
-                var activeNext = true;
-                prev.click(function () {
-                    $.post(
-                        "../assets/php/ajax/recherche.php",
-                        {
-                            action: "chargement",
-                            categorie: 0,
-                            marque: 0,
-                            largeur: 0,
-                            serie: 0,
-                            jante: 0,
-                            charge: 0,
-                            vitesse: 0,
-                            consommation: 0,
-                            decibel: 0,
-                            numeroPage: numero_page,
-                            itempParPage: 4,
-                            order: 10
-                        }, function (data) {
-                            if (activePrev) {
-                                if (data["etat"] == "reussite") {
-                                    if (data["nbrResult"] > 0) {
-                                        for (var i = 0; i < data["nbrResult"]; i++) {
-                                            var pneu_description = data["resultat"][i]["pneu_description"];
-                                            var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
-                                            var jQ = model.clone();
-                                            jQ.show();
-                                            var link = jQ.children(".thumbnail");
-                                            var caption = link.children(".caption");
-                                            jQ.removeClass("model_article");
-                                            $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
-                                            caption.children("h5").html(pneu_description);
-                                            caption.children("p").html("Prix : " + pneu_prix + " € ");
-                                            div_articles.append(jQ);
-                                        }
-                                        model.hide();
-                                    }
-                                    else {
-                                        model.hide();
-                                    }
-                                }
-                            }
-                        }
-                    );
-                });
-
-                suiv.click(function () {
-                    if (activePrev) {
-                        if (data["etat"] == "reussite") {
-                            if (data["nbrResult"] > 0) {
-                                for (var i = 0; i < data["nbrResult"]; i++) {
-                                    var pneu_description = data["resultat"][i]["pneu_description"];
-                                    var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
-                                    var jQ = model.clone();
-                                    jQ.show();
-                                    var link = jQ.children(".thumbnail");
-                                    var caption = link.children(".caption");
-                                    jQ.removeClass("model_article");
-                                    $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
-                                    caption.children("h5").html(pneu_description);
-                                    caption.children("p").html("Prix : " + pneu_prix + " € ");
-                                    div_articles.append(jQ);
-                                }
-                                model.hide();
-                            }
-                            else {
-                                model.hide();
-                            }
-                        }
-                    }
-                });
-            }
-        );
+            });
     });
+
 </script>
 
 
