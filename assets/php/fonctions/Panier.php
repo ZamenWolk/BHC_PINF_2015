@@ -1,8 +1,8 @@
 <?php
 
-include_once "Pneu.php";
+include_once "../fonctions/Pneu.php";
 include_once "../../../secret/credentials.php";
-include_once "Config.php";
+include_once("Config.php");
 
 class Panier
 {

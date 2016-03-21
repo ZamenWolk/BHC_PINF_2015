@@ -61,7 +61,7 @@ $(document).ready(function() {
 	}
 	
 	    $("#confirmOrder").click(function() {
-    	alert("Commande confirmée !");
+    	alert("Commande confirmï¿½e !");
     });
     
     $("#goAchat").click(function() {
@@ -158,13 +158,10 @@ $(document).ready(function() {
 			}
     }
     
-    function getPanierFromSession() {
-    	var test = "contenuPanier";
-    	$.post('../assets/php/ajax/panier.php',
-    		{action : test},
-    		function(data) {
+    function getPanierFromSession()
+	{
+    	$.post('../assets/php/ajax/panier.php', {action : "nbArticles"}, function(data) {
     			alert("Salut");
-    			alert(test);
     			alert(data);
     		}); 
     		
