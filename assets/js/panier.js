@@ -158,17 +158,9 @@ $(document).ready(function() {
 			}
     }
     
-<<<<<<< Updated upstream
     function getPanierFromSession()
 	{
     	$.post('../assets/php/ajax/panier.php', {action : "nbArticles"}, function(data) {
-=======
-    function getPanierFromSession() {
-    	var test = "contenuPanier";
-    	$.post('../assets/php/ajax/panier.php',
-    		{action : "test"},
-    		function(data) {
->>>>>>> Stashed changes
     			alert("Salut");
     			alert(data);
     		}); 
