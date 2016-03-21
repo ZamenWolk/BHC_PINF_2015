@@ -1,7 +1,7 @@
-﻿var myItemId = 0;
+var myItemId = 0;
 var maxId = 0;
 var i = 0;
-var modeTest = 1;
+var modeTest = 0;
 
 $(document).ready(function() {
 	if (modeTest) {
@@ -56,6 +56,7 @@ $(document).ready(function() {
 	}
 	
 	else {
+		getPanierFromSession();
 		isEmptyPanier();
 	}
 	
@@ -156,5 +157,18 @@ $(document).ready(function() {
 	    		$("#blockValidate").remove();
 			}
     }
+    
+    function getPanierFromSession() {
+    	var test = "contenuPanier";
+    	$.post('../assets/php/ajax/panier.php',
+    		{action : test},
+    		function(data) {
+    			alert("Salut");
+    			alert(test);
+    			alert(data);
+    		}); 
+    		
+    }
+    ///////////// FONCTION DE DEBUG ////////////////
     
 });

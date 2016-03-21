@@ -2,7 +2,7 @@
 include_once("header.php");
 ?>
 
-<div class="container" id="panierMenu"> 
+<div class="container-fluid" id="panierMenu"> 
 	<div class="row borderMainBlock"> <!-- création d'une ligne -->
 		<div class="col-md-9" id="myPanier">
 
