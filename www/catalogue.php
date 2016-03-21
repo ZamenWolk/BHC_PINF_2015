@@ -45,18 +45,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                         </div>
                         <div class="col-md-2 catalog-cart-div">
                             <label for="qte">Quantité: </label>
-                            <select class="form-control" id="qte">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
+                            <input type="number" class="form-control qtField" min="0" id="qte" value="1">
                             <button type="button" class="btn btn-default btn-block pull-right shop-btn"><span
                                     class="fa fa-shopping-cart"
                                     aria-hidden="true"></span> Ajouter au panier
