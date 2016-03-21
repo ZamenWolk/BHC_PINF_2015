@@ -108,6 +108,15 @@ include_once("header.php");
                         </div>
                     </div>
                 </div>
+                <div class="prod item active">
+                    <div class="row" id="home-articles22">
+                    </div>
+                </div>
+
+                <div class="prod item">
+                    <div class="row" id="home-articles33">
+                    </div>
+                </div>
             </div>
             <a data-slide="prev" href="#prodCar" class="prod left carousel-control">
                 <span class="fa fa-angle-left fa-3x" aria-hidden="true"></span>
@@ -149,7 +158,12 @@ include_once("header.php");
     $(document).ready(function () {
         var numero_page = 1;
         var model = $(".modele");
-        var div_articles = $("#home-articles");
+        var div_articles = $("div#home-articles");
+        var div_articles2 =$("div#home-articles22");
+        var div_articles3 =$("div#home-articles33");
+        console.log(div_articles2);console.log(div_articles3);
+
+
         $.post(
             "../assets/php/ajax/recherche.php",
             {
@@ -164,16 +178,16 @@ include_once("header.php");
                 consommation: 0,
                 decibel: 0,
                 numeroPage: numero_page,
-                itempParPage: 4,
+                itemParPage: 12,
                 order: 10
             },
             function (data) {
                 data = JSON.parse(data);
-
+                var i;
                 console.log(data);
                 if (data["etat"] == "reussite") {
                     if (data["nbrResult"] > 0) {
-                        for (var i = 0; i < data["nbrResult"]; i++) {
+                        for (i = 0; i < data["nbrResult"]; i++) {
                             var pneu_description = data["resultat"][i]["pneu_description"];
                             var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
                             var jQ = model.clone();
@@ -184,7 +198,12 @@ include_once("header.php");
                             $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
                             caption.children("h5").html(pneu_description);
                             caption.children("p").html("Prix : " + pneu_prix + " € ");
-                            div_articles.append(jQ);
+                            if(i < 4)
+                                div_articles.append(jQ);
+                            if(i<8 && i > 3)
+                                div_articles2.append(jQ);
+                            if(i>7)
+                                div_articles3.append(jQ);
                         }
                         model.hide();
                     }
