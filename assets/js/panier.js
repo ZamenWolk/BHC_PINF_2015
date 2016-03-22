@@ -123,7 +123,8 @@ $(document).ready(function() {
     	$.post("../assets/php/ajax/panier.php", 
     			{action : "contenuPanier"}, 
     			function(data) {
-	    			alert(data);
+    				var jsonData = JSON.parse(data);
+	    			console.log(jsonData["panier"][0]);
     			}
     		);
     }
