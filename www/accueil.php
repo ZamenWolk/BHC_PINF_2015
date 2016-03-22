@@ -51,7 +51,7 @@ include_once("header.php");
 
     <div class="col-lg-4 img-col" id="home1">
         <div class="hovereffect">
-            <a href="#">
+            <a href="./catalogue">
                 <img class="img-responsive" src="../assets/img/home1.jpg">
                 <div class="overlay">
                     <h2>Catalogue</h2>
@@ -62,7 +62,7 @@ include_once("header.php");
 
     <div class="col-lg-4 img-col" id="home2">
         <div class="hovereffect">
-            <a href="#">
+            <a href="./faq">
                 <img class="img-responsive" src="../assets/img/home2.jpg">
                 <div class="overlay">
                     <h2>F.A.Q.</h2>
@@ -73,7 +73,7 @@ include_once("header.php");
 
     <div class="col-lg-4 img-col" id="home3">
         <div class="hovereffect">
-            <a href="#">
+            <a href="./contact">
                 <img class="img-responsive" src="../assets/img/home3.jpg">
                 <div class="overlay">
                     <h2>Contact</h2>
