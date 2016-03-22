@@ -105,7 +105,7 @@ class Panier
         $item = &$this->getArticle($reference);
         if (isset($item))
         {
-            return $item->getPrix() * $item["quantite"];
+            return $item["pneu"]->getPrix() * $item["quantite"];
         }
         else
             return false;
