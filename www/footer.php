@@ -157,7 +157,7 @@
                 <div  style="display:none" id="ins_alert_mail" class="alert alert-danger" role="alert">Cet e-mail est déja utilisé.</div>
                 <div class="modal-footer">
                     <button id="ins_submit" type="submit" name="action" value="subscribe"
-                            class="btn btn-default btn-lg btn-block">
+                            class="btn btn-lg btn-block btn-subscribe">
                         Inscription
                     </button>
                 </div>
