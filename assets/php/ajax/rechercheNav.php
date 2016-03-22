@@ -44,11 +44,7 @@ if(isset($_POST["action"]))
             break;
 
 
+	}
 }
-
-
-}
-
-
 
 ?>
