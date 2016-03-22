@@ -1,8 +1,8 @@
 <?php
 
 
-include_once("Pneu.php");
-include_once "maLibSQL.pdo.php";
+include_once("../fonctions/Pneu.php");
+include_once "../fonctions/maLibSQL.pdo.php";
 
 
 
