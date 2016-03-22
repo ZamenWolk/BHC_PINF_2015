@@ -1,6 +1,8 @@
 <?php
-include_once("../../../secret/credentials.php");
-include_once "maLibSQL.pdo.php";
+if (file_exists("../../../secret/credentials.php"))
+    include_once("../../../secret/credentials.php");
+if (file_exists("maLibSQL.pdo.php"))
+    include_once "maLibSQL.pdo.php";
 
 class Pneu
 {
