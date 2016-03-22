@@ -13,7 +13,7 @@ include_once("header.php");
     <!-- Wrapper for slides -->
     <div class="main-car carousel-inner" role="listbox">
         <div class="item active">
-            <img src="../assets/img/car1.jpg" class="car-img img-responsive">
+            <img src="../assets/img/logo-car.png" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Bienvenue sur JS Pneus !</h2>
                 <p>Site de vente de pneus pour auto et moto</p>
@@ -23,14 +23,14 @@ include_once("header.php");
             <img src="../assets/img/car2.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Un vaste choix de pneus</h2>
-                <p>Choisissez les pneus qu'il vous faut parmi une grande sélection de marques</p>
+                <p>Vous cherchez un pneu précis ? Nous l'avons !</p>
             </div>
         </div>
         <div class="item">
-            <img src="../assets/img/car3.jpg" class="car-img img-responsive">
+            <img src="../assets/img/marques.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
-                <h2>Les prix les plus bas</h2>
-                <p>Des prix défiant toute concurrence !</p>
+                <h2>Des tonnes de marques !</h2>
+                <p>Notre cataloque contient toutes les grandes marques de pneus</p>
             </div>
         </div>
     </div>
@@ -188,9 +188,16 @@ include_once("header.php");
                 if (data["etat"] == "reussite") {
                     if (data["nbrResult"] > 0) {
                         for (i = 0; i < data["nbrResult"]; i++) {
+                            var jQ = model.clone();
+                            if(i < 4)
+                                div_articles.append(jQ);
+                            if(i<8 && i > 3)
+                                div_articles2.append(jQ);
+                            if(i>7)
+                                div_articles3.append(jQ);
                             var pneu_description = data["resultat"][i]["pneu"]["pneu_description"];
                             var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
-                            var jQ = model.clone();
+
                             jQ.show();
                             var link = jQ.children(".thumbnail");
                             var caption = link.children(".caption");
@@ -198,12 +205,7 @@ include_once("header.php");
                             $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
                             caption.children("h5").html(pneu_description);
                             caption.children("p").html("Prix : " + pneu_prix + " € ");
-                            if(i < 4)
-                                div_articles.append(jQ);
-                            if(i<8 && i > 3)
-                                div_articles2.append(jQ);
-                            if(i>7)
-                                div_articles3.append(jQ);
+
                         }
                         model.hide();
                     }

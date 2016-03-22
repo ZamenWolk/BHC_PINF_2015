@@ -313,7 +313,6 @@ session_start();
                                    placeholder="Mot de passe">
                         </div>
 
-                        <hr>
                         <div id="wrong_id" class="alert-danger alert" role="alert">Mauvais mail ou mot de passe</div>
                         <button type="button" id="seConnecter" class="btn btn-block btn-connect">Se connecter</button>
                     </form>
