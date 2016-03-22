@@ -1,17 +1,12 @@
 var myItemId = 0;
 var maxId = 0;
 var i = 0;
-var modeTest = 1;
+var modeTest = true;
 
 $(document).ready(function() {
 	if (modeTest) {
-		function gestionErreurs(err) {
-			$("#erreur").html('<h1>Erreur :&nbsp;' + err+ '</h1>');
-			return true;
-			}
-		window.onerror = gestionErreurs;
-		//ajouterArticle("00258",1);
-		//ajouterArticle("03453",4);
+		ajouterArticle("00258",1);
+		ajouterArticle("03453",4);
 		//ajouterArticle("03999453",4);
 		//ajouterArticle("03453",0);
 		generatePanier();
@@ -125,20 +120,21 @@ $(document).ready(function() {
     }
     
     function generatePanier() {
-    	$.post('../assets/php/ajax/panier.php', 
+    	$.post("../assets/php/ajax/panier.php", 
     			{action : "contenuPanier"}, 
     			function(data) {
 	    			alert(data);
-    		}); 
-    		
+    			}
+    		);
     }
     
     function ajouterArticle(reference, qt) {
-    	$.post('../assets/php/ajax/panier.php', 
+    	$.post("../assets/php/ajax/panier.php",
     			{action : "ajouterArticle",referencePneu:reference,quantite:qt}, 
     			function(data) {
-	    			alert(data);
-    	}); 
+	    			console.log(data);
+    			}
+    		); 
     }	
     ///////////// FONCTION DE DEBUG ////////////////
     
