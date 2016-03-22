@@ -1,7 +1,7 @@
 <?php
 
 
-
+include_once("Pneu.php");
 include_once "maLibSQL.pdo.php";
 
 
@@ -246,7 +246,9 @@ class Recherche{
         //Si il n'y a pas de résultat on passe le foreach
         if($res != null) {
             foreach ($res as $row) {
-                array_push($tab, $row);
+                $pneu = new Pneu($row);
+                $entry = array("pneu" => $row, "prix" => $pneu->getPrix());
+                array_push($tab, $entry);
 
             }
         }

@@ -55,25 +55,25 @@ include_once("header.php");
         var ref = arr[1];
 
         $.post(
-            "../assets/php/ajax/recherche.php",
+            "../assets/php/ajax/pneu.php",
             {
-                action: "chargementRef",
+                action: "getPneu",
                 ref: ref
             },
             function (data) {
                 data = JSON.parse(data);
                 console.log(data);
                 if (data["etat"] == "reussite") {
-                    var pneu_marque = data["resultat"][0]["pneu_marque"];
-                    var pneu_categorie = data["resultat"][0]["pneu_categorie"];
-                    var pneu_largeur = data["resultat"][0]["pneu_largeur"];
-                    var pneu_serie = data["resultat"][0]["pneu_serie"];
-                    var pneu_jante = data["resultat"][0]["pneu_jante"];
-                    var pneu_charge = data["resultat"][0]["pneu_charge"];
-                    var pneu_vitesse = data["resultat"][0]["pneu_vitesse"];
-                    var pneu_description = data["resultat"][0]["pneu_description"];
-                    var pneu_prix = data["resultat"][0]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
-                    var pneu_ref = data["resultat"][0]["pneu_ref"];
+                    var pneu_marque = data["pneu"]["marque"];
+                    var pneu_categorie = data["pneu"]["categorie"];
+                    var pneu_largeur = data["pneu"]["largeur"];
+                    var pneu_serie = data["pneu"]["serie"];
+                    var pneu_jante = data["pneu"]["jante"];
+                    var pneu_charge = data["pneu"]["charge"];
+                    var pneu_vitesse = data["pneu"]["vitesse"];
+                    var pneu_description = data["pneu"]["description"];
+                    var pneu_prix = data["prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                    var pneu_ref = data["pneu"]["reference"];
                     var jQ = $(".model_article");
                     var heading = jQ.children(".heading");
                     var list = jQ.children(".list-group-item");

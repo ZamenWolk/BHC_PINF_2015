@@ -17,7 +17,7 @@ include_once("../fonctions/Pneu.php");
  * Renvoi :
  * [    "referencePneu" => Référence du pneu,
  *      "pneu"          => Informations du pneu,
- *      "prix"         => Prix du pneu en BDD ]
+ *      "prix"          => Prix du pneu en BDD ]
  * Echoue si :
  *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
  *      - Aucun pneu correspondant n'a été trouvé en BDD (code NO_CORRESPONDENCE)

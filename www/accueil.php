@@ -188,8 +188,8 @@ include_once("header.php");
                 if (data["etat"] == "reussite") {
                     if (data["nbrResult"] > 0) {
                         for (i = 0; i < data["nbrResult"]; i++) {
-                            var pneu_description = data["resultat"][i]["pneu_description"];
-                            var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                            var pneu_description = data["resultat"][i]["pneu"]["pneu_description"];
+                            var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
                             var jQ = model.clone();
                             jQ.show();
                             var link = jQ.children(".thumbnail");

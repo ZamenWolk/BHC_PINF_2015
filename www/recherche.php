@@ -117,20 +117,20 @@ include_once "../assets/php/fonctions/Recherche.php";
                 console.log(data);
                 if (data["etat"] == "reussite") {
                     if (data["nbrResult"] > 0) {
-                        $("#item-link").attr("href", "./produit?ref=" + data["resultat"][0]["pneu_ref"]);
+                        $("#item-link").attr("href", "./produit?ref=" + data["resultat"][0]["pneu"]["pneu_ref"]);
                         for (var i = 0; i < data["nbrResult"]; i++) {
-                            var pneu_marque = data["resultat"][i]["pneu_marque"];
-                            var pneu_categorie = data["resultat"][i]["pneu_categorie"];
-                            var pneu_largeur = data["resultat"][i]["pneu_largeur"];
-                            var pneu_serie = data["resultat"][i]["pneu_serie"];
-                            var pneu_jante = data["resultat"][i]["pneu_jante"];
-                            var pneu_charge = data["resultat"][i]["pneu_charge"];
-                            var pneu_vitesse = data["resultat"][i]["pneu_vitesse"];
-                            var pneu_description = data["resultat"][i]["pneu_description"];
-                            var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                            var pneu_marque = data["resultat"][i]["pneu"]["pneu_marque"];
+                            var pneu_categorie = data["resultat"][i]["pneu"]["pneu_categorie"];
+                            var pneu_largeur = data["resultat"][i]["pneu"]["pneu_largeur"];
+                            var pneu_serie = data["resultat"][i]["pneu"]["pneu_serie"];
+                            var pneu_jante = data["resultat"][i]["pneu"]["pneu_jante"];
+                            var pneu_charge = data["resultat"][i]["pneu"]["pneu_charge"];
+                            var pneu_vitesse = data["resultat"][i]["pneu"]["pneu_vitesse"];
+                            var pneu_description = data["resultat"][i]["pneu"]["pneu_description"];
+                            var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
                             //console.log(marque);
                             //console.log("Je boucle" + i);
-                            var pneu_ref = data["resultat"][i]["pneu_ref"];
+                            var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                             var jQ = model.clone();
                             $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
                             var list = jQ.children(".list-group-item");
@@ -155,7 +155,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                     }
                     else {
                         model.hide();
-                        div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneus correspondant à vos critères de recherches.</h2>");
+                        div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneu correspondant à vos critères de recherches.</h2>");
                     }
                 }
 
@@ -209,7 +209,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                                 prev.addClass("disabled");
                                 activePrev = false;
                             }
-                            if (data["nbrResult"] == data["resultat"][0]["itemParPage"]) {
+                            if (data["nbrResult"] == data["resultat"][0]["itemParPage"]) { //TODO Il n'existe pas de variable "itemParPage" dans le JSON renvoyé par l'AJAX ! /!\
                                 suiv.removeClass("disabled");
                                 activeNext = true;
                             }
@@ -217,18 +217,18 @@ include_once "../assets/php/fonctions/Recherche.php";
                             if (data["etat"] == "reussite") {
                                 if (data["nbrResult"] > 0) {
                                     for (var i = 0; i < data["nbrResult"]; i++) {
-                                        var pneu_marque = data["resultat"][i]["pneu_marque"];
-                                        var pneu_categorie = data["resultat"][i]["pneu_categorie"];
-                                        var pneu_largeur = data["resultat"][i]["pneu_largeur"];
-                                        var pneu_serie = data["resultat"][i]["pneu_serie"];
-                                        var pneu_jante = data["resultat"][i]["pneu_jante"];
-                                        var pneu_charge = data["resultat"][i]["pneu_charge"];
-                                        var pneu_vitesse = data["resultat"][i]["pneu_vitesse"];
-                                        var pneu_description = data["resultat"][i]["pneu_description"];
-                                        var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                                        var pneu_marque = data["resultat"][i]["pneu"]["pneu_marque"];
+                                        var pneu_categorie = data["resultat"][i]["pneu"]["pneu_categorie"];
+                                        var pneu_largeur = data["resultat"][i]["pneu"]["pneu_largeur"];
+                                        var pneu_serie = data["resultat"][i]["pneu"]["pneu_serie"];
+                                        var pneu_jante = data["resultat"][i]["pneu"]["pneu_jante"];
+                                        var pneu_charge = data["resultat"][i]["pneu"]["pneu_charge"];
+                                        var pneu_vitesse = data["resultat"][i]["pneu"]["pneu_vitesse"];
+                                        var pneu_description = data["resultat"][i]["pneu"]["pneu_description"];
+                                        var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
                                         //console.log(marque);
                                         //console.log("Je boucle" + i);
-                                        var pneu_ref = data["resultat"][i]["pneu_ref"];
+                                        var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                                         var jQ = model.clone();
                                         $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
                                         var list = jQ.children(".list-group-item");
@@ -297,18 +297,18 @@ include_once "../assets/php/fonctions/Recherche.php";
                             if (data["etat"] == "reussite") {
                                 if (data["nbrResult"] > 0) {
                                     for (var i = 0; i < data["nbrResult"]; i++) {
-                                        var pneu_marque = data["resultat"][i]["pneu_marque"];
-                                        var pneu_categorie = data["resultat"][i]["pneu_categorie"];
-                                        var pneu_largeur = data["resultat"][i]["pneu_largeur"];
-                                        var pneu_serie = data["resultat"][i]["pneu_serie"];
-                                        var pneu_jante = data["resultat"][i]["pneu_jante"];
-                                        var pneu_charge = data["resultat"][i]["pneu_charge"];
-                                        var pneu_vitesse = data["resultat"][i]["pneu_vitesse"];
-                                        var pneu_description = data["resultat"][i]["pneu_description"];
-                                        var pneu_prix = data["resultat"][i]["pneu_prix"];// Attention peut être à changer pour tenir compte du multplicateur
+                                        var pneu_marque = data["resultat"][i]["pneu"]["pneu_marque"];
+                                        var pneu_categorie = data["resultat"][i]["pneu"]["pneu_categorie"];
+                                        var pneu_largeur = data["resultat"][i]["pneu"]["pneu_largeur"];
+                                        var pneu_serie = data["resultat"][i]["pneu"]["pneu_serie"];
+                                        var pneu_jante = data["resultat"][i]["pneu"]["pneu_jante"];
+                                        var pneu_charge = data["resultat"][i]["pneu"]["pneu_charge"];
+                                        var pneu_vitesse = data["resultat"][i]["pneu"]["pneu_vitesse"];
+                                        var pneu_description = data["resultat"][i]["pneu"]["pneu_description"];
+                                        var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
                                         //console.log(marque);
                                         //console.log("Je boucle" + i);
-                                        var pneu_ref = data["resultat"][i]["pneu_ref"];
+                                        var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                                         var jQ = model.clone();
                                         $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
                                         var list = jQ.children(".list-group-item");
@@ -333,7 +333,7 @@ include_once "../assets/php/fonctions/Recherche.php";
                                 }
                                 else {
                                     model.hide();
-                                    div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneus correspondant à vos critères de recherches.</h2>");
+                                    div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneu correspondant à vos critères de recherches.</h2>");
                                 }
                             }
 
