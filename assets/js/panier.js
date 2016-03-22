@@ -5,19 +5,21 @@ var modeTest = 1;
 
 $(document).ready(function() {
 	if (modeTest) {
-		
 		function gestionErreurs(err) {
 			$("#erreur").html('<h1>Erreur :&nbsp;' + err+ '</h1>');
 			return true;
 			}
 		window.onerror = gestionErreurs;
-		
-		getPanierFromSession();
-		// if(!isEmptyPanier()) initId();
+		//ajouterArticle("00258",1);
+		//ajouterArticle("03453",4);
+		//ajouterArticle("03999453",4);
+		//ajouterArticle("03453",0);
+		generatePanier();
+		if(!isEmptyPanier()) initId();
 	}
 	
 	else {
-		getPanierFromSession();
+		generatePanier();
 		if(!isEmptyPanier()) initId();
 	}
 	
@@ -116,18 +118,28 @@ $(document).ready(function() {
 	    	'<h1>&nbsp;Mon panier</h1></br>'+
 	    	'<p>Votre panier est vide. Les articles que vous mettez dans votre panier sont affichés ici. Pour ajouter des articles dans votre panier, visitez le site et sélectionnez les articles qui vous intéressent.</p>');
 	    		$("#blockValidate").remove();
+	    		return true;
 			}
+			
+			else return false;
     }
     
-    function getPanierFromSession()
-	{
+    function generatePanier() {
     	$.post('../assets/php/ajax/panier.php', 
     			{action : "contenuPanier"}, 
     			function(data) {
-	    			
+	    			alert(data);
     		}); 
     		
     }
+    
+    function ajouterArticle(reference, qt) {
+    	$.post('../assets/php/ajax/panier.php', 
+    			{action : "ajouterArticle",referencePneu:reference,quantite:qt}, 
+    			function(data) {
+	    			alert(data);
+    	}); 
+    }	
     ///////////// FONCTION DE DEBUG ////////////////
     
     /*$("#myPanier").html('<h1 class="align">&nbsp;Mon panier</h1><hr>'+
