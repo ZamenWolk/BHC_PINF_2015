@@ -107,6 +107,16 @@ include_once "../assets/php/fonctions/User.php";
                     <input id="mdp2" class="form-control" type="password" value="11111122333"><!-- INSERT PHP HERE  -->
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Newsletter:</label>
+                <div class="col-lg-8">
+                    <h5 id="newsletter" class="titre"></h5>
+                    <!-- INSERT PHP HERE  -->
+                </div>
+            </div>
+
+
             <div class="form-group">
                 <label class="col-md-3 control-label"></label>
                 <div id="boutons" class="col-md-8">
@@ -159,4 +169,6 @@ include_once "../assets/php/fonctions/User.php";
             });
     });
 </script>
-
+<?php
+include_once("footer.php");
+?>

@@ -32,7 +32,7 @@ session_start();
          */
         $(document).ready(function () {
             $("#wrong_id").hide();
-           // $("#wrong_id").show();
+            // $("#wrong_id").show();
             //$.post("../assets/php/ajax/user.php", {action: "deconnecter"});
 
             $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
@@ -86,23 +86,27 @@ session_start();
 
             var mailLogin;
             var passeLogin;
-            $(document).on("change","#mailLogin", function(){
+            $(document).on("change", "#mailLogin", function () {
                 mailLogin = $(this).val();
             });
 
-            $(document).on("change","#passeLogin", function(){
+            $(document).on("change", "#passeLogin", function () {
                 passeLogin = $(this).val();
             });
 
-            $(document).on("click","#seConnecter",function(){
+            $(document).on("click", "#seConnecter", function () {
 
-              //  console.log(mailLogin + " "+passeLogin);//On récupère les informations de connexion ds la console
-                $.post("../assets/php/ajax/user.php",{action: "connecter", user_mail: mailLogin, password: passeLogin}, function(data){
+                //  console.log(mailLogin + " "+passeLogin);//On récupère les informations de connexion ds la console
+                $.post("../assets/php/ajax/user.php", {
+                    action: "connecter",
+                    user_mail: mailLogin,
+                    password: passeLogin
+                }, function (data) {
                     data = JSON.parse(data);
                     console.log(data);
 
                     /* on enlève le popover */
-                    if(data.etat == "reussite") {
+                    if (data.etat == "reussite") {
                         $(".popover").hide();
                     }
 
@@ -111,9 +115,7 @@ session_start();
                     $('div#wrong_id').hide("slow");
 
 
-
-                    if(data.etat == "echec")
-                    {
+                    if (data.etat == "echec") {
                         $('div#wrong_id').show("slow");
                         console.log("erreur");
                     }
@@ -122,15 +124,15 @@ session_start();
                         var jQ = $(
                             '<li>' +
                             '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                            'Mon compte '+
+                            'Mon compte ' +
                             '<span class="fa fa-user " aria-hidden="true"></span>' +
-                            '</a>'+
-                            '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">'+
-                            '<li><a href="./compte" id="acc_inf">Mes informations </a></li>'+
-                            '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>'+
-                            '<li class="divider" role="separator"></li>'+
+                            '</a>' +
+                            '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">' +
+                            '<li><a href="./compte" id="acc_inf">Mes informations </a></li>' +
+                            '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>' +
+                            '<li class="divider" role="separator"></li>' +
                             '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
-                            '</ul>'+
+                            '</ul>' +
                             '</li>' +
                             '');
                         $(".part_connect").html(jQ);
@@ -139,38 +141,36 @@ session_start();
             });
 
 
-
-
-
-
-            $.post("../assets/php/ajax/user.php",{action:"getConnectedUser"}, function(data){
+            $.post("../assets/php/ajax/user.php", {action: "getConnectedUser"}, function (data) {
                 data = JSON.parse(data);
                 console.log(data);
-                if(data.etat == "echec"){
-                    $.post("../assets/php/ajax/user.php",{action: "connecter", user_mail: "test", password: "test"}, function(data2){
+                if (data.etat == "echec") {
+                    $.post("../assets/php/ajax/user.php", {
+                        action: "connecter",
+                        user_mail: "test",
+                        password: "test"
+                    }, function (data2) {
                         data2 = JSON.parse(data2);
                         console.log(data2);
-                        if(data2.etat == "echec" && data2.code == "ALREADY_CONNECTED")
-                        {
+                        if (data2.etat == "echec" && data2.code == "ALREADY_CONNECTED") {
                             $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
 
                         }
                     });
                 }
-                else
-                {
+                else {
                     var jQ = $(
                         '<li>' +
-                            '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                                    'Mon compte '+
-                                    '<span class="fa fa-user " aria-hidden="true"></span>' +
-                            '</a>'+
-                            '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">'+
-                                '<li><a href="./compte" id="acc_inf">Mes informations </a></li>'+
-                                '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>'+
-                                '<li class="divider" role="separator"></li>'+
-                                '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
-                            '</ul>'+
+                        '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                        'Mon compte ' +
+                        '<span class="fa fa-user " aria-hidden="true"></span>' +
+                        '</a>' +
+                        '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">' +
+                        '<li><a href="./compte" id="acc_inf">Mes informations </a></li>' +
+                        '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>' +
+                        '<li class="divider" role="separator"></li>' +
+                        '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
+                        '</ul>' +
                         '</li>' +
                         '');
                     $(".part_connect").html(jQ);
@@ -178,15 +178,14 @@ session_start();
 
             });
             /* Deconnexion */
-            $(document).on("click","a#acc_dec",function(){
+            $(document).on("click", "a#acc_dec", function () {
                 console.log("deco");
                 $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
                 setTimeout(
-                    function()
-                    {
+                    function () {
                         document.location = "./accueil";
                     }, 50);
-               //document.location="./accueil";
+                //document.location="./accueil";
             });
 
 
@@ -203,46 +202,46 @@ session_start();
             var ins_ville;
             var ins_tel;
             /* Actualisation des variables */
-            $(document).on("change","#ins_mail", function(){
+            $(document).on("change", "#ins_mail", function () {
                 ins_mail = $(this).val();
             });
-            $(document).on("change","#ins_password", function(){
+            $(document).on("change", "#ins_password", function () {
                 ins_password = $(this).val();
             });
-            $(document).on("change","#ins_tel", function(){
+            $(document).on("change", "#ins_tel", function () {
                 ins_tel = $(this).val();
             });
-            $(document).on("change","#ins_password2", function(){
+            $(document).on("change", "#ins_password2", function () {
                 ins_password2 = $(this).val();
             });
-            $(document).on("change","#ins_nom", function(){
+            $(document).on("change", "#ins_nom", function () {
                 ins_nom = $(this).val();
             });
-            $(document).on("change","#ins_prenom", function(){
+            $(document).on("change", "#ins_prenom", function () {
                 ins_prenom = $(this).val();
             });
-            $(document).on("change","#ins_adress", function(){
+            $(document).on("change", "#ins_adress", function () {
                 ins_adress = $(this).val();
             });
-            $(document).on("change","#ins_postal", function(){
+            $(document).on("change", "#ins_postal", function () {
                 ins_postal = $(this).val();
             });
-            $(document).on("change","#ins_ville", function(){
+            $(document).on("change", "#ins_ville", function () {
                 ins_ville = $(this).val();
             });
             var ins_id;
             /* Requête asynchrone pour inscription */
-            $(document).on("click", "#ins_submit", function(){
+            $(document).on("click", "#ins_submit", function () {
                 var newsletter = 0;
-                if($('#checkbox2').prop('checked')) {
-                    if($('#checkbox1').prop('checked'))
+                if ($('#checkbox2').prop('checked')) {
+                    if ($('#checkbox1').prop('checked'))
                         newsletter = 1;
                     /*  "nom"        => Nom de l'utilisateur,
                      *      "prenom"     => Prénom de l'utilisateur,
                      *      "mail"       => Adresse mail de l'utilisateur,
                      *      "password"   => Mot de passe de l'utilisateur,
                      *      "newsletter" => Abonnement à la newsletter de l'utilisateur ]*/
-                    if(ins_password == ins_password2) {
+                    if (ins_password == ins_password2) {
                         $.post("../assets/php/ajax/user.php", {
                             action: "inscrire",
                             nom: ins_nom,
@@ -254,7 +253,7 @@ session_start();
                         }, function (data) {
                             data = JSON.parse(data);
                             console.log(data);
-                            if(data.etat == "echec") {
+                            if (data.etat == "echec") {
                                 switch (data.code) {
                                     case "MISSING_ARGUMENT":
                                         $("#ins_alert_success").hide('slow');
@@ -269,11 +268,17 @@ session_start();
                                 }
                             }
                             else
-                                $("#ins_alert_succes").show('slow').delay( 90000 );
-                                $('#myModal').modal('hide');
+                                $("#ins_alert_succes").show('slow').delay(90000);
+                            $('#myModal').modal('hide');
 
-                            $.post("../assets/php/ajax/adresse.php",{action : "inscrireAdresse",adresse_ligne1: ins_adress,
-                                adresse_ligne2 : "ins_adress2", adresse_codeP: ins_postal, adresse_ville: ins_ville, user_id: data["id_user"]},function(data){
+                            $.post("../assets/php/ajax/adresse.php", {
+                                action: "inscrireAdresse",
+                                adresse_ligne1: ins_adress,
+                                adresse_ligne2: "ins_adress2",
+                                adresse_codeP: ins_postal,
+                                adresse_ville: ins_ville,
+                                user_id: data["id_user"]
+                            }, function (data) {
                                 data = JSON.parse(data);
                                 console.log(data);
                             });
@@ -312,7 +317,8 @@ session_start();
         <div class="collapse navbar-collapse" id="headNavbar">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./catalogue">Catalogue de pneus</a>
+                    <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">Catalogue
+                        de pneus</a>
                 </li>
                 <li>
                     <a id="searchLink">Recherche</a>
@@ -322,14 +328,14 @@ session_start();
             <ul class="nav navbar-nav navbar-right part_connect">
                 <li id="btn-connect-account">
                     <a data-placement="bottom" data-toggle="popover" data-title="Connexion" data-container="body"
-                        type="button" data-html="true" href="#" id="login">
+                       type="button" data-html="true" href="#" id="login">
                         Se connecter <span class="fa fa-user " aria-hidden="true"></span>
                     </a>
                 </li>
                 <li id="popover-content" class="hide">
                     <form class="form-inline" role="form">
                         <div class="form-group">
-                           <input id="mailLogin" type="email" class="form-control" name="mail"
+                            <input id="mailLogin" type="email" class="form-control" name="mail"
                                    placeholder="Adresse Mail">
                         </div>
                         <div class="form-group">
@@ -479,7 +485,8 @@ session_start();
 
                 <div class="col-md-3 search-col pull-right">
                     <button class="btn btn-warning btn-block pull-left" type="submit" value="Rechercher">
-                        <i class="fa fa-search fa-fw"></i>Rechercher</button>
+                        <i class="fa fa-search fa-fw"></i>Rechercher
+                    </button>
                 </div>
             </div>
 
