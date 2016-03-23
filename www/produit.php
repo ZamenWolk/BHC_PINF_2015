@@ -47,7 +47,7 @@ include_once("header.php");
             "../assets/php/ajax/pneu.php",
             {
                 action: "getPneu",
-                ref: ref
+                referencePneu: ref
             },
             function (data) {
                 data = JSON.parse(data);
