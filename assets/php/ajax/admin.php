@@ -78,11 +78,9 @@ session_start();
  * "changerInformations"
  * Change les informations d'un administrateur
  * Arguments :
- * [    "admin_id"    => ID de l'administrateur,
- *      "nom"        => Nouveau nom de l'administrateur,
- *      "prenom"     => Nouveau prénom de l'administrateur,
- *      "mail"       => Nouveau mail de l'administrateur,
- *      "newsletter" => Nouvelle newsletter de l'administrateur ]
+ * [    "admin_id"      => ID de l'administrateur,
+ *      "nom"           => Nouveau nom de l'administrateur,
+ *      "autorisations" => Nouvelles autorisations de l'administrateur *facultatif, tableau vide par défaut ]
  * Aucun renvoi
  * Echoue si :
  *      - Il manque des paramètres                           (code MISSING_ARGUMENT)
