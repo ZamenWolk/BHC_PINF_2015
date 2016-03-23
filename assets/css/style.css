@@ -193,7 +193,7 @@ p.centered {
 }
 
 .popover.bottom .arrow:after {
-    border-bottom-color: rgba(52, 73, 94,1.0);
+    border-bottom-color: rgba(236, 240, 241, 1);;
 }
 
 .navbar-collapse {

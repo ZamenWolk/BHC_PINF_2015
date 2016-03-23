@@ -69,4 +69,9 @@ $(document).ready(function() {
         }
     });
 
+    $("a#login").on('click', function(e) {
+        e.preventDefault();
+        return true;
+    });
+
 });

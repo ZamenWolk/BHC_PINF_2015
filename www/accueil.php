@@ -108,7 +108,7 @@ include_once("header.php");
                         </div>
                     </div>
                 </div>
-                <div class="prod item active">
+                <div class="prod item">
                     <div class="row" id="home-articles22">
                     </div>
                 </div>
