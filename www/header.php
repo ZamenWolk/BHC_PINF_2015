@@ -208,7 +208,7 @@ session_start();
             $(document).on("change", "#ins_password", function () {
                 ins_password = $(this).val();
             });
-            $(document).on("change", "#ins_tel", function () {
+            $(document).on("change", "#ins_phone", function () {
                 ins_tel = $(this).val();
             });
             $(document).on("change", "#ins_password2", function () {
@@ -249,7 +249,7 @@ session_start();
                             mail: ins_mail,
                             password: ins_password,
                             newsletter: newsletter,
-                            ins_telephone: ins_tel
+                            telephone: ins_tel
                         }, function (data) {
                             data = JSON.parse(data);
                             console.log(data);

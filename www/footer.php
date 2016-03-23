@@ -156,7 +156,7 @@
                 <div  style="display:none" id="ins_alert_succes" class="alert alert-success" role="alert">Bravo, vous vous êtes bien inscris!</div>
                 <div  style="display:none" id="ins_alert_mail" class="alert alert-danger" role="alert">Cet e-mail est déja utilisé.</div>
                 <div class="modal-footer">
-                    <button id="ins_submit" type="submit" name="action" value="subscribe"
+                    <button id="ins_submit" type="button" name="action" value="subscribe"
                             class="btn btn-lg btn-block btn-subscribe">
                         Inscription
                     </button>
