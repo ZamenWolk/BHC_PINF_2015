@@ -4,16 +4,11 @@ include_once("header.php");
 
 <div class="container-fluid" id="panierMenu"> 
 	<div class="row borderMainBlock"> <!-- création d'une ligne -->
+
 		<div class="col-md-9" id="myPanier">
 
-
-			<div class="row">
-				<div class="col-md-2 col-md-offset-9 spanStyleBlock align">
-					<span>Prix total :&nbsp;</span>
-					<span id="totalPrice"></span><span>€</span>
-				</div>
-			</div>
 		</div>
+
 		<div class="col-md-3" id="blockValidate">
 			<div id="titleValidate">Résumé</div>
 			<div id="infoValidate">
@@ -28,11 +23,11 @@ include_once("header.php");
 				   <button type="button" class="btn btn-default btn-block" id="confirmOrder">Passer la commande</button>
 			</div>
 		</div>
+		
 	</div>
 </div>
 </div>
 </div>
-	<div id="erreur"></div>
 <?php
 include_once("footer.php");
 ?>
