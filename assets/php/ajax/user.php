@@ -42,7 +42,8 @@ session_start();
  *      "prenom"     => Prénom de l'utilisateur,
  *      "mail"       => Adresse mail de l'utilisateur,
  *      "password"   => Mot de passe de l'utilisateur,
- *      "newsletter" => Abonnement à la newsletter de l'utilisateur ]
+ *      "newsletter" => Abonnement à la newsletter de l'utilisateur,
+ *      "telephone"  => Numéro de téléphone de l'utilisateur ]
  * Renvoi :
  * [    "id_user" => ID donné à l'utilisateur ]
  * Echoue si :
@@ -84,7 +85,8 @@ session_start();
  *      "nom"        => Nouveau nom de l'utilisateur,
  *      "prenom"     => Nouveau prénom de l'utilisateur,
  *      "mail"       => Nouveau mail de l'utilisateur,
- *      "newsletter" => Nouvelle newsletter de l'utilisateur ]
+ *      "newsletter" => Nouvelle newsletter de l'utilisateur,
+ *      "telephone"  => Nouveau numéro de téléphone de l'utilisateur ]
  * Aucun renvoi
  * Echoue si :
  *      - Il manque des paramètres                        (code MISSING_ARGUMENT)
@@ -157,7 +159,7 @@ switch ($action)
 
     case "inscrire":
 
-        if (!isset($_POST["nom"]) || !isset($_POST["prenom"]) || !isset($_POST["mail"]) || !isset($_POST["password"]) || !isset($_POST["newsletter"]))
+        if (!isset($_POST["nom"]) || !isset($_POST["prenom"]) || !isset($_POST["mail"]) || !isset($_POST["password"]) || !isset($_POST["newsletter"]) || !isset($_POST["telephone"]))
             ajaxError("Tous les paramètres ne sont pas renseignés", "MISSING_ARGUMENT");
 
         $nom = $_POST["nom"];
@@ -165,8 +167,9 @@ switch ($action)
         $mail = $_POST["mail"];
         $password = $_POST["password"];
         $newsletter = $_POST["newsletter"];
+        $telephone = $_POST["telephone"];
 
-        $user = User::UserFromData($nom, $prenom, $mail, $password, $newsletter);
+        $user = User::UserFromData($nom, $prenom, $mail, $password, $newsletter, $telephone);
 
         $res = $user->inscrireEnBDD();
 

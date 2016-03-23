@@ -14,11 +14,8 @@ if(file_exists ($fichier)) {
     /*Module d'insertion dans la base*/
     if (($handle = fopen("../../../secret/catpnhbonpneus.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-            $num = count($data);
-            echo "<p> $num champs à la ligne $row: </p><br />\n";
-            echo "<p>".$data[21]. " ";
-            $data[21] = str_replace(',', '', $data[21]);
-            echo $data[21]."</p><br />\n";
+            if ($row%100 == 0)
+                echo "Ligne $row<br />\n";
             $row++;/*
         for ($c=0; $c < $num; $c++) {
             echo "Champs".$c."  ".$data[$c] . "<br />\n";
@@ -80,7 +77,6 @@ if(file_exists ($fichier)) {
     /*Permet de mettre en non valable les pneus supprimé du csv*/
     $sql = "UPDATE jspneus.pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
     $nbreUpdate = SQLUpdate($sql);
-    echo $nbreUpdate;
     set_time_limit(120);
     unlink($fichier); // Supprime le fichier
 }

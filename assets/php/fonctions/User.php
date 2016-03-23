@@ -13,11 +13,12 @@ class User
         $this->mail = $user["user_mail"];
         $this->password = $user["user_password"];
         $this->newsletter = $user["user_newsletter"];
+        $this->telephone = $user["user_telephone"];
     }
 
-    public static function UserFromData($nom, $prenom, $mail, $password, $newsletter)
+    public static function UserFromData($nom, $prenom, $mail, $password, $newsletter, $telephone)
     {
-        $param = array("user_id" => 0, "user_nom" => $nom, "user_prenom" => $prenom, "user_mail" => $mail, "user_password" => password_hash($password, PASSWORD_BCRYPT), "user_newsletter" => $newsletter);
+        $param = array("user_id" => 0, "user_nom" => $nom, "user_prenom" => $prenom, "user_mail" => $mail, "user_password" => password_hash($password, PASSWORD_BCRYPT), "user_newsletter" => $newsletter, "user_telephone" => $telephone);
         $user = new User($param);
 
         return $user;
@@ -29,7 +30,7 @@ class User
             return false;
         else
         {
-            SQLInsert("INSERT INTO jspneus.user(user_nom, user_prenom, user_mail, user_password, user_newsletter) VALUES (?, ?, ?, ?, ?)", [$this->nom, $this->prenom, $this->mail, $this->password, $this->newsletter]);
+            SQLInsert("INSERT INTO jspneus.user(user_nom, user_prenom, user_mail, user_password, user_newsletter, user_telephone) VALUES (?, ?, ?, ?, ?, ?)", [$this->nom, $this->prenom, $this->mail, $this->password, $this->newsletter, $this->telephone]);
             $this->User(SQLSelect("SELECT * FROM jspneus.user WHERE user_mail=?", [$this->mail])[0]);
             return $this->ID;
         }
@@ -41,7 +42,7 @@ class User
             return false;
         else
         {
-            SQLUpdate("UPDATE jspneus.user SET user_nom=?, user_prenom=?, user_mail=?, user_newsletter=? WHERE user_id=?", [$this->nom, $this->prenom, $this->mail, $this->newsletter, $id]);
+            SQLUpdate("UPDATE jspneus.user SET user_nom=?, user_prenom=?, user_mail=?, user_newsletter=?, user_telephone=? WHERE user_id=?", [$this->nom, $this->prenom, $this->mail, $this->newsletter, $this->telephone, $id]);
             return true;
         }
     }
@@ -137,6 +138,7 @@ class User
         $user["prenom"] = $this->prenom;
         $user["mail"] = $this->mail;
         $user["newsletter"] = $this->newsletter;
+        $user["telephone"] = $this->telephone;
 
         if ($withPass)
             $user["password"] = $this->password;
@@ -150,4 +152,5 @@ class User
     private $mail;
     private $password;
     private $newsletter;
+    private $telephone;
 }
