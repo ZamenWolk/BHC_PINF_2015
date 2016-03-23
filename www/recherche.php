@@ -22,7 +22,7 @@ include_once("header.php");
                         <div class="col-md-10 list-group-item">
                             <a href="#" id="item-link">
                                 <div class="col-md-2 logo-img">
-                                    <img src="" class="annonce img-responsive"/>
+                                    <img src="" alt="Pas d'image disponible" class="annonce img-responsive"/>
                                 </div>
                                 <div class="col-md-8 list-group-desc">
                                     <h4 class="list-group-item-heading"></h4>
@@ -138,7 +138,7 @@ include_once("header.php");
                             var imgDiv = item.children(".logo-img");
                             jQ.removeClass("model_article");
                             var listBody = item.children(".list-group-desc");
-                            listBody.children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
+                            listBody.children(".list-group-item-heading").html("<b>" + pneu_description + "</b>");
                             //console.log(panelBody);
                             jQ.show();
                             imgDiv.children("img").attr("src","../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] +".png");
@@ -235,9 +235,10 @@ include_once("header.php");
                                         $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
                                         var list = jQ.children(".list-group-item");
                                         var item = list.children("a");
+                                        var imgDiv = item.children(".logo-img");
                                         jQ.removeClass("model_article");
                                         var listBody = item.children(".list-group-desc");
-                                        listBody.children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
+                                        listBody.children(".list-group-item-heading").html("<b>" + pneu_description + "</b>");
                                         //console.log(panelBody);
                                         jQ.show();
                                         imgDiv.children("img").attr("src","../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] +".png");
@@ -316,9 +317,10 @@ include_once("header.php");
                                         $("#item-link").attr("href", "./produit?ref=" + pneu_ref);
                                         var list = jQ.children(".list-group-item");
                                         var item = list.children("a");
+                                        var imgDiv = item.children(".logo-img");
                                         jQ.removeClass("model_article");
                                         var listBody = item.children(".list-group-desc");
-                                        listBody.children(".list-group-item-heading").html("<a href=\"./produit?ref=" + pneu_ref + "\"><b>" + pneu_description + "</b></a>");
+                                        listBody.children(".list-group-item-heading").html("<b>" + pneu_description + "</b>");
                                         //console.log(panelBody);
                                         jQ.show();
                                         imgDiv.children("img").attr("src","../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] +".png");
