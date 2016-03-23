@@ -268,8 +268,7 @@ session_start();
                                 }
                             }
                             else
-                                $("#ins_alert_succes").show('slow').delay(90000);
-                            $('#myModal').modal('hide');
+                                $("#ins_alert_succes").show('slow');
 
                             $.post("../assets/php/ajax/adresse.php", {
                                 action: "inscrireAdresse",

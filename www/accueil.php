@@ -99,7 +99,7 @@ include_once("header.php");
                     <div class="row" id="home-articles">
                         <div class="col-md-3 modele">
                             <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                                <img src="" alt="http://placehold.it/250x250" style="max-width:100%;">
                                 <div class="caption">
                                     <h5></h5>
                                     <p>Prix: </p>
@@ -203,7 +203,8 @@ include_once("header.php");
                             var caption = link.children(".caption");
                             jQ.removeClass("modele");
 
-                            $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu"]["pneu_ref"]);
+                            link.attr("href", "./produit?ref=" + data["resultat"][i]["pneu"]["pneu_ref"]);
+                            link.children("img").attr("src","../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] +".png");
                             caption.children("h5").html(pneu_description);
                             caption.children("p").html("Prix : " + pneu_prix + " € ");
 

@@ -775,3 +775,7 @@ textarea#message {
     overflow: hidden;
     width: 230px;
 }
+
+.thumbnail {
+    height: 195px;
+}
