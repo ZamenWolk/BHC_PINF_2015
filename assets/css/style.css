@@ -779,3 +779,10 @@ textarea#message {
 .thumbnail {
     height: 195px;
 }
+
+th,
+tr,
+td {
+    padding: 5px;
+    text-align: center;
+}
