@@ -13,11 +13,9 @@ $action = $_POST["action"];
 switch($action)
 {
 	case "gen_commande" : 
-	if (!isset($_POST["client_adresse"]) || !isset(($_POST["client_nom"])) || !isset(($_POST["client_prenom"])) || !isset(($_POST["client_panier"])) || !isset($_POST["prix_total"]) || !isset($_POST[""])
+	if (!isset($_POST["client_adresse"]) || !isset(($_POST["client_nom"])) || !isset(($_POST["client_prenom"])) || !isset(($_POST["client_panier"])) || !isset($_POST["prix_total"]) )
 		ajaxError("Il manque des arguments", "MISSING_ARGUMENT");
 	else {
-	$panier = contenuPanier();
-	
 	$pdf = new PDF_Invoice( 'P', 'mm', 'A4' );
 	$pdf->AddPage();
 	$pdf->addSociete( "JSPneus",

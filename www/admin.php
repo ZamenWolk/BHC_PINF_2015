@@ -41,20 +41,26 @@ include_once("header.php");
 
 <script>
 
-$(document).ready(function(){
-	$("#createOrder").click(function(){
-        $.post('../assets/php/fonctions/pdf.php',
+var panier;
+var prixTotal;
+$.post("panier.php", {action: "contenuPanier"}, function(data) {
+	if (data["etat"] == "reussite")
+  {
+  	panier = data["panier"];
+    prixTotal = data["prixTotal"];
+  }
+});
+$.post('../assets/php/fonctions/pdf.php',
         {action:"gen_commande",
-		le_client_nom : "George",
-		le_client_prenom : "deLaJungle",
-		
+		client_nom : "George",
+		client_prenom : "deLaJungle",
+		client_adresse : "La jungle",
+		client_panier : panier,
+		prix_total : prixTotal,
 		},
 		function(data){
 			console.log(data);
 		});
-		
-        });
-    });
 </script>
 <?php
 include_once("footer.php");
