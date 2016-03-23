@@ -198,13 +198,19 @@ session_start();
             var ins_password2;
             var ins_nom;
             var ins_prenom;
-
+            var ins_postal;
+            var ins_adress;
+            var ins_ville;
+            var ins_tel;
             /* Actualisation des variables */
             $(document).on("change","#ins_mail", function(){
                 ins_mail = $(this).val();
             });
             $(document).on("change","#ins_password", function(){
                 ins_password = $(this).val();
+            });
+            $(document).on("change","#ins_tel", function(){
+                ins_tel = $(this).val();
             });
             $(document).on("change","#ins_password2", function(){
                 ins_password2 = $(this).val();
@@ -215,6 +221,16 @@ session_start();
             $(document).on("change","#ins_prenom", function(){
                 ins_prenom = $(this).val();
             });
+            $(document).on("change","#ins_adress", function(){
+                ins_adress = $(this).val();
+            });
+            $(document).on("change","#ins_postal", function(){
+                ins_postal = $(this).val();
+            });
+            $(document).on("change","#ins_ville", function(){
+                ins_ville = $(this).val();
+            });
+            var ins_id;
             /* Requête asynchrone pour inscription */
             $(document).on("click", "#ins_submit", function(){
                 var newsletter = 0;
@@ -233,7 +249,8 @@ session_start();
                             prenom: ins_prenom,
                             mail: ins_mail,
                             password: ins_password,
-                            newsletter: newsletter
+                            newsletter: newsletter,
+                            ins_telephone: ins_tel
                         }, function (data) {
                             data = JSON.parse(data);
                             console.log(data);
@@ -254,6 +271,12 @@ session_start();
                             else
                                 $("#ins_alert_succes").show('slow').delay( 90000 );
                                 $('#myModal').modal('hide');
+
+                            $.post("../assets/php/ajax/adresse.php",{action : "inscrireAdresse",adresse_ligne1: ins_adress,
+                                adresse_ligne2 : "ins_adress2", adresse_codeP: ins_postal, adresse_ville: ins_ville, user_id: data["id_user"]},function(data){
+                                data = JSON.parse(data);
+                                console.log(data);
+                            });
 
                         });
                     }

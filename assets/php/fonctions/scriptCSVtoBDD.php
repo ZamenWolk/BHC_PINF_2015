@@ -78,6 +78,6 @@ if(file_exists ($fichier)) {
     $sql = "UPDATE jspneus.pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
     $nbreUpdate = SQLUpdate($sql);
     set_time_limit(120);
-    unlink($fichier); // Supprime le fichier
+    //unlink($fichier); // Supprime le fichier
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 include_once "../secret/credentials.php";
 include_once("header.php");
-include_once "../assets/php/fonctions/Recherche.php";
+//include_once "../assets/php/fonctions/Recherche.php";
 //TODO : Quand le doc est pret charger les variables php en js ensuite en Ajax la fonction rechercher pour la page etafficher les résultats
 // Refaire les étapes précédentes si on change  les critére ou si on change de page en actualisant les paramètres
 

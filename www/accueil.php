@@ -95,7 +95,7 @@ include_once("header.php");
 
             <!-- Carousel items -->
             <div class="prod carousel-inner">
-                <div class="prod item active">
+                <div class="prod item">
                     <div class="row" id="home-articles">
                         <div class="col-md-3 modele">
                             <a href="#" class="thumbnail">
@@ -202,7 +202,7 @@ include_once("header.php");
                             var link = jQ.children(".thumbnail");
                             var caption = link.children(".caption");
                             jQ.removeClass("modele");
-                            $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu_ref"]);
+                            $(".thumbnail").attr("href", "./produit?ref=" + data["resultat"][i]["pneu"]["pneu_ref"]);
                             caption.children("h5").html(pneu_description);
                             caption.children("p").html("Prix : " + pneu_prix + " € ");
 
