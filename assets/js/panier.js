@@ -10,12 +10,12 @@ $(document).ready(function() {
 		//ajouterArticle("03999453",4);
 		//ajouterArticle("03453",0);
 		generatePanier();
-		if(!isEmptyPanier()) initId();
+		isEmptyPanierAndInit();
 	}
 	
 	else {
 		generatePanier();
-		if(!isEmptyPanier()) initId();
+		isEmptyPanierAndInit();
 	}
 	
 	$("#confirmOrder").click(function() {
@@ -94,36 +94,71 @@ $(document).ready(function() {
 				maxId++;
 				i++;
 			}
-	    	majPrixTotal();
-			majQt();
+
 			//alert(maxId + "=initId");
 	    }
     }
     
-    function isEmptyPanier() {
-    		var vide = 1;
-    		var itemIdTest = "";
-    		
-			for(var i = 1; i <= maxId; i++) {
-				if ($("#itemId".concat(i)).html() != null) vide = 0;
-			}
-			
-			if (vide) {
-				$("#panierMenu").html(
-	    	'<h1>&nbsp;Mon panier</h1></br>'+
-	    	'<p>Votre panier est vide. Les articles que vous mettez dans votre panier sont affichés ici. Pour ajouter des articles dans votre panier, visitez le site et sélectionnez les articles qui vous intéressent.</p>');
-	    		$("#blockValidate").remove();
-	    		return true;
-			}
-			
-			else return false;
+    function isEmptyPanierAndInit() {
+$.post("../assets/php/ajax/panier.php", 
+    			{action : "nbArticles"}, 
+    			function(data) {
+    				var jsonData = JSON.parse(data);
+    				var nbArticles = jsonData["nbArticles"];
+    				if (nbArticles == 0) $("#myPanier").html(
+	    								'<h1>&nbsp;Mon panier</h1></br>'+
+	    								'<p>Votre panier est vide. Les articles que vous mettez dans votre panier sont affichés ici. Pour ajouter des articles dans votre panier, visitez le site et sélectionnez les articles qui vous intéressent.</p>'
+	    								);
+    				else {
+    					maxId = nbArticles;
+    					console.log("maxId =" + maxId);
+    					majPrixTotal();
+						majQt();
+					}
+    			}
+    		);
     }
     
     function generatePanier() {
     	$.post("../assets/php/ajax/panier.php", 
     			{action : "contenuPanier"}, 
     			function(data) {
-	    			alert(data);
+    				$("#myPanier").html('<h1 class="align">&nbsp;Mon panier</h1><hr>'+
+            	'<div class="row">'+ 
+            	'	<div class="col-md-1 align"><u>Produit</u></div>'+
+            	'	<div class="col-md-2 col-md-offset-2 align"><u>Référence</u></div>'+
+            	'	<div class="col-md-2 align"><u>Prix unitaire</u></div>'+
+            	'	<div class="col-md-3 align"><u>Quantité</u></div>'+
+            	'	<div class="col-md-2 align"><u>Total</u></div>'+
+            	'</div><hr>');
+    				var jsonData = JSON.parse(data);
+	    			var pneus = [];
+	    			var i = 1;
+	    			while (jsonData["panier"][i-1] != null) {
+	    				pneus.push(jsonData["panier"][i-1]);
+	    				$("#myPanier").append('<div class="row item' + i + '" id="itemId' + i + '">'+
+		            	'	<div class="col-md-1 align" id="imgItem' + i + '"><img src="../assets/img/item' + i + '.jpg" height="60px" width="60px"/></div>'+
+		            	'	<div class="col-md-2" id="infoItem' + i + '">'+ pneus[i-1].description + '</div>'+
+		            	'	<div class="col-md-2 align" id="refItem' + i + '"">'+ pneus[i-1].reference + '</div>'+
+		            	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="priceItem' + i + '">1.00</span><span class="spanStyleRight">€</span></div>'+
+		            	'	<div class="col-md-3 align">'+
+		            	'		  <div class="input-group buttonGroup align">'+
+						'		      <input type="number" class="form-control qtField pull-right" placeholder="" min="0" id="qtItem' + i + '" value="1">'+
+						'		      <span class="input-group-btn">'+
+						'		      	<button class="btn btn-secondary glyphicon glyphicon-trash deleteButton" type="button" id="delItem' + i + '"></button>'+
+						'		      </span>'+
+						'		  </div>'+
+		            	'	</div>'+
+		            	'	<div class="col-md-2 align"><span class="spanStyleLeft" id="totalPriceItem' + i + '">1.00</span><span class="spanStyleRight">€</span></div>'+
+		            	'</div><hr class="item' + i + '">');
+	    				i++;
+	    			}
+	    			$("#myPanier").append('<div class="row">' +
+				'<div class="col-md-2 col-md-offset-9 spanStyleBlock align">' +
+					'<span>Prix total :&nbsp;</span>' +
+					'<span id="totalPrice"></span><span>€</span>' +
+				'</div>' +
+			'</div>');
     			}
     		);
     }
@@ -132,7 +167,7 @@ $(document).ready(function() {
     	$.post("../assets/php/ajax/panier.php",
     			{action : "ajouterArticle",referencePneu:reference,quantite:qt}, 
     			function(data) {
-	    			console.log(data);
+	    			// console.log(data);
     			}
     		); 
     }	

@@ -1,5 +1,6 @@
 <?php
 include_once("header.php");
+include_once "../assets/php/fonctions/User.php";
 ?>
 
 <script src="../assets/js/script_compte.js">
@@ -18,17 +19,17 @@ include_once("header.php");
     </div>
 </div>
 <div class="row">
-  <!-- Colonne de gauche si besoin est -->
- <!-- <div class="col-md-3">
-    <div class="text-center">
-      <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-      <h6></h6>
+    <!-- Colonne de gauche si besoin est -->
+    <!-- <div class="col-md-3">
+       <div class="text-center">
+         <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+         <h6></h6>
 
-      <input type="file" class="form-control">
-    </div>
-  </div> -->
+         <input type="file" class="form-control">
+       </div>
+     </div> -->
 
-  <!-- edit form column --><!--TODO: rajouter un petit JQuery pour le supprimer aprés x temps-->
+    <!-- edit form column --><!--TODO: rajouter un petit JQuery pour le supprimer aprés x temps-->
     <div class="col-md-offset-1 col-md-9 personal-info">
         <div id="message" class="alert alert-info alert-dismissable">
             <a class="panel-close close" data-dismiss="alert">×</a>
@@ -46,7 +47,7 @@ include_once("header.php");
             <div class="form-group">
                 <label class="col-lg-3 control-label">Nom:</label>
                 <div class="col-lg-8">
-                    <h5 id="nom" class="titres">Jane</h5>
+                    <h5 id="nom" class="titres"></h5>
                     <!-- INSERT PHP HERE  -->
 
                 </div>
@@ -54,76 +55,73 @@ include_once("header.php");
             <div class="form-group">
                 <label class="col-lg-3 control-label">Prénom:</label>
                 <div class="col-lg-8">
-                    <h5 id="prenom" class="titre">Bishop</h5>
-                     <!-- INSERT PHP HERE  -->
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Entreprise:</label>
-                <div class="col-lg-8">
-                    <h5 id="entreprise" class="titre">EntrepriseActuelle</h5>
+                    <h5 id="prenom" class="titre"></h5>
                     <!-- INSERT PHP HERE  -->
                 </div>
             </div>
-                <div class="form-group">
+
+            <div class="form-group">
                 <label class="col-lg-3 control-label">Téléphone:</label>
                 <div class="col-lg-8">
-                    <h5 id="numero" class="titre">012323232323</h5>
-                  <!-- INSERT PHP HERE  -->
+                    <h5 id="numero" class="titre"></h5>
+                    <!-- INSERT PHP HERE  -->
                 </div>
-                </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 <label class="col-lg-3 control-label">Adresse:</label>
                 <div class="col-lg-8">
-                    <h5 id="adresse" class="titre">Ma Maison</h5>
-                  <!-- INSERT PHP HERE  -->
+                    <h5 id="adresse" class="titre"></h5>
+                    <!-- INSERT PHP HERE  -->
                 </div>
-                </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 <label class="col-lg-3 control-label">Ville:</label>
                 <div class="col-lg-8">
-                    <h5 id="ville" class="titre">Ma Maison</h5>
-                  <!-- INSERT PHP HERE  -->
+                    <h5 id="ville" class="titre"></h5>
+                    <!-- INSERT PHP HERE  -->
                 </div>
-                </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 <label class="col-lg-3 control-label">Code postal:</label>
                 <div class="col-lg-8">
-                    <h5 id="code" class="titre">59000</h5>
-                 <!-- INSERT PHP HERE  -->
+                    <h5 id="code" class="titre"></h5>
+                    <!-- INSERT PHP HERE  -->
                 </div>
-                </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 <label class="col-lg-3 control-label">Email:</label>
                 <div class="col-lg-8">
-                    <h5 id="mail" class="titre">MailActuel@gmail.com</h5>
-                  <!-- INSERT PHP HERE  -->
+                    <h5 id="mail" class="titre"></h5>
+                    <!-- INSERT PHP HERE  -->
                 </div>
-                </div>
-                <div id="divMdp1" class="form-group">
+            </div>
+            <div id="divMdp1" class="form-group">
                 <label class="col-md-3 control-label">Mot de passe:</label>
                 <div class="col-md-8">
-                  <input id="mdp1" class="form-control" type="password" value="11111122333"><!-- INSERT PHP HERE  -->
+                    <input id="mdp1" class="form-control" type="password" value="11111122333"><!-- INSERT PHP HERE  -->
                 </div>
-                </div>
-                <div id="divMdp2" class="form-group">
+            </div>
+            <div id="divMdp2" class="form-group">
                 <label class="col-md-3 control-label">Confirmation du mot de passe:</label>
                 <div class="col-md-8">
-                  <input id="mdp2" class="form-control" type="password" value="11111122333"><!-- INSERT PHP HERE  -->
+                    <input id="mdp2" class="form-control" type="password" value="11111122333"><!-- INSERT PHP HERE  -->
                 </div>
-                </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 <label class="col-md-3 control-label"></label>
                 <div id="boutons" class="col-md-8">
-                  <input id="btn1" type="button"  class="btn btn-primary" value="Confirmer modifications">
+                    <input id="btn1" type="button" class="btn btn-primary" value="Confirmer modifications">
 
 
-                  <span></span>
-                  <input id="btn2" type="reset" class="btn btn-default" value="Annuler" >
+                    <span></span>
+                    <input id="btn2" type="reset" class="btn btn-default" value="Annuler">
                     <input id="modif" type="button" class="btn btn-primary" value="Modifier informations"> <br> <br>
 
-                    <div  id="errMdp" class='alert alert-danger' role='alert'> les mots de passe ne correspondent pas </div>
-                    <div hidden id="succesRequete" class='alert alert-success' role='alert'> les informations on été modifiées avec succès </div>
+                    <div id="errMdp" class='alert alert-danger' role='alert'> les mots de passe ne correspondent pas
+                    </div>
+                    <div hidden id="succesRequete" class='alert alert-success' role='alert'> les informations on été
+                        modifiées avec succès
+                    </div>
 
 
                 </div>
@@ -131,4 +129,34 @@ include_once("header.php");
         </form>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $.post(
+            "../assets/php/ajax/user.php",
+            {
+                action: "getConnectedUser"
+            },
+            function (data) {
+                data = JSON.parse(data);
+                console.log(data);
+                if (data["etat"] == "reussite") {
+                    var email = data["user"]["mail"];
+                    var name = data["user"]["nom"];
+                    var surname = data["user"]["prenom"];
+                    var newsletter = data["user"]["newsletter"];
+
+                    console.log(email, name, surname, newsletter);
+
+                    $("#mail").html(email);
+                    $("#nom").html(name);
+                    $("#prenom").html(surname);
+                    if(newsletter == 1) {
+                        $("#newsletter").html("Vous êtes inscrit à notre newsletter");
+                    } else $("#newsletter").html("Vous n'êtes pas inscrit à notre newsletter");
+
+                }
+            });
+    });
+</script>
 

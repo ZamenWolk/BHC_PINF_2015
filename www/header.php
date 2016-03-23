@@ -252,7 +252,8 @@ session_start();
                                 }
                             }
                             else
-                                $("#ins_alert_succes").show('slow');
+                                $("#ins_alert_succes").show('slow').delay( 90000 );
+                                $('#myModal').modal('hide');
 
                         });
                     }
