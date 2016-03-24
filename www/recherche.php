@@ -132,8 +132,11 @@ include_once("header.php");
                             //console.log("Je boucle" + i);
                             var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                             var jQ = model.clone();
-
-                            var list = jQ.children(".list-group-item");
+                            jQ.addClass('resultPneu');
+                            Q.children(".list-group-item");
+                            var panel = jQ.children(".catalog-cart-div");
+                            var shop_btn = panel.children(".shop-btn");
+                            shop_btn.val(pneu_ref);
                             var item = list.children("a");
                             var imgDiv = item.children(".logo-img");
                             jQ.removeClass("model_article");
@@ -158,7 +161,7 @@ include_once("header.php");
                     }
                     else {
                         model.hide();
-                        div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneu correspondant à vos critères de recherches.</h2>");
+                        div_articles.html("<h2>Nous somme désolé mais il n'y a aucun pneu correspondant à vos critères de recherches.</h2>");
                     }
                 }
 
@@ -233,7 +236,11 @@ include_once("header.php");
                                         //console.log("Je boucle" + i);
                                         var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                                         var jQ = model.clone();
+                                        jQ.addClass('resultPneu');
                                         var list = jQ.children(".list-group-item");
+                                        var panel = jQ.children(".catalog-cart-div");
+                                        var shop_btn = panel.children(".shop-btn");
+                                        shop_btn.val(pneu_ref);
                                         var item = list.children("a");
                                         var imgDiv = item.children(".logo-img");
                                         jQ.removeClass("model_article");
@@ -258,7 +265,7 @@ include_once("header.php");
                                 }
                                 else {
                                     model.hide();
-                                    div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneus correspondant à vos critères de recherches.</h2>");
+                                    div_articles.html("<h2>Nous somme désolé mais il n'y a aucun pneus correspondant à vos critères de recherches.</h2>");
                                 }
                             }
                         });
@@ -316,6 +323,9 @@ include_once("header.php");
                                         var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                                         var jQ = model.clone();
                                         var list = jQ.children(".list-group-item");
+                                        var panel = jQ.children(".catalog-cart-div");
+                                        var shop_btn = panel.children(".shop-btn");
+                                        shop_btn.val(pneu_ref);
                                         var item = list.children("a");
                                         var imgDiv = item.children(".logo-img");
                                         jQ.removeClass("model_article");
@@ -340,13 +350,25 @@ include_once("header.php");
                                 }
                                 else {
                                     model.hide();
-                                    div_articles.html("<h2 style='color:white' >Nous somme désolé mais il n'y a aucun pneu correspondant à vos critères de recherches.</h2>");
+                                    div_articles.html("<h2>Nous somme désolé mais il n'y a aucun pneu correspondant à vos critères de recherches.</h2>");
                                 }
                             }
 
                         });
                 }
             });
+
+
+                /* Ajouter Panier */
+
+                $(document).on("click",".shop-btn", function(e){
+                    console.log(this.value);
+                    $.post("../assets/php/ajax/panier.php",{action :"ajouterArticle", referencePneu: this.value}, function(data){
+                        data = JSON.parse(data);
+                        console.log(data);
+                    })
+
+                });
 
 
         });
