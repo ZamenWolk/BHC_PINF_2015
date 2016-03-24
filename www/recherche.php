@@ -130,10 +130,11 @@ include_once("header.php");
                             var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
                             //console.log(marque);
                             //console.log("Je boucle" + i);
+
                             var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                             var jQ = model.clone();
                             jQ.addClass('resultPneu');
-                            Q.children(".list-group-item");
+                            var list = jQ.children(".list-group-item");
                             var panel = jQ.children(".catalog-cart-div");
                             var shop_btn = panel.children(".shop-btn");
                             shop_btn.val(pneu_ref);
