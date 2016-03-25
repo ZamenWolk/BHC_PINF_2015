@@ -163,7 +163,8 @@ class Panier
                 return $panier[$key];
         }
 
-        return null;
+        $default = null;
+        return $default;
     }
 
     protected $panier;
