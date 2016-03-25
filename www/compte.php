@@ -1,6 +1,5 @@
 <?php
 include_once("header.php");
-include_once "../assets/php/fonctions/User.php";
 ?>
 
 <script src="../assets/js/script_compte.js">
