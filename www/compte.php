@@ -145,7 +145,8 @@ include_once("header.php");
                 console.log(data);
 
                 if (data["etat"] == "reussite") {
-                    var user_id = data["user"]["id"];
+                    var user_id = data["user"]["ID"];
+                    console.log(user_id);
                     var email = data["user"]["mail"];
                     var name = data["user"]["nom"];
                     var surname = data["user"]["prenom"];

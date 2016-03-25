@@ -21,12 +21,15 @@ class Adress{
                 ":ville" => $adresse_ville,
                 ":id" => $user_id
             ];
-            return SQLInsert($sql,$param);
+            $res = SQLInsert($sql,$param);
+            if($res !=  false)
+                return $res;
+            else return false;
     }
 
     /** getAdresse
      * renvoie l'adresse d'un utilisateur
-     * @param $id
+     * @param $id id de l'utilisateur
      * @return array
      */
     public static function getAdresse($id){
@@ -37,10 +40,26 @@ class Adress{
         if($res != null) {
             foreach ($res as $row) {
                 array_push($tab, $row);
-
             }
         }
-        return $tab;
+        return $res;
+    }
+    /** getAdresseByIdAdresse
+     * renvoie l'adresse d'un utilisateur
+     * @param $id , id de l'adresse
+     * @return array
+     */
+    public static function getAdresseByIDAdresse($id){
+        $sql="SELECT * FROM jspneus.adresse WHERE adresse_id=:id ";
+        $param[":id"] = $id;
+        $res = SQLSelect($sql,$param);
+        $tab = array();
+        if($res != null) {
+            foreach ($res as $row) {
+                array_push($tab, $row);
+            }
+        }
+        return $res;
     }
 
     /** setAdresse
@@ -59,6 +78,27 @@ class Adress{
             ":codeP" => $adresse_codeP,
             ":ville" => $adresse_ville,
             ":id" => $user_id
+        ];
+
+        SQLUpdate($sql, $param);
+    }
+
+    /** setAdresseByIdAdress
+     * @param $adresse_ligne1
+     * @param $adresse_ligne2
+     * @param $adresse_codeP
+     * @param $adresse_ville
+     * @param $adresse_id
+     */
+    public static function setAdresseByIdAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $adresse_id){
+
+        $sql = "UPDATE jspneus.user SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_vlle=:ville WHERE user_id=:id";
+        $param = [
+            ":adr1" => $adresse_ligne1,
+            ":adr2" => $adresse_ligne2,
+            ":codeP" => $adresse_codeP,
+            ":ville" => $adresse_ville,
+            ":id" => $adresse_id
         ];
 
         SQLUpdate($sql, $param);

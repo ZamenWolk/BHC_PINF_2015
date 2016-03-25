@@ -23,11 +23,13 @@ switch($action){
             ajaxError("Champs manquant adresse");
         break;
     case "getAdresse":
-        if(isset($_POST["user_id"]))
+        if(isset($_POST["user_id"])) {
             $res = Adress::getAdresse($_POST["user_id"]);
+            ajaxSuccess($res);
+        }
         else
             ajaxError("Pas d'user_id", "NO_ID");
-        ajaxSuccess($res);
+
         break;
     case "setAdresse":
 
