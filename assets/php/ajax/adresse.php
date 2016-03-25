@@ -25,7 +25,8 @@ switch($action){
     case "getAdresse":
         if(isset($_POST["user_id"])) {
             $res = Adress::getAdresse($_POST["user_id"]);
-            ajaxSuccess($res);
+            $tab["adresse"] = $res["0"];
+            ajaxSuccess($tab);
         }
         else
             ajaxError("Pas d'user_id", "NO_ID");

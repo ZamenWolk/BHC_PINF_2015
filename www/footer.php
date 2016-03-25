@@ -1,14 +1,13 @@
-
 </div>
 <div class="push"></div>
 </div>
 
 <footer class="footer">
-        <ul class="nav nav-pills nav-justified">
-            <li><a href="./cgv">C.G.V.</a></li>
-            <li><a href="./mentions_legales">Mentions légales</a></li>
-            <li><a href="./faq">FAQ</a></li>
-        </ul>
+    <ul class="nav nav-pills nav-justified">
+        <li><a href="./cgv">C.G.V.</a></li>
+        <li><a href="./mentions_legales">Mentions légales</a></li>
+        <li><a href="./faq">FAQ</a></li>
+    </ul>
 </footer>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -42,7 +41,7 @@
                                    id="ins_password"
                                    name="ins_password"
                                    placeholder="Entrez un mot de passe"
-                                    required>
+                                   required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -77,7 +76,7 @@
                                    class="form-control"
                                    id="ins_prenom"
                                    name="ins_prenom"
-                                   placeholder="Entrez votre prenom"required>
+                                   placeholder="Entrez votre prenom" required>
                         </div>
                     </div>
 
@@ -94,6 +93,20 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-sm-7 col-sm-offset-1">
+                            <div class="form-group">
+                                <label class="sr-only" for="ins_comp_adress">Complément d'adresse</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       id="ins_comp_adress"
+                                       name="ins_comp_adress"
+                                       placeholder="Complément d'adresse">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm-3 col-sm-offset-1">
                             <div class="form-group">
                                 <label class="sr-only" for="ins_postal">Code postal</label>
@@ -105,7 +118,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-7 col-sm-offset-1">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="sr-only" for="ins_ville">Ville</label>
                                 <input type="text"
@@ -138,7 +151,8 @@
                                 <span class=" fa fa-check fa-fw"></span>
                                 <span> </span>
                             </label>
-                            <label for="checkbox2" class="btn btn-default">J'accepte les conditions d'utilisations</label>
+                            <label for="checkbox2" class="btn btn-default">J'accepte les conditions
+                                d'utilisations</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -148,13 +162,20 @@
                                 <span class="fa fa-check fa-fw"></span>
                                 <span> </span>
                             </label>
-                            <label for="checkbox1" class="btn btn-default">J'accepte de recevoir des offres promotionnelles de JS Pneus</label>
+                            <label for="checkbox1" class="btn btn-default">J'accepte de recevoir des offres
+                                promotionnelles de JS Pneus</label>
                         </div>
                     </div>
                 </div>
-                <div  style="display:none" id="ins_alert_conditions" class="alert alert-danger" role="alert">Vous devez accepter les conditions d'utilisations.</div>
-                <div  style="display:none" id="ins_alert_succes" class="alert alert-success" role="alert">Bravo, vous vous êtes bien inscris!</div>
-                <div  style="display:none" id="ins_alert_mail" class="alert alert-danger" role="alert">Cet e-mail est déja utilisé.</div>
+                <div style="display:none" id="ins_alert_conditions" class="alert alert-danger" role="alert">Vous devez
+                    accepter les conditions d'utilisations.
+                </div>
+                <div style="display:none" id="ins_alert_succes" class="alert alert-success" role="alert">Bravo, vous
+                    vous êtes bien inscris!
+                </div>
+                <div style="display:none" id="ins_alert_mail" class="alert alert-danger" role="alert">Cet e-mail est
+                    déja utilisé.
+                </div>
                 <div class="modal-footer">
                     <button id="ins_submit" type="button" name="action" value="subscribe"
                             class="btn btn-lg btn-block btn-subscribe">

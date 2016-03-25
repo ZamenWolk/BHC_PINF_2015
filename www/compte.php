@@ -7,126 +7,66 @@ include_once("header.php");
 
 </script>
 
-
 <div class="row">
-    <div class="col-md-offset-1 col-md-11"><h1>Mon compte</h1></div>
-
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <hr>
-    </div>
-</div>
-<div class="row">
-    <!-- Colonne de gauche si besoin est -->
-    <!-- <div class="col-md-3">
-       <div class="text-center">
-         <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-         <h6></h6>
-
-         <input type="file" class="form-control">
-       </div>
-     </div> -->
-
-    <!-- edit form column --><!--TODO: rajouter un petit JQuery pour le supprimer aprés x temps-->
+    <h2 class="page-header">Mes informations</h2>
     <div class="col-md-offset-1 col-md-9 personal-info">
 
-        <div class="row">
-            <div class="col-md-offset-1 col-md-11"><h3>Mes informations</h3></div>
-        </div>
-
-
         <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Nom:</label>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Nom:</label>
                 <div class="col-lg-8">
                     <h5 id="nom" class="titres"></h5>
-                    <!-- INSERT PHP HERE  -->
 
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Prénom:</label>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Prénom:</label>
                 <div class="col-lg-8">
                     <h5 id="prenom" class="titre"></h5>
-                    <!-- INSERT PHP HERE  -->
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Téléphone:</label>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Téléphone:</label>
                 <div class="col-lg-8">
                     <h5 id="tel" class="titre"></h5>
-                    <!-- INSERT PHP HERE  -->
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Adresse:</label>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Adresse:</label>
                 <div class="col-lg-8">
-                    <h5 id="adresse" class="titre"></h5>
-                    <!-- INSERT PHP HERE  -->
+                    <h5 id="ligne1" class="titre"></h5>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Ville:</label>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Complément d'adresse:</label>
+                <div class="col-lg-8">
+                    <h5 id="ligne2" class="titre"></h5>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Code postal:</label>
+                <div class="col-lg-8">
+                    <h5 id="codeP" class="titre"></h5>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Ville:</label>
                 <div class="col-lg-8">
                     <h5 id="ville" class="titre"></h5>
-                    <!-- INSERT PHP HERE  -->
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Code postal:</label>
-                <div class="col-lg-8">
-                    <h5 id="code" class="titre"></h5>
-                    <!-- INSERT PHP HERE  -->
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Email:</label>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Email:</label>
                 <div class="col-lg-8">
                     <h5 id="mail" class="titre"></h5>
-                    <!-- INSERT PHP HERE  -->
-                </div>
-            </div>
-            <div id="divMdp1" class="form-group">
-                <label class="col-md-3 control-label">Mot de passe:</label>
-                <div class="col-md-8">
-                    <input id="mdp1" class="form-control" type="password" value="11111122333"><!-- INSERT PHP HERE  -->
-                </div>
-            </div>
-            <div id="divMdp2" class="form-group">
-                <label class="col-md-3 control-label">Confirmation du mot de passe:</label>
-                <div class="col-md-8">
-                    <input id="mdp2" class="form-control" type="password" value="11111122333"><!-- INSERT PHP HERE  -->
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Newsletter:</label>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label">Newsletter:</label>
                 <div class="col-lg-8">
                     <h5 id="newsletter" class="titre"></h5>
-                    <!-- INSERT PHP HERE  -->
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-md-3 control-label"></label>
-                <div id="boutons" class="col-md-8">
-                    <input id="btn1" type="button" class="btn btn-primary" value="Confirmer modifications">
-
-
-                    <span></span>
-                    <input id="btn2" type="reset" class="btn btn-default" value="Annuler">
-                    <input id="modif" type="button" class="btn btn-primary" value="Modifier informations"> <br> <br>
-
-                    <div id="errMdp" class='alert alert-danger' role='alert'> les mots de passe ne correspondent pas
-                    </div>
-                    <div hidden id="succesRequete" class='alert alert-success' role='alert'> les informations on été
-                        modifiées avec succès
-                    </div>
-
-
                 </div>
             </div>
         </form>
@@ -146,7 +86,6 @@ include_once("header.php");
 
                 if (data["etat"] == "reussite") {
                     var user_id = data["user"]["ID"];
-                    console.log(user_id);
                     var email = data["user"]["mail"];
                     var name = data["user"]["nom"];
                     var surname = data["user"]["prenom"];
@@ -170,7 +109,15 @@ include_once("header.php");
                             data2 = JSON.parse(data2);
                             console.log(data2);
                             if(data2["etat"] == "reussite") {
+                                var ligne1 = data2["adresse"]["adresse_ligne1"];
+                                var ligne2 = data2["adresse"]["adresse_ligne2"];
+                                var codeP = data2["adresse"]["adresse_codeP"];
+                                var ville = data2["adresse"]["adresse_ville"];
 
+                                $("#ligne1").html(ligne1);
+                                $("#ligne2").html(ligne2);
+                                $("#codeP").html(codeP);
+                                $("#ville").html(ville);
                             }
                         });
 

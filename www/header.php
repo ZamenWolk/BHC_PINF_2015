@@ -201,6 +201,7 @@ session_start();
             var ins_adress;
             var ins_ville;
             var ins_tel;
+            var ins_comp_adress;
             /* Actualisation des variables */
             $(document).on("change", "#ins_mail", function () {
                 ins_mail = $(this).val();
@@ -222,6 +223,9 @@ session_start();
             });
             $(document).on("change", "#ins_adress", function () {
                 ins_adress = $(this).val();
+            });
+            $(document).on("change", "#ins_comp_adress", function () {
+                ins_comp_adress = $(this).val();
             });
             $(document).on("change", "#ins_postal", function () {
                 ins_postal = $(this).val();
@@ -273,7 +277,7 @@ session_start();
                             $.post("../assets/php/ajax/adresse.php", {
                                 action: "inscrireAdresse",
                                 adresse_ligne1: ins_adress,
-                                adresse_ligne2: "ins_adress2",
+                                adresse_ligne2: ins_comp_adress,
                                 adresse_codeP: ins_postal,
                                 adresse_ville: ins_ville,
                                 user_id: data["id_user"]
