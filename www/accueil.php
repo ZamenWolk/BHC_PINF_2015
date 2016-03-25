@@ -146,7 +146,7 @@ include_once("header.php");
             <li style="padding-top: 8px"><img src="../assets/img/hiver.png">
                 <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Ete&vitesse=0&consommation=0&decibel=0">Hiver</a></li>
             <li style="padding-top: 8px"><img src="../assets/img/été.png">
-                <a href=".http://localhost/bhc_pinf_2015/www/recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Hiver&vitesse=0&consommation=0&decibel=0">&Eacute;té</a></li>
+                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Ete&vitesse=0&consommation=0&decibel=0">&Eacute;té</a></li>
             <li style="padding-top: 8px"><img src="../assets/img/4saisons.png">
                 <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">Toutes saisons</a></li>
         </ul>
