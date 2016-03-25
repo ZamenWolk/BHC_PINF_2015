@@ -30,15 +30,9 @@ include_once("header.php");
 
     <!-- edit form column --><!--TODO: rajouter un petit JQuery pour le supprimer aprés x temps-->
     <div class="col-md-offset-1 col-md-9 personal-info">
-        <div id="message" class="alert alert-info alert-dismissable">
-            <a class="panel-close close" data-dismiss="alert">×</a>
-            <i class="fa fa-coffee"></i>
-            Mofidiez vos informations et sauvegardez les avec le bouton en bas de la page
-        </div>
 
         <div class="row">
             <div class="col-md-offset-1 col-md-11"><h3>Mes informations</h3></div>
-
         </div>
 
 
@@ -62,7 +56,7 @@ include_once("header.php");
             <div class="form-group">
                 <label class="col-lg-3 control-label">Téléphone:</label>
                 <div class="col-lg-8">
-                    <h5 id="numero" class="titre"></h5>
+                    <h5 id="tel" class="titre"></h5>
                     <!-- INSERT PHP HERE  -->
                 </div>
             </div>
@@ -149,23 +143,41 @@ include_once("header.php");
             function (data) {
                 data = JSON.parse(data);
                 console.log(data);
+
                 if (data["etat"] == "reussite") {
+                    var user_id = data["user"]["id"];
                     var email = data["user"]["mail"];
                     var name = data["user"]["nom"];
                     var surname = data["user"]["prenom"];
                     var newsletter = data["user"]["newsletter"];
-
-                    console.log(email, name, surname, newsletter);
+                    var telephone = data["user"]["telephone"];
 
                     $("#mail").html(email);
                     $("#nom").html(name);
                     $("#prenom").html(surname);
-                    if(newsletter == 1) {
+                    $("#tel").html(telephone);
+                    if (newsletter == 1) {
                         $("#newsletter").html("Vous êtes inscrit à notre newsletter");
                     } else $("#newsletter").html("Vous n'êtes pas inscrit à notre newsletter");
+                    $.post(
+                        "../assets/php/ajax/adresse.php",
+                        {
+                            action: "getAdresse",
+                            user_id: user_id
+                        },
+                        function (data2) {
+                            data2 = JSON.parse(data2);
+                            console.log(data2);
+                            if(data2["etat"] == "reussite") {
+
+                            }
+                        });
 
                 }
+
             });
+
+
     });
 </script>
 <?php
