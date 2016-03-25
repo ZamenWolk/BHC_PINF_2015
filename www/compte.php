@@ -15,61 +15,64 @@ include_once("header.php");
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Nom:</label>
                 <div class="col-lg-8">
-                    <h5 id="nom" class="titres"></h5>
+                    <h5 id="ins_nom"></h5>
 
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Prénom:</label>
                 <div class="col-lg-8">
-                    <h5 id="prenom" class="titre"></h5>
+                    <h5 id="ins_prenom"></h5>
                 </div>
             </div>
 
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Téléphone:</label>
                 <div class="col-lg-8">
-                    <h5 id="tel" class="titre"></h5>
+                    <h5 id="ins_tel"></h5>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Adresse:</label>
                 <div class="col-lg-8">
-                    <h5 id="ligne1" class="titre"></h5>
+                    <h5 id="ins_adress"></h5>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Complément d'adresse:</label>
                 <div class="col-lg-8">
-                    <h5 id="ligne2" class="titre"></h5>
+                    <h5 id="ins_comp_adress"></h5>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Code postal:</label>
                 <div class="col-lg-8">
-                    <h5 id="codeP" class="titre"></h5>
+                    <h5 id="ins_postal"></h5>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Ville:</label>
                 <div class="col-lg-8">
-                    <h5 id="ville" class="titre"></h5>
+                    <h5 id="ins_ville"></h5>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Email:</label>
                 <div class="col-lg-8">
-                    <h5 id="mail" class="titre"></h5>
+                    <h5 id="ins_mail"></h5>
                 </div>
             </div>
 
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Newsletter:</label>
                 <div class="col-lg-8">
-                    <h5 id="newsletter" class="titre"></h5>
+                    <h5 id="ins_newsletter"></h5>
                 </div>
             </div>
         </form>
+        <button type="button" class="btn btn-default pull-right" id="modif">Modifier mes informations</button>
+        <button type="button" class="btn btn-default pull-right" id="validate">Enregistrer les modifications</button>
+        <button type="button" class="btn btn-default pull-right" id="cancel">Annuler</button>
     </div>
 </div>
 
@@ -92,13 +95,13 @@ include_once("header.php");
                     var newsletter = data["user"]["newsletter"];
                     var telephone = data["user"]["telephone"];
 
-                    $("#mail").html(email);
-                    $("#nom").html(name);
-                    $("#prenom").html(surname);
-                    $("#tel").html(telephone);
+                    $("#ins_mail").html(email);
+                    $("#ins_nom").html(name);
+                    $("#ins_prenom").html(surname);
+                    $("#ins_tel").html(telephone);
                     if (newsletter == 1) {
-                        $("#newsletter").html("Vous êtes inscrit à notre newsletter");
-                    } else $("#newsletter").html("Vous n'êtes pas inscrit à notre newsletter");
+                        $("#ins_newsletter").html("Vous êtes inscrit à notre newsletter");
+                    } else $("#ins_newsletter").html("Vous n'êtes pas inscrit à notre newsletter");
                     $.post(
                         "../assets/php/ajax/adresse.php",
                         {
@@ -114,10 +117,10 @@ include_once("header.php");
                                 var codeP = data2["adresse"]["adresse_codeP"];
                                 var ville = data2["adresse"]["adresse_ville"];
 
-                                $("#ligne1").html(ligne1);
-                                $("#ligne2").html(ligne2);
-                                $("#codeP").html(codeP);
-                                $("#ville").html(ville);
+                                $("#ins_adress").html(ligne1);
+                                $("#ins_comp_adress").html(ligne2);
+                                $("#ins_postal").html(codeP);
+                                $("#ins_ville").html(ville);
                             }
                         });
 
