@@ -785,3 +785,7 @@ td {
     padding: 5px;
     text-align: center;
 }
+
+.page-header {
+    text-align: center;
+}
