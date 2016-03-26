@@ -234,6 +234,7 @@ session_start();
                 ins_ville = $(this).val();
             });
             var ins_id;
+
             /* Requête asynchrone pour inscription */
             $(document).on("click", "#ins_submit", function () {
                 var newsletter = 0;

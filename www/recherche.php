@@ -45,16 +45,16 @@ include_once("header.php");
                         <div class="col-md-2 catalog-cart-div">
                             <label for="qte">Quantité: </label>
                             <select class="form-control" id="qte">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option  value="4">4</option>
+                                <option  value="5">5</option>
+                                <option  value="6">6</option>
+                                <option  value="7">7</option>
+                                <option  value="8">8</option>
+                                <option  value="9">9</option>
+                                <option  value="10">10</option>
                             </select>
                             <button type="button" class="btn btn-default btn-block pull-right shop-btn"><span
                                     class="fa fa-shopping-cart"
@@ -125,11 +125,11 @@ include_once("header.php");
                             var pneu_serie = data["resultat"][i]["pneu"]["pneu_serie"];
                             var pneu_jante = data["resultat"][i]["pneu"]["pneu_jante"];
                             var pneu_charge = data["resultat"][i]["pneu"]["pneu_charge"];
+                            var pneu_stock = data["resultat"][i]["pneu"]["pneu_stock"];
                             var pneu_vitesse = data["resultat"][i]["pneu"]["pneu_vitesse"];
                             var pneu_description = data["resultat"][i]["pneu"]["pneu_description"];
                             var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
-                            //console.log(marque);
-                            //console.log("Je boucle" + i);
+
 
                             var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                             var jQ = model.clone();
@@ -137,6 +137,10 @@ include_once("header.php");
                             var list = jQ.children(".list-group-item");
                             var panel = jQ.children(".catalog-cart-div");
                             var shop_btn = panel.children(".shop-btn");
+                            var shop_qtt = panel.children("#qte");
+                            var  label = panel.children("label");
+                            label.attr("for", "qte"+pneu_ref);
+                            shop_qtt.attr('id', 'qte'+pneu_ref);
                             shop_btn.val(pneu_ref);
                             var item = list.children("a");
                             var imgDiv = item.children(".logo-img");
@@ -231,10 +235,10 @@ include_once("header.php");
                                         var pneu_jante = data["resultat"][i]["pneu"]["pneu_jante"];
                                         var pneu_charge = data["resultat"][i]["pneu"]["pneu_charge"];
                                         var pneu_vitesse = data["resultat"][i]["pneu"]["pneu_vitesse"];
+                                        var pneu_stock = data["resultat"][i]["pneu"]["pneu_stock"];
+                                        console.log(pneu_stock);
                                         var pneu_description = data["resultat"][i]["pneu"]["pneu_description"];
                                         var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
-                                        //console.log(marque);
-                                        //console.log("Je boucle" + i);
                                         var pneu_ref = data["resultat"][i]["pneu"]["pneu_ref"];
                                         var jQ = model.clone();
                                         jQ.addClass('resultPneu');
@@ -242,6 +246,10 @@ include_once("header.php");
                                         var panel = jQ.children(".catalog-cart-div");
                                         var shop_btn = panel.children(".shop-btn");
                                         shop_btn.val(pneu_ref);
+                                        var  label = panel.children("label");
+                                        label.attr("for", "qte"+pneu_ref);
+                                        var shop_qtt = panel.children("#qte");
+                                        shop_qtt.attr('id', 'qte'+pneu_ref);
                                         var item = list.children("a");
                                         var imgDiv = item.children(".logo-img");
                                         jQ.removeClass("model_article");
@@ -317,6 +325,8 @@ include_once("header.php");
                                         var pneu_jante = data["resultat"][i]["pneu"]["pneu_jante"];
                                         var pneu_charge = data["resultat"][i]["pneu"]["pneu_charge"];
                                         var pneu_vitesse = data["resultat"][i]["pneu"]["pneu_vitesse"];
+                                        var pneu_stock = data["resultat"][i]["pneu"]["pneu_stock"];
+                                        console.log(pneu_stock);
                                         var pneu_description = data["resultat"][i]["pneu"]["pneu_description"];
                                         var pneu_prix = data["resultat"][i]["prix"];// Attention peut être à changer pour tenir compte du multplicateur
                                         //console.log(marque);
@@ -325,6 +335,12 @@ include_once("header.php");
                                         var jQ = model.clone();
                                         var list = jQ.children(".list-group-item");
                                         var panel = jQ.children(".catalog-cart-div");
+
+                                        var  label = panel.children("label");
+                                        label.attr("for", "qte"+pneu_ref);
+                                        var shop_qtt = panel.children("#qte");
+                                        shop_qtt.attr('id', 'qte'+pneu_ref);
+
                                         var shop_btn = panel.children(".shop-btn");
                                         shop_btn.val(pneu_ref);
                                         var item = list.children("a");
@@ -363,11 +379,32 @@ include_once("header.php");
                 /* Ajouter Panier */
 
                 $(document).on("click",".shop-btn", function(e){
-                    console.log(this.value);
-                    $.post("../assets/php/ajax/panier.php",{action :"ajouterArticle", referencePneu: this.value}, function(data){
+
+                    /*On récupère le div du pneu */
+                    var ref = this.value;
+                    var selector = "button[value='"+ref+"']";
+                    var div_parent = $(selector).parent();
+                    var qtt = $("#qte"+ref+" option:selected").val();
+                    console.log(qtt);
+                    var div_pneu = div_parent.parent();
+                    var pneu = div_pneu.children(".list-group-item");
+                    var image = pneu.children("a").children(".logo-img");
+                    var titre =$("<div class=\"col-md-6\"><h4>"+pneu.children("a").children(".list-group-desc").children("h4").children("b").html()+"</h4></div>");
+
+                    $.post("../assets/php/ajax/panier.php",{action :"ajouterArticle", referencePneu: this.value, quantite:qtt}, function(data){
                         data = JSON.parse(data);
                         console.log(data);
-                    })
+
+                        /* On ajout le div du pneu au modal */
+                        var modal = $('#modalPneuPanier');
+                        var modalDialog = modal.children(".modal-dialog");
+                        var contentModal = modalDialog.children(".modal-content");
+                        var bodyModal = contentModal.children(".modal-body");
+
+                        bodyModal.children(".row").html("<div class='col-md-3'>"+image.html() +"</div><div class=\"col-md-6\">"+ titre.html()+ "</div><div class=' col-md-2'><h4>Quantité:"+qtt+"</h4></div>");
+
+                        modal.modal('show');
+                        });
 
                 });
 

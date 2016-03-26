@@ -27,12 +27,27 @@ include_once("header.php");
                 <dd class="charge"></dd>
                 <dt>Vitesse:</dt>
                 <dd class="vitesse"></dd>
+                <dt>Consommation:</dt>
+                <dd class="consommation"></dd>
+                <dt>Decibel:</dt>
+                <dd class="decibel"></dd>
             </dl>
         </div>
         <div class="col-md-3 add-cart-div">
             <h3 id="price"></h3>
             <label for="qte">Quantité: </label>
-            <input type="number" class="form-control qtField" min="0" id="qte" value="1">
+            <select class="form-control" id="qte">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option  value="4">4</option>
+                <option  value="5">5</option>
+                <option  value="6">6</option>
+                <option  value="7">7</option>
+                <option  value="8">8</option>
+                <option  value="9">9</option>
+                <option  value="10">10</option>
+            </select>
             <button type="button" class="btn btn-default btn-block pull-right shop-btn"><span
                     class="fa fa-shopping-cart"
                     aria-hidden="true"></span> Ajouter au panier
@@ -1198,6 +1213,8 @@ include_once("header.php");
                     var pneu_description = data["pneu"]["description"];
                     var pneu_prix = data["prix"];// Attention peut être à changer pour tenir compte du multplicateur
                     var pneu_ref = data["pneu"]["reference"];
+                    var pneu_conso = data["pneu"]["consommation"];
+                    var pneu_bruit = data["pneu"]["decibel"];
                     var jQ = $(".model_article");
                     var heading = jQ.children(".heading");
                     var list = jQ.children(".list-group-item");
@@ -1216,12 +1233,36 @@ include_once("header.php");
                     dl_specs.children(".jante").html(pneu_jante);
                     dl_specs.children(".charge").html(pneu_charge);
                     dl_specs.children(".vitesse").html(pneu_vitesse);
-
+                    dl_specs.children(".consommation").html(pneu_conso);
+                    dl_specs.children(".decibel").html(pneu_bruit);
                     var priceDiv = itemRest.children(".add-cart-div");
                     priceDiv.children("#price").html("Prix : " + pneu_prix + " € ");
 
+                    $(document).on("click",".shop-btn", function(e){
+
+                        /*On récupère le div du pneu */
+                        var qtt = $("#qte option:selected").val();
+                        console.log(qtt);
+                        $.post("../assets/php/ajax/panier.php",{action :"ajouterArticle", referencePneu: pneu_ref, quantite:qtt}, function(data){
+                        data = JSON.parse(data);
+                        console.log(data);
+
+                        /* On ajout le div du pneu au modal */
+                        var modal = $('#modalPneuPanier');
+                        var img = $(".img-div");
+                        var pneu = $(".item-heading");
+                        var modalDialog = modal.children(".modal-dialog");
+                        var contentModal = modalDialog.children(".modal-content");
+
+                        var bodyModal = contentModal.children(".modal-body");
+                        bodyModal.children(".row").html("<div class='col-md-3'> "+img.html()+"</div><div class='col-md-6'><h4>"+pneu.html()+"</h4></div><div class='col-md-3'><h4>Quantité :"+qtt+"</h4> ");
+                        modal.modal('show');
+                    });
+
+                    });
                 }
             });
+
     });
 </script>
 <?php
