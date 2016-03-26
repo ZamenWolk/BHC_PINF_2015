@@ -195,61 +195,61 @@ $(document).ready(function () {
                             $("#ins_comp_adress").html(ligne2);
                             $("#ins_postal").html(codeP);
                             $("#ins_ville").html(ville);
-                        }
 
-                        $(document).on("change", "#ins_adress", function () {
-                            ligne1 = $(this).val();
-                        });
-                        $(document).on("change", "#ins_comp_adress", function () {
-                            ligne2 = $(this).val();
-                        });
-                        $(document).on("change", "#ins_postal", function () {
-                            codeP = $(this).val();
-                        });
-                        $(document).on("change", "#ins_ville", function () {
-                            ville = $(this).val();
-                        });
 
-                        $('#validate').click(function () {
-                            $.post(
-                                "../assets/php/ajax/adresse.php",
-                                {
-                                    action: "setAdresse",
-                                    user_id: user_id,
-                                    adresse_ligne1: ligne1,
-                                    adresse_ligne2: ligne2,
-                                    adresse_codeP: codeP,
-                                    adresse_ville: ville
-                                }, function (data) {
-                                    data = JSON.parse(data);
-                                    console.log(data);
-                                }
-                            );
-                        });
-                        $("#cancel").click(function() {
-                            $.post(
-                                "../assets/php/ajax/adresse.php",
-                                {
-                                    action: "getAdresse",
-                                    user_id: user_id
-                                },
-                                function (data2) {
-                                    data2 = JSON.parse(data2);
-                                    console.log(data2);
-                                    if (data2["etat"] == "reussite") {
-                                        var ligne1 = data2["adresse"]["adresse_ligne1"];
-                                        var ligne2 = data2["adresse"]["adresse_ligne2"];
-                                        var codeP = data2["adresse"]["adresse_codeP"];
-                                        var ville = data2["adresse"]["adresse_ville"];
+                            $(document).on("change", "#ins_adress", function () {
+                                ligne1 = $(this).val();
+                            });
+                            $(document).on("change", "#ins_comp_adress", function () {
+                                ligne2 = $(this).val();
+                            });
+                            $(document).on("change", "#ins_postal", function () {
+                                codeP = $(this).val();
+                            });
+                            $(document).on("change", "#ins_ville", function () {
+                                ville = $(this).val();
+                            });
 
-                                        $("#ins_adress").html(ligne1);
-                                        $("#ins_comp_adress").html(ligne2);
-                                        $("#ins_postal").html(codeP);
-                                        $("#ins_ville").html(ville);
+                            $('#validate').click(function () {
+                                $.post(
+                                    "../assets/php/ajax/adresse.php",
+                                    {
+                                        action: "setAdresse",
+                                        user_id: user_id,
+                                        adresse_ligne1: ligne1,
+                                        adresse_ligne2: ligne2,
+                                        adresse_codeP: codeP,
+                                        adresse_ville: ville
+                                    }, function (data) {
+                                        data = JSON.parse(data);
+                                        console.log(data);
                                     }
-                                });
-                        })
+                                );
+                            });
+                            $("#cancel").click(function () {
+                                $.post(
+                                    "../assets/php/ajax/adresse.php",
+                                    {
+                                        action: "getAdresse",
+                                        user_id: user_id
+                                    },
+                                    function (data2) {
+                                        data2 = JSON.parse(data2);
+                                        console.log(data2);
+                                        if (data2["etat"] == "reussite") {
+                                            var ligne1 = data2["adresse"]["adresse_ligne1"];
+                                            var ligne2 = data2["adresse"]["adresse_ligne2"];
+                                            var codeP = data2["adresse"]["adresse_codeP"];
+                                            var ville = data2["adresse"]["adresse_ville"];
 
+                                            $("#ins_adress").html(ligne1);
+                                            $("#ins_comp_adress").html(ligne2);
+                                            $("#ins_postal").html(codeP);
+                                            $("#ins_ville").html(ville);
+                                        }
+                                    });
+                            })
+                        }
                     });
             }
         });
