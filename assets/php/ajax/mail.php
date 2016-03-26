@@ -20,22 +20,28 @@ switch ($action)
 		if ((!isset($_POST["from_email"])) || (!isset($_POST["from_name"])) || (!isset($_POST["subject"])) || (!isset($_POST["html"])))
 		{
 			ajaxError("Des informations sont manquantes", "MISSING_ARGUMENTS");
+			console.log("erreur de contact_mail");
 		}
 		else{
 			mail("martin.canivez@gmail.com", $_POST["subject"], $_POST["html"], $headers);
 			ajaxSuccess($tab);
 		}
 		break;
+		
 	case "newsletter" : 
-		if ((!isset($_POST["objet"])) || ((!isset($_POST["texte"]))) )
-			ajaxError("Des informations sont manquantes", "MISSING_ARGUMENTS")
-		else {
+		if ((!isset($_POST["objet"])) || ((!isset($_POST["texte"]))) ){
 			
+			ajaxError("Des informations sont manquantes", "MISSING_ARGUMENTS");
+			console.log("newsletter");
+		}
+		else {
+			ajaxSuccess("ayé ça marche");
 		}
 		break;
 		
 	default:
 		ajaxError("Action inconnue");
+		break;
 }
 
 ?>

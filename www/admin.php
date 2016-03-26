@@ -28,11 +28,11 @@ include_once("header.php");
 		</div>
 	</div>
 	<div class="col-md-8" id="content">
-		<div class="separator">
+		<div class="separator2">
 			<p>Bienvenue dans le menu d'administration !</p>
 			<p>Pour commencer à administrer le site, cliquez sur le bouton correspondant à l'opération que vous souhaitez faire.</p>
 		</div>
-		<div class="separator">
+		<div class="separator2">
 			<p>Quelques statistiques :</p>
 			<p>Nombre d'utilisateurs connectés : 543</p>
 			<p>Nombre de commandes passées ces 7 derniers jours : 54</p>
@@ -79,21 +79,27 @@ $.post("panier.php", {action: "contenuPanier"}, function(data) {
 		
 		if(newsletter ==0){
 			if(set==0){
+				$("#texte").append("<h3>Envoyer un message de newsletter</h3>");
 				$("#texte").append("<label for=\"obj\" class=\"sr-only\">Objet</label>");
 				$("#texte").append(" <input type=\"text\" class=\"form-control\" id=\"obj\" placeholder=\"Objet\"/> </br>");
              
 				$("#texte").append("<textarea id=\"txt\">Votre message</textarea> </br>");
 				$("#txt").css("width","100%");
-				$("#texte").append("<button type=\"button\" class=\"btn btn-block btn-default btn-lg\"><i class=\"fa fa-envelope-o\"></i>");
+				$("#texte").append("<button id=\"sendNews\" type=\"button\" class=\"btn btn-block btn-default btn-lg\"><i class=\"fa fa-envelope-o\"></i>");
 				set=1;
 			}
+			$(".separator2").hide();
 			$("#texte").show();
 			newsletter = 1;
 		}
 		else if (newsletter ==1){
+			$(".separator2").show();
 			$("#texte").hide();
 			newsletter=0;
 		}
+	});
+	$("#sendNews").click(function(){
+		console.log("ça clique hein");
 	});
 		 
 	 

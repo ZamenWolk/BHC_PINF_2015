@@ -40,7 +40,7 @@ include_once('header.php');
             <label for="message" class="sr-only">Message</label>
             <textarea id="message" class="form-control" placeholder="Composez votre message ici ..."></textarea>
         </div>
-        <button type="button" class="btn btn-block btn-default btn-lg"><i class="fa fa-envelope-o"></i>
+        <button id="BoutonEnvoi" type="button" class="btn btn-block btn-default btn-lg"><i class="fa fa-envelope-o"></i>
             Envoyer votre message
         </button>
 
@@ -53,10 +53,10 @@ include_once('header.php');
                 $.post('../assets/php/ajax/mail.php',
                     {
                         action: "mail_contact",
-                        from_email: $('#ContactMail').val(),
-                        from_name: $('#ContactNom').val(),
-                        subject: $('#ContactObj').val(),
-                        html: $('#ContactMessage').val(),
+                        from_email: $('#mail').val(),
+                        from_name: $('#nom').val(),
+                        subject: $('#obj').val(),
+                        html: $('#msg').html(),
                     },
                     function (data) {
                         console.log(data);
