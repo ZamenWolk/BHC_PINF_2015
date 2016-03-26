@@ -61,7 +61,7 @@ include_once("header.php");
         <h3>A quoi correspondent ces chiffres ?</h3>
     </div>
 </div>
-
+<hr>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">

@@ -97,8 +97,7 @@ p.centered {
 }
 
 .annonce {
-    max-height: 100px;
-    max-width: 100px;
+    width: 200%;
 }
 
 .panier {

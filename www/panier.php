@@ -9,8 +9,8 @@ include_once("header.php");
                 <h1 class="align">&nbsp;Mon panier</h1>
                 <hr>
                 <div class="row">
-                    <div class="col-md-1 align"><u>Produit</u></div>
-                    <div class="col-md-2 col-md-offset-2 align"><u>Référence</u></div>
+                    <div class="col-md-5 align"><u>Produit</u></div>
+                    <!--<div class="col-md-2 col-md-offset-2 align"><u>Référence</u></div>-->
                     <div class="col-md-2 align"><u>Prix unitaire</u></div>
                     <div class="col-md-3 align"><u>Quantité</u></div>
                     <div class="col-md-2 align"><u>Total</u></div>
@@ -18,8 +18,8 @@ include_once("header.php");
                 <hr>
                 <div class="row item" id="itemId">
                     <div class="col-md-1 align" id="imgItem"><img src=""/></div>
-                    <div class="col-md-2" id="infoItem"></div>
-                    <div class="col-md-2 align" id="refItem"></div>
+                    <div class="col-md-4" id="infoItem"></div>
+                    <!--<div class="col-md-2 align" id="refItem"></div>-->
                     <div class="col-md-2 align" id="priceDiv"><span class="spanStyleLeft" id="priceItem"></span>
                         <span class="spanStyleRight">€</span></div>
                     <div class="col-md-3 align inputContainer">

@@ -143,7 +143,7 @@ $(document).ready(function () {
                     var qtField = input.children(".qtField");
 
                     jQ.children("#infoItem").html(pneu_description);
-                    jQ.children("#refItem").html(pneu_reference);
+                    //jQ.children("#refItem").html(pneu_reference);
                     priceUnit.html(prix_unit);
                     qtField.attr("value", pneu_quantite);
                     priceLot.html(prix_lot);

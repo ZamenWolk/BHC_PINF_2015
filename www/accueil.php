@@ -13,7 +13,7 @@ include_once("header.php");
     <!-- Wrapper for slides -->
     <div class="main-car carousel-inner" role="listbox">
         <div class="item active">
-            <img src="../assets/img/logo-car.png" class="car-img img-responsive">
+            <img src="../assets/img/logo-car.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Bienvenue sur JS Pneus !</h2>
                 <p>Site de vente de pneus pour auto et moto</p>
