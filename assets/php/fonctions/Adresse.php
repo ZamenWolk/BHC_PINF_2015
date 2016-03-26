@@ -71,7 +71,7 @@ class Adress{
      */
     public static function setAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $user_id){
 
-        $sql = "UPDATE jspneus.user SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_vlle=:ville WHERE user_id=:id";
+        $sql = "UPDATE jspneus.adresse SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_ville=:ville WHERE user_id=:id";
         $param = [
             ":adr1" => $adresse_ligne1,
             ":adr2" => $adresse_ligne2,
@@ -92,7 +92,7 @@ class Adress{
      */
     public static function setAdresseByIdAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $adresse_id){
 
-        $sql = "UPDATE jspneus.user SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_vlle=:ville WHERE user_id=:id";
+        $sql = "UPDATE jspneus.adresse SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_ville=:ville WHERE user_id=:id";
         $param = [
             ":adr1" => $adresse_ligne1,
             ":adr2" => $adresse_ligne2,

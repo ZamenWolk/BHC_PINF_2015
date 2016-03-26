@@ -211,6 +211,7 @@ $(document).ready(function () {
                         });
 
                         $('#validate').click(function () {
+                            console.log("Oui");
                             $.post(
                                 "../assets/php/ajax/adresse.php",
                                 {

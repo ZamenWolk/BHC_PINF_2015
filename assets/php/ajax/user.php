@@ -233,8 +233,9 @@ switch ($action)
 
         $user = User::UserFromData($nom, $prenom, $mail, $password, $newsletter, $telephone);
 
-        if($user->modifierInformations($_POST["user_id"]))
-            ajaxSuccess();
+        if($user->modifierInformations($_POST["user_id"])) {
+            ajaxSuccess(array("succes" => 1));
+        }
         else
             ajaxError("Le paramètre d'identification ne correspond à aucun utilisateur", "NO_USER");
 
