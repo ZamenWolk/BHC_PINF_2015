@@ -23,6 +23,7 @@ include_once("header.php");
 			<h4>Autre</h4>
 			<button id="seeStats" type="button" class="btn btn-default btn-lg btn-block">Accéder aux statistiques</button>
 			<button id="modifCoef" type="button" class="btn btn-default btn-lg btn-block">Modifier coefficient des prix</button>
+			<button id="newsLetter" type="button" class="btn btn-default btn-lg btn-block">Envoyer une newsletter</button>
 			<button id="goMenu" type="button" class="btn btn-default btn-lg btn-block">Retour au menu</button>
 		</div>
 	</div>
@@ -36,6 +37,9 @@ include_once("header.php");
 			<p>Nombre d'utilisateurs connectés : 543</p>
 			<p>Nombre de commandes passées ces 7 derniers jours : 54</p>
 		</div>
+		<p id = "texte">
+		
+		</p>
 	</div>
 </div>
 
@@ -43,6 +47,8 @@ include_once("header.php");
 
 var panier;
 var prixTotal;
+var newsletter = 0;
+var set=0;
 $.post("panier.php", {action: "contenuPanier"}, function(data) {
 	if (data["etat"] == "reussite")
   {
@@ -50,7 +56,13 @@ $.post("panier.php", {action: "contenuPanier"}, function(data) {
     prixTotal = data["prixTotal"];
   }
 });
-$.post('../assets/php/fonctions/pdf.php',
+
+			
+
+ $(document).ready(function () {
+	 
+	 $("#createOrder").click(function(){
+		 $.post('../assets/php/fonctions/pdf.php',
         {action:"gen_commande",
 		client_nom : "George",
 		client_prenom : "deLaJungle",
@@ -61,6 +73,32 @@ $.post('../assets/php/fonctions/pdf.php',
 		function(data){
 			console.log(data);
 		});
+	 });
+		
+	$("#newsLetter").click(function(){
+		
+		if(newsletter ==0){
+			if(set==0){
+				$("#texte").append("<label for=\"obj\" class=\"sr-only\">Objet</label>");
+				$("#texte").append(" <input type=\"text\" class=\"form-control\" id=\"obj\" placeholder=\"Objet\"/> </br>");
+             
+				$("#texte").append("<textarea id=\"txt\">Votre message</textarea> </br>");
+				$("#txt").css("width","100%");
+				$("#texte").append("<button type=\"button\" class=\"btn btn-block btn-default btn-lg\"><i class=\"fa fa-envelope-o\"></i>");
+				set=1;
+			}
+			$("#texte").show();
+			newsletter = 1;
+		}
+		else if (newsletter ==1){
+			$("#texte").hide();
+			newsletter=0;
+		}
+	});
+		 
+	 
+	 
+ });
 </script>
 <?php
 include_once("footer.php");
