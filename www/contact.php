@@ -8,8 +8,7 @@ include_once('header.php');
         <a href="./faq">
             <div class="alert alert-info" role="alert">
                 <i class="fa fa-info-circle fa-fw"></i>
-                <strong>Avant de nous contacter, avez-vous lu notre section FAQ ? La réponse à votre question pourrait déjà s'y
-                trouver !</strong>
+                Avant de nous contacter, avez-vous lu notre section FAQ ?
             </div>
         </a>
         <div class="row">

@@ -187,7 +187,7 @@ p.centered {
 }
 
 .popover {
-    max-width: 400px;
+    width: 400px;
     position: fixed;
 }
 
@@ -766,7 +766,7 @@ textarea#message {
     border: none;
     width: 170%;
     font-size: 120%;
-    color: rgba(52, 73, 94,1.0);;
+    color: rgba(52, 73, 94,1.0);
 }
 
 .caption > h5 {
@@ -787,4 +787,19 @@ td {
 
 .page-header {
     text-align: center;
+}
+
+a {
+    font-size: 130%;
+    color: rgba(52, 73, 94,1.0);
+}
+
+a:hover {
+    text-decoration: none;
+    -webkit-animation-name: font-change; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.3s; /* Chrome, Safari, Opera */
+    animation-name: font-change;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: forwards;
 }

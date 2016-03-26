@@ -121,21 +121,26 @@ session_start();
                     }
                     else {
                         $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
-                        var jQ = $(
-                            '<li>' +
-                            '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                            'Mon compte ' +
-                            '<span class="fa fa-user " aria-hidden="true"></span>' +
-                            '</a>' +
-                            '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">' +
-                            '<li><a href="./compte" id="acc_inf">Mes informations </a></li>' +
-                            '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>' +
-                            '<li class="divider" role="separator"></li>' +
-                            '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
-                            '</ul>' +
-                            '</li>' +
-                            '');
-                        $(".part_connect").html(jQ);
+                        /*var jQ = $(
+                         '<li>' +
+                         '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                         'Mon compte ' +
+                         '<span class="fa fa-user " aria-hidden="true"></span>' +
+                         '</a>' +
+                         '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">' +
+                         '<li><a href="./compte" id="acc_inf">Mes informations </a></li>' +
+                         '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>' +
+                         '<li class="divider" role="separator"></li>' +
+                         '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
+                         '</ul>' +
+                         '</li>' +
+                         '');
+                         $(".part_connect").html(jQ);*/
+                        $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
+                        var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
+                            '<a href="./commande" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
+                            '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
+                        $("#popover-content").html(jQ);
                     }
                 });
             });
@@ -159,21 +164,26 @@ session_start();
                     });
                 }
                 else {
-                    var jQ = $(
-                        '<li>' +
-                        '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                        'Mon compte ' +
-                        '<span class="fa fa-user " aria-hidden="true"></span>' +
-                        '</a>' +
-                        '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">' +
-                        '<li><a href="./compte" id="acc_inf">Mes informations </a></li>' +
-                        '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>' +
-                        '<li class="divider" role="separator"></li>' +
-                        '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
-                        '</ul>' +
-                        '</li>' +
-                        '');
-                    $(".part_connect").html(jQ);
+                    /*var jQ = $(
+                     '<li>' +
+                     '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                     'Mon compte ' +
+                     '<span class="fa fa-user " aria-hidden="true"></span>' +
+                     '</a>' +
+                     '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">' +
+                     '<li><a href="./compte" id="acc_inf">Mes informations </a></li>' +
+                     '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>' +
+                     '<li class="divider" role="separator"></li>' +
+                     '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
+                     '</ul>' +
+                     '</li>' +
+                     '');
+                     $(".part_connect").html(jQ);*/
+                    $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
+                    var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
+                        '<a href="./commande" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
+                        '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
+                    $("#popover-content").html(jQ);
                 }
 
             });
@@ -348,7 +358,10 @@ session_start();
                         </div>
 
                         <div id="wrong_id" class="alert-danger alert" role="alert">Mauvais mail ou mot de passe</div>
-                        <button type="button" id="seConnecter" class="btn btn-block btn-connect">Se connecter</button>
+                        <button type="button" id="seConnecter" class="btn btn-block btn-connect">
+                            Se connecter
+                            <i class="fa fa-sign-in"></i>
+                        </button>
                     </form>
 
 

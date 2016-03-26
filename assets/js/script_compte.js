@@ -1,4 +1,3 @@
-//var flagMdp=true;
 $(document).ready(function () {
     $("#validate").hide();
     $("#cancel").hide();
@@ -77,6 +76,7 @@ $(document).ready(function () {
                         function (data) {
                             data = JSON.parse(data);
                             console.log(data);
+                            $("#succesRequete").slideDown().delay(3000).slideUp();
                         }
                     );
                     $('input').each(function () {
@@ -88,6 +88,7 @@ $(document).ready(function () {
                     $("#validate").hide();
                     $("#cancel").hide();
                     $("#modif").show();
+
                     $.post(
                         "../assets/php/ajax/user.php",
                         {

@@ -10,7 +10,10 @@ include_once("header.php");
 <div class="row">
     <h2 class="page-header">Mes informations</h2>
     <div class="col-md-offset-1 col-md-9 personal-info">
-
+        <div class="alert alert-success" role="alert" id="succesRequete">
+            <i class="fa fa-check-square-o fa-fw"></i>
+            <strong>Modifications enregistrées !</strong>
+        </div>
         <form class="form-horizontal" role="form">
             <div class="row form-group">
                 <label class="col-lg-4 control-label">Nom:</label>
@@ -119,7 +122,7 @@ include_once("header.php");
                         function (data2) {
                             data2 = JSON.parse(data2);
                             console.log(data2);
-                            if(data2["etat"] == "reussite") {
+                            if (data2["etat"] == "reussite") {
                                 var ligne1 = data2["adresse"]["adresse_ligne1"];
                                 var ligne2 = data2["adresse"]["adresse_ligne2"];
                                 var codeP = data2["adresse"]["adresse_codeP"];
