@@ -229,8 +229,9 @@ switch ($action)
         $mail = $_POST["mail"];
         $password = "";
         $newsletter = $_POST["newsletter"];
+        $telephone = $_POST["telephone"];
 
-        $user = User::UserFromData($nom, $prenom, $mail, $password, $newsletter);
+        $user = User::UserFromData($nom, $prenom, $mail, $password, $newsletter, $telephone);
 
         if($user->modifierInformations($_POST["user_id"]))
             ajaxSuccess();

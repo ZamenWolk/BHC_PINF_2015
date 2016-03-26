@@ -67,6 +67,14 @@ include_once("header.php");
                 <label class="col-lg-4 control-label">Newsletter:</label>
                 <div class="col-lg-8">
                     <h5 id="ins_newsletter"></h5>
+                    <div class="btn-group" id="checkbox">
+                        <label for="ins_newsletter" class="btn btn-default active">
+                            <span class="fa fa-check fa-fw"></span>
+                            <span> </span>
+                        </label>
+                        <label for="ins_newsletter" class="btn btn-default">J'accepte de recevoir des offres
+                            promotionnelles de JS Pneus</label>
+                    </div>
                 </div>
             </div>
         </form>
