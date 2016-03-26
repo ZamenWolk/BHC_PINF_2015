@@ -65,7 +65,8 @@ $(document).ready(function () {
                     surname = $(this).val();
                 });
                 $(document).on("change", "#ins_newsletter", function () {
-                    if ($("#ins_newsletter").is("checked")) {
+                    console.log(newsletter);
+                    if (this.checked) {
                         newsletter = 1;
                     }
                     else newsletter = 0;
