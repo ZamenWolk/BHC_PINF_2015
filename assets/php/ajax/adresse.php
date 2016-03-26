@@ -89,7 +89,7 @@ switch($action){
         if(isset($_POST["adresse_id"])) {
             if (isset($_POST["adresse_ligne1"]) && isset($_POST["adresse_ligne2"]) && isset($_POST["adresse_codeP"]) && isset($_POST["adresse_ville"])) {
                 Adress::setAdresseByIdAdresse($_POST["adresse_ligne1"], $_POST["adresse_ligne2"], $_POST["adresse_codeP"], $_POST["adresse_ville"], $_POST["adresse_id"]);
-                ajaxSuccess();
+                ajaxSuccess(array("succes" =>1));
             }
             else
                 ajaxError("Erreur", "MISSING_ARGUMENTS");
@@ -98,7 +98,7 @@ switch($action){
         {
             if (isset($_POST["adresse_ligne1"]) && isset($_POST["adresse_ligne2"]) && isset($_POST["adresse_codeP"]) && isset($_POST["adresse_ville"])) {
                 Adress::setAdresse($_POST["adresse_ligne1"], $_POST["adresse_ligne2"], $_POST["adresse_codeP"], $_POST["adresse_ville"], $_POST["user_id"]);
-                ajaxSuccess();
+                ajaxSuccess(array("succes" =>1));
             }
             else
                 ajaxError("Erreur", "MISSING_ARGUMENTS");

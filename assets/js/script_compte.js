@@ -196,7 +196,6 @@ $(document).ready(function () {
                             $("#ins_postal").html(codeP);
                             $("#ins_ville").html(ville);
 
-
                             $(document).on("change", "#ins_adress", function () {
                                 ligne1 = $(this).val();
                             });
