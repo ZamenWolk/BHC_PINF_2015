@@ -2,7 +2,7 @@
 include_once "../secret/credentials.php";
 include_once("header.php");
 ?>
-<a href="./catalogue" type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Retour au catalogue</a>
+<a id="back" type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Retour au catalogue</a>
 <div class="model_article container-fluid">
     <div class="row heading">
         <div class="col-md-10 col-md-offset-2 item-heading-container pull-right">
@@ -1188,7 +1188,14 @@ include_once("header.php");
 </div>
 
 <script>
+
     $(document).ready(function () {
+        var referrer =  document.referrer;
+        $('#back').click(function(){
+            parent.history.back();
+            return false;
+        });
+
         var url = window.location.href;
         var arr = url.split("=");
         var ref = arr[1];
