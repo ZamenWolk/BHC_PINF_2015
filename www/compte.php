@@ -9,7 +9,7 @@ include_once("header.php");
 
 <div class="row">
     <h2 class="page-header">Mes informations</h2>
-    <div class="col-md-offset-1 col-md-9 personal-info">
+    <div class="col-md-offset-1 col-md-9 personal-info" id="infoForm">
         <div class="alert alert-success" role="alert" id="succesRequete">
             <i class="fa fa-check-square-o fa-fw"></i>
             <strong>Modifications enregistrées !</strong>
@@ -82,66 +82,48 @@ include_once("header.php");
             </div>
         </form>
         <button type="button" class="btn btn-default pull-right" id="modif">Modifier mes informations</button>
+        <button type="button" class="btn btn-default pull-right" id="modifPasse">Modifier mon mot de passe</button>
+
         <button type="button" class="btn btn-default pull-right" id="validate">Enregistrer les modifications</button>
         <button type="button" class="btn btn-default pull-right" id="cancel">Annuler</button>
+
     </div>
+    <div class="col-md-offset-1 col-md-9 personal-info" id="passeForm">
+        <div class="alert alert-danger" role="alert" id="echecNewPasse">
+            <i class="fa fa-exclamation-triangle fa-fw"></i>
+            <strong>Les mots de passes ne correspondent pas</strong>
+        </div>
+        <div class="alert alert-danger" role="alert" id="echecOldPasse">
+            <i class="fa fa-exclamation-triangle fa-fw"></i>
+            <strong>L'ancien mot de passe est faux</strong>
+        </div>
+        <form class="form-horizontal" role="form">
+            <div class="row form-group">
+                <label class="col-lg-4 control-label" for="oldPasse">Ancien mot de passe</label>
+                <div class="col-lg-8">
+                    <input class='form-control' type='password' id="oldPasse">
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-lg-4 control-label" for="newPasse">Nouveau mot de passe</label>
+                <div class="col-lg-8">
+                    <input class='form-control' type='password' id="newPasse">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="col-lg-4 control-label" for="newPasse2">Comfirmez le mot de passe</label>
+                <div class="col-lg-8">
+                    <input class='form-control' type='password' id="newPasse2">
+                </div>
+            </div>
+        </form>
+        <button type="button" class="btn btn-default pull-right" id="validatePasse">Modifier le mot de passe</button>
+        <button type="button" class="btn btn-default pull-right" id="cancelPasse">Annuler</button>
+    </div>
+
 </div>
 
-<script>
-    $(document).ready(function () {
-        $.post(
-            "../assets/php/ajax/user.php",
-            {
-                action: "getConnectedUser"
-            },
-            function (data) {
-                data = JSON.parse(data);
-                console.log(data);
-
-                if (data["etat"] == "reussite") {
-                    var user_id = data["user"]["ID"];
-                    var email = data["user"]["mail"];
-                    var name = data["user"]["nom"];
-                    var surname = data["user"]["prenom"];
-                    var newsletter = data["user"]["newsletter"];
-                    var telephone = data["user"]["telephone"];
-
-                    $("#ins_mail").html(email);
-                    $("#ins_nom").html(name);
-                    $("#ins_prenom").html(surname);
-                    $("#ins_tel").html(telephone);
-                    if (newsletter == 1) {
-                        $("#ins_newsletter").html("Vous êtes inscrit à notre newsletter");
-                    } else $("#ins_newsletter").html("Vous n'êtes pas inscrit à notre newsletter");
-                    $.post(
-                        "../assets/php/ajax/adresse.php",
-                        {
-                            action: "getAdresse",
-                            user_id: user_id
-                        },
-                        function (data2) {
-                            data2 = JSON.parse(data2);
-                            console.log(data2);
-                            if (data2["etat"] == "reussite") {
-                                var ligne1 = data2["adresse"]["adresse_ligne1"];
-                                var ligne2 = data2["adresse"]["adresse_ligne2"];
-                                var codeP = data2["adresse"]["adresse_codeP"];
-                                var ville = data2["adresse"]["adresse_ville"];
-
-                                $("#ins_adress").html(ligne1);
-                                $("#ins_comp_adress").html(ligne2);
-                                $("#ins_postal").html(codeP);
-                                $("#ins_ville").html(ville);
-                            }
-                        });
-
-                }
-
-            });
-
-
-    });
-</script>
 <?php
 include_once("footer.php");
 ?>

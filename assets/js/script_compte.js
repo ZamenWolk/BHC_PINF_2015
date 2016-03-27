@@ -1,8 +1,13 @@
 $(document).ready(function () {
     $("#validate").hide();
     $("#cancel").hide();
+    $("#cancelPasse").hide();
     $("#succesRequete").hide();
     $("#checkbox").hide();
+    $("#passeForm").hide();
+    $("#validatePasse").hide();
+    $("#echecOldPasse").hide();
+    $("#echecNewPasse").hide();
     $.post(
         "../assets/php/ajax/user.php",
         {
@@ -19,6 +24,9 @@ $(document).ready(function () {
                 var surname = data["user"]["prenom"];
                 var newsletter = data["user"]["newsletter"];
                 var telephone = data["user"]["telephone"];
+                var oldPasse;
+                var newPasse;
+                var newPasse2;
 
                 $("#ins_mail").html(email);
                 $("#ins_nom").html(name);
@@ -40,6 +48,15 @@ $(document).ready(function () {
                 $(document).on("change", "#ins_prenom", function () {
                     surname = $(this).val();
                 });
+                $(document).on("change", "#oldPasse", function () {
+                    oldPasse = $(this).val();
+                });
+                $(document).on("change", "#newPasse", function () {
+                    newPasse = $(this).val();
+                });
+                $(document).on("change", "#newPasse2", function () {
+                    newPasse2 = $(this).val();
+                });
                 $(document).on("change", "#ins_newsletter", function () {
                     if (this.checked) {
                         newsletter = 1;
@@ -50,6 +67,7 @@ $(document).ready(function () {
                     $("#validate").show();
                     $("#cancel").show();
                     $("#modif").hide();
+                    $("#modifPasse").hide();
                     $('h5').each(function () {
                         var elemH5 = $(this);
                         elemH5.replaceWith("<input id='" + $(this).attr("id") + "'  class='champs form-control' type='text' value='" + $(this).html() + "'>");
@@ -76,7 +94,7 @@ $(document).ready(function () {
                         function (data) {
                             data = JSON.parse(data);
                             console.log(data);
-                            $("#succesRequete").slideDown().delay(3000).slideUp();
+                            $("#succesRequete").slideDown().delay(6000).slideUp();
                         }
                     );
                     $('input').each(function () {
@@ -88,6 +106,8 @@ $(document).ready(function () {
                     $("#validate").hide();
                     $("#cancel").hide();
                     $("#modif").show();
+                    $("#modifPasse").show();
+
 
                     $.post(
                         "../assets/php/ajax/user.php",
@@ -140,9 +160,12 @@ $(document).ready(function () {
 
                 $('#cancel').click(function () {
                     $("#modif").show();
+                    $("#modifPasse").show();
+                    $("#passeForm").hide();
+                    $("#infoForm").show();
                     $("#cancel").hide();
                     $("#validate").hide();
-                    $('input').each(function () {
+                    $('input.champs').each(function () {
                         var input = $(this);
                         input.replaceWith("<h5 id=" + $(this).attr("id") + "></h5>");
                     });
@@ -251,6 +274,51 @@ $(document).ready(function () {
                             })
                         }
                     });
+                $("#modifPasse").click(function () {
+                    $("#infoForm").hide();
+                    $("#passeForm").show();
+                    $("#validatePasse").show();
+                    $("#modifPasse").hide();
+                    $("#modif").hide();
+                    $("#cancelPasse").show();
+                });
+                $("#cancelPasse").click(function () {
+                    $("#infoForm").show();
+                    $("#passeForm").hide();
+                    $("#validatePasse").hide();
+                    $("#modifPasse").show();
+                    $("#modif").show();
+                    $("#cancelPasse").hide();
+                });
+                $("#validatePasse").click(function () {
+                    console.log(oldPasse,newPasse,newPasse2);
+                    if (newPasse == newPasse2) {
+                        $.post(
+                            "../assets/php/ajax/user.php",
+                            {
+                                action: "changerPassword",
+                                user_id: user_id,
+                                old_pass: oldPasse,
+                                new_pass: newPasse
+                            }, function (data) {
+                                data = JSON.parse(data);
+                                console.log(data);
+                                if(data["etat"] == "reussite") {
+                                    $("#succesRequete").slideDown().delay(6000).slideUp();
+                                    $("#infoForm").show();
+                                    $("#passeForm").hide();
+                                    $("#validatePasse").hide();
+                                    $("#modifPasse").show();
+                                    $("#modif").show();
+                                    $("#cancelPasse").hide();
+                                }
+                                else {
+                                    $("#echecOldPasse").slideDown().delay(6000).slideUp();
+                                }
+                            });
+                    } else $("#echecNewPasse").slideDown().delay(6000).slideUp();
+
+                });
             }
         });
 });
