@@ -13,9 +13,9 @@ $action = $_POST["action"];
 switch($action)
 {
 	case "gen_commande" : 
-	if (!isset($_POST["client_adresse"]) || !isset($_POST["client_nom"]) || !isset($_POST["client_prenom"]) || !isset($_POST["client_panier"]) || !isset($_POST["prix_total"]))
+	if (!isset($_POST["client_adresse"]) || !isset($_POST["client_nom"]) || !isset($_POST["client_prenom"]) )
 		ajaxError("Il manque des arguments", "MISSING_ARGUMENT");
-	else {
+else {
 	$pdf = new PDF_Invoice( 'P', 'mm', 'A4' );
 	$pdf->AddPage();
 	$pdf->addSociete( "JSPneus",
@@ -58,7 +58,7 @@ switch($action)
 	$y   += $size + 2;
 
 	$line = array( "REFERENCE"    => "REF2",
-				"DESIGNATION"  => wordwrap("Good year Cargo G26 8 245/6 R16 110/108R", 8, "\n",true),
+				"DESIGNATION"  => wordwrap("Good year Cargo G26 8 245/6 R16 110/108R", 16, "\n",true),
 				"QUANTITE"     => "1",
 				"P.U. HT"      => "83.21",
 				"MONTANT H.T." => "83.21",
@@ -72,7 +72,7 @@ switch($action)
                     array ( "px_unit" => 83.21, "qte" => 1, "tva" => 1 ));
 	$tab_tva = array( "1"       => 19.6,
 					"2"       => 5.5);
-	/*$params  = array( "RemiseGlobale" => 1,
+	$params  = array( "RemiseGlobale" => 1,
 						"remise_tva"     => 1,       // {la remise s'applique sur ce code TVA}
 						"remise"         => 0,       // {montant de la remise}
 						"remise_percent" => 10,      // {pourcentage de remise sur ce montant de TVA}
@@ -85,10 +85,11 @@ switch($action)
 						"accompte"         => 0,     // montant de l'acompte (TTC)
 						"accompte_percent" => 15,    // pourcentage d'acompte (TTC)
 					"Remarque" => "Remise(s) dont vous disposez" );
-*/
+
 	$pdf->addTVAs( $params, $tab_tva, $tot_prods);
 	$pdf->addCadreEurosFrancs();
-	$pdf->Output();
+	$pdf->Output("F","./test.pdf");//TODO: Supprimer le fichier just aprés
+	//ajaxSuccess(array("etat2"=>"Réussie"));
 	}
 	
 break;

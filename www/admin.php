@@ -62,16 +62,17 @@ $.post("panier.php", {action: "contenuPanier"}, function(data) {
  $(document).ready(function () {
 	 
 	 $("#createOrder").click(function(){
-		 $.post('../assets/php/fonctions/pdf.php',
+		 $.post('../assets/php/ajax/pdf.php',
         {action:"gen_commande",
 		client_nom : "George",
 		client_prenom : "deLaJungle",
-		client_adresse : "La jungle",
-		client_panier : panier,
-		prix_total : prixTotal,
+		client_adresse : "La jungle"
 		},
 		function(data){
 			console.log(data);
+			//document.open("../assets/php/ajax/test.pdf",'_blank');
+			var win = window.open("../assets/php/ajax/test.pdf", '_blank');
+			win.focus();
 		});
 	 });
 		

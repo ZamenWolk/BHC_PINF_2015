@@ -48,18 +48,27 @@ include_once('header.php');
     <script>
 
         $(document).ready(function () {
+            var html;
+
+            $("#message").change(function(){
+                html=this.value;
+            });
+
+
             $("#BoutonEnvoi").click(function () {
+
+                console.log(html);
                 $.post('../assets/php/ajax/mail.php',
                     {
                         action: "mail_contact",
                         from_email: $('#mail').val(),
                         from_name: $('#nom').val(),
                         subject: $('#obj').val(),
-                        html: $('#msg').html(),
+                        html: html
                     },
                     function (data) {
                         console.log(data);
-                    });
+                     });
 
             });
         });
