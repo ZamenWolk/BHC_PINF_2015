@@ -97,7 +97,7 @@ $(document).ready(function () {
                             $("#succesRequete").slideDown().delay(6000).slideUp();
                         }
                     );
-                    $('input').each(function () {
+                    $('input.champs').each(function () {
                         var input = $(this);
                         input.replaceWith("<h5 id=" + $(this).attr("id") + "></h5>");
                     });

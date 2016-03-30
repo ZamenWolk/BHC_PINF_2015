@@ -29,6 +29,26 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalPasse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mot de passe oublié</h4>
+            </div>
+            <div class="modal-body">
+                <p>Entrez votre adresse mail, nous vous enverrons votre nouveau mot de passe à cette adresse</p>
+                    <label for="retrievePasse" class="sr-only">Adresse mail</label>
+                    <input id="retrievePasse" type="email" class="form-control" name="mail"
+                           placeholder="Adresse Mail">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-block">Demander un nouveau mot de passe</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

@@ -116,26 +116,29 @@ session_start();
 
 
                     if (data.etat == "echec") {
-                        $('div#wrong_id').show("slow");
-                        console.log("erreur");
+                        $.post("../assets/php/ajax/admin.php", {
+                            action: "connecter",
+                            admin_name: mailLogin,
+                            password: passeLogin
+                        },function (data) {
+                            if(data.etat == "reussite") {
+                                $(".popover").hide();
+                                $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
+                                $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
+                                var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
+                                    '<a href="./commande" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
+                                    '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
+                                $("#popover-content").html(jQ);
+                            }
+                            else {
+                                $('div#wrong_id').show("slow");
+                                console.log("erreur");
+                            }
+                        });
+
                     }
                     else {
                         $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
-                        /*var jQ = $(
-                         '<li>' +
-                         '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                         'Mon compte ' +
-                         '<span class="fa fa-user " aria-hidden="true"></span>' +
-                         '</a>' +
-                         '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">' +
-                         '<li><a href="./compte" id="acc_inf">Mes informations </a></li>' +
-                         '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>' +
-                         '<li class="divider" role="separator"></li>' +
-                         '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
-                         '</ul>' +
-                         '</li>' +
-                         '');
-                         $(".part_connect").html(jQ);*/
                         $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
                         var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
                             '<a href="./commande" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
@@ -368,7 +371,7 @@ session_start();
                     <div class="login-footer">
                         <a data-toggle="modal" id="subLink" data-target="#myModal">Pas encore inscrit ?</a>
                         <br>
-                        <a href="#" id="forgotten">Mot de passe oublié ?</a>
+                        <a id="forgotten" data-toggle="modal" data-target="#modalPasse">Mot de passe oublié ?</a>
                     </div>
                 </li>
             </ul>
