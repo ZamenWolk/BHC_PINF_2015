@@ -2,10 +2,7 @@
 include_once("header.php");
 ?>
 
-<script src="../assets/js/script_compte.js">
-
-
-</script>
+<script src="../assets/js/script_compte.js"></script>
 
 <div class="row">
     <h2 class="page-header">Mes informations</h2>

@@ -126,7 +126,7 @@ session_start();
                                 $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
                                 $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
                                 var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
-                                    '<a href="./commande" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
+                                    '<a href="./historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
                                     '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
                                 $("#popover-content").html(jQ);
                             }
@@ -141,7 +141,7 @@ session_start();
                         $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
                         $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
                         var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
-                            '<a href="./commande" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
+                            '<a href="./historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
                             '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
                         $("#popover-content").html(jQ);
                     }
@@ -321,7 +321,7 @@ session_start();
 
 <body>
 
-<nav id="navHeader" class="navbar navbar-default navbar-fixed-top">
+<nav id="navHeader" class="navbar navbar-custom navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#headNavbar">

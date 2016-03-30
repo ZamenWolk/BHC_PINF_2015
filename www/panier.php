@@ -20,8 +20,7 @@ include_once("header.php");
                     <div class="col-md-1 align" id="imgItem"><img src=""/></div>
                     <div class="col-md-4" id="infoItem"></div>
                     <!--<div class="col-md-2 align" id="refItem"></div>-->
-                    <div class="col-md-2 align" id="priceDiv"><span class="spanStyleLeft" id="priceItem"></span>
-                        <span class="spanStyleRight">€</span></div>
+                    <div class="col-md-2 align" id="priceDiv"><span class="spanStyleLeft" id="priceItem"></span></div>
                     <div class="col-md-3 align inputContainer">
                         <div class="input-group buttonGroup align">
                             <input type="number" class="form-control qtField pull-right" placeholder="" min="0"
@@ -34,7 +33,7 @@ include_once("header.php");
                         </div>
                     </div>
                     <div class="col-md-2 align" id="lotPriceDiv"><span class="spanStyleLeft" id="lotPriceItem"></span>
-                        <span class="spanStyleRight">€</span></div>
+                    </div>
                 </div>
             </div>
 
