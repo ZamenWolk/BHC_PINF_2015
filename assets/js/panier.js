@@ -31,6 +31,7 @@ $(document).ready(function () {
             {
                 action:"retirerArticle",
                 referencePneu: ref
+            }, function(data) {
             }
         )
     });
@@ -40,7 +41,7 @@ $(document).ready(function () {
             {
                 action: "vider"
             }, function (data) {
-                $(".item").empty();
+                
             }
         );
     });
