@@ -3,7 +3,10 @@ html, body {
 }
 
 body {
-    background: rgb(73,55,89);
+    margin:0;
+    background: url("../img/background4.jpg") no-repeat center fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
     padding-top: 70px;
 }
 

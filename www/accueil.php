@@ -51,7 +51,7 @@ include_once("header.php");
 
     <div class="col-lg-4 img-col" id="home1">
         <div class="hovereffect">
-            <a href="./catalogue">
+            <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">
                 <img class="img-responsive" src="../assets/img/home1.jpg">
                 <div class="overlay">
                     <h2>Catalogue</h2>
