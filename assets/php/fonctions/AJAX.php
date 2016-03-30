@@ -1,5 +1,5 @@
 <?php
-function ajaxError($message, $errorCode = null)
+function ajaxError($message, $errorCode = "")
 {
     $json = array();
     $json["etat"] = "echec";
@@ -12,7 +12,7 @@ function ajaxError($message, $errorCode = null)
     die();
 }
 
-function ajaxSuccess($data = null)
+function ajaxSuccess($data = array())
 {
     $json = array();
     $json["etat"] = "reussite";
@@ -26,7 +26,7 @@ function ajaxSuccess($data = null)
     die();
 }
 
-function ajaxWarning($message, $data = null, $warningCode = null)
+function ajaxWarning($message, $data = array(), $warningCode = "")
 {
     $json = array();
     $json["etat"] = "warning";
