@@ -13,7 +13,7 @@ class Recherche{
      */
     public static function rechercherMarque()
     {
-        $sql="SELECT DISTINCT pneu_marque FROM jspneus.pneu ORDER BY pneu_marque ASC";
+        $sql="SELECT DISTINCT pneu_marque FROM pneu ORDER BY pneu_marque ASC";
         $res = SQLSelect($sql, array());
         $tab = array();
 
@@ -30,7 +30,7 @@ class Recherche{
      */
     public static function rechercherCategorie()
     {
-        $sql="SELECT DISTINCT pneu_categorie FROM jspneus.pneu ORDER BY pneu_categorie ASC";
+        $sql="SELECT DISTINCT pneu_categorie FROM pneu ORDER BY pneu_categorie ASC";
         $res = SQLSelect($sql, array());
         $tab = array();
 
@@ -46,7 +46,7 @@ class Recherche{
      */
     public static function rechercherLargeur()
         {
-            $sql="SELECT DISTINCT pneu_largeur FROM jspneus.pneu ORDER BY pneu_largeur ASC";
+            $sql="SELECT DISTINCT pneu_largeur FROM pneu ORDER BY pneu_largeur ASC";
             $res = SQLSelect($sql, array());
             $tab = array();
 
@@ -63,7 +63,7 @@ class Recherche{
      */
     public static function rechercherJante()
         {
-            $sql="SELECT DISTINCT pneu_jante FROM jspneus.pneu ORDER BY  pneu_jante ASC";
+            $sql="SELECT DISTINCT pneu_jante FROM pneu ORDER BY  pneu_jante ASC";
             $res = SQLSelect($sql, array());
             $tab = array();
 
@@ -80,7 +80,7 @@ class Recherche{
          */
     public static function rechercherCharge()
         {
-            $sql="SELECT DISTINCT pneu_charge FROM jspneus.pneu ORDER BY pneu_charge ASC";
+            $sql="SELECT DISTINCT pneu_charge FROM pneu ORDER BY pneu_charge ASC";
             $res = SQLSelect($sql, array());
             $tab = array();
 
@@ -97,7 +97,7 @@ class Recherche{
          */
     public static function rechercherVitesse()
         {
-            $sql="SELECT DISTINCT pneu_vitesse FROM jspneus.pneu ORDER BY pneu_vitesse ASC";
+            $sql="SELECT DISTINCT pneu_vitesse FROM pneu ORDER BY pneu_vitesse ASC";
             $res = SQLSelect($sql, array());
             $tab = array();
 
@@ -115,7 +115,7 @@ class Recherche{
 
     public static function rechercherDecibel()
     {
-        $sql="SELECT DISTINCT pneu_decibel FROM jspneus.pneu ORDER BY pneu_vitesse ASC";
+        $sql="SELECT DISTINCT pneu_decibel FROM pneu ORDER BY pneu_vitesse ASC";
         $res = SQLSelect($sql, array());
         $tab = array();
 
@@ -131,7 +131,7 @@ class Recherche{
      */
     public static function rechercherConsommation()
     {
-        $sql="SELECT DISTINCT pneu_consommation FROM jspneus.pneu ORDER BY pneu_consommation ASC";
+        $sql="SELECT DISTINCT pneu_consommation FROM pneu ORDER BY pneu_consommation ASC";
         $res = SQLSelect($sql, array());
         $tab = array();
 
@@ -147,7 +147,7 @@ class Recherche{
      */
     public static function rechercherSerie()
     {
-        $sql="SELECT DISTINCT pneu_serie FROM jspneus.pneu ORDER BY pneu_serie ASC";
+        $sql="SELECT DISTINCT pneu_serie FROM pneu ORDER BY pneu_serie ASC";
         $res = SQLSelect($sql, array());
         $tab = array();
 
@@ -159,7 +159,7 @@ class Recherche{
     }
 
     public static function rechercherPneu($ref){
-        $sql ="SELECT * FROM jspneus.pneu WHERE pneu_ref=:ref AND pneu_valable=1";
+        $sql ="SELECT * FROM pneu WHERE pneu_ref=:ref AND pneu_valable=1";
         $param = array();
         $param[":ref"]=$ref;
         $res = SQLSelect($sql, $param);
@@ -177,7 +177,7 @@ class Recherche{
 
     public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$consommation,$decibel,$numeroPage, $itemParPage,$order = 0)
     {
-        $sql = "SELECT * FROM jspneus.pneu WHERE pneu_valable=1";
+        $sql = "SELECT * FROM pneu WHERE pneu_valable=1";
         $param = array();
         if($cat != "0")
         {

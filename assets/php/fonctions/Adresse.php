@@ -13,7 +13,7 @@ class Adress{
      * @return resource|bool
      */
     public static function mkAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $user_id){
-            $sql ="INSERT INTO jspneus.adresse(adresse_ligne1,adresse_ligne2, adresse_codeP, adresse_ville, user_id) VALUES (:adr1, :adr2, :codeP, :ville, :id)";
+            $sql ="INSERT INTO adresse(adresse_ligne1,adresse_ligne2, adresse_codeP, adresse_ville, user_id) VALUES (:adr1, :adr2, :codeP, :ville, :id)";
             $param = [
                 ":adr1" => $adresse_ligne1,
                 ":adr2" => $adresse_ligne2,
@@ -33,7 +33,7 @@ class Adress{
      * @return array
      */
     public static function getAdresse($id){
-        $sql="SELECT * FROM jspneus.adresse WHERE user_id =:id ";
+        $sql="SELECT * FROM adresse WHERE user_id =:id ";
         $param[":id"] = $id;
         $res = SQLSelect($sql,$param);
         $tab = array();
@@ -50,7 +50,7 @@ class Adress{
      * @return array
      */
     public static function getAdresseByIDAdresse($id){
-        $sql="SELECT * FROM jspneus.adresse WHERE adresse_id=:id ";
+        $sql="SELECT * FROM adresse WHERE adresse_id=:id ";
         $param[":id"] = $id;
         $res = SQLSelect($sql,$param);
         $tab = array();
@@ -71,7 +71,7 @@ class Adress{
      */
     public static function setAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $user_id){
 
-        $sql = "UPDATE jspneus.adresse SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_ville=:ville WHERE user_id=:id";
+        $sql = "UPDATE adresse SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_ville=:ville WHERE user_id=:id";
         $param = [
             ":adr1" => $adresse_ligne1,
             ":adr2" => $adresse_ligne2,
@@ -92,7 +92,7 @@ class Adress{
      */
     public static function setAdresseByIdAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $adresse_id){
 
-        $sql = "UPDATE jspneus.adresse SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_ville=:ville WHERE user_id=:id";
+        $sql = "UPDATE adresse SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_ville=:ville WHERE user_id=:id";
         $param = [
             ":adr1" => $adresse_ligne1,
             ":adr2" => $adresse_ligne2,

@@ -26,23 +26,23 @@ class Admin
 
     public function inscrireEnBDD()
     {
-        if (SQLSelect("SELECT * FROM jspneus.admin WHERE admin_name=?", [$this->nom]))
+        if (SQLSelect("SELECT * FROM admin WHERE admin_name=?", [$this->nom]))
             return false;
         else
         {
-            SQLInsert("INSERT INTO jspneus.admin(admin_name, admin_pass, admin_autorisations) VALUES (?, ?, ?)", [$this->nom, $this->password, $this->autorisations]);
-            $this->Admin(SQLSelect("SELECT * FROM jspneus.user WHERE user_mail=?", [$this->nom])[0]);
+            SQLInsert("INSERT INTO admin(admin_name, admin_pass, admin_autorisations) VALUES (?, ?, ?)", [$this->nom, $this->password, $this->autorisations]);
+            $this->Admin(SQLSelect("SELECT * FROM user WHERE user_mail=?", [$this->nom])[0]);
             return $this->ID;
         }
     }
 
     public function modifierInformations($id)
     {
-        if (!SQLSelect("SELECT * FROM jspneus.admin WHERE admin_id=?", [$id]))
+        if (!SQLSelect("SELECT * FROM admin WHERE admin_id=?", [$id]))
             return false;
         else
         {
-            SQLUpdate("UPDATE jspneus.admin SET admin_name=?, admin_autorisations=? WHERE admin_id=?", [$this->nom, $this->autorisations, $id]);
+            SQLUpdate("UPDATE admin SET admin_name=?, admin_autorisations=? WHERE admin_id=?", [$this->nom, $this->autorisations, $id]);
             return true;
         }
     }
@@ -74,7 +74,7 @@ class Admin
 
     public static function changePassword($oldPass, $newPass, $id)
     {
-        $res = SQLSelect("SELECT admin_pass FROM jspneus.admin WHERE admin_id=?", [$id]);
+        $res = SQLSelect("SELECT admin_pass FROM admin WHERE admin_id=?", [$id]);
 
         if ($res === false)
             return false;
@@ -84,7 +84,7 @@ class Admin
         if (!password_verify($oldPass, $currPass))
             return false;
 
-        SQLUpdate("UPDATE jspneus.admin SET admin_pass=? WHERE admin_id=?", [password_hash($newPass, PASSWORD_BCRYPT), $id]);
+        SQLUpdate("UPDATE admin SET admin_pass=? WHERE admin_id=?", [password_hash($newPass, PASSWORD_BCRYPT), $id]);
         return true;
     }
 
@@ -108,7 +108,7 @@ class Admin
 
     public static function getAdminFromID($id)
     {
-        $sql = "SELECT * FROM jspneus.admin WHERE admin_id=?";
+        $sql = "SELECT * FROM admin WHERE admin_id=?";
         $res = SQLSelect($sql, [$id]);
 
         if ($res === false)
@@ -119,7 +119,7 @@ class Admin
 
     public static function getAdminFromName($name)
     {
-        $sql = "SELECT * FROM jspneus.admin WHERE admin_name=?";
+        $sql = "SELECT * FROM admin WHERE admin_name=?";
         $res = SQLSelect($sql, [$name]);
 
         if ($res === false)

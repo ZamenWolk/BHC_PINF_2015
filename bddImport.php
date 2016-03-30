@@ -38,7 +38,7 @@ if ($handle)
 
         array_push($param, $time);
 
-        $req = "INSERT INTO jspneus.pneu(pneu_ean, pneu_ref, pneu_marque, pneu_categorie, pneu_description, pneu_largeur, pneu_serie, pneu_jante, pneu_charge, pneu_vitesse, pneu_profil, pneu_decibel, pneu_bruit, pneu_consommation, pneu_adherance, pneu_categorieEtiquette, pneu_stock, pneu_prix, pneu_dateAjoutBDD)
+        $req = "INSERT INTO pneu(pneu_ean, pneu_ref, pneu_marque, pneu_categorie, pneu_description, pneu_largeur, pneu_serie, pneu_jante, pneu_charge, pneu_vitesse, pneu_profil, pneu_decibel, pneu_bruit, pneu_consommation, pneu_adherance, pneu_categorieEtiquette, pneu_stock, pneu_prix, pneu_dateAjoutBDD)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         if ($nb%100 == 0)
