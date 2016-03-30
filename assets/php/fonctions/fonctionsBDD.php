@@ -16,7 +16,7 @@ function mkUser($mail, $mdp, $nom, $prenom)//Permet la création d'un utilisateu
 {
     $mdp=password_hash($mdp, PASSWORD_BCRYPT);
     //echo $mdp;
-    $sql="INSERT INTO jspneus.user(user_mail, user_password, user_nom, user_prenom) VALUES (:mail,:mdp,:nom,:prenom)";
+    $sql="INSERT INTO user(user_mail, user_password, user_nom, user_prenom) VALUES (:mail,:mdp,:nom,:prenom)";
 
     $param = [
         ":mail" => $mail,
@@ -39,8 +39,8 @@ function mkUser($mail, $mdp, $nom, $prenom)//Permet la création d'un utilisateu
 
 function verifDescription($ref, $desc, $prix)
 {
-    $sql="SELECT pneu_description FROM jspneus.pneu WHERE pneu_ref=:ref AND pneu_valable=1";
-    $sql1="SELECT pneu_prix FROM jspneus.pneu WHERE pneu_ref=:ref AND pneu_valable=1";
+    $sql="SELECT pneu_description FROM pneu WHERE pneu_ref=:ref AND pneu_valable=1";
+    $sql1="SELECT pneu_prix FROM pneu WHERE pneu_ref=:ref AND pneu_valable=1";
     $param=[
         ":ref" => $ref
     ];

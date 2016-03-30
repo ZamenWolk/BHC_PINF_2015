@@ -33,7 +33,7 @@ class Pneu
 
     public static function getPneuFromDB($reference, $dateAjoutBDD = null)
     {
-        $sql = "SELECT * FROM jspneus.pneu WHERE pneu_ref=:ref";
+        $sql = "SELECT * FROM pneu WHERE pneu_ref=:ref";
         $param = array(":ref" => $reference);
 
         if ($dateAjoutBDD == null)

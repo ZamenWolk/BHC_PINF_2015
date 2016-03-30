@@ -22,7 +22,7 @@ if(file_exists ($fichier)) {
         }*/
             if (!verifDescription($data[2], $data[5], $data[21]))//Ce n'est pas le même pneus //TODO: on doit verifier la description
             {
-                $sql = "INSERT INTO jspneus.pneu(pneu_ean, pneu_ref,
+                $sql = "INSERT INTO pneu(pneu_ean, pneu_ref,
         pneu_marque, pneu_categorie,pneu_description,pneu_largeur,pneu_serie,pneu_jante,pneu_charge,pneu_vitesse,pneu_profil,pneu_decibel,
         pneu_bruit,pneu_consommation,pneu_adherance,pneu_categorieEtiquette,pneu_stock,pneu_prix,pneu_dateAjoutBDD,pneu_dateDerniereModif) VALUES (:ean,:ref,:marque,:categorie,
         :description,:largeur,:serie,:jante,:charge,:vitesse,:profil,:decibel,:bruit,:consommation,:adherance,:categorieEtiquette,:stock,:prix,:dateAjoutBDD,:dateDerniereModif)";
@@ -53,7 +53,7 @@ if(file_exists ($fichier)) {
                 SQLInsert($sql, $param);
 
                 /* On modifie les anciennes version */
-                $sql2 = "UPDATE jspneus.pneu SET pneu_valable=0, pneu_derniereVersion=0 WHERE pneu_ref=:ref AND pneu_dateAjoutBDD < :temps";
+                $sql2 = "UPDATE pneu SET pneu_valable=0, pneu_derniereVersion=0 WHERE pneu_ref=:ref AND pneu_dateAjoutBDD < :temps";
                 $param = [
                     ":temps" => $time,
                     ":ref" => $data[2]
@@ -62,7 +62,7 @@ if(file_exists ($fichier)) {
                 $nbreUpdate = SQLUpdate($sql2, $param);
             } else {
                 /*ICI on update a juste le stock et la date de modification*/
-                $sql1 = "UPDATE jspneus.pneu SET pneu_stock=:stock, pneu_dateDerniereModif=:temps WHERE pneu_dateAjoutBDD < :temps AND pneu_ref= :ref";
+                $sql1 = "UPDATE pneu SET pneu_stock=:stock, pneu_dateDerniereModif=:temps WHERE pneu_dateAjoutBDD < :temps AND pneu_ref= :ref";
                 $param = [
                     ":temps" => $time,
                     ":stock" => $data[20],
@@ -75,9 +75,8 @@ if(file_exists ($fichier)) {
     }
 
     /*Permet de mettre en non valable les pneus supprimé du csv*/
-    $sql = "UPDATE jspneus.pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
+    $sql = "UPDATE pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
     $nbreUpdate = SQLUpdate($sql);
-    set_time_limit(120);
     //unlink($fichier); // Supprime le fichier
 }
 ?>

@@ -15,7 +15,7 @@ class Commande
 
     public function chargerProduits()
     {
-        $res = SQLSelect("SELECT * FROM jspneus.fait_partie WHERE commande_id=?", [$this->commande_id]);
+        $res = SQLSelect("SELECT * FROM fait_partie WHERE commande_id=?", [$this->commande_id]);
         $tab = array();
 
         foreach ($res as $item)
@@ -26,7 +26,8 @@ class Commande
 
     public function setProduits($produits)
     {
-        $this->produits = $produits;
+        if (is_array($produits))
+            $this->produits = $produits;
     }
 
 //ma bite est un volcan et j'aime ça
