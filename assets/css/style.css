@@ -4,7 +4,7 @@ html, body {
 
 body {
     margin:0;
-    background: url("../img/background4.jpg") no-repeat center fixed;
+    background: url("../img/background.jpg") no-repeat center fixed;
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
     padding-top: 70px;
@@ -80,7 +80,7 @@ h3 {
 
 .container.main {
     padding-top: 10px;
-    background-color: #f6f6f6;
+    background-color: rgba(236, 240, 241, 0.95);
     min-height: 800px;
 }
 
@@ -155,7 +155,7 @@ p.centered {
     animation-fill-mode: forwards;
 }
 
-.dropdown-menu {
+/*.dropdown-menu {
     top: 67px;
     background-color: rgba(236, 240, 241, 1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -178,7 +178,7 @@ p.centered {
 .dropdown-header {
     font-size: 120%;
     color: rgba(52, 73, 94,1.0);
-}
+}*/
 
 #mailLogin, #passeLogin {
     width: 244px;
@@ -197,7 +197,7 @@ p.centered {
 }
 
 .popover.bottom .arrow:after {
-    border-bottom-color: rgba(236, 240, 241, 1);;
+    border-bottom-color: rgba(236, 240, 241, 0.8);
 }
 
 .navbar-collapse {
@@ -206,9 +206,9 @@ p.centered {
     margin-top: 5px;
 }
 
-.navbar-default {
+.navbar-custom {
     border-top: none;
-    background-color: rgba(236, 240, 241, 1);
+    background-color: rgba(236, 240, 241, 0.8);
 }
 
 .navbar-brand {
@@ -226,7 +226,7 @@ p.centered {
 
 .footer {
     height: 55px;
-    background-color: rgba(236, 240, 241, 1);
+    background-color: rgba(236, 240, 241, 0.8);
     border-radius: 0;
     margin-bottom: 0;
     border: 0;
@@ -247,9 +247,11 @@ p.centered {
     cursor: pointer;
 }
 
+.well {
+    background: transparent;
+}
+
 .searchWell {
-    background-color: rgba(236, 240, 241,1.0);
-    border: 10px rgba(236, 240, 241, 0.3);
     border-top: none;
     border-bottom: none;
     color: rgba(52, 73, 94,1.0);
@@ -317,7 +319,7 @@ ul.dropdown-cart li .item-right button {
 
 .popover,
 .modal-content {
-    background-color: rgba(236, 240, 241,1.0);
+    background-color: rgba(236, 240, 241,0.8);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -350,7 +352,7 @@ ul.dropdown-cart li .item-right button {
 .popover-title,
 .modal-header,
 .modal-title {
-    background-color: rgba(236, 240, 241, 1);
+    background-color: rgba(236, 240, 241,0.8);
     font-size: 140%;
     text-align: center;
 }
@@ -508,7 +510,7 @@ ul.dropdown-cart li .item-right button {
 
 .prod.carousel-indicators {
     right: 50%;
-    top: auto;
+    top: 90%;
 }
 
 .prod.carousel-indicators li {
@@ -623,8 +625,10 @@ a.list-group-item {
     height:auto;
     min-height:220px;
 }
-a.list-group-item.active small {
-    color:#fff;
+
+.list-group-item {
+    background: transparent;
+    border: 1px solid grey;
 }
 
 .fa-ul {
@@ -684,10 +688,9 @@ a.list-group-item.active small {
 .spanStyleLeft {
 	background-color:#eee;
 	border:1px solid #ccc;
-	border-top-left-radius:4px;
-	border-bottom-left-radius:4px;
-	border-right:none;
+	border-radius:4px;
 	padding-left:12px;
+    padding-right:12px;
 	padding-top:6px;
 	padding-bottom:6px;
 }
@@ -807,4 +810,12 @@ a:hover {
     animation-duration: 0.3s;
     -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
     animation-fill-mode: forwards;
+}
+
+dd {
+    white-space: nowrap;
+}
+
+dt,dd {
+    font-size: 90%;
 }

@@ -132,23 +132,29 @@ include_once("header.php");
     <div class="col-md-6">
         <h3>Pneus par type de véhicule</h3>
         <ul>
-            <li><img src="../assets/img/tourisme.png">
-                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">Tourisme</a></li>
-            <li><img src="../assets/img/4x4.png">
-                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=4X4+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">4X4</a></li>
-            <li><img src="../assets/img/utilitaire.png">
-                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Utilitaire+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">Utilitaire</a></li>
+            <li>
+                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">
+                    <img src="../assets/img/tourisme.png">Tourisme</a></li>
+            <li>
+                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=4X4+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">
+                    <img src="../assets/img/4x4.png">4X4</a></li>
+            <li>
+                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Utilitaire+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">
+                    <img src="../assets/img/utilitaire.png">Utilitaire</a></li>
         </ul>
     </div>
     <div class="col-md-6">
         <h3>Pneus par saison</h3>
         <ul>
-            <li style="padding-top: 8px"><img src="../assets/img/hiver.png">
-                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Ete&vitesse=0&consommation=0&decibel=0">Hiver</a></li>
-            <li style="padding-top: 8px"><img src="../assets/img/été.png">
-                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Ete&vitesse=0&consommation=0&decibel=0">&Eacute;té</a></li>
-            <li style="padding-top: 8px"><img src="../assets/img/4saisons.png">
-                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">Toutes saisons</a></li>
+            <li style="padding-top: 8px">
+                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Ete&vitesse=0&consommation=0&decibel=0">
+                    <img src="../assets/img/hiver.png">Hiver</a></li>
+            <li style="padding-top: 8px">
+                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Ete&vitesse=0&consommation=0&decibel=0">
+                    <img src="../assets/img/été.png">&Eacute;té</a></li>
+            <li style="padding-top: 8px">
+                <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">
+                    <img src="../assets/img/4saisons.png">Toutes saisons</a></li>
         </ul>
     </div>
 </div>
