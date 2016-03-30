@@ -27,15 +27,9 @@ class Panier
             return false;
 
         if (!$this->getArticle($pneu->reference))
-        {
-            array_push($this->panier, array("pneu" => $pneu, "quantite" => $quantite));
-            return true;
-        }
-        else
-        {
-            $this->ajouterQuantite($pneu->reference, $quantite);
-            return true;
-        }
+            array_push($this->panier, array("pneu" => $pneu, "quantite" => 1));
+        
+        return $this->ajouterQuantite($pneu->reference, $quantite);
     }
 
     public function retirerArticle($reference)
@@ -105,7 +99,7 @@ class Panier
         $item = &$this->getArticle($reference);
         if (isset($item))
         {
-            return $item["pneu"]->getPrix() * $item["quantite"];
+            return round($item["pneu"]->getPrix() * $item["quantite"], 2);
         }
         else
             return false;

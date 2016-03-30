@@ -129,66 +129,96 @@ $action = $_POST["action"];
 switch ($action)
 {
     case "vider":
+        
         $panier->vider();
         ajaxSuccess(["vide" => true]);
+        
         break;
 
     case "nbArticles":
+        
         ajaxSuccess(["nbArticles" => $panier->nbArticles()]);
+        
         break;
 
     case "ajouterArticle":
+        
         if (!isset($_POST["referencePneu"]))
             ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
+        
         $referencePneu = $_POST["referencePneu"];
         $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
+        
         if ($quantite < 1)
             ajaxError('La quantité à ajouter est negative ou nulle', "INVALID_QUANTITY");
+        
         $pneu = Pneu::getPneuFromDB($referencePneu);
+        
         if ($pneu === false)
             ajaxError("Cette référence n'existe pas", "UNKNOWN_REFERENCE");
+        
         $result = $panier->ajouterArticle($pneu, $quantite);
+        
         if ($result === false)
             ajaxError("Erreur interne, veuillez contacter l'administrateur réseau", "INTERN_ERROR");
+        else if ($result != $quantite)
+            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_ENOUGH_STOCK");
+        
         ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
+        
         break;
 
     case "retirerArticle":
+        
         if (!isset($_POST["referencePneu"]))
             ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
+        
         $referencePneu = $_POST["referencePneu"];
         $result = $panier->retirerArticle($referencePneu);
+        
         if ($result)
             ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
         else
             ajaxWarning("La référence n'était pas présente dans le panier", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_IN_CART");
+        
         break;
 
     case "ajouterQuantite":
+        
         if (!isset($_POST["referencePneu"]))
             ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
+        
         $referencePneu = $_POST["referencePneu"];
         $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
+        
         if ($quantite < 1)
             ajaxError('La quantité à ajouter est inférieure à 1', "INVALID_QUANTITY");
+        
         $qtActuel = $panier->getQuantite($referencePneu);
         $result = $panier->ajouterQuantite($referencePneu, $quantite);
+        
         if ($result)
             ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
         else if (!$panier->estPresent($referencePneu))
             ajaxError("La référence n'est pas présente dans le panier", "NOT_IN_CART");
         else
             ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_ENOUGH_STOCK");
+        
         break;
 
     case "retirerQuantite":
+        
         if (!isset($_POST["referencePneu"]))
             ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
+        
         $referencePneu = $_POST["referencePneu"];
         $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
+        
         if ($quantite < 1)
             ajaxError('La quantité à retirer est inférieure à 1', "INVALID_QUANTITY");
+        
         $result = $panier->retirerQuantite($referencePneu, $quantite);
+        
         if ($result)
             ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
         else
@@ -198,33 +228,44 @@ switch ($action)
             else
                 ajaxError("La quantité à retirer est superieure à la quantité dans le panier", "CANT_TAKE_AWAY_ENOUGH");
         }
+        
         break;
 
     case "changerQuantite":
         if (!isset($_POST["referencePneu"]))
             ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
+        
         $referencePneu = $_POST["referencePneu"];
         $quantite = isset($_POST["quantite"]) ? $_POST["quantite"] : 1;
+        
         if ($quantite < 0)
             ajaxError('La nouvelle quantité est negative', "INVALID_QUANTITY");
+        
         $result = $panier->changerQuantite($referencePneu, $quantite);
+        
         if ($result === false)
             ajaxError("La référence n'est pas présente dans le panier", "NOT_IN_CART");
         else if ($result != $quantite)
             ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_ENOUGH_STOCK");
         else
             ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
+        
         break;
 
     case "prixLot":
         if (!isset($_POST["referencePneu"]))
             ajaxError("La référence du pneu n'est pas définie", "MISSING_ARGUMENT");
+        
         $referencePneu = $_POST["referencePneu"];
+        
         ajaxSuccess(["referencePneu" => $referencePneu, "prixLot" => $panier->prixLot($referencePneu)]);
+        
         break;
 
     case "contenuPanier":
+        
         ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
+        
         break;
         
     default :

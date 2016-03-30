@@ -69,7 +69,7 @@ class Pneu
     {
         if (Config::getRatioPrix($ratioID) === false)
             return false;
-        return $this->prix * Config::getRatioPrix($ratioID);
+        return round($this->prix * Config::getRatioPrix($ratioID), 2);
     }
 
     public function getPneu()
