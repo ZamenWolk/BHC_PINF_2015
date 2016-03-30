@@ -111,6 +111,17 @@ class Panier
             return false;
     }
 
+    public function prixUnitaire($reference)
+    {
+        $item = &$this->getArticle($reference);
+        if (isset($item))
+        {
+            return $item["pneu"]->getPrix();
+        }
+        else
+            return false;
+    }
+
     public function prixTotal()
     {
         $total = 0;
@@ -128,6 +139,7 @@ class Panier
         foreach($this->panier as &$item)
         {
             $item["prixLot"] = $this->prixLot($item["pneu"]->reference);
+            $item["prixUnitaire"] = $this->prixUnitaire($item["pneu"]->reference);
         }
 
         return $this->panier;

@@ -1,28 +1,17 @@
 var myItemId = 0;
 var maxId = 0;
 var i = 0;
-var modeTest = true;
 
 $(document).ready(function () {
-    if (modeTest) {
-        /*ajouterArticle("00258",1);
-         ajouterArticle("03453",4);*/
-        //ajouterArticle("03999453",4);
-        //ajouterArticle("03453",0);
-        generatePanier();
-        //isEmptyPanierAndInit();
-    }
 
-    else {
-        generatePanier();
-    }
+    generatePanier();
 
     $("#confirmOrder").click(function () {
-        document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        document.location.href = "./commande";
     });
 
     $("#goAchat").click(function () {
-        document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        document.location.href = "./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0";
     });
 
     $(".qtField").change(function () {
@@ -35,21 +24,25 @@ $(document).ready(function () {
         majQt();
     });
 
-    $(".deleteButton").click(function () {
-        myItemIdTemp = $(this).attr('id').split("m");
-        myItemId = ".item".concat(myItemIdTemp[1]);
-        $(myItemId).remove();
-        majPrix();
-        majPrixTotal();
-        majQt();
-        isEmptyPanier();
+    $(document).on("click",".deleteButton", function () {
+        var ref = $(this).attr("id");
+        console.log(ref);
+        $.post("../assets/php/ajax/panier.php",
+            {
+                action:"retirerArticle",
+                referencePneu: ref
+            }
+        )
     });
 
     $("#throwPanier").click(function () {
-        $("#panierMenu").html(
-            '<h1>&nbsp;Mon panier</h1></br>' +
-            '<p>Votre panier est vide. Les articles que vous mettez dans votre panier sont affichés ici. Pour ajouter des articles dans votre panier, visitez le site et sélectionnez les articles qui vous intéressent.</p>');
-        $("#blockValidate").remove();
+        $.post("../assets/php/ajax/panier.php",
+            {
+                action: "vider"
+            }, function (data) {
+                $(".item").empty();
+            }
+        );
     });
 
     function majPrix() {
@@ -132,7 +125,7 @@ $(document).ready(function () {
                     var pneu_description = jsonData["panier"][i]["pneu"]["description"];
                     var pneu_reference = jsonData["panier"][i]["pneu"]["reference"];
                     var pneu_quantite = jsonData["panier"][i]["quantite"];
-                    var prix_unit = jsonData["panier"][i]["pneu"]["prix"];
+                    var prix_unit = jsonData["panier"][i]["prixUnitaire"];
                     var prix_lot = jsonData["panier"][i]["prixLot"];
                     var jQ = model.clone();
                     var priceDiv = jQ.children("#priceDiv");
@@ -144,13 +137,16 @@ $(document).ready(function () {
 
                     jQ.children("#infoItem").html(pneu_description);
                     //jQ.children("#refItem").html(pneu_reference);
-                    priceUnit.html(prix_unit);
+                    priceUnit.html(prix_unit + "€");
                     qtField.attr("value", pneu_quantite);
-                    priceLot.html(prix_lot);
+                    priceLot.html(prix_lot + "€");
                     jQ.removeClass("#itemId");
                     jQ.show();
 
                     div_articles.append(jQ);
+
+                    var trashBtn = jQ.children(".inputContainer").children(".input-group").children(".input-group-btn").children(".deleteButton");
+                    trashBtn.attr("id",pneu_reference);
 
                     totalQte += pneu_quantite;
                     totalPrice += prix_lot;
@@ -160,7 +156,6 @@ $(document).ready(function () {
                 model.hide();
             }
         );
-
     }
 
     function ajouterArticle(reference, qt) {
@@ -171,46 +166,5 @@ $(document).ready(function () {
             }
         );
     }
-
-    ///////////// FONCTION DE DEBUG ////////////////
-
-    /*$("#myPanier").html('<h1 class="align">&nbsp;Mon panier</h1><hr>'+
-     '<div class="row">'+
-     '	<div class="col-md-1 align"><u>Produit</u></div>'+
-     '	<div class="col-md-2 col-md-offset-2 align"><u>Référence</u></div>'+
-     '	<div class="col-md-2 align"><u>Prix unitaire</u></div>'+
-     '	<div class="col-md-3 align"><u>Quantité</u></div>'+
-     '	<div class="col-md-2 align"><u>Total</u></div>'+
-     '</div><hr>'+
-     '<div class="row item1" id="itemId1">'+
-     '	<div class="col-md-1 align" id="imgItem1"><img src="../assets/img/item1.jpg" height="60px" width="60px"/></div>'+
-     '	<div class="col-md-2" id="infoItem1">Thor miniature - version plastique</div>'+
-     '	<div class="col-md-2 align" id="refItem1"">PN029438</div>'+
-     '	<div class="col-md-2 align"><span class="spanStyleLeft" id="priceItem1">1.00</span><span class="spanStyleRight">€</span></div>'+
-     '	<div class="col-md-3 align">'+
-     '		  <div class="input-group buttonGroup align">'+
-     '		      <input type="number" class="form-control qtField pull-right" placeholder="" min="0" id="qtItem1" value="1">'+
-     '		      <span class="input-group-btn">'+
-     '		      	<button class="btn btn-secondary glyphicon glyphicon-trash deleteButton" type="button" id="delItem1"></button>'+
-     '		      </span>'+
-     '		  </div>'+
-     '	</div>'+
-     '	<div class="col-md-2 align"><span class="spanStyleLeft" id="totalPriceItem1">1.00</span><span class="spanStyleRight">€</span></div>'+
-     '</div><hr class="item1">'+
-     '<div class="row item2" id="itemId2">'+
-     '	<div class="col-md-1 align" id="imgItem2"><img src="../assets/img/item1.jpg" height="60px" width="60px"/></div>'+
-     '	<div class="col-md-2" id="infoItem2">Thor miniature - version plomb</div>'+
-     '	<div class="col-md-2 align" id="refItem2"">PN029439</div>'+
-     '	<div class="col-md-2 align"><span class="spanStyleLeft" id="priceItem2">2.50</span><span class="spanStyleRight">€</span></div>'+
-     '	<div class="col-md-3 align">'+
-     '		  <div class="input-group buttonGroup">'+
-     '		      <input type="number" class="form-control qtField pull-right" placeholder="" min="0" id="qtItem2" value="3">'+
-     '		      <span class="input-group-btn">'+
-     '		      	<button class="btn btn-secondary glyphicon glyphicon-trash deleteButton" type="button" id="delItem2"></button>'+
-     '		      </span>'+
-     '		  </div>'+
-     '	</div>'+
-     '	<div class="col-md-2 align"><span class="spanStyleLeft" id="totalPriceItem2">7.50</span><span class="spanStyleRight">€</span></div>'+
-     '</div><hr class="item2">');*/
 
 });
