@@ -31,7 +31,7 @@ class Admin
         else
         {
             SQLInsert("INSERT INTO admin(admin_name, admin_pass, admin_autorisations) VALUES (?, ?, ?)", [$this->nom, $this->password, $this->autorisations]);
-            $this->Admin(SQLSelect("SELECT * FROM user WHERE user_mail=?", [$this->nom])[0]);
+            $this->Admin(SQLSelect("SELECT * FROM admin WHERE admin_name=?", [$this->nom])[0]);
             return $this->ID;
         }
     }
