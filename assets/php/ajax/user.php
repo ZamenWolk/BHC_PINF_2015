@@ -1,4 +1,6 @@
 <?php
+
+include_once "../../../secret/credentials.php";
 include_once("../fonctions/AJAX.php");
 include_once("../fonctions/User.php");
 

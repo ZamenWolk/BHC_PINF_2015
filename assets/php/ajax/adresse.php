@@ -1,8 +1,8 @@
 <?php
 
+include_once "../../../secret/credentials.php";
 include_once "../fonctions/Adresse.php";
 include_once "../fonctions/AJAX.php";
-include_once "../../../secret/credentials.php";
 
 
 if(isset($_POST["action"]))
