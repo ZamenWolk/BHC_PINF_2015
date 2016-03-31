@@ -150,11 +150,21 @@ include_once("header.php");
             });
 
             $("#modifCoef").click(function () {
-                $("#texte").append("<h3>Modifier le coefficient</h3>");
-                $("#texte").append("<input type=\"text\" class=\"form-control\" id=\"obj\" placeholder=\"\"/></br>");
-                $("#texte").append("<button id=\"validCoef\" type=\"button\" class=\"btn btn-block btn-default btn-lg\">Modifier");
-                $(".separator2").hide();
-                $("#texte").show();
+                $.post("../assets/php/ajax/config.php", {
+                    action: "getRatio"
+                }, function(data) {
+                    console.log(data);
+                    $("#texte").append("<h3>Modifier le coefficient</h3>");
+                    $("#texte").append("<input type=\"number\" class=\"form-control\" id=\"obj\" placeholder=\""+ data.ratio +"\"/></br>");
+                    $("#texte").append("<button id=\"validCoef\" type=\"button\" class=\"btn btn-block btn-default btn-lg\">Modifier");
+                    $(".separator2").hide();
+                    $("#texte").show();
+                });
+
+            });
+
+            $(document).on("click", "#validCoef", function() {
+
             });
 
 
