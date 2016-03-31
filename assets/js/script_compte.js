@@ -319,6 +319,8 @@ $(document).ready(function () {
                     } else $("#echecNewPasse").slideDown().delay(6000).slideUp();
 
                 });
+            } else {
+                document.location.href = "./accueil";
             }
         });
 });

@@ -15,4 +15,9 @@ class Config
         else
             return SQLGetChamp("SELECT config_ratio_prix FROM config WHERE config_date<=? ORDER BY config_date DESC LIMIT 1", [$ID]);
     }
+    
+    public static function setRatioPrix($newRatio)
+    {
+        return SQLInsert("INSERT INTO config (config_date, config_ratio_prix) VALUES (". time() .", $newRatio)");
+    }
 }

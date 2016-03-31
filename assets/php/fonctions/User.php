@@ -35,7 +35,7 @@ class User
 	**/
     public static function UserFromData($nom, $prenom, $mail, $password, $newsletter, $telephone)
     {
-        $param = array("user_id" => 0, "user_nom" => $nom, "user_prenom" => $prenom, "user_mail" => $mail, "user_password" => password_hash($password, PASSWORD_BCRYPT), "user_newsletter" => $newsletter, "user_telephone" => $telephone);
+        $param = array("user_id" => -1, "user_nom" => $nom, "user_prenom" => $prenom, "user_mail" => $mail, "user_password" => password_hash($password, PASSWORD_BCRYPT), "user_newsletter" => $newsletter, "user_telephone" => $telephone);
         $user = new User($param);
 
         return $user;
