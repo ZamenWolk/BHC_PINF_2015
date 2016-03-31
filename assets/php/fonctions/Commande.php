@@ -29,8 +29,22 @@ class Commande
         if (is_array($produits))
             $this->produits = $produits;
     }
+    
+    public static function getCommandeFromBDD($id)
+    {
+        $res = SQLSelect("SELECT * FROM commande WHERE commande_id=?", [$id]);
+        
+        if ($res === false)
+            return false;
+        else
+            return new Commande($res[0]);
+    }
+    
+    public static function getCommandeFromData($date, $config_date, $id_facturation, $id_livraison)
+    {
+        return new Commande(["commande_id" => -1, "commande_date" => $date, "config_date" => $config_date, "adresse_facturation_id" => $id_facturation, "adresse_livraison_id" => $id_livraison]);
+    }
 
-//ma bite est un volcan et j'aime ça
     private $commande_id;
     private $commande_date;
     private $config_date;

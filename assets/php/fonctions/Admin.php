@@ -1,5 +1,6 @@
 <?php
-include_once "maLibSQL.pdo.php";
+include_once "../../../secret/credentials.php";
+include_once "../fonctions/maLibSQL.pdo.php";
 /**
  * Created by PhpStorm.
  * User: Martin
@@ -18,7 +19,7 @@ class Admin
 
     public static function AdminFromData($nom, $password, $autorisations)
     {
-        $param = array("admin_id" => 0, "admin_name" => $nom, "admin_pass" => password_hash($password, PASSWORD_BCRYPT), "admin_autorisations" => $autorisations);
+        $param = array("admin_id" => -1, "admin_name" => $nom, "admin_pass" => password_hash($password, PASSWORD_BCRYPT), "admin_autorisations" => $autorisations);
         $user = new Admin($param);
 
         return $user;
