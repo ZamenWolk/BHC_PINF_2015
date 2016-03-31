@@ -1,21 +1,20 @@
 <?php
-
-
-
 include_once "../../../secret/credentials.php";
 include_once "../fonctions/maLibSQL.pdo.php";
 
-/** mkUser
- * @param $mail
- * @param $mdp
- * @param $nom
- * @param $prenom
- * Créer un utilisateur et l'enregistre dans la base
- */
-function mkUser($mail, $mdp, $nom, $prenom)//Permet la création d'un utilisateur fonctionnelle
+/**
+	*  
+	* @brief Crée un utilisateur avec les informations passées en paramètre et l'ajoute à la BDD
+	* @param string mail Mail de l'utilisateur
+	* @param string mdp Mot de passe de l'utilisateur
+	* @param string nom Nom de l'utilisateur
+	* @param string prenom Prénim de l'utilisateur 
+	* @return boolean, False si SQLInsert n'a pas pu insérer dans la BDD
+	*
+	**/
+function mkUser($mail, $mdp, $nom, $prenom)
 {
     $mdp=password_hash($mdp, PASSWORD_BCRYPT);
-    //echo $mdp;
     $sql="INSERT INTO user(user_mail, user_password, user_nom, user_prenom) VALUES (:mail,:mdp,:nom,:prenom)";
 
     $param = [
@@ -30,12 +29,15 @@ function mkUser($mail, $mdp, $nom, $prenom)//Permet la création d'un utilisateu
 
 
 
-/** verifDescription
- * @param $ref
- * @param $desc
- * @return int
- * On verifie si la description $desc et le prix $prix est la même que celle du pneu de reference $ref en bdd, si c'est ok on renvoie 1 sinon 0
- */
+/**
+	*  
+	* @brief Vérifie la description et le prix d'un pneu dont on passe les références, le prix et la description
+	* @param string ref Référence du pneu
+	* @param string desc Description du pneu
+	* @param int prix Prix du pneu
+	* @return int|int 1 si la description et le prix sont conformes à la BDD, 0 si la description et le prix sont différents
+	*
+	**/
 
 function verifDescription($ref, $desc, $prix)
 {

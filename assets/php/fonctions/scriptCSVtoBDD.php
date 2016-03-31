@@ -4,6 +4,10 @@ include_once "maLibSQL.pdo.php";
 include_once "fonctionsBDD.php";
 include_once "Recherche.php";
 
+/**
+* @brief Script permettant de convertir le fichier CSV de la base de données de PneusHollande en une base de données utilisables par JSPneus
+**/
+
 
 set_time_limit(1000);
 $row = 1;
@@ -16,11 +20,8 @@ if(file_exists ($fichier)) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
             if ($row%100 == 0)
                 echo "Ligne $row<br />\n";
-            $row++;/*
-        for ($c=0; $c < $num; $c++) {
-            echo "Champs".$c."  ".$data[$c] . "<br />\n";
-        }*/
-            if (!verifDescription($data[2], $data[5], $data[21]))//Ce n'est pas le même pneus //TODO: on doit verifier la description
+            $row++;
+            if (!verifDescription($data[2], $data[5], $data[21]))
             {
                 $sql = "INSERT INTO pneu(pneu_ean, pneu_ref,
         pneu_marque, pneu_categorie,pneu_description,pneu_largeur,pneu_serie,pneu_jante,pneu_charge,pneu_vitesse,pneu_profil,pneu_decibel,
@@ -49,7 +50,6 @@ if(file_exists ($fichier)) {
                     ":dateAjoutBDD" => $time,
                     ":dateDerniereModif" => $time
                 ];
-                // echo $sql;
                 SQLInsert($sql, $param);
 
                 /* On modifie les anciennes version */
@@ -58,7 +58,6 @@ if(file_exists ($fichier)) {
                     ":temps" => $time,
                     ":ref" => $data[2]
                 ];
-                //echo $sql1;
                 $nbreUpdate = SQLUpdate($sql2, $param);
             } else {
                 /*ICI on update a juste le stock et la date de modification*/
@@ -77,6 +76,5 @@ if(file_exists ($fichier)) {
     /*Permet de mettre en non valable les pneus supprimé du csv*/
     $sql = "UPDATE pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
     $nbreUpdate = SQLUpdate($sql);
-    //unlink($fichier); // Supprime le fichier
 }
 ?>
