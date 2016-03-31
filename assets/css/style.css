@@ -22,6 +22,17 @@ body {
     to {color: #f39c12;}
 }
 
+@-webkit-keyframes font-change-reverse {
+    from {color: #f39c12;}
+    to {color: rgba(52, 73, 94,1.0);}
+}
+
+/* Standard syntax */
+@keyframes font-change-reverse {
+    from {color: #f39c12;}
+    to {color: rgba(52, 73, 94,1.0);}
+}
+
 /* Chrome, Safari, Opera */
 @-webkit-keyframes font-change2 {
     from {color: rgba(236, 240, 241, 1);}
