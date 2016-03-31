@@ -84,15 +84,6 @@ session_start();
 
             /* ------ Connexion ------ */
 
-            $.post("../assets/php/ajax/admin.php", {
-                action: "inscrire",
-                nom: "admin",
-                password: "admin"
-            }, function (data) {
-                //data = JSON.parse(data);
-                console.log(data);
-            });
-
             var mailLogin;
             var passeLogin;
             $(document).on("change", "#mailLogin", function () {
