@@ -4,7 +4,7 @@ html, body {
 
 body {
     margin:0;
-    background: url("../img/background.jpg") no-repeat center fixed;
+    background: url("../img/background.jpg") no-repeat left top fixed;
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
     padding-top: 70px;
@@ -330,7 +330,7 @@ ul.dropdown-cart li .item-right button {
 
 .popover,
 .modal-content {
-    background-color: rgba(236, 240, 241,0.8);
+    background-color: rgba(236, 240, 241, 1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -363,7 +363,7 @@ ul.dropdown-cart li .item-right button {
 .popover-title,
 .modal-header,
 .modal-title {
-    background-color: rgba(236, 240, 241,0.8);
+    background-color: rgba(236, 240, 241, 1);
     font-size: 140%;
     text-align: center;
 }
