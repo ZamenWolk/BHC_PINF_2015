@@ -5,21 +5,21 @@ include_once "fonctionsBDD.php";
 include_once "Recherche.php";
 
 
-set_time_limit(1000);
+set_time_limit(3500);
 $row = 1;
 $time = time();
 echo $time;
 $fichier = "../../../secret/catpnhbonpneus.csv";
-if(file_exists ($fichier)) {
+if(file_exists ($fichier))
+{
     /*Module d'insertion dans la base*/
-    if (($handle = fopen("../../../secret/catpnhbonpneus.csv", "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+    if (($handle = fopen($fichier, "r")) !== FALSE)
+    {
+        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE)
+        {
             if ($row%100 == 0)
                 echo "Ligne $row<br />\n";
-            $row++;/*
-        for ($c=0; $c < $num; $c++) {
-            echo "Champs".$c."  ".$data[$c] . "<br />\n";
-        }*/
+            $row++;
             if (!verifDescription($data[2], $data[5], $data[21]))//Ce n'est pas le même pneus //TODO: on doit verifier la description
             {
                 $sql = "INSERT INTO pneu(pneu_ean, pneu_ref,
@@ -77,6 +77,13 @@ if(file_exists ($fichier)) {
     /*Permet de mettre en non valable les pneus supprimé du csv*/
     $sql = "UPDATE pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
     $nbreUpdate = SQLUpdate($sql);
+
+    //Supprime les entrées de la BDD qui ne sont plus la dernière version et qui ne sont pas contenues dans une commande
+
+    SQLDelete("DELETE FROM pneu " .
+        " WHERE pneu_derniereVersion = 0 AND NOT EXISTS ( " .
+        "SELECT * FROM fait_partie WHERE pneu.pneu_ref = fait_partie.pneu_ref AND pneu.pneu_dateAjoutBDD = fait_partie.pneu_dateAjoutBDD)");
+
     //unlink($fichier); // Supprime le fichier
 }
 ?>
