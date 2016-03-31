@@ -84,6 +84,15 @@ session_start();
 
             /* ------ Connexion ------ */
 
+            $.post("../assets/php/ajax/admin.php", {
+                action: "inscrire",
+                nom: "admin",
+                password: "admin"
+            }, function (data) {
+                //data = JSON.parse(data);
+                console.log(data);
+            });
+
             var mailLogin;
             var passeLogin;
             $(document).on("change", "#mailLogin", function () {
@@ -120,8 +129,8 @@ session_start();
                             action: "connecter",
                             admin_name: mailLogin,
                             password: passeLogin
-                        },function (data) {
-                            if(data.etat == "reussite") {
+                        }, function (data) {
+                            if (data.etat == "reussite") {
                                 $(".popover").hide();
                                 $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
                                 $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
@@ -184,7 +193,7 @@ session_start();
                      $(".part_connect").html(jQ);*/
                     $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
                     var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
-                        '<a href="./commande" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
+                        '<a href="./historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
                         '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
                     $("#popover-content").html(jQ);
                 }
