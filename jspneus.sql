@@ -13,7 +13,7 @@ CREATE TABLE user(
         user_prenom     Varchar (50) NOT NULL ,
         user_mail       Varchar (50) NOT NULL ,
         user_password   Varchar (128) NOT NULL ,
-		user_telephone  Char (10) NOT NULL ,
+		user_telephone  Char (20) NOT NULL ,
         user_newsletter Bool NOT NULL ,
         PRIMARY KEY (user_id )
 )ENGINE=InnoDB;
@@ -41,6 +41,7 @@ CREATE TABLE adresse(
 CREATE TABLE commande(
         commande_id   int (11) Auto_increment  NOT NULL ,
         commande_date Int NOT NULL ,
+		commande_etat Varchar (25) NOT NULL ,
         adresse_facturation_id    Int NOT NULL ,
         adresse_livraison_id  Int NOT NULL ,
         config_date   Int ,
