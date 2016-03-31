@@ -32,13 +32,9 @@ session_start();
          */
         $(document).ready(function () {
             $("#wrong_id").hide();
-            // $("#wrong_id").show();
-            //$.post("../assets/php/ajax/user.php", {action: "deconnecter"});
 
             $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
                 data = JSON.parse(data);
-                //console.log(data);
-                //alert( "Load was performed."+ data );
                 for (var i = 0; i < data.nbrMarque; i++) {
                     var option = $("<option>" + data.marques[i] + "</option>");
                     $(".nav_marque").append(option);
@@ -105,7 +101,7 @@ session_start();
                     data = JSON.parse(data);
                     console.log(data);
 
-                    /* on enlève le popover */
+                    /* on enlève le popover*/
                     if (data.etat == "reussite") {
                         $(".popover").hide();
                     }
@@ -190,7 +186,6 @@ session_start();
                     function () {
                         document.location = "./accueil";
                     }, 50);
-                //document.location="./accueil";
             });
 
 
