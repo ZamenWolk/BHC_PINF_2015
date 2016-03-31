@@ -44,7 +44,7 @@ CREATE TABLE commande(
 		commande_etat Varchar (25) NOT NULL ,
         adresse_facturation_id    Int NOT NULL ,
         adresse_livraison_id  Int NOT NULL ,
-        config_date   Int ,
+        config_date   Int NOT NULL ,
         PRIMARY KEY (commande_id )
 )ENGINE=InnoDB;
 
