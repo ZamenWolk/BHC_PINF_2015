@@ -62,6 +62,31 @@ include_once("header.php");
             </div>
         </div>
     </div>
+
+
+    <script>
+        $(document).ready(function(){
+            $.post("../assets/php/ajax/panier.php", {action: "contenuPanier"}, function(data){
+                data = JSON.parse(data);
+                console.log(data);
+                $("#confirmOrder").click(function () {
+                    $.post('../assets/php/ajax/pdf.php',
+                        {
+                            action: "gen_commande",
+                            client_nom: "George",
+                            client_prenom: "deLaJungle",
+                            client_adresse: "La jungle"
+                        },
+                        function (data) {
+                            console.log(data);
+                            //document.open("../assets/php/ajax/test.pdf",'_blank');
+                            //var win = window.open("../assets/php/ajax/test.pdf", '_blank');
+                            //win.focus();
+                        });
+                });
+            });
+        });
+    </script>
 <?php
 include_once("footer.php");
 ?>

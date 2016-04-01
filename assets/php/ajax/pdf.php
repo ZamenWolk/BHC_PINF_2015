@@ -88,8 +88,9 @@ else {
 
 	$pdf->addTVAs( $params, $tab_tva, $tot_prods);
 	$pdf->addCadreEurosFrancs();
-	$pdf->Output("F","./test.pdf");//TODO: Supprimer le fichier just aprés
-	//ajaxSuccess(array("etat2"=>"Réussie"));
+	//$tab=array("pdf" => $pdf->Output("S"));
+	echo $pdf->Output("S");//TODO: Supprimer le fichier juste aprés
+	//ajaxSuccess(array("etat2"=> "réussite"));
 	}
 	
 break;

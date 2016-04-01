@@ -175,7 +175,7 @@ $(document).ready(function () {
                         var trashBtn = jQ.children(".inputContainer").children(".input-group").children(".input-group-btn").children(".deleteButton");
                         trashBtn.attr("id",pneu_reference);
 
-                        totalQte += pneu_quantite;
+                        totalQte += parseInt(pneu_quantite);
                         totalPrice += prix_lot;
                     }
                 } else $("#confirmOrder").attr("disabled","disabled");
