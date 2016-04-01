@@ -14,4 +14,9 @@ class Config
     {
         return SQLInsert("INSERT INTO config (config_date, config_ratio_prix) VALUES (". time() .", $newRatio)");
     }
+    
+    public static function getLastConfigDate()
+    {
+        return SQLGetChamp("SELECT config_date FROM config ORDER BY config_date DESC LIMIT 1");
+    }
 }
