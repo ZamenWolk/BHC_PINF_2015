@@ -5,9 +5,21 @@ var i = 0;
 $(document).ready(function () {
 
     generatePanier();
+    $("#notConnected").hide();
 
     $("#confirmOrder").click(function () {
-        document.location.href = "./commande";
+        $.post(
+            "../assets/php/ajax/user.php",
+            {
+                action: "getConnectedUser"
+            },
+            function (data) {
+                data = JSON.parse(data);
+                if(data["etat"] == "reussite") {
+                    document.location.href = "./commande";
+                }
+                else $("#notConnected").slideDown();
+            });
     });
 
     $("#goAchat").click(function () {

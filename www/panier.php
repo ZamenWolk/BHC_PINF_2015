@@ -8,6 +8,10 @@ include_once("header.php");
             <div class="col-md-9" id="myPanier">
                 <h1 class="align">&nbsp;Mon panier</h1>
                 <hr>
+                <div class="alert alert-danger" role="alert" id="notConnected">
+                    <i class="fa fa-exclamation-triangle fa-fw"></i>
+                    <strong>Vous devez être connecté pour passer une commande</strong>
+                </div>
                 <div class="row">
                     <div class="col-md-5 align"><u>Produit</u></div>
                     <!--<div class="col-md-2 col-md-offset-2 align"><u>Référence</u></div>-->

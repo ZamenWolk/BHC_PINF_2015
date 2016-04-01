@@ -418,9 +418,7 @@ ul.dropdown-cart li .item-right button {
     text-shadow: none;
 }
 
-.main-car.carousel-control:hover,
-.main-car.carousel-control:focus {
-    color: #f39c12;
+.main-car.carousel-control:hover {
     -webkit-animation-name: arrow-change; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
     animation-name: arrow-change;
@@ -495,9 +493,7 @@ ul.dropdown-cart li .item-right button {
     text-shadow: none;
 }
 
-.prod.carousel-control:hover,
-.prod.carousel-control:focus {
-    color: #f39c12;
+.prod.carousel-control:hover {
     -webkit-animation-name: arrow-change; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
     animation-name: arrow-change;
@@ -638,7 +634,7 @@ a.list-group-item {
 }
 
 .list-group-item {
-    background: transparent;
+    background: white;
     border: 1px solid grey;
 }
 

@@ -82,6 +82,7 @@ session_start();
 
             var mailLogin;
             var passeLogin;
+
             $(document).on("change", "#mailLogin", function () {
                 mailLogin = $(this).val();
             });
@@ -90,9 +91,8 @@ session_start();
                 passeLogin = $(this).val();
             });
 
-            $(document).on("click", "#seConnecter", function () {
 
-                //  console.log(mailLogin + " "+passeLogin);//On récupère les informations de connexion ds la console
+            var connection = function () {
                 $.post("../assets/php/ajax/user.php", {
                     action: "connecter",
                     user_mail: mailLogin,
@@ -103,7 +103,7 @@ session_start();
 
                     /* on enlève le popover*/
                     if (data.etat == "reussite") {
-                        $(".popover").hide();
+                        $(".popover").popover('hide');
                     }
 
 
@@ -119,7 +119,7 @@ session_start();
                         }, function (data) {
                             data = JSON.parse(data);
                             if (data.etat == "reussite") {
-                                $(".popover").hide();
+                                $(".popover").popover('hide');
                                 $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
                                 $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
                                 var jQ = $('<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
@@ -141,6 +141,17 @@ session_start();
                         $("#popover-content").html(jQ);
                     }
                 });
+            };
+
+            $(document).on("click", "#seConnecter", function () {
+                connection();
+            });
+
+            $(document).on("keydown", function(e) {
+                if(e.keyCode == 13 && $(".popover").is(":visible")) {
+                    console.log(mailLogin, passeLogin);
+                    connection();
+                }
             });
 
 
