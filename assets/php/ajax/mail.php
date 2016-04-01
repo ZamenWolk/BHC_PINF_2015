@@ -34,7 +34,7 @@ switch ($action)
 		if ((!isset($_POST["objet"])) || ((!isset($_POST["texte"]))) ){
 			
 			ajaxError("Des informations sont manquantes", "MISSING_ARGUMENTS");
-			console.log("newsletter");
+			
 		}
 		else {
 			ajaxSuccess("ayé ça marche");

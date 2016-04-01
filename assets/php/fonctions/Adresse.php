@@ -3,15 +3,17 @@ include_once "maLibSQL.pdo.php";
 class Adress{
 
 
-    /** mkAdresse
-     *  insert en bdd l'adresse
-     * @param $adresse_ligne1
-     * @param $adresse_ligne2
-     * @param $adresse_codeP
-     * @param $adresse_ville
-     * @param $user_id
-     * @return resource|bool
-     */
+    /**
+	*  
+	* @brief Insère l'adresse passée en paramètre dans la BDD
+	* @param string adresse_ligne1 informations principales sur l'adresse
+	* @param string adresse_ligne2 informations complémentaires pour l'adresse
+	* @param int adresse_codeP code postal
+	* @param string adresse_ville Ville
+	* @param int user_id l'ID de l'utilisateur à qui on va créer une adresse
+	* @return boolean|int false si l'ajout n'a pas fonctionné, ID le dernier ID ajouté dans la BDD
+	*
+	**/
     public static function mkAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $user_id){
             $sql ="INSERT INTO adresse(adresse_ligne1,adresse_ligne2, adresse_codeP, adresse_ville, user_id) VALUES (:adr1, :adr2, :codeP, :ville, :id)";
             $param = [
@@ -27,11 +29,13 @@ class Adress{
             else return false;
     }
 
-    /** getAdresse
-     * renvoie l'adresse d'un utilisateur
-     * @param $id id de l'utilisateur
-     * @return array
-     */
+     /**
+	*  
+	* @brief Récupère l'adresse d'un utilisateur dont on fournit l'ID
+	* @param int id l'ID de l'utilisateur duquel on veut récupérer l'adresse
+	* @return array res l'adresse et les informations sur l'adresse de l'utilisateur dont on a l'ID
+	*
+	**/
     public static function getAdresse($id){
         $sql="SELECT * FROM adresse WHERE user_id =:id ";
         $param[":id"] = $id;
@@ -44,11 +48,13 @@ class Adress{
         }
         return $res;
     }
-    /** getAdresseByIdAdresse
-     * renvoie l'adresse d'un utilisateur
-     * @param $id , id de l'adresse
-     * @return array
-     */
+    /**
+	*  
+	* @brief Récupère l'adresse dont on fournit l'ID
+	* @param int id l'ID de l'adresse que l'on veut récupérer
+	* @return array res l'adresse et les informations sur l'adresse dont on a fournit l'ID
+	*
+	**/
     public static function getAdresseByIDAdresse($id){
         $sql="SELECT * FROM adresse WHERE adresse_id=:id ";
         $param[":id"] = $id;
@@ -62,13 +68,17 @@ class Adress{
         return $res;
     }
 
-    /** setAdresse
-     * @param $adresse_ligne1
-     * @param $adresse_ligne2
-     * @param $adresse_codeP
-     * @param $adresse_ville
-     * @param $user_id
-     */
+   /**
+	*  
+	* @brief Modifie l'adresse
+	* @param string adresse_ligne1 informations principales sur l'adresse
+	* @param string adresse_ligne2 informations complémentaires pour l'adresse
+	* @param int adresse_codeP code postal
+	* @param string adresse_ville Ville
+	* @param int user_id l'ID de l'utilisateur à qui on va modifier une adresse
+	* @return 
+	*
+	**/
     public static function setAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $user_id){
 
         $sql = "UPDATE adresse SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_ville=:ville WHERE user_id=:id";
@@ -83,13 +93,17 @@ class Adress{
         SQLUpdate($sql, $param);
     }
 
-    /** setAdresseByIdAdress
-     * @param $adresse_ligne1
-     * @param $adresse_ligne2
-     * @param $adresse_codeP
-     * @param $adresse_ville
-     * @param $adresse_id
-     */
+     /**
+	*  
+	* @brief Modifie l'adresse
+	* @param string adresse_ligne1 informations principales sur l'adresse
+	* @param string adresse_ligne2 informations complémentaires pour l'adresse
+	* @param int adresse_codeP code postal
+	* @param string adresse_ville Ville
+	* @param int user_id l'ID de l'utilisateur à qui on va modifier une adresse
+	* @return return de la fonction SQLUpdate
+	*
+	**/
     public static function setAdresseByIdAdresse($adresse_ligne1, $adresse_ligne2, $adresse_codeP, $adresse_ville, $adresse_id){
 
         $sql = "UPDATE adresse SET adresse_ligne1=:adr1, adresse_ligne2=:adr2, adresse_codeP=:codeP, adresse_ville=:ville WHERE user_id=:id";

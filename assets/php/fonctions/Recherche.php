@@ -7,10 +7,11 @@ include_once "../fonctions/maLibSQL.pdo.php";
 
 
 class Recherche{
-    /** rechercherMarque
-     * @return array
-     * Recherche toutes les marques diponibles
-     */
+    /**
+	* @brief Recherche toutes les marques disponibles
+	* @return array tab Le tableau avec toutes les marques
+	*
+	**/
     public static function rechercherMarque()
     {
         $sql="SELECT DISTINCT pneu_marque FROM pneu ORDER BY pneu_marque ASC";
@@ -24,10 +25,11 @@ class Recherche{
         return $tab;
     }
 
-    /** rechercherCategorie
-     * @return array
-     * Recherche toutes les categorie diponibles
-     */
+    /**
+	* @brief Recherche toutes les catégories disponibles
+	* @return array tab Le tableau avec toutes les catégories
+	*
+	**/
     public static function rechercherCategorie()
     {
         $sql="SELECT DISTINCT pneu_categorie FROM pneu ORDER BY pneu_categorie ASC";
@@ -40,10 +42,11 @@ class Recherche{
         }
         return $tab;
     }
-    /** rechercherLargeur
-     * @return array
-     * Recherche toutes les largeurs diponibles
-     */
+    /**
+	* @brief Recherche toutes les largeurs disponibles
+	* @return array tab Le tableau avec toutes les largeurs
+	*
+	**/
     public static function rechercherLargeur()
         {
             $sql="SELECT DISTINCT pneu_largeur FROM pneu ORDER BY pneu_largeur ASC";
@@ -57,10 +60,11 @@ class Recherche{
             return $tab;
         }
 
-    /** rechercherJante
-     * @return array
-     * Recherche toutes les jantes diponibles
-     */
+    /**
+	* @brief Recherche toutes les jantes disponibles
+	* @return array tab Le tableau avec toutes les jantes
+	*
+	**/
     public static function rechercherJante()
         {
             $sql="SELECT DISTINCT pneu_jante FROM pneu ORDER BY  pneu_jante ASC";
@@ -74,10 +78,11 @@ class Recherche{
             return $tab;
         }
 
-        /** rechercherCharge
-         * @return array
-         * Recherche toutes les charges diponibles
-         */
+    /**
+	* @brief Recherche toutes les charges disponibles
+	* @return array tab Le tableau avec toutes les charges
+	*
+	**/
     public static function rechercherCharge()
         {
             $sql="SELECT DISTINCT pneu_charge FROM pneu ORDER BY pneu_charge ASC";
@@ -91,10 +96,11 @@ class Recherche{
             return $tab;
         }
 
-        /** rechercherVitesse
-         * @return array
-         * Recherche toutes les vitesses diponibles
-         */
+    /**
+	* @brief Recherche toutes les vitesses disponibles
+	* @return array tab Le tableau avec toutes les vitesses
+	*
+	**/
     public static function rechercherVitesse()
         {
             $sql="SELECT DISTINCT pneu_vitesse FROM pneu ORDER BY pneu_vitesse ASC";
@@ -108,11 +114,11 @@ class Recherche{
             return $tab;
         }
 
-    /** rechercherVitesse
-     * @return array
-     * Recherche toutes les cat de décibel diponibles
-     */
-
+   /**
+	* @brief Recherche tout les decibels disponibles
+	* @return array tab Le tableau avec tout les decibels 
+	*
+	**/
     public static function rechercherDecibel()
     {
         $sql="SELECT DISTINCT pneu_decibel FROM pneu ORDER BY pneu_vitesse ASC";
@@ -125,10 +131,12 @@ class Recherche{
         }
         return $tab;
     }
-    /** rechercherConsommation
-     * @return array
-     * Recherche toutes les cat de consommation diponibles
-     */
+    
+	/**
+	* @brief Recherche toutes les consommations disponibles
+	* @return array tab Le tableau avec toutes les consommations
+	*
+	**/
     public static function rechercherConsommation()
     {
         $sql="SELECT DISTINCT pneu_consommation FROM pneu ORDER BY pneu_consommation ASC";
@@ -141,10 +149,12 @@ class Recherche{
         }
         return $tab;
     }
-    /** rechercherSerie
-     * @return array
-     * Recherche toutes les series diponibles
-     */
+	
+    /**
+	* @brief Recherche toutes les séries disponibles
+	* @return array tab Le tableau avec toutes les séries
+	*
+	**/
     public static function rechercherSerie()
     {
         $sql="SELECT DISTINCT pneu_serie FROM pneu ORDER BY pneu_serie ASC";
@@ -158,6 +168,12 @@ class Recherche{
         return $tab;
     }
 
+	/**
+	* @brief Rechercher un pneu par sa référence
+	* @param string ref Référence du pneu que l'on cherche
+	* @return array tab Tableau contenant les informations liées au pneu qu'on a trouvé
+	*
+	**/
     public static function rechercherPneu($ref){
         $sql ="SELECT * FROM pneu WHERE pneu_ref=:ref AND pneu_valable=1";
         $param = array();
@@ -174,7 +190,19 @@ class Recherche{
         return $tab;
     }
 
-
+/**
+	* @brief Rechercher un pneu avec différents paramètres
+	* @param string cat Catégorie du pneu
+	* @param string marque Marque du pneu 
+	* @param float largeur Largeur du pneu
+	* @param string serie Série du pneu
+	* @param float charge Charge du pneu
+	* @param float vitesse Vitesse du pneu
+	* @param string consommation Consommation du pneu
+	* @param float decibel Decibel du pneu
+	* @return array tab Tableau contenant les informations liées au pneu qu'on a recherché
+	*
+	**/
     public static function rechercher($cat, $marque, $largeur, $serie, $jante, $charge,$vitesse,$consommation,$decibel,$numeroPage, $itemParPage,$order = 0)
     {
         $sql = "SELECT * FROM pneu WHERE pneu_valable=1";

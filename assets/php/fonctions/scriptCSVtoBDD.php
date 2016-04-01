@@ -4,6 +4,10 @@ include_once "maLibSQL.pdo.php";
 include_once "fonctionsBDD.php";
 include_once "Recherche.php";
 
+/**
+* @brief Script permettant de convertir le fichier CSV de la base de données de PneusHollande en une base de données utilisables par JSPneus
+**/
+
 
 set_time_limit(3500);
 $row = 1;
@@ -20,7 +24,8 @@ if(file_exists ($fichier))
             if ($row%100 == 0)
                 echo "Ligne $row<br />\n";
             $row++;
-            if (!verifDescription($data[2], $data[5], $data[21]))//Ce n'est pas le même pneus //TODO: on doit verifier la description
+			
+            if (!verifDescription($data[2], $data[5], $data[21]))
             {
                 $sql = "INSERT INTO pneu(pneu_ean, pneu_ref,
         pneu_marque, pneu_categorie,pneu_description,pneu_largeur,pneu_serie,pneu_jante,pneu_charge,pneu_vitesse,pneu_profil,pneu_decibel,
@@ -49,7 +54,6 @@ if(file_exists ($fichier))
                     ":dateAjoutBDD" => $time,
                     ":dateDerniereModif" => $time
                 ];
-                // echo $sql;
                 SQLInsert($sql, $param);
 
                 /* On modifie les anciennes version */
@@ -58,7 +62,6 @@ if(file_exists ($fichier))
                     ":temps" => $time,
                     ":ref" => $data[2]
                 ];
-                //echo $sql1;
                 $nbreUpdate = SQLUpdate($sql2, $param);
             } else {
                 /*ICI on update a juste le stock et la date de modification*/

@@ -5,9 +5,21 @@ var i = 0;
 $(document).ready(function () {
 
     generatePanier();
+    $("#notConnected").hide();
 
     $("#confirmOrder").click(function () {
-        document.location.href = "./commande";
+        $.post(
+            "../assets/php/ajax/user.php",
+            {
+                action: "getConnectedUser"
+            },
+            function (data) {
+                data = JSON.parse(data);
+                if(data["etat"] == "reussite") {
+                    document.location.href = "./commande";
+                }
+                else $("#notConnected").slideDown();
+            });
     });
 
     $("#goAchat").click(function () {
@@ -122,36 +134,39 @@ $(document).ready(function () {
             function (data) {
                 var jsonData = JSON.parse(data);
                 console.log(jsonData);
-                for (var i = 0; i < jsonData["panier"].length; i++) {
-                    var pneu_description = jsonData["panier"][i]["pneu"]["description"];
-                    var pneu_reference = jsonData["panier"][i]["pneu"]["reference"];
-                    var pneu_quantite = jsonData["panier"][i]["quantite"];
-                    var prix_unit = jsonData["panier"][i]["prixUnitaire"];
-                    var prix_lot = jsonData["panier"][i]["prixLot"];
-                    var jQ = model.clone();
-                    var priceDiv = jQ.children("#priceDiv");
-                    var priceUnit = priceDiv.children("#priceItem");
-                    var priceLotDiv = jQ.children("#lotPriceDiv");
-                    var priceLot = priceLotDiv.children("#lotPriceItem");
-                    var input = jQ.children(".inputContainer").children(".input-group");
-                    var qtField = input.children(".qtField");
+                if(jsonData["panier"].length > 0) {
+                    for (var i = 0; i < jsonData["panier"].length; i++) {
+                        var pneu_description = jsonData["panier"][i]["pneu"]["description"];
+                        var pneu_reference = jsonData["panier"][i]["pneu"]["reference"];
+                        var pneu_quantite = jsonData["panier"][i]["quantite"];
+                        var prix_unit = jsonData["panier"][i]["prixUnitaire"];
+                        var prix_lot = jsonData["panier"][i]["prixLot"];
+                        var jQ = model.clone();
+                        var priceDiv = jQ.children("#priceDiv");
+                        var priceUnit = priceDiv.children("#priceItem");
+                        var priceLotDiv = jQ.children("#lotPriceDiv");
+                        var priceLot = priceLotDiv.children("#lotPriceItem");
+                        var input = jQ.children(".inputContainer").children(".input-group");
+                        var qtField = input.children(".qtField");
 
-                    jQ.children("#infoItem").html(pneu_description);
-                    //jQ.children("#refItem").html(pneu_reference);
-                    priceUnit.html(prix_unit + "€");
-                    qtField.attr("value", pneu_quantite);
-                    priceLot.html(prix_lot + "€");
-                    jQ.removeClass("#itemId");
-                    jQ.show();
+                        jQ.children("#infoItem").html(pneu_description);
+                        //jQ.children("#refItem").html(pneu_reference);
+                        priceUnit.html(prix_unit + "€");
+                        qtField.attr("value", pneu_quantite);
+                        priceLot.html(prix_lot + "€");
+                        jQ.removeClass("#itemId");
+                        jQ.show();
 
-                    div_articles.append(jQ);
+                        div_articles.append(jQ);
 
-                    var trashBtn = jQ.children(".inputContainer").children(".input-group").children(".input-group-btn").children(".deleteButton");
-                    trashBtn.attr("id",pneu_reference);
+                        var trashBtn = jQ.children(".inputContainer").children(".input-group").children(".input-group-btn").children(".deleteButton");
+                        trashBtn.attr("id",pneu_reference);
 
-                    totalQte += pneu_quantite;
-                    totalPrice += prix_lot;
-                }
+                        totalQte += pneu_quantite;
+                        totalPrice += prix_lot;
+                    }
+                } else $("#confirmOrder").attr("disabled","disabled");
+
                 $("#priceValidate").html(totalPrice);
                 $("#amountValidate").html(totalQte);
                 model.hide();

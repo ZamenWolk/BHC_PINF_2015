@@ -32,13 +32,9 @@ session_start();
          */
         $(document).ready(function () {
             $("#wrong_id").hide();
-            // $("#wrong_id").show();
-            //$.post("../assets/php/ajax/user.php", {action: "deconnecter"});
 
             $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
                 data = JSON.parse(data);
-                //console.log(data);
-                //alert( "Load was performed."+ data );
                 for (var i = 0; i < data.nbrMarque; i++) {
                     var option = $("<option>" + data.marques[i] + "</option>");
                     $(".nav_marque").append(option);
@@ -86,6 +82,7 @@ session_start();
 
             var mailLogin;
             var passeLogin;
+
             $(document).on("change", "#mailLogin", function () {
                 mailLogin = $(this).val();
             });
@@ -94,9 +91,8 @@ session_start();
                 passeLogin = $(this).val();
             });
 
-            $(document).on("click", "#seConnecter", function () {
 
-                //  console.log(mailLogin + " "+passeLogin);//On récupère les informations de connexion ds la console
+            var connection = function () {
                 $.post("../assets/php/ajax/user.php", {
                     action: "connecter",
                     user_mail: mailLogin,
@@ -105,9 +101,9 @@ session_start();
                     data = JSON.parse(data);
                     console.log(data);
 
-                    /* on enlève le popover */
+                    /* on enlève le popover*/
                     if (data.etat == "reussite") {
-                        $(".popover").hide();
+                        $(".popover").popover('hide');
                     }
 
 
@@ -121,18 +117,17 @@ session_start();
                             admin_name: mailLogin,
                             password: passeLogin
                         }, function (data) {
+                            data = JSON.parse(data);
                             if (data.etat == "reussite") {
-                                $(".popover").hide();
+                                $(".popover").popover('hide');
                                 $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
                                 $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
-                                var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
-                                    '<a href="./historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
-                                    '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
+                                var jQ = $('<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
+                                document.location.href = "./admin";
                                 $("#popover-content").html(jQ);
                             }
                             else {
                                 $('div#wrong_id').show("slow");
-                                console.log("erreur");
                             }
                         });
 
@@ -146,6 +141,17 @@ session_start();
                         $("#popover-content").html(jQ);
                     }
                 });
+            };
+
+            $(document).on("click", "#seConnecter", function () {
+                connection();
+            });
+
+            $(document).on("keydown", function(e) {
+                if(e.keyCode == 13 && $(".popover").is(":visible")) {
+                    console.log(mailLogin, passeLogin);
+                    connection();
+                }
             });
 
 
@@ -153,35 +159,28 @@ session_start();
                 data = JSON.parse(data);
                 console.log(data);
                 if (data.etat == "echec") {
-                    $.post("../assets/php/ajax/user.php", {
-                        action: "connecter",
-                        user_mail: "test",
-                        password: "test"
-                    }, function (data2) {
-                        data2 = JSON.parse(data2);
-                        console.log(data2);
-                        if (data2.etat == "echec" && data2.code == "ALREADY_CONNECTED") {
-                            $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
-
+                    $.post("../assets/php/ajax/admin.php", {action: "getConnectedAdmin"}, function (data) {
+                        data = JSON.parse(data);
+                        console.log(data);
+                        if (data.etat == "echec") {
+                            $.post("../assets/php/ajax/user.php", {
+                                action: "connecter",
+                                user_mail: "test",
+                                password: "test"
+                            }, function (data2) {
+                                data2 = JSON.parse(data2);
+                                console.log(data2);
+                                if (data2.etat == "echec" && data2.code == "ALREADY_CONNECTED") {
+                                    $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
+                                }
+                            });
+                        } else {
+                            $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
+                            var jQ = $('<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
+                            $("#popover-content").html(jQ);
                         }
                     });
-                }
-                else {
-                    /*var jQ = $(
-                     '<li>' +
-                     '<a href="#" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                     'Mon compte ' +
-                     '<span class="fa fa-user " aria-hidden="true"></span>' +
-                     '</a>' +
-                     '<ul class="dropdown-menu account-menu" aria-labelledby="dLabel">' +
-                     '<li><a href="./compte" id="acc_inf">Mes informations </a></li>' +
-                     '<li><a href="./commande" id="acc_cmd">Mes commandes </a></li>' +
-                     '<li class="divider" role="separator"></li>' +
-                     '<li><a href="#" id="acc_dec">Se deconnecter </a></li>' +
-                     '</ul>' +
-                     '</li>' +
-                     '');
-                     $(".part_connect").html(jQ);*/
+                } else {
                     $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
                     var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
                         '<a href="./historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
@@ -198,7 +197,6 @@ session_start();
                     function () {
                         document.location = "./accueil";
                     }, 50);
-                //document.location="./accueil";
             });
 
 
