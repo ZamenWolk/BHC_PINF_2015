@@ -732,6 +732,14 @@ button[id*="delItem"] {
 	border:1px solid #ccc;
 }
 
+#imgItem {
+    padding-top: 10px;
+}
+
+.item {
+    margin-bottom: 15px;
+}
+
 .input-group {
 	width:65%;
 }
@@ -739,10 +747,6 @@ button[id*="delItem"] {
 .buttonGroup {
 	margin-top:-9px;
 	margin-left:18%;
-}
-
-.glyphicon-trash {
-	color:black;
 }
 
 #erreur {

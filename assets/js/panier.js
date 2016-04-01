@@ -160,6 +160,9 @@ $(document).ready(function () {
                         var input = jQ.children(".inputContainer").children(".input-group");
                         var qtField = input.children(".qtField");
 
+                        var imgDiv = jQ.children("#imgItem");
+                        imgDiv.children("img").attr("src", "../assets/img/logo/" + jsonData["panier"][i]["pneu"]["marque"] + ".png");
+
                         jQ.children("#infoItem").html(pneu_description);
                         //jQ.children("#refItem").html(pneu_reference);
                         priceUnit.html(prix_unit + "€");
@@ -177,6 +180,7 @@ $(document).ready(function () {
                         totalQte += pneu_quantite;
                         totalPrice += prix_lot;
                     }
+                    model.hide();
                 } else $("#confirmOrder").attr("disabled","disabled");
 
                 $("#priceValidate").html(totalPrice);
