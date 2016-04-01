@@ -23,7 +23,6 @@ $(document).ready(function () {
                 $(this).val(oldQte);
             }
             if(data.etat == "reussite") {
-                generatePanier();
             }
         })
 
@@ -65,7 +64,7 @@ $(document).ready(function () {
             {
                 action: "vider"
             }, function (data) {
-                
+                location.reload();
             }
         );
     });

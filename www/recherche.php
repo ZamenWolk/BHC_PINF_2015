@@ -526,8 +526,10 @@ include_once("header.php");
                                 var contentModal = modalDialog.children(".modal-content");
                                 var bodyModal = contentModal.children(".modal-body");
 
+                                qtt = data["nouvelleQuantite"];
+
                                 bodyModal.children(".row").html('<div class="col-md-12">Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock</div>' +
-                                    '<div class="row" <div class="col-md-3">' + image.html() + '</div><div class=\"col-md-6\">' + titre.html() +'</div>'+
+                                    '<div class="row"> <div class="col-md-3">' + image.html() + '</div><div class=\"col-md-6\">' + titre.html() +'</div>'+
                                     "<div class=' col-md-2'><h4>Quantité:" + qtt + "</h4></div></div>");
 
                                 modal.modal('show');
