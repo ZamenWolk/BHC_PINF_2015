@@ -12,6 +12,10 @@ include_once("header.php");
                     <i class="fa fa-exclamation-triangle fa-fw"></i>
                     <strong>Vous devez être connecté pour passer une commande</strong>
                 </div>
+                <div class="alert alert-warning" role="alert" id="notEnough">
+                    <i class="fa fa-exclamation-triangle fa-fw"></i>
+                    <strong>Stock insuffisant</strong>
+                </div>
                 <div class="row">
                     <div class="col-md-5 align"><u>Produit</u></div>
                     <!--<div class="col-md-2 col-md-offset-2 align"><u>Référence</u></div>-->

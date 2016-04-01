@@ -37,6 +37,8 @@ $panier = $_SESSION["panier"];
  * Renvoi :
  * [    "panier"    => contenu du panier,
  *      "prixTotal" => prix total du panier ]
+ * Avertit si :
+ *      - Le stock en BDD est inferieur à la quantité voulue. Dans ce cas, la nouvelle quantité est celle en BDD (code NOT_ENOUGH_STOCK)
  * Echoue si :
  *      - La référence du pneu n'est pas définie                                                              (code MISSING_ARGUMENT)
  *      - La quantité à ajouter est inferieure à 1                                                            (code INVALID_QUANTITY)

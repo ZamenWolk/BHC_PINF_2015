@@ -406,21 +406,35 @@ include_once("header.php");
 
                         $.post("../assets/php/ajax/panier.php", {
                             action: "ajouterArticle",
-                            referencePneu: this.value,
-                            quantite: qtt
+                            referencePneu: this.value
                         }, function (data) {
                             data = JSON.parse(data);
                             console.log(data);
 
-                            /* On ajout le div du pneu au modal */
-                            var modal = $('#modalPneuPanier');
-                            var modalDialog = modal.children(".modal-dialog");
-                            var contentModal = modalDialog.children(".modal-content");
-                            var bodyModal = contentModal.children(".modal-body");
+                            if(data["etat"] == "reussite") {
+                                /* On ajout le div du pneu au modal */
+                                var modal = $('#modalPneuPanier');
+                                var modalDialog = modal.children(".modal-dialog");
+                                var contentModal = modalDialog.children(".modal-content");
+                                var bodyModal = contentModal.children(".modal-body");
 
-                            bodyModal.children(".row").html("<div class='col-md-3'>" + image.html() + "</div><div class=\"col-md-6\">" + titre.html() + "</div><div class=' col-md-2'><h4>Quantité:" + qtt + "</h4></div>");
+                                bodyModal.children(".row").html("<div class='col-md-3'>" + image.html() + "</div><div class=\"col-md-6\">" + titre.html() + "</div><div class=' col-md-2'><h4>Quantité:" + qtt + "</h4></div>");
 
-                            modal.modal('show');
+                                modal.modal('show');
+                            }
+                            else if(data["etat"] == "warning") {
+                                /* On ajout le div du pneu au modal */
+                                var modal = $('#modalPneuPanier');
+                                var modalDialog = modal.children(".modal-dialog");
+                                var contentModal = modalDialog.children(".modal-content");
+                                var bodyModal = contentModal.children(".modal-body");
+
+                                bodyModal.children(".row").html('<div class="col-md-12">Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock</div>' +
+                                    '<div class="row" <div class="col-md-3">' + image.html() + '</div><div class=\"col-md-6\">' + titre.html() +'</div>'+
+                                    "<div class=' col-md-2'><h4>Quantité:" + qtt + "</h4></div></div>");
+
+                                modal.modal('show');
+                            }
                         });
 
                     });

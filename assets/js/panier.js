@@ -6,6 +6,28 @@ $(document).ready(function () {
 
     generatePanier();
     $("#notConnected").hide();
+    $("#notEnough").hide();
+
+    $(document).on('change', '.qtField', function () {
+        console.log("png");
+        var oldQte = $(this).val();
+        $.post("../assets/php/ajax/panier.php", {
+            action:"changerQuantite",
+            referencePneu: $(this).attr("id"),
+            quantite: $(this).val()
+        }, function(data) {
+            data = JSON.parse(data);
+            console.log(data);
+            if(data["code"] == "NOT_ENOUGH_STOCK") {
+                $("#notEnough").show();
+                $(this).val(oldQte);
+            }
+            if(data.etat == "reussite") {
+                generatePanier();
+            }
+        })
+
+    });
 
     $("#confirmOrder").click(function () {
         $.post(
@@ -24,16 +46,6 @@ $(document).ready(function () {
 
     $("#goAchat").click(function () {
         document.location.href = "./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0";
-    });
-
-    $(".qtField").change(function () {
-        myItemIdTemp = $(this).attr('id').split("m");
-        myItemId = myItemIdTemp[1];
-        var qt = parseInt($("#qtItem".concat(myItemId)).val());
-        $("#qtItem".concat(myItemId)).val(qt);
-        majPrix();
-        majPrixTotal();
-        majQt();
     });
 
     $(document).on("click",".deleteButton", function () {
@@ -153,6 +165,7 @@ $(document).ready(function () {
                         //jQ.children("#refItem").html(pneu_reference);
                         priceUnit.html(prix_unit + "€");
                         qtField.attr("value", pneu_quantite);
+                        qtField.attr("id", pneu_reference);
                         priceLot.html(prix_lot + "€");
                         jQ.removeClass("#itemId");
                         jQ.show();
