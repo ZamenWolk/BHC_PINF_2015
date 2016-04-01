@@ -4,27 +4,30 @@ include_once "maLibSQL.pdo.php";
 include_once "fonctionsBDD.php";
 include_once "Recherche.php";
 
+/**
+* @brief Script permettant de convertir le fichier CSV de la base de données de PneusHollande en une base de données utilisables par JSPneus
+**/
 
-set_time_limit(1000);
+
+set_time_limit(3500);
 $row = 1;
 $time = time();
 echo $time;
-if(file_exists ("../../../secret/catpnhbonpneus.csv")) {
+$fichier = "../../../secret/catpnhbonpneus.csv";
+if(file_exists ($fichier))
+{
     /*Module d'insertion dans la base*/
-    if (($handle = fopen("../../../secret/catpnhbonpneus.csv", "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-            $num = count($data);
-            echo "<p> $num champs à la ligne $row: </p><br />\n";
-            echo "<p>".$data[21]. " ";
-            $data[21] = str_replace(',', '', $data[21]);
-            echo $data[21]."</p><br />\n";
-            $row++;/*
-        for ($c=0; $c < $num; $c++) {
-            echo "Champs".$c."  ".$data[$c] . "<br />\n";
-        }*/
-            if (!verifDescription($data[2], $data[5], $data[21]))//Ce n'est pas le même pneus //TODO: on doit verifier la description
+    if (($handle = fopen($fichier, "r")) !== FALSE)
+    {
+        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE)
+        {
+            if ($row%100 == 0)
+                echo "Ligne $row<br />\n";
+            $row++;
+			
+            if (!verifDescription($data[2], $data[5], $data[21]))
             {
-                $sql = "INSERT INTO jspneus.pneu(pneu_ean, pneu_ref,
+                $sql = "INSERT INTO pneu(pneu_ean, pneu_ref,
         pneu_marque, pneu_categorie,pneu_description,pneu_largeur,pneu_serie,pneu_jante,pneu_charge,pneu_vitesse,pneu_profil,pneu_decibel,
         pneu_bruit,pneu_consommation,pneu_adherance,pneu_categorieEtiquette,pneu_stock,pneu_prix,pneu_dateAjoutBDD,pneu_dateDerniereModif) VALUES (:ean,:ref,:marque,:categorie,
         :description,:largeur,:serie,:jante,:charge,:vitesse,:profil,:decibel,:bruit,:consommation,:adherance,:categorieEtiquette,:stock,:prix,:dateAjoutBDD,:dateDerniereModif)";
@@ -51,20 +54,18 @@ if(file_exists ("../../../secret/catpnhbonpneus.csv")) {
                     ":dateAjoutBDD" => $time,
                     ":dateDerniereModif" => $time
                 ];
-                // echo $sql;
                 SQLInsert($sql, $param);
 
                 /* On modifie les anciennes version */
-                $sql2 = "UPDATE jspneus.pneu SET pneu_valable=0, pneu_derniereVersion=0 WHERE pneu_ref=:ref AND pneu_dateAjoutBDD < :temps";
+                $sql2 = "UPDATE pneu SET pneu_valable=0, pneu_derniereVersion=0 WHERE pneu_ref=:ref AND pneu_dateAjoutBDD < :temps";
                 $param = [
                     ":temps" => $time,
                     ":ref" => $data[2]
                 ];
-                //echo $sql1;
                 $nbreUpdate = SQLUpdate($sql2, $param);
             } else {
                 /*ICI on update a juste le stock et la date de modification*/
-                $sql1 = "UPDATE jspneus.pneu SET pneu_stock=:stock, pneu_dateDerniereModif=:temps WHERE pneu_dateAjoutBDD < :temps AND pneu_ref= :ref";
+                $sql1 = "UPDATE pneu SET pneu_stock=:stock, pneu_dateDerniereModif=:temps WHERE pneu_dateAjoutBDD < :temps AND pneu_ref= :ref";
                 $param = [
                     ":temps" => $time,
                     ":stock" => $data[20],
@@ -79,7 +80,13 @@ if(file_exists ("../../../secret/catpnhbonpneus.csv")) {
     /*Permet de mettre en non valable les pneus supprimé du csv*/
     $sql = "UPDATE pneu SET pneu_valable=0 WHERE pneu_dateDerniereModif <" . $time . " AND pneu_derniereVersion=1";
     $nbreUpdate = SQLUpdate($sql);
-    echo $nbreUpdate;
-    set_time_limit(120);
+
+    //Supprime les entrées de la BDD qui ne sont plus la dernière version et qui ne sont pas contenues dans une commande
+
+    SQLDelete("DELETE FROM pneu " .
+        " WHERE pneu_derniereVersion = 0 AND NOT EXISTS ( " .
+        "SELECT * FROM fait_partie WHERE pneu.pneu_ref = fait_partie.pneu_ref AND pneu.pneu_dateAjoutBDD = fait_partie.pneu_dateAjoutBDD)");
+
+    //unlink($fichier); // Supprime le fichier
 }
 ?>

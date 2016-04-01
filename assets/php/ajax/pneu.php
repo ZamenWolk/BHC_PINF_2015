@@ -1,4 +1,6 @@
 <?php
+
+include_once "../../../secret/credentials.php";
 include_once("../fonctions/AJAX.php");
 include_once("../fonctions/Pneu.php");
 
@@ -8,28 +10,16 @@ include_once("../fonctions/Pneu.php");
  */
 
 /**
- * "stockPneu"
- * Permet de récupérer le stock d'un pneu en BDD
- * Arguments :
- * [    "referencePneu" => Référence du pneu ]
- * Renvoi :
- * [    "referencePneu" => Référence du pneu,
- *      "stock"         => Stock du pneu en BDD ]
- * Echoue si :
- *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
- *      - Aucun pneu correspondant n'a été trouvé en BDD (code NO_CORRESPONDENCE)
- */
-
-/**
- * "prixPneu"
- * Permet de récupérer le prix d'un pneu en BDD selon un ratio de prix à un temps donné
+ * "getPneu"
+ * Permet de récupérer le pneu et son prix en BDD selon un ratio de prix à un temps donné
  * Arguments :
  * [    "referencePneu" => Référence du pneu,
  *      "dateAjoutBDD"  => Date d'ajout du pneu en BDD *facultatif, utilise le pneu valable avec référence donnée par défaut*,
  *      "ratioID"       => ID du ratio du prix utilisé pour calculer le prix *facultatif, dernier ratio en date par défaut* ]
  * Renvoi :
  * [    "referencePneu" => Référence du pneu,
- *      "stock"         => Stock du pneu en BDD ]
+ *      "pneu"          => Informations du pneu,
+ *      "prix"          => Prix du pneu en BDD ]
  * Echoue si :
  *      - La référence du pneu est vide                  (code MISSING_ARGUMENT)
  *      - Aucun pneu correspondant n'a été trouvé en BDD (code NO_CORRESPONDENCE)
@@ -45,27 +35,7 @@ $action = $_POST["action"];
 
 switch ($action)
 {
-    case "stockPneu":
-
-        if (!isset($_POST["referencePneu"]))
-            ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
-
-        $referencePneu = $_POST["referencePneu"];
-
-        $stock = Pneu::getStock($referencePneu);
-
-        if ($stock === false)
-            ajaxError("Aucun pneu correspondant n'a été trouvée", "NO_CORRESPONDENCE");
-        else
-        {
-            $json = ["referencePneu" => $referencePneu, "stock" => $stock];
-
-            ajaxSuccess($json);
-        }
-
-        break;
-
-    case "prixPneu":
+    case "getPneu":
         if (!isset($_POST["referencePneu"]))
             ajaxError('$_POST["referencePneu"] est vide', "MISSING_ARGUMENT");
 
@@ -83,7 +53,7 @@ switch ($action)
         if ($prix === false)
             ajaxError("Ratio de prix non trouvé", "CANT_FIND_RATIO");
 
-        $json = ["referencePneu" => $referencePneu, "prix" => $prix];
+        $json = ["referencePneu" => $referencePneu, "prix" => $prix, "pneu" => $pneu->getPneu()];
 
         if ($dateAjoutBDD != null)
             $json["dateAjoutBDD"] = $dateAjoutBDD;

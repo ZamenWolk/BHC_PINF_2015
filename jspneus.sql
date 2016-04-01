@@ -13,6 +13,7 @@ CREATE TABLE user(
         user_prenom     Varchar (50) NOT NULL ,
         user_mail       Varchar (50) NOT NULL ,
         user_password   Varchar (128) NOT NULL ,
+		user_telephone  Char (20) NOT NULL ,
         user_newsletter Bool NOT NULL ,
         PRIMARY KEY (user_id )
 )ENGINE=InnoDB;
@@ -40,9 +41,10 @@ CREATE TABLE adresse(
 CREATE TABLE commande(
         commande_id   int (11) Auto_increment  NOT NULL ,
         commande_date Int NOT NULL ,
+		commande_etat Varchar (25) NOT NULL ,
         adresse_facturation_id    Int NOT NULL ,
         adresse_livraison_id  Int NOT NULL ,
-        config_date   Int ,
+        config_date   Int NOT NULL ,
         PRIMARY KEY (commande_id )
 )ENGINE=InnoDB;
 
@@ -135,3 +137,5 @@ ALTER TABLE commande ADD CONSTRAINT FK_commande_config_date FOREIGN KEY (config_
 ALTER TABLE recuperation ADD CONSTRAINT FK_recuperation_user_id FOREIGN KEY (user_id) REFERENCES user(user_id);
 ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_pneu FOREIGN KEY (pneu_ref, pneu_dateAjoutBDD) REFERENCES pneu(pneu_ref, pneu_dateAjoutBDD);
 ALTER TABLE fait_partie ADD CONSTRAINT FK_fait_partie_commande_id FOREIGN KEY (commande_id) REFERENCES commande(commande_id);
+
+INSERT INTO config(config_date, config_ratio_prix) VALUES (0, 1.5);

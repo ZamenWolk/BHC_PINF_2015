@@ -1,10 +1,24 @@
 <?php
 
+include_once "../../../secret/credentials.php";
 include_once "../fonctions/fonctionsBDD.php";
 include_once "../fonctions/AJAX.php";
 include_once "../fonctions/Recherche.php";
+
+
 /**
- * AJAX : Chargement des options possibles dans la navbar
+ * Fichier utilisant la méthode "action"
+ * Actions possible :
+ */
+
+/**
+ * "Chargement"
+ * A l'aide des fonctions de recherche, récupère les marques, catégories, largeurs de pneus, charges, vitesse, jante, série, decibel et consommation ainsi que le nombre de chacune d'entre elles 
+ * Arguments : 
+ * [    "Aucun argument",	]
+ * Renvoi :
+ * [    "état" => #réussite# ]
+ *
  */
 if(isset($_POST["action"]))
 {
@@ -44,11 +58,7 @@ if(isset($_POST["action"]))
             break;
 
 
+	}
 }
-
-
-}
-
-
 
 ?>

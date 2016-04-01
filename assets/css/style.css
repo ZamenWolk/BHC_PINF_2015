@@ -3,20 +3,46 @@ html, body {
 }
 
 body {
-    background: rgb(73,55,89);
+    margin:0;
+    background: url("../img/background.jpg") no-repeat left top fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
     padding-top: 70px;
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes font-change {
+    from {color: rgba(52, 73, 94,1.0);}
+    to {color: #f39c12;}
+}
+
+/* Standard syntax */
+@keyframes font-change {
+    from {color: rgba(52, 73, 94,1.0);}
+    to {color: #f39c12;}
+}
+
+@-webkit-keyframes font-change-reverse {
     from {color: #f39c12;}
     to {color: rgba(52, 73, 94,1.0);}
 }
 
 /* Standard syntax */
-@keyframes font-change {
+@keyframes font-change-reverse {
     from {color: #f39c12;}
     to {color: rgba(52, 73, 94,1.0);}
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes font-change2 {
+    from {color: rgba(236, 240, 241, 1);}
+    to {color: #f39c12;}
+}
+
+/* Standard syntax */
+@keyframes font-change2 {
+    from {color: rgba(236, 240, 241, 1);}
+    to {color: #f39c12;}
 }
 
 /* Chrome, Safari, Opera */
@@ -31,8 +57,20 @@ body {
     to {color: #f39c12;}
 }
 
+@-webkit-keyframes btn-change {
+    from {background-color: rgba(236, 240, 241, 1);}
+    to {background-color: #f39c12;}
+}
+
+/* Standard syntax */
+@keyframes btn-change {
+    from {background-color: rgba(236, 240, 241, 1);}
+    to {background-color: #f39c12;}
+}
+
 h1 {
     text-align: center;
+    padding-bottom: 15px;
 }
 
 h3 {
@@ -48,10 +86,13 @@ h3 {
     margin: 0 auto -55px;
     height: auto;
     min-height: 100%;
+    padding-bottom: 20px;
 }
 
 .container.main {
-    background-color: #f6f6f6;
+    padding-top: 10px;
+    background-color: rgba(236, 240, 241, 0.95);
+    min-height: 800px;
 }
 
 .img-gal {
@@ -67,11 +108,12 @@ p.centered {
 #logo {
     max-height: 50px;
     max-width: 100px;
+    padding-top: 5px;
+    padding-left: 5px;
 }
 
 .annonce {
-    max-height: 100px;
-    max-width: 100px;
+    width: 200%;
 }
 
 .panier {
@@ -112,19 +154,19 @@ p.centered {
 .nav-pills > li > a:hover,
 .nav-pills > li > a:focus {
     background-color: transparent;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     box-shadow: none;
     border: none;
     text-decoration: none;
     -webkit-animation-name: font-change; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
     animation-name: font-change;
-    animation-duration: 0.6s;
+    animation-duration: 0.4s;
     -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
     animation-fill-mode: forwards;
 }
 
-.dropdown-menu {
+/*.dropdown-menu {
     top: 67px;
     background-color: rgba(236, 240, 241, 1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -147,26 +189,26 @@ p.centered {
 .dropdown-header {
     font-size: 120%;
     color: rgba(52, 73, 94,1.0);
-}
+}*/
 
 #mailLogin, #passeLogin {
-    width: 130%;
+    width: 244px;
     margin-top: 2px;
     margin-bottom: 2px;
 }
 
-.subLink {
+.login-footer {
     cursor: pointer;
     text-align: center;
 }
 
 .popover {
-    max-width: 400px;
+    width: 400px;
     position: fixed;
 }
 
 .popover.bottom .arrow:after {
-    border-bottom-color: #f39c12;
+    border-bottom-color: rgba(236, 240, 241, 0.8);
 }
 
 .navbar-collapse {
@@ -175,18 +217,18 @@ p.centered {
     margin-top: 5px;
 }
 
-.navbar-default {
+.navbar-custom {
     border-top: none;
-    background-color: rgba(236, 240, 241, 1);
+    background-color: rgba(236, 240, 241, 0.8);
 }
 
 .navbar-brand {
-    margin-bottom: 10px;
+    padding: 0;
 }
 
 #headNavbar > ul > li > a {
     font-size: 150%;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
 }
 
 .push {
@@ -195,7 +237,7 @@ p.centered {
 
 .footer {
     height: 55px;
-    background-color: rgba(236, 240, 241, 1);
+    background-color: rgba(236, 240, 241, 0.8);
     border-radius: 0;
     margin-bottom: 0;
     border: 0;
@@ -207,7 +249,7 @@ p.centered {
 
 .nav-pills > li > a {
     font-size: 120%;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     vertical-align: center;
     padding: 15px;
 }
@@ -216,12 +258,14 @@ p.centered {
     cursor: pointer;
 }
 
+.well {
+    background: transparent;
+}
+
 .searchWell {
-    background-color: rgba(236, 240, 241,1.0);
-    border: 10px rgba(236, 240, 241, 0.3);
     border-top: none;
     border-bottom: none;
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
 }
 
 .searchForm {
@@ -286,37 +330,46 @@ ul.dropdown-cart li .item-right button {
 
 .popover,
 .modal-content {
-    background-color: rgba(236, 240, 241,1.0);
+    background-color: rgba(236, 240, 241, 1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .btn-connect,
 .btn-subscribe {
-    background-color: #f39c12;
+    background-color: rgba(236, 240, 241, 1);
     font-size: 120%;
     margin-bottom: 5px;
+    border: 1px solid rgba(52, 73, 94,1.0);
+}
+
+.btn-connect:hover,
+.btn-subscribe:hover {
+    -webkit-animation-name: btn-change; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
+    animation-name: btn-change;
+    animation-duration: 0.6s;
+    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: forwards;
 }
 
 .btn-warning {
     background-color: #f39c12;
-    font-size: 120%;
 }
 
 .well-lg {
-    background-color: rgb(153, 159, 163);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .popover-title,
 .modal-header,
 .modal-title {
-    background-color: #f39c12;
-    font-size: 120%;
-    border-bottom: none;
+    background-color: rgba(236, 240, 241, 1);
+    font-size: 140%;
+    text-align: center;
 }
 
 .modal-body {
-    color: #f39c12;
+    color: rgba(52, 73, 94,1.0);
     font-size: 120%;
 }
 
@@ -365,9 +418,7 @@ ul.dropdown-cart li .item-right button {
     text-shadow: none;
 }
 
-.main-car.carousel-control:hover,
-.main-car.carousel-control:focus {
-    color: #f39c12;
+.main-car.carousel-control:hover {
     -webkit-animation-name: arrow-change; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
     animation-name: arrow-change;
@@ -381,7 +432,7 @@ ul.dropdown-cart li .item-right button {
 }
 
 .main-car.carousel-indicators {
-    bottom: -5px;
+    bottom: -30px;
 }
 
 .main-car.carousel-indicators li {
@@ -406,11 +457,10 @@ ul.dropdown-cart li .item-right button {
     bottom: 0;
     left: 0;
     z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #f39c12;
+    padding: 0;
+    color: rgba(236, 240, 241, 1);
     text-align: center;
-    background: rgba(236, 240, 241, 0.3);
+    background: rgba(52, 73, 94, 0.3);
     font-size: 130%;
 }
 
@@ -418,7 +468,12 @@ ul.dropdown-cart li .item-right button {
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
-    color: #f39c12;
+    color: rgba(236, 240, 241, 1);
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
     font-size: 200%;
 }
 
@@ -438,9 +493,7 @@ ul.dropdown-cart li .item-right button {
     text-shadow: none;
 }
 
-.prod.carousel-control:hover,
-.prod.carousel-control:focus {
-    color: #f39c12;
+.prod.carousel-control:hover {
     -webkit-animation-name: arrow-change; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
     animation-name: arrow-change;
@@ -464,7 +517,7 @@ ul.dropdown-cart li .item-right button {
 
 .prod.carousel-indicators {
     right: 50%;
-    top: auto;
+    top: 90%;
 }
 
 .prod.carousel-indicators li {
@@ -535,7 +588,12 @@ ul.dropdown-cart li .item-right button {
     text-transform: uppercase;
     text-align: center;
     margin: 0;
-    color: #f39c12;
+    color: rgba(236, 240, 241, 1);
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
     position: absolute;
     width: auto;
     top: 50%;
@@ -545,9 +603,9 @@ ul.dropdown-cart li .item-right button {
 }
 
 .hovereffect:hover h2 {
-    -webkit-animation-name: font-change; /* Chrome, Safari, Opera */
-    -webkit-animation-duration: 0.6s; /* Chrome, Safari, Opera */
-    animation-name: font-change;
+    -webkit-animation-name: font-change2; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.4s; /* Chrome, Safari, Opera */
+    animation-name: font-change2;
     animation-duration: 0.4s;
     -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
     animation-fill-mode: forwards;
@@ -574,8 +632,10 @@ a.list-group-item {
     height:auto;
     min-height:220px;
 }
-a.list-group-item.active small {
-    color:#fff;
+
+.list-group-item {
+    background: white;
+    border: 1px solid grey;
 }
 
 .fa-ul {
@@ -614,10 +674,6 @@ a.list-group-item.active small {
 	padding:25px;
 }
 
-#labelTotalPrice {
-	text-align:right;
-}
-
 .borderBlock {
 	border:1px solid grey;
 	border-radius:5px;
@@ -639,10 +695,9 @@ a.list-group-item.active small {
 .spanStyleLeft {
 	background-color:#eee;
 	border:1px solid #ccc;
-	border-top-left-radius:4px;
-	border-bottom-left-radius:4px;
-	border-right:none;
+	border-radius:4px;
 	padding-left:12px;
+    padding-right:12px;
 	padding-top:6px;
 	padding-bottom:6px;
 }
@@ -690,10 +745,84 @@ button[id*="delItem"] {
 	color:black;
 }
 
-hr { 
-	margin-bottom:15px;
-}
-
 #erreur {
 	color:red;
+}
+
+textarea#message {
+    height: 150px;
+}
+
+.alert-info {
+    font-size: 120%;
+}
+
+#price {
+    text-align: center;
+}
+
+.shop-btn {
+    margin-bottom: 10px;
+}
+
+.catalog-cart-div {
+    padding-bottom: 40px;
+}
+
+.add-cart-div {
+    border: solid 1px #7f8c8d;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.account-menu {
+    top: 55px;
+    border: none;
+    width: 170%;
+    font-size: 120%;
+    color: rgba(52, 73, 94,1.0);
+}
+
+.caption > h5 {
+    overflow: hidden;
+    width: 230px;
+}
+
+.thumbnail {
+    height: 195px;
+}
+
+th,
+tr,
+td {
+    padding: 5px;
+    text-align: center;
+}
+
+.page-header {
+    text-align: center;
+}
+
+a {
+    font-size: 130%;
+    color: rgba(52, 73, 94,1.0);
+}
+
+a:hover {
+    text-decoration: none;
+    -webkit-animation-name: font-change; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.3s; /* Chrome, Safari, Opera */
+    animation-name: font-change;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: forwards;
+}
+
+dd {
+    white-space: nowrap;
+}
+
+dt,dd {
+    font-size: 90%;
 }

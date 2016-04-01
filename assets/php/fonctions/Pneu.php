@@ -1,9 +1,19 @@
 <?php
-include_once "../../../secret/credentials.php";
-include_once "maLibSQL.pdo.php";
+if (file_exists("../../../secret/credentials.php"))
+    include_once("../../../secret/credentials.php");
+if (file_exists("../fonctions/maLibSQL.pdo.php"))
+    include_once "../fonctions/maLibSQL.pdo.php";
+if (file_exists("../fonctions/Config.php"))
+    include_once "../fonctions/Config.php";
 
 class Pneu
 {
+	/**
+	*  
+	* @brief Crée un nouveau pneu
+	* @param Pneu pneu Le pneu et les informations que l'on veut placer sur le nouveau pneu
+	*
+	**/
     public function Pneu($pneu)
     {
         $this->EAN = $pneu["pneu_ean"];
@@ -27,9 +37,17 @@ class Pneu
         $this->dateAjoutBDD = $pneu["pneu_dateAjoutBDD"];
     }
 
+	/**
+	*  
+	* @brief Récupère un pneu par sa référence et date d'ajout si elle est spécifiée
+	* @param string reference Référence du pneu que l'on veut récupérer
+	* @param string dateAjoutBDD Date d'ajout en BDD du pneu si le pneu vient a changé au cours du temps
+	* @return boolean|pneus False si le pneu correspond à false en tout point, le pneus que l'on a récupéré
+	*
+	**/
     public static function getPneuFromDB($reference, $dateAjoutBDD = null)
     {
-        $sql = "SELECT * FROM jspneus.pneu WHERE pneu_ref=:ref";
+        $sql = "SELECT * FROM pneu WHERE pneu_ref=:ref";
         $param = array(":ref" => $reference);
 
         if ($dateAjoutBDD == null)
@@ -50,7 +68,14 @@ class Pneu
             return new Pneu($pneus[0]);
     }
 
-    //TODO Peut-être modifier cette fonction pour afficher le stock suivant les commandes précédantes ?
+	/**
+	*  
+	* @brief Récupère le stock d'un pneu passé paramètre 
+	* @param string reference Référence du pneu dont on veut récupérer le stock
+	* @param string dateAjoutBDD Date d'ajout en BDD du stock si le stock vient a changé au cours du temps
+	* @return boolean|pneus False si le pneu correspond à false en tout point, le stock que l'on a récupéré
+	*
+	**/
     public static function getStock($reference, $dateAjoutBDD = null)
     {
         $pneu = Pneu::getPneuFromDB($reference, $dateAjoutBDD);
@@ -61,11 +86,49 @@ class Pneu
             return $pneu->stock;
     }
 
+	/**
+	*  
+	* @brief Récupère le prix d'un pneu
+	* @param float ratioID le ratio de prix que JSPneus applique sur les pneus pour la marge de bénéfice
+	* @return boolean|float False si il n'y a pas de ratio de prix, prix avec coefficient et arrondi à la 2eme décimale
+	*
+	**/
     public function getPrix($ratioID = null)
     {
         if (Config::getRatioPrix($ratioID) === false)
             return false;
-        return $this->prix * Config::getRatioPrix($ratioID);
+        return round($this->prix * Config::getRatioPrix($ratioID), 2);
+    }
+
+	/**
+	*  
+	* @brief Récupère un pneu 
+	* @return pneu Pneu que l'on a récupéré
+	*
+	**/
+    public function getPneu()
+    {
+        $pneu = array();
+
+        $pneu["EAN"] = $this->EAN;
+        $pneu["reference"] = $this->reference;
+        $pneu["marque"] = $this->marque;
+        $pneu["categorie"] = $this->categorie;
+        $pneu["description"] = $this->description;
+        $pneu["largeur"] = $this->largeur;
+        $pneu["serie"] = $this->serie;
+        $pneu["jante"] = $this->jante;
+        $pneu["charge"] = $this->charge;
+        $pneu["vitesse"] = $this->vitesse;
+        $pneu["profil"] = $this->profil;
+        $pneu["decibel"] = $this->decibel;
+        $pneu["bruit"] = $this->bruit;
+        $pneu["consommation"] = $this->consommation;
+        $pneu["adherance"] = $this->adherance;
+        $pneu["categorieEtiquette"] = $this->categorieEtiquette;
+        $pneu["stock"] = $this->stock;
+
+        return $pneu;
     }
 
     public $EAN;

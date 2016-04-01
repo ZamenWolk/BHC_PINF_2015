@@ -13,38 +13,29 @@ function navResize() {
 }
 
 function searchHide() {
+    $(".searchForm").hide();
     var pathname = window.location.pathname; // Returns path only
     var lastpath = pathname.substr(pathname.lastIndexOf("/")+1);
     if(lastpath == "recherche") {
-        $("body").css({paddingTop: "+=183px"});
+        $("body").css({paddingTop: "+=169px"});
         $(".searchForm").show();
-    } else $(".searchForm").hide();
+    }
 }
-
 
 $(document).ready(function() {
 
     navResize();
     searchHide();
 
-    $('li.dropdown a').on('click', function (event) {
-        $(this).parent().toggleClass('open');
-    });
-
-    $("body").on('click', function (e) {
-        if (!$('li.dropdown').is(e.target)
-            && $('li.dropdown').has(e.target).length === 0
-            && $('.open').has(e.target).length === 0
-        ) {
-            $('li.dropdown').removeClass('open');
-        }
-    });
-
     $("[data-toggle=popover]").popover({
         html: true,
         content: function() {
             return $('#popover-content').html();
         }
+    });
+
+    $("#subLink").on("click", function () {
+        $("#popover-content").css({display: "none"});
     });
 
     $("body").on('click', function (e) {
@@ -58,24 +49,29 @@ $(document).ready(function() {
     $("#searchLink").click(function() {
         if($(".searchForm").is(":visible")) {
             $(".searchForm").slideUp();
-            $("body").animate({paddingTop: "-=183px"});
+            $("body").animate({paddingTop: "-=169px"});
             $(".dropdown-menu").css({top: "+=12px"});
         } else {
             $(".searchForm").slideDown();
-            $("body").animate({paddingTop: "+=183px"});
+            $("body").animate({paddingTop: "+=169px"});
             $(".dropdown-menu").css({top: "-=12px"});
         }
     });
 
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').focus()
-    })
+    });
 
     $(window).on('resize', function(){
         if(!navResize()) {
             $('#navHeader').removeClass("navbar-static-top").addClass("navbar-fixed-top");
             $("body").css({"top" : "70px"});
         }
+    });
+
+    $("a#login").on('click', function(e) {
+        e.preventDefault();
+        return true;
     });
 
 });
