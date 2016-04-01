@@ -51,9 +51,11 @@ class Panier
             return false;
 
         if (!$this->getArticle($pneu->reference))
-            array_push($this->panier, array("pneu" => $pneu, "quantite" => 1));
+            array_push($this->panier, array("pneu" => $pneu, "quantite" => 0));
+
+        $suppr = $this->getArticle($pneu->reference)["quantite"];
         
-        return $this->ajouterQuantite($pneu->reference, $quantite);
+        return $this->ajouterQuantite($pneu->reference, $quantite) - $suppr;
     }
 
 	/**
