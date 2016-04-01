@@ -25,7 +25,7 @@ include_once("header.php");
                 </div>
                 <hr>
                 <div class="row item" id="itemId">
-                    <div class="col-md-1 align" id="imgItem"><img src=""/></div>
+                    <div class="col-md-1 align" id="imgItem"><img class="img-responsive" src=""/></div>
                     <div class="col-md-4" id="infoItem"></div>
                     <!--<div class="col-md-2 align" id="refItem"></div>-->
                     <div class="col-md-2 align" id="priceDiv"><span class="spanStyleLeft" id="priceItem"></span></div>
