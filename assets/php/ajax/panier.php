@@ -164,7 +164,7 @@ switch ($action)
         if ($result === false)
             ajaxError("Erreur interne, veuillez contacter l'administrateur réseau", "INTERN_ERROR");
         else if ($result != $quantite)
-            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_ENOUGH_STOCK");
+            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal(), "nouvelleQuantite" => $result], "NOT_ENOUGH_STOCK");
         
         ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
         
@@ -204,7 +204,7 @@ switch ($action)
         else if (!$panier->estPresent($referencePneu))
             ajaxError("La référence n'est pas présente dans le panier", "NOT_IN_CART");
         else
-            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_ENOUGH_STOCK");
+            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal(), "nouvelleQuantite" => $result], "NOT_ENOUGH_STOCK");
         
         break;
 
@@ -248,7 +248,7 @@ switch ($action)
         if ($result === false)
             ajaxError("La référence n'est pas présente dans le panier", "NOT_IN_CART");
         else if ($result != $quantite)
-            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()], "NOT_ENOUGH_STOCK");
+            ajaxWarning("Le stock était inferieur à la quantité voulue, la quantité à été modifiée à la valeur du stock", ["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal(), "nouvelleQuantite" => $result], "NOT_ENOUGH_STOCK");
         else
             ajaxSuccess(["panier" => $panier->contenuPanier(), "prixTotal" => $panier->prixTotal()]);
         
