@@ -74,6 +74,7 @@ class Panier
                 if ($item["pneu"]->reference == $reference)
                 {
                     unset($this->panier[$key]);
+                    $this->panier = array_values($this->panier);
                     return true;
                 }
             }
