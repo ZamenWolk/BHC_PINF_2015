@@ -16,7 +16,7 @@ include_once("header.php");
             <img src="../assets/img/logo-car.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Bienvenue sur JS Pneus !</h2>
-                <p>Site de vente de pneus pour auto et moto</p>
+                <p>Site de vente de pneus pour autos, motos et 4x4</p>
             </div>
         </div>
         <div class="item">
@@ -30,7 +30,7 @@ include_once("header.php");
             <img src="../assets/img/marques.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Des tonnes de marques !</h2>
-                <p>Notre cataloque contient toutes les grandes marques de pneus</p>
+                <p>Notre catalogue contient toutes les grandes marques de pneus</p>
             </div>
         </div>
     </div>

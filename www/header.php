@@ -10,6 +10,7 @@ session_start();
     <title>JS Pneus</title>
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="../assets/css/font-awesome.min.css"/>
+    <link rel="icon" href="../assets/img/logo_smallv2.png">
     <script src="../assets/js/jquery-2.2.1.min.js"></script>
     <script src="../assets/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css"/>

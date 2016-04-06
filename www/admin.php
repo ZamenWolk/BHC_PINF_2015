@@ -179,7 +179,7 @@ include_once("header.php");
                             console.log(data);
                             $(".separator2").hide();
                             $("#coef").show();
-                            $("#coef").children("input").attr("placeholder", data["ratio"]);
+                            $("#coef").children("input").attr("value", parseFloat(data["ratio"]));
                         });
 
                     });

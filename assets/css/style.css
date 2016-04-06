@@ -823,6 +823,11 @@ a:hover {
     animation-fill-mode: forwards;
 }
 
+a.normal_link
+{
+    font-size: 100%;
+}
+
 dd {
     white-space: nowrap;
 }

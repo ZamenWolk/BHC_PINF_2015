@@ -34,7 +34,7 @@ switch ($action)
 		}
 		else{
 		$header = "From: ". $_POST["from_name"] . $_POST["from_email"].$passage_ligne;
-		$header .= "Reply-to:"$_POST["from_name"] . $_POST["from_email"].$passage_ligne;
+		$header .= "Reply-to:". $_POST["from_name"] . $_POST["from_email"].$passage_ligne;
 		$header .= "MIME-Version: 1.0".$passage_ligne;
 		$header .= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 			mail("bonpneus@hotmail.fr", $_POST["subject"], $_POST["html"], $headers);

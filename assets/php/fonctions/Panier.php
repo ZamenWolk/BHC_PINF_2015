@@ -203,7 +203,7 @@ class Panier
             $total += $this->prixLot($item["pneu"]->reference);
         }
 
-        return $total;
+        return round($total, 2);
     }
 
 	/**

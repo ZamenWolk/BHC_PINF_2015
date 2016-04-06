@@ -63,8 +63,11 @@ else
  
 switch($action){
     case "inscrireAdresse":
-        if(isset($_POST["adresse_ligne1"]) && isset($_POST["adresse_ligne2"]) && isset($_POST["adresse_codeP"]) && isset($_POST["adresse_ville"]) && isset($_POST["user_id"])) {
-            $res = Adress::mkAdresse($_POST["adresse_ligne1"], $_POST["adresse_ligne2"], $_POST["adresse_codeP"], $_POST["adresse_ville"], $_POST["user_id"]);
+        if(isset($_POST["adresse_ligne1"]) && isset($_POST["adresse_codeP"]) && isset($_POST["adresse_ville"]) && isset($_POST["user_id"])) {
+
+            $compAdresse = isset($_POST["adresse_ligne2"]) ? $_POST["adresse_ligne2"] : "";
+
+            $res = Adress::mkAdresse($_POST["adresse_ligne1"], $compAdresse, $_POST["adresse_codeP"], $_POST["adresse_ville"], $_POST["user_id"]);
             if ($res == false)
                 ajaxError("Pas d'inscription de l'adresse");
             $tab["msg"] = "Adresse ajoutée";
@@ -108,6 +111,7 @@ switch($action){
         ajaxError("Erreur","NO_ID");
             break;
     default:
+        ajaxError("Action non connue", "UNKNOWN_ACTION");
         break;
 
 }

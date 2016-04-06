@@ -105,6 +105,9 @@ class Commande
             "ORDER BY commande_date DESC", [$user_id]);
 
         $tab = array();
+        
+        if ($res === false)
+            return $tab;
 
         foreach ($res as $item)
         {
@@ -124,6 +127,9 @@ class Commande
         $res = SQLSelect("SELECT * FROM commande WHERE commande_etat = ? ORDER BY commande_date DESC", [$etat]);
 
         $tab = array();
+        
+        if ($res === false)
+            return $tab;
 
         foreach ($res as $item)
         {
@@ -133,6 +139,11 @@ class Commande
         }
 
         return $tab;
+    }
+    
+    public function getCommande()
+    {
+        return array("ID" => $this->commande_id, "date" => $this->commande_date, "etat" => $this->commande_etat, "config_date" => $this->config_date, "id_facturation" => $this->adresse_facturation, "id_livraison" => $this->adresse_livraison, "produits" => $this->produits);
     }
 
     private $commande_id;

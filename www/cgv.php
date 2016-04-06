@@ -11,7 +11,7 @@ include_once("header.php");
             Adresse du courrier électronique : bonpneus1@hotmail.fr  </br>
             SIRET : 53302835300027
 			CODE :4532Z </br> Commerce de détail d'équipement automobiles. </br>
-            Conditions générales de vente des produits vendus sur <a href="http://www.js-pneus.fr">js-pneus.fr</a> </br>
+            Conditions générales de vente des produits vendus sur <a class="normal_link" href="http://www.js-pneus.fr">js-pneus.fr</a> </br>
             Date de dernière mise à jour 02 Mars 2016 </br>
         </p>
     </div>
@@ -95,8 +95,7 @@ include_once("header.php");
             </div>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">
-                    <p> Vous pouvez passez commande directement sur le site <a
-                            href="http://www.js-pneus.fr">js-pneus.fr</a>
+                    <p> Vous pouvez passer commande directement sur le site <a class="normal_link" href="http://www.js-pneus.fr">js-pneus.fr</a>.
                         Les informations contractuelles sont présentées en langue française et feront l'objet d'une
                         confirmation
                         au plus tard au moment de la validation de votre commande. La société
@@ -124,7 +123,7 @@ include_once("header.php");
             </div>
             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                 <div class="panel-body">
-                    <p>Toute commande figurant sur le site Internet <a href="http://www.js-pneus.fr">js-pneus.fr</a>
+                    <p>Toute commande figurant sur le site Internet <a class="normal_link" href="http://www.js-pneus.fr">js-pneus.fr</a>
                         suppose
                         l'adhésion aux présentes Conditions Générales. Toute confirmation de commande entraîne votre
                         adhésion
@@ -161,7 +160,7 @@ include_once("header.php");
                         Le réglement de vos achats peut s'effectuer en chèque bancaire ou par carte bancaire lors de la réception de vos
                         produits,
                         directement chez vous ou chez <strong>JSPneus</strong>
-						Aucun paiement ne vous sera demandé sur le site <a href="http://www.js-pneus.fr">js-pneus.fr</a>.
+						Aucun paiement ne vous sera demandé sur le site <a class="normal_link" href="http://www.js-pneus.fr">js-pneus.fr</a>.
                     </p>
                 </div>
             </div>
@@ -273,7 +272,7 @@ include_once("header.php");
                         passation de
                         votre commande, nous vous en informerons par mail. Votre commande sera automatiquement
                         annulée. En
-                        outre, le site Internet <a href="http://www.js-pneus.fr">js-pneus.fr</a> n'a pas vocation à
+                        outre, le site Internet <a class="normal_link" href="http://www.js-pneus.fr">js-pneus.fr</a> n'a pas vocation à
                         vendre ses
                         produits en quantités importantes. Par conséquent la société <strong>JSPneus</strong> se réserve le droit de refuser les commandes de pneus en quantité à 20 pneus.
                     </p>
@@ -420,7 +419,7 @@ include_once("header.php");
             </div>
             <div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwelve">
                 <div class="panel-body">
-                    <p>Tous les éléments du site <a href="http://www.js-pneus.fr">js-pneus.fr</a> sont et restent la
+                    <p>Tous les éléments du site <a class="normal_link" href="http://www.js-pneus.fr">js-pneus.fr</a> sont et restent la
                         propriété
                         intellectuelle et exclusive de la société <strong>JSPneus</strong>. Nul n'est autorisé à
                         reproduire,
