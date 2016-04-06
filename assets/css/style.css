@@ -835,3 +835,10 @@ dd {
 dt,dd {
     font-size: 90%;
 }
+
+.carrousel-prod-item img {
+    min-height: 150px;
+    max-height: 150px;
+    height: auto;
+    width: auto;
+}

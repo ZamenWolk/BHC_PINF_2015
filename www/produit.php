@@ -10,10 +10,36 @@ include_once("header.php");
         </div>
     </div>
     <div class="row item-rest">
-        <div class="col-md-3 img-div">
-            <img src="" alt="Pas d'image disponible" class="annonce img-responsive"/>
+        <div class="col-md-4 img-div">
+            <div id="mainCar" class="main-car carousel slide" data-ride="carousel">
+                <ol class="main-car carousel-indicators">
+                    <li data-target="#mainCar" data-slide-to="0" class="active"></li>
+                    <li data-target="#mainCar" data-slide-to="1"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="main-car carousel-inner" role="listbox">
+                    <div class="carrousel-prod-item item active">
+                        <img id="carrousel-img-prod" src="" alt="Pas d'image disponible" class="annonce img-responsive"/>
+                    </div>
+                    <div class="carrousel-prod-item item">
+                        <img src="../assets/img/ETV.png" class="car-img img-responsive">
+                    </div>
+                </div>
+                <!-- Left and right controls -->
+
+                <a id="main-car" class="main-car left carousel-control" href="#mainCar" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left fa-3x" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a id="main-car" class="main-car right carousel-control" href="#mainCar" role="button" data-slide="next">
+                    <span class="fa fa-angle-right fa-3x" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div>
+
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <dl class="dl-horizontal">
                 <dt>Catégorie:</dt>
                 <dd class="categorie"></dd>
@@ -31,6 +57,8 @@ include_once("header.php");
                 <dd class="consommation"></dd>
                 <dt>Decibel:</dt>
                 <dd class="decibel"></dd>
+                <dt>Adhérence:</dt>
+                <dd class="adherence"></dd>
             </dl>
         </div>
         <div class="col-md-3 add-cart-div">
@@ -1222,18 +1250,19 @@ include_once("header.php");
                     var pneu_ref = data["pneu"]["reference"];
                     var pneu_conso = data["pneu"]["consommation"];
                     var pneu_bruit = data["pneu"]["decibel"];
+                    var pneu_adherence = data["pneu"]["adherance"];
                     var jQ = $(".model_article");
                     var heading = jQ.children(".heading");
                     var list = jQ.children(".list-group-item");
                     var itemRest = jQ.children(".item-rest");
-                    var desc = itemRest.children(".col-md-6");
+                    var desc = itemRest.children(".col-md-5");
                     var title = heading.children(".item-heading-container");
                     jQ.removeClass("model_article");
                     title.children(".item-heading").html(pneu_description);
                     //console.log(panelBody);
                     var dl_specs = desc.children("dl");
                     var imgDiv = itemRest.children(".img-div");
-                    imgDiv.children("img").attr("src","../assets/img/logo/" + data["pneu"]["marque"] +".png");
+                    $("#carrousel-img-prod").attr("src","../assets/img/logo/" + data["pneu"]["marque"] +".png");
                     dl_specs.children(".largeur").html(pneu_largeur);
                     dl_specs.children(".categorie").html(pneu_categorie);
                     dl_specs.children(".serie").html(pneu_serie);
@@ -1242,6 +1271,7 @@ include_once("header.php");
                     dl_specs.children(".vitesse").html(pneu_vitesse);
                     dl_specs.children(".consommation").html(pneu_conso);
                     dl_specs.children(".decibel").html(pneu_bruit);
+                    dl_specs.children(".adherence").html(pneu_adherence);
                     var priceDiv = itemRest.children(".add-cart-div");
                     priceDiv.children("#price").html("Prix : " + pneu_prix + " € ");
 
