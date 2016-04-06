@@ -294,10 +294,14 @@ include_once("header.php");
 
 
                     /* Gestion des boutons suivant et précédent*/
-                    var prev = $(".previous");
+                    var prev = $(".previous").addClass("disabled");
                     var activePrev = false;
                     var suiv = $(".next");
-                    var activeNext = true;
+                    var activeNext;
+                    if(data["nbrResult"] == data["resultat"][0]["itemParPage"])
+                        activeNext = true;
+                    else
+                        activeNext = true;
                     prev.addClass("disabled");
 
                     /**
