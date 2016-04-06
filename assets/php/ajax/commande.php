@@ -23,6 +23,35 @@ include_once "../fonctions/Config.php";
  *      - Il manque des paramètres (code MISSING_ARGUMENT)
  */
 
+/**
+ * "changerEtat"
+ * Change l'état d'une commande
+ * Arguments :
+ * [    "newEtat"       => Nouvel état de la commande,
+ *      "commande_id"   => Identifiant de la commande ]
+ * Aucun renvoi
+ * Echoue si :
+ *      - Il manque des arguments (code MISSING_ARGUMENT)
+ *      - L'état entré n'est pas valide (code ETAT_INCONNU)
+ *      - L'ID de commande renseigné ne correspond pas a une commande (code COMMANDE_INCONNUE)
+ */
+
+/**
+ * "recupererCommande"
+ * Récupère une commande ou une liste de commandes suivant un paramètre d'identification
+ * Arguments :
+ * [    "commande_id"   => ID de la commande à récupérer
+ *          OU
+ *      "user_id"       => ID de l'utilisateur dont on veut récupérer les commandes
+ *          OU
+ *      "etat"          => Etat dont on veut récupérer toutes les commandes ]
+ * Renvoi :
+ * [    "commandes" => Liste de toutes les commandes récupérées ]
+ * Echoue si :
+ *      - Il n'y a aucun paramètre d'identification (code MISSING_ARGUMENT)
+ *      - Le paramètre est un ID de commande qui ne correspond à aucune commande
+ *      - Le paramètre est un état invalide
+ */
 
 
 if (!isset($_POST["action"]))
@@ -55,7 +84,21 @@ switch ($action)
 
     case "changerEtat" :
 
-        if (!isset($_POST["newEtat"]))
+        if (!isset($_POST["newEtat"]) || !isset($_POST["commande_id"]))
+            ajaxError("Tous les arguments ne sont pas renseignés", "MISSING_ARGUMENT");
+
+        $newEtat = $_POST["newEtat"];
+        $commande_id = $_POST["commande_id"];
+
+        if (!Commande::checkEtat($commande_id))
+            ajaxError("L'état entré n'est pas un état valide", "ETAT_INCONNU");
+
+        $res = Commande::changerEtat($commande_id, $newEtat);
+
+        if ($res === false)
+            ajaxError("Il n'y a pas de commande avec cet ID", "COMMANDE_INCONNUE");
+        else
+            ajaxSuccess();
 
         break;
 
