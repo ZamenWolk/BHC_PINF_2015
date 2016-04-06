@@ -504,10 +504,12 @@ include_once("header.php");
                         var pneu = div_pneu.children(".list-group-item");
                         var image = pneu.children("a").children(".logo-img");
                         var titre = $("<div class=\"col-md-6\"><h4>" + pneu.children("a").children(".list-group-desc").children("h4").children("b").html() + "</h4></div>");
-
+                        
                         $.post("../assets/php/ajax/panier.php", {
                             action: "ajouterArticle",
+                            quantite: qtt,
                             referencePneu: this.value
+
                         }, function (data) {
                             data = JSON.parse(data);
                             console.log(data);
