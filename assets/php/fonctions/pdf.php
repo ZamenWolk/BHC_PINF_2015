@@ -1,4 +1,4 @@
-<?php
+fb<?php
 require('../../../fpdf/fpdf.php');
 define('EURO', chr(128) );
 define('EURO_VAL', 6.55957 );
@@ -548,7 +548,7 @@ function addTVAs( $params, $tab_tva, $invoice )
                 if ($params["remise"] > 0 )
                 {
                     if ( is_int( $params["remise"] ) )
-                        $l_remise = $param["remise"];
+                        $l_remise = $params["remise"];
                     else
                         $l_remise = sprintf ("%0.2F", $params["remise"]);
                     $this->Cell( 14.5,4, $l_remise, '', '', 'R' );
@@ -568,7 +568,7 @@ function addTVAs( $params, $tab_tva, $invoice )
                     $this->Cell( 14.5,4, $l_remise, '', '', 'R' );
                 }
                 else
-                    $this->Cell( 14.5,4, "ErrorRem", '', '', 'R' );
+                    $this->Cell( 14.5,4, "0.0", '', '', 'R' );
             }
         }
         $totalHT += $articleHT;
@@ -666,7 +666,7 @@ function addTVAs( $params, $tab_tva, $invoice )
                 $this->addRemarque( $params["Remarque"] );
         }
         else
-            $this->addRemarque( "Drôle d'acompte !!! " . $params["Remarque"]);
+            $this->addRemarque( "Pas d'acompte. " . $params["Remarque"]);
     }
     else
     {

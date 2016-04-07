@@ -93,6 +93,14 @@ include_once("header.php");
     </nav>
 
     <script>
+        /**
+         * Fonction qui permet d'échapper les caractères spéciaux
+         * */
+
+        function jq( myid ) {
+            return  myid.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+        }
+
         $(document).ready(function () {
             var numero_page = 1;
             var categorie = "<?php  echo $_GET['categorie'];?>";
@@ -496,9 +504,11 @@ include_once("header.php");
 
                         /*On récupère le div du pneu */
                         var ref = this.value;
-                        var selector = "button[value='" + ref + "']";
+                        var selector = "button[value='" + jq(ref) + "']";
                         var div_parent = $(selector).parent();
-                        var qtt = $("#qte" + ref + " option:selected").val();
+                        var qtt = $("#qte" + jq(ref) + " option:selected").val();
+                        var qtte ="#qte" + jq(ref) + " option:selected";
+                        console.log(qtte);
                         console.log(qtt);
                         var div_pneu = div_parent.parent();
                         var pneu = div_pneu.children(".list-group-item");

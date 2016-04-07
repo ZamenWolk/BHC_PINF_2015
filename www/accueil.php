@@ -20,6 +20,13 @@ include_once("header.php");
             </div>
         </div>
         <div class="item">
+            <img src="../assets/img/distrib_achilles.jpg" class="car-img img-responsive">
+            <div class="main-car carousel-caption">
+                <h2>Marque Achilles</h2>
+                <p>La gamme complète disponible</p>
+            </div>
+        </div>
+        <div class="item">
             <img src="../assets/img/car2.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Un vaste choix de pneus</h2>

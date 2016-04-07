@@ -37,7 +37,7 @@ $(document).ready(function () {
             function (data) {
                 data = JSON.parse(data);
                 if(data["etat"] == "reussite") {
-                    document.location.href = "./commande";
+                   // document.location.href = "./commande";
                 }
                 else $("#notConnected").slideDown();
             });
@@ -162,8 +162,8 @@ $(document).ready(function () {
 
                         var imgDiv = jQ.children("#imgItem");
                         imgDiv.children("img").attr("src", "../assets/img/logo/" + jsonData["panier"][i]["pneu"]["marque"] + ".png");
-
-                        jQ.children("#infoItem").html(pneu_description);
+                        //jQ.children(".a-ref-prod").attr("href","./produit?ref="+pneu_reference);
+                        jQ.children("#infoItem").children(".a-ref-prod").html(pneu_description).attr("href","./produit?ref="+pneu_reference);
                         //jQ.children("#refItem").html(pneu_reference);
                         priceUnit.html(prix_unit + "€");
                         qtField.attr("value", pneu_quantite);

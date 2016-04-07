@@ -24,21 +24,23 @@ else {
 	$pdf->fact_dev( "Devis ", "TEMPO" );
 	$pdf->temporaire( "Devis de commande" );
 	$pdf->addDate(date('d/m/y')); 
-	$pdf->addClient(/*$_POST["le_client_nom"] . $_POST["le_client_prenom"]*/ "Pierre");
+	$pdf->addClient($_POST["client_nom"] . $_POST["client_prenom"]);
 	$pdf->addPageNumber("1");
-	$pdf->addClientAdresse("Mon cul sur la commode du PINF");
+	//TODO : Ajouter adresse du client
+	//$pdf->addClientAdresse("Mon cul sur la commode du PINF");
+	//TODO: Gérer les différents types de paiement
 	//$pdf->addReglement("Chèque à réception de facture"); si on prévoit un type de réglement
 	$pdf->addEcheance(date('Y-m-d', strtotime("+7 day")));
 	$pdf->addNumTVA("FR888777666");
 	$pdf->addReference("Devis X du ".date('d/m/y') );
-	$cols=array( "REFERENCE"    => 12,
+	$cols=array( "REF."    => 14,
 				"DESIGNATION"  => 78,
 				"QUANTITE"     => 22,
 				"P.U. HT"      => 26,
 				"MONTANT H.T." => 30,
 				"TVA"          => 11 );
 	$pdf->addCols( $cols);
-	$cols=array( "REFERENCE"    => "L",
+	$cols=array( "REF."    => "L",
 				"DESIGNATION"  => "L",
 				"QUANTITE"     => "C",
 				"P.U. HT"      => "R",
@@ -48,34 +50,30 @@ else {
 	$pdf->addLineFormat($cols);
 
 	$y    = 109;
-	$line = array( "REFERENCE"    => "REF1",
-				"DESIGNATION"  => wordwrap("Good year Cargo G26 8 245/6 R16 110/108R", 16, "\n", true),
-				"QUANTITE"     => "1",
-				"P.U. HT"      => "103.29",
-				"MONTANT H.T." => "103.29",
-				"TVA"          => "1" );
-	$size = $pdf->addLine( $y, $line );
-	$y   += $size + 2;
+	$tot_prods = array();
+	foreach($_POST["panier"] as $row) {
+		$line = array("REF." => $row["pneu"]["reference"],
+			"DESIGNATION" => wordwrap($row["pneu"]["description"], 16, "\n", true),
+			"QUANTITE" => $row["quantite"],
+			"P.U. HT" => $row["prixUnitaire"],
+			"MONTANT H.T." => $row["prixLot"],
+			"TVA" => "19.6");
+		$size = $pdf->addLine($y, $line);
+		$y += $size + 2;
+		array_push($tot_prods, array("px_unit" => $row["prixUnitaire"], "qte" => $row["quantite"],"tva" => 1));
+	}
 
-	$line = array( "REFERENCE"    => "REF2",
-				"DESIGNATION"  => wordwrap("Good year Cargo G26 8 245/6 R16 110/108R", 16, "\n",true),
-				"QUANTITE"     => "1",
-				"P.U. HT"      => "83.21",
-				"MONTANT H.T." => "83.21",
-				"TVA"          => "1" );
-	$size = $pdf->addLine( $y, $line );
-	$y   += $size + 2;
 
 	$pdf->addCadreTVAs();
-        
-	$tot_prods = array( array ( "px_unit" => 103.29, "qte" => 1, "tva" => 1 ),
-                    array ( "px_unit" => 83.21, "qte" => 1, "tva" => 1 ));
+
+	/*$tot_prods = array( array ( "px_unit" => $row["pneu"]["reference"], "qte" => 1, "tva" => 1 ),
+                    array ( "px_unit" => 83.21, "qte" => 1, "tva" => 1 ));*/
 	$tab_tva = array( "1"       => 19.6,
 					"2"       => 5.5);
 	$params  = array( "RemiseGlobale" => 1,
 						"remise_tva"     => 1,       // {la remise s'applique sur ce code TVA}
 						"remise"         => 0,       // {montant de la remise}
-						"remise_percent" => 10,      // {pourcentage de remise sur ce montant de TVA}
+						"remise_percent" => 0,      // {pourcentage de remise sur ce montant de TVA}
 					"FraisPort"     => 1,
 						"portTTC"        => 10,      // montant des frais de ports TTC
                                                    // par defaut la TVA = 19.6 %
@@ -83,17 +81,26 @@ else {
 						"portTVA"        => 19.6,    // valeur de la TVA a appliquer sur le montant HT
 					"AccompteExige" => 1,
 						"accompte"         => 0,     // montant de l'acompte (TTC)
-						"accompte_percent" => 15,    // pourcentage d'acompte (TTC)
+						"accompte_percent" => 0,    // pourcentage d'acompte (TTC)
 					"Remarque" => "Remise(s) dont vous disposez" );
 
 	$pdf->addTVAs( $params, $tab_tva, $tot_prods);
 	$pdf->addCadreEurosFrancs();
 	//$tab=array("pdf" => $pdf->Output("S"));
-	echo $pdf->Output("S");//TODO: Supprimer le fichier juste aprés
-	//ajaxSuccess(array("etat2"=> "réussite"));
+	$pdf->Output("F","./test2.pdf");
+	$_SESSION["pdf"] = $pdf->Output("S");//TODO: Supprimer le fichier juste aprés
+	ajaxSuccess(array("etat2"=> "réussite", "pdf" => $_SESSION["pdf"]));
 	}
 	
 break;
+	case "getPdf":
+		if(isset($_SESSION["pdf"]))
+		{
+			ajaxSuccess(array("pdf" => $_SESSION["pdf"]));
+		}
+		else
+			ajaxError("Erreur: pas de pdf", "NO_PDF");
+		break;
 default : 
 	ajaxError("Pas prêt");
 }

@@ -842,3 +842,7 @@ dt,dd {
     height: auto;
     width: auto;
 }
+
+#infoItem{
+    font-size : 90%;
+}

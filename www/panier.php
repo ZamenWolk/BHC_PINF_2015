@@ -21,12 +21,14 @@ include_once("header.php");
                     <!--<div class="col-md-2 col-md-offset-2 align"><u>Référence</u></div>-->
                     <div class="col-md-2 align"><u>Prix unitaire</u></div>
                     <div class="col-md-3 align"><u>Quantité</u></div>
-                    <div class="col-md-2 align"><u>Total</u></div>
+                    <div class="col-md-2 align"><u>Total TTC</u></div>
                 </div>
                 <hr>
                 <div class="row item" id="itemId">
-                    <div class="col-md-1 align" id="imgItem"><img class="img-responsive" src=""/></div>
-                    <div class="col-md-4" id="infoItem"></div>
+                    <div class="col-md-1 align" id="imgItem"><img class="img-responsive" alt="Pas d'image disponible" src=""/></div>
+                    <div class="col-md-4" id="infoItem" >
+                        <a class="a-ref-prod" ></a>
+                    </div>
                     <!--<div class="col-md-2 align" id="refItem"></div>-->
                     <div class="col-md-2 align" id="priceDiv"><span class="spanStyleLeft" id="priceItem"></span></div>
                     <div class="col-md-3 align inputContainer">
@@ -66,26 +68,52 @@ include_once("header.php");
 
     <script>
         $(document).ready(function(){
-            $.post("../assets/php/ajax/panier.php", {action: "contenuPanier"}, function(data){
-                data = JSON.parse(data);
-                console.log(data);
-                $("#confirmOrder").click(function () {
-                    $.post('../assets/php/ajax/pdf.php',
+            $("#confirmOrder").click(function () {
+                $.post("../assets/php/ajax/panier.php", {action: "contenuPanier"}, function(data) {
+                    data = JSON.parse(data);
+                    //console.log(data);
+
+
+                    $.post("../assets/php/ajax/user.php",
                         {
-                            action: "gen_commande",
-                            client_nom: "George",
-                            client_prenom: "deLaJungle",
-                            client_adresse: "La jungle"
+                            action: "getConnectedUser"
                         },
-                        function (data) {
-                            console.log(data);
-                            //document.open("../assets/php/ajax/test.pdf",'_blank');
-                            //var win = window.open("../assets/php/ajax/test.pdf", '_blank');
-                            //win.focus();
-                        });
+                        function (data2) {
+
+                            data2 = JSON.parse(data2);
+                            //console.log(data2);
+                            $.post("../assets/php/ajax/adresse.php",{action:"getAdresse", user_id:data2.user["ID"]},
+                                function(data4){
+                                    data4 = JSON.parse(data4);
+
+                                    var str_adr =  data4.adresse['adresse_ligne1'] +" "+ data4.adresse['adresse_ligne2'] +" ,\n"+ data4.adresse.adresse_codeP +" "+ data4.adresse.adresse_ville;
+                                    //console.log(str_adr);
+
+
+                                    $.post('../assets/php/ajax/pdf.php',
+                                        {
+                                            action: "gen_commande",
+                                            client_nom: data2.user["nom"],
+                                            client_prenom: data2.user["prenom"],
+                                            client_adresse:  str_adr,
+                                            panier: data.panier
+                                        },
+                                        function (data3) {
+
+                                        });
+
+                                });
+
+                        }
+                    );
+
+
                 });
+
+
             });
         });
+
     </script>
 <?php
 include_once("footer.php");
