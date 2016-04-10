@@ -35,11 +35,11 @@ include_once("header.php");
                         <div class="input-group buttonGroup align">
                             <input type="number" class="form-control qtField pull-right" placeholder="" min="0"
                                    id="qtItem" value="">
-								      <span class="input-group-btn">
-								      	<button class="btn btn-secondary deleteButton" type="button" id="delItem">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-								      </span>
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary deleteButton" type="button" id="delItem">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </span>
                         </div>
                     </div>
                     <div class="col-md-2 align" id="lotPriceDiv"><span class="spanStyleLeft" id="lotPriceItem"></span>
@@ -51,7 +51,7 @@ include_once("header.php");
                 <div id="titleValidate">Résumé</div>
                 <div id="infoValidate">
                     <span id="labelAmountValidate">Nombre d'articles : </span>
-                    <span id="amountValidate"></span></br>
+                    <span id="amountValidate"></span><br/>
                     <span id="labelPriceAmountValidate">Prix total : </span>
                     <span id="priceValidate"></span><span>€</span>
                 </div>

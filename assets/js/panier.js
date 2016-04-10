@@ -18,6 +18,7 @@ $(document).ready(function () {
         }, function(data) {
             data = JSON.parse(data);
             console.log(data);
+            generatePanier();
             if(data["code"] == "NOT_ENOUGH_STOCK") {
                 $("#notEnough").show();
                 $(this).val(oldQte);
@@ -55,6 +56,7 @@ $(document).ready(function () {
                 action:"retirerArticle",
                 referencePneu: ref
             }, function(data) {
+                generatePanier();
             }
         )
     });
@@ -194,6 +196,7 @@ $(document).ready(function () {
         $.post("../assets/php/ajax/panier.php",
             {action: "ajouterArticle", referencePneu: reference, quantite: qt},
             function (data) {
+                //generatePanier();
                 // console.log(data);
             }
         );
