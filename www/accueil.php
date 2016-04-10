@@ -13,28 +13,28 @@ include_once("header.php");
     <!-- Wrapper for slides -->
     <div class="main-car carousel-inner" role="listbox">
         <div class="item active">
-            <img src="../assets/img/logo-car.jpg" class="car-img img-responsive">
+            <img src="assets/img/logo-car.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Bienvenue sur JS Pneus !</h2>
                 <p>Site de vente de pneus pour autos, motos et 4x4</p>
             </div>
         </div>
         <div class="item">
-            <img src="../assets/img/distrib_achilles.jpg" class="car-img img-responsive">
+            <img src="assets/img/distrib_achilles.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Marque Achilles</h2>
                 <p>La gamme complète disponible</p>
             </div>
         </div>
         <div class="item">
-            <img src="../assets/img/car2.jpg" class="car-img img-responsive">
+            <img src="assets/img/car2.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Un vaste choix de pneus</h2>
                 <p>Vous cherchez un pneu précis ? Nous l'avons !</p>
             </div>
         </div>
         <div class="item">
-            <img src="../assets/img/marques.jpg" class="car-img img-responsive">
+            <img src="assets/img/marques.jpg" class="car-img img-responsive">
             <div class="main-car carousel-caption">
                 <h2>Des tonnes de marques !</h2>
                 <p>Notre catalogue contient toutes les grandes marques de pneus</p>
@@ -59,7 +59,7 @@ include_once("header.php");
     <div class="col-lg-4 img-col" id="home1">
         <div class="hovereffect">
             <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">
-                <img class="img-responsive" src="../assets/img/home1.jpg">
+                <img class="img-responsive" src="assets/img/home1.jpg">
                 <div class="overlay">
                     <h2>Catalogue</h2>
                 </div>
@@ -70,7 +70,7 @@ include_once("header.php");
     <div class="col-lg-4 img-col" id="home2">
         <div class="hovereffect">
             <a href="./faq">
-                <img class="img-responsive" src="../assets/img/home2.jpg">
+                <img class="img-responsive" src="assets/img/home2.jpg">
                 <div class="overlay">
                     <h2>F.A.Q.</h2>
                 </div>
@@ -81,7 +81,7 @@ include_once("header.php");
     <div class="col-lg-4 img-col" id="home3">
         <div class="hovereffect">
             <a href="./contact">
-                <img class="img-responsive" src="../assets/img/home3.jpg">
+                <img class="img-responsive" src="assets/img/home3.jpg">
                 <div class="overlay">
                     <h2>Contact</h2>
                 </div>
@@ -106,7 +106,7 @@ include_once("header.php");
                     <div class="row" id="home-articles">
                         <div class="col-md-3 modele">
                             <a href="#" class="thumbnail">
-                                <img src="" alt="http://placehold.it/250x250" style="max-width:100%;">
+                                <img src="" alt="Pas d'image disponible" style="max-width:100%;">
                                 <div class="caption">
                                     <h5></h5>
                                     <p>Prix: </p>
@@ -141,13 +141,13 @@ include_once("header.php");
         <ul>
             <li>
                 <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">
-                    <img src="../assets/img/tourisme.png">Tourisme</a></li>
+                    <img src="assets/img/tourisme.png">Tourisme</a></li>
             <li>
                 <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=4X4+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">
-                    <img src="../assets/img/4x4.png">4X4</a></li>
+                    <img src="assets/img/4x4.png">4X4</a></li>
             <li>
                 <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Utilitaire+Toutes+Saisons&vitesse=0&consommation=0&decibel=0">
-                    <img src="../assets/img/utilitaire.png">Utilitaire</a></li>
+                    <img src="assets/img/utilitaire.png">Utilitaire</a></li>
         </ul>
     </div>
     <div class="col-md-6">
@@ -155,13 +155,13 @@ include_once("header.php");
         <ul>
             <li style="padding-top: 8px">
                 <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Ete&vitesse=0&consommation=0&decibel=0">
-                    <img src="../assets/img/hiver.png">Hiver</a></li>
+                    <img src="assets/img/hiver.png">Hiver</a></li>
             <li style="padding-top: 8px">
                 <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=Tourisme+Ete&vitesse=0&consommation=0&decibel=0">
-                    <img src="../assets/img/été.png">&Eacute;té</a></li>
+                    <img src="assets/img/été.png">&Eacute;té</a></li>
             <li style="padding-top: 8px">
                 <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">
-                    <img src="../assets/img/4saisons.png">Toutes saisons</a></li>
+                    <img src="assets/img/4saisons.png">Toutes saisons</a></li>
         </ul>
     </div>
 </div>
@@ -178,7 +178,7 @@ include_once("header.php");
 
 
         $.post(
-            "../assets/php/ajax/recherche.php",
+            "assets/php/ajax/recherche.php",
             {
                 action: "chargement",
                 categorie: 0,
@@ -217,7 +217,7 @@ include_once("header.php");
                             jQ.removeClass("modele");
 
                             link.attr("href", "./produit?ref=" + data["resultat"][i]["pneu"]["pneu_ref"]);
-                            link.children("img").attr("src","../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] +".png");
+                            link.children("img").attr("src","assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"].toLowerCase() +".png");
                             caption.children("h5").html(pneu_description);
                             caption.children("p").html("Prix : " + pneu_prix + " € ");
 

@@ -8,14 +8,14 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JS Pneus</title>
-    <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css"/>
-    <link rel="icon" href="../assets/img/logo_smallv2.png">
-    <script src="../assets/js/jquery-2.2.1.min.js"></script>
-    <script src="../assets/bootstrap/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/style.css"/>
-    <script src="../assets/js/script.js"></script>
-    <script src="../assets/js/panier.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
+    <link rel="icon" href="assets/img/logo_smallv2.png">
+    <script src="assets/js/jquery-2.2.1.min.js"></script>
+    <script src="assets/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/panier.js"></script>
 
     <!-- PANNEAU D'AFFICHAGE D'UTILISATION DE COOKIE-->
     <script type="text/javascript">
@@ -34,7 +34,7 @@ session_start();
         $(document).ready(function () {
             $("#wrong_id").hide();
 
-            $.post("../assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
+            $.post("assets/php/ajax/rechercheNav.php", {action: "chargement"}, function (data) {
                 data = JSON.parse(data);
                 for (var i = 0; i < data.nbrMarque; i++) {
                     var option = $("<option>" + data.marques[i] + "</option>");
@@ -94,7 +94,7 @@ session_start();
 
 
             var connection = function () {
-                $.post("../assets/php/ajax/user.php", {
+                $.post("assets/php/ajax/user.php", {
                     action: "connecter",
                     user_mail: mailLogin,
                     password: passeLogin
@@ -113,7 +113,7 @@ session_start();
 
 
                     if (data.etat == "echec") {
-                        $.post("../assets/php/ajax/admin.php", {
+                        $.post("assets/php/ajax/admin.php", {
                             action: "connecter",
                             admin_name: mailLogin,
                             password: passeLogin
@@ -124,7 +124,7 @@ session_start();
                                 $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
                                 $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
                                 var jQ = $('<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
-                                document.location.href = "./admin";
+                                document.location.href = "admin";
                                 $("#popover-content").html(jQ);
                             }
                             else {
@@ -136,8 +136,8 @@ session_start();
                     else {
                         $('div#wrong_id').hide(); // L'utilisateur est maintenant connecté il faut gérer les boutons, etc
                         $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
-                        var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
-                            '<a href="./historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
+                        var jQ = $('<a href="compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
+                            '<a href="historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
                             '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
                         $("#popover-content").html(jQ);
                     }
@@ -156,15 +156,15 @@ session_start();
             });
 
 
-            $.post("../assets/php/ajax/user.php", {action: "getConnectedUser"}, function (data) {
+            $.post("assets/php/ajax/user.php", {action: "getConnectedUser"}, function (data) {
                 data = JSON.parse(data);
                 console.log(data);
                 if (data.etat == "echec") {
-                    $.post("../assets/php/ajax/admin.php", {action: "getConnectedAdmin"}, function (data) {
+                    $.post("assets/php/ajax/admin.php", {action: "getConnectedAdmin"}, function (data) {
                         data = JSON.parse(data);
                         console.log(data);
                         if (data.etat == "echec") {
-                            $.post("../assets/php/ajax/user.php", {
+                            $.post("assets/php/ajax/user.php", {
                                 action: "connecter",
                                 user_mail: "test",
                                 password: "test"
@@ -172,7 +172,7 @@ session_start();
                                 data2 = JSON.parse(data2);
                                 console.log(data2);
                                 if (data2.etat == "echec" && data2.code == "ALREADY_CONNECTED") {
-                                    $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
+                                    $.post("assets/php/ajax/user.php", {action: "deconnecter"});
                                 }
                             });
                         } else {
@@ -183,8 +183,8 @@ session_start();
                     });
                 } else {
                     $("#login").attr("data-original-title", "Mon compte").html('Mon compte <span class="fa fa-user " aria-hidden="true"></span>');
-                    var jQ = $('<a href="./compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
-                        '<a href="./historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
+                    var jQ = $('<a href="compte" id="acc_inf">Mes informations </a><i class="fa fa-info fa-fw"></i><br>' +
+                        '<a href="historique" id="acc_cmd">Mes commandes </a><i class="fa fa-line-chart fa-fw"></i><br>' +
                         '<a href="#" id="acc_dec">Se deconnecter </a><i class="fa fa-sign-out fa-fw"></i>');
                     $("#popover-content").html(jQ);
                 }
@@ -193,10 +193,10 @@ session_start();
             /* Deconnexion */
             $(document).on("click", "a#acc_dec", function () {
                 console.log("deco");
-                $.post("../assets/php/ajax/user.php", {action: "deconnecter"});
+                $.post("assets/php/ajax/user.php", {action: "deconnecter"});
                 setTimeout(
                     function () {
-                        document.location = "./accueil";
+                        document.location = "accueil";
                     }, 50);
             });
 
@@ -259,7 +259,7 @@ session_start();
                      *      "password"   => Mot de passe de l'utilisateur,
                      *      "newsletter" => Abonnement à la newsletter de l'utilisateur ]*/
                     if (ins_password == ins_password2) {
-                        $.post("../assets/php/ajax/user.php", {
+                        $.post("assets/php/ajax/user.php", {
                             action: "inscrire",
                             nom: ins_nom,
                             prenom: ins_prenom,
@@ -287,7 +287,7 @@ session_start();
                             else
                                 $("#ins_alert_succes").show('slow');
 
-                            $.post("../assets/php/ajax/adresse.php", {
+                            $.post("assets/php/ajax/adresse.php", {
                                 action: "inscrireAdresse",
                                 adresse_ligne1: ins_adress,
                                 adresse_ligne2: ins_comp_adress,
@@ -320,6 +320,7 @@ session_start();
 
 <body>
 
+
 <nav id="navHeader" class="navbar navbar-custom navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -328,18 +329,18 @@ session_start();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="./accueil" class="navbar-brand"><img id="logo" src="../assets/img/home.png"/></a>
+            <a href="accueil" class="navbar-brand"><img id="logo" src="assets/img/home.png"/></a>
         </div>
         <div class="collapse navbar-collapse" id="headNavbar">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">Catalogue
+                    <a href="recherche?marque=0&largeur=0&serie=0&jante=0&charge=0&categorie=0&vitesse=0&consommation=0&decibel=0">Catalogue
                         de pneus</a>
                 </li>
                 <li>
                     <a id="searchLink">Recherche</a>
                 </li>
-                <li><a href="./contact">Contact</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right part_connect">
                 <li id="btn-connect-account">
@@ -376,7 +377,7 @@ session_start();
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="./panier">Panier <span
+                    <a href="panier">Panier <span
                             class="fa fa-shopping-cart"
                             aria-hidden="true"></span></a>
 
@@ -386,7 +387,7 @@ session_start();
     </div>
 
     <div class="container-fluid searchWell">
-        <form action="./recherche" class="form-inline searchForm" role="form" method="get">
+        <form action="recherche" class="form-inline searchForm" role="form" method="get">
 
             <h3>Filtres de recherche : </h3>
 

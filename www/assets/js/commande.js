@@ -3,7 +3,7 @@ $(document).ready(function() {
     var div_articles = $("#blockValidate");
     var totalPrice = 0;
     var totalQte = 0;
-    $.post("../assets/php/ajax/panier.php",
+    $.post("assets/php/ajax/panier.php",
         {action: "contenuPanier"},
         function (data) {
             var jsonData = JSON.parse(data);
@@ -24,7 +24,7 @@ $(document).ready(function() {
                 var imgDiv = jQ.children("#imgItem");
 
                 jQ.children("#infoItem").html(pneu_description);
-                imgDiv.children("img").attr("src", "../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] + ".png");
+                imgDiv.children("img").attr("src", "assets/img/logo/" + data["resultat"][i]["pneu"]["marque"].toLowerCase() + ".png");
                 priceUnit.html(prix_unit + "€");
                 qte.html(pneu_quantite);
                 priceLot.html(prix_lot + "€");

@@ -85,7 +85,7 @@ include_once("header.php");
 
         $(document).ready(function () {
 
-            $.post("../assets/php/ajax/admin.php", {
+            $.post("assets/php/ajax/admin.php", {
                 action: "getConnectedAdmin"
             }, function (data) {
 
@@ -122,7 +122,7 @@ include_once("header.php");
 
                     $(document).on("click", "#newModo", function () {
                         if (passeModo == passeModo2) {
-                            $.post("../assets/php/ajax/admin.php", {
+                            $.post("assets/php/ajax/admin.php", {
                                 action: "inscrire",
                                 nom: nameModo,
                                 password: passeModo
@@ -147,8 +147,8 @@ include_once("header.php");
                             },
                             function (data) {
                                 console.log(data);
-                                //document.open("../assets/php/ajax/test.pdf",'_blank');
-                                var win = window.open("../assets/php/ajax/test.pdf", '_blank');
+                                //document.open("assets/php/ajax/test.pdf",'_blank');
+                                var win = window.open("assets/php/ajax/test.pdf", '_blank');
                                 win.focus();
                             });
                     });
@@ -172,7 +172,7 @@ include_once("header.php");
                         $(document).on("change", "#ratio", function () {
                             ratio = $(this).val();
                         });
-                        $.post("../assets/php/ajax/config.php", {
+                        $.post("assets/php/ajax/config.php", {
                             action: "getRatio"
                         }, function (data) {
                             data = JSON.parse(data);
@@ -186,7 +186,7 @@ include_once("header.php");
 
                     $(document).on("click", "#validCoef", function () {
                         console.log(ratio);
-                        $.post("../assets/php/ajax/config.php", {
+                        $.post("assets/php/ajax/config.php", {
                             action: "setRatio",
                             newRatio: ratio
                         }, function (data) {

@@ -22,7 +22,7 @@ include_once("header.php");
                         <img id="carrousel-img-prod" src="" alt="Pas d'image disponible" class="annonce img-responsive"/>
                     </div>
                     <div class="carrousel-prod-item item">
-                        <img src="../assets/img/ETV.png" class="car-img img-responsive">
+                        <img src="assets/img/ETV.png" class="car-img img-responsive">
                     </div>
                 </div>
                 <!-- Left and right controls -->
@@ -1229,7 +1229,7 @@ include_once("header.php");
         var ref = arr[1];
 
         $.post(
-            "../assets/php/ajax/pneu.php",
+            "assets/php/ajax/pneu.php",
             {
                 action: "getPneu",
                 referencePneu: ref
@@ -1262,7 +1262,7 @@ include_once("header.php");
                     //console.log(panelBody);
                     var dl_specs = desc.children("dl");
                     var imgDiv = itemRest.children(".img-div");
-                    $("#carrousel-img-prod").attr("src","../assets/img/logo/" + data["pneu"]["marque"] +".png");
+                    $("#carrousel-img-prod").attr("src","assets/img/logo/" + data["pneu"]["marque"].toLowerCase() +".png");
                     dl_specs.children(".largeur").html(pneu_largeur);
                     dl_specs.children(".categorie").html(pneu_categorie);
                     dl_specs.children(".serie").html(pneu_serie);
@@ -1280,7 +1280,7 @@ include_once("header.php");
                         /*On récupère le div du pneu */
                         var qtt = $("#qte option:selected").val();
                         console.log(qtt);
-                        $.post("../assets/php/ajax/panier.php",{action :"ajouterArticle", referencePneu: pneu_ref, quantite:qtt}, function(data){
+                        $.post("assets/php/ajax/panier.php",{action :"ajouterArticle", referencePneu: pneu_ref, quantite:qtt}, function(data){
                         data = JSON.parse(data);
                         console.log(data);
 

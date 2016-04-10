@@ -12,33 +12,38 @@ if (!isset($_POST["action"]))
 }
 $action = $_POST["action"];
 
-if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
-{
-	$passage_ligne = "\r\n";
-}
-else
-{
-	$passage_ligne = "\n";
-}
-
+$mail_contact = "martin.canivez@gmail.com";
 
 
 $tab["message"]="Votre mail a bien été envoyé";
 switch ($action)
 {
 	case "mail_contact" :
+
+		if (!preg_match('^[a-z0-9._-]+@(hotmail|live|msn)\.[a-z]{2,4}$', $mail_contact))
+		{
+			$passage_ligne = "\r\n";
+		}
+		else
+		{
+			$passage_ligne = "\n";
+		}
 		
 		if ((!isset($_POST["from_email"])) || (!isset($_POST["from_name"])) || (!isset($_POST["subject"])) || (!isset($_POST["html"])))
 		{
 			ajaxError("Des informations sont manquantes", "MISSING_ARGUMENTS");
 		}
 		else{
-		$header = "From: ". $_POST["from_name"] . $_POST["from_email"].$passage_ligne;
-		$header .= "Reply-to:". $_POST["from_name"] . $_POST["from_email"].$passage_ligne;
+		$header = "From: ". $_POST["from_name"] . ' <' . $_POST["from_email"]. '>' . $passage_ligne;
+		$header .= "Reply-to: ". $_POST["from_name"] . ' <' . $_POST["from_email"]. '>' .$passage_ligne;
 		$header .= "MIME-Version: 1.0".$passage_ligne;
-		$header .= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
-			mail("bonpneus@hotmail.fr", $_POST["subject"], $_POST["html"], $headers);
-			ajaxSuccess($tab);
+		$header .= "Content-Type: multipart/alternative;".$passage_ligne;
+			$res = mail($mail_contact, $_POST["subject"], $_POST["html"], $header);
+
+            if ($res)
+			    ajaxSuccess($tab);
+            else
+                ajaxError("Le mail n'a pas été envoyé");
 		}
 		break;
 		

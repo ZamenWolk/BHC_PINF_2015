@@ -11,7 +11,7 @@ $(document).ready(function () {
     $(document).on('change', '.qtField', function () {
         console.log("png");
         var oldQte = $(this).val();
-        $.post("../assets/php/ajax/panier.php", {
+        $.post("assets/php/ajax/panier.php", {
             action:"changerQuantite",
             referencePneu: $(this).attr("id"),
             quantite: $(this).val()
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     $("#confirmOrder").click(function () {
         $.post(
-            "../assets/php/ajax/user.php",
+            "assets/php/ajax/user.php",
             {
                 action: "getConnectedUser"
             },
@@ -51,7 +51,7 @@ $(document).ready(function () {
     $(document).on("click",".deleteButton", function () {
         var ref = $(this).attr("id");
         console.log(ref);
-        $.post("../assets/php/ajax/panier.php",
+        $.post("assets/php/ajax/panier.php",
             {
                 action:"retirerArticle",
                 referencePneu: ref
@@ -62,7 +62,7 @@ $(document).ready(function () {
     });
 
     $("#throwPanier").click(function () {
-        $.post("../assets/php/ajax/panier.php",
+        $.post("assets/php/ajax/panier.php",
             {
                 action: "vider"
             }, function (data) {
@@ -118,7 +118,7 @@ $(document).ready(function () {
     }
 
     function isEmptyPanierAndInit() {
-        $.post("../assets/php/ajax/panier.php",
+        $.post("assets/php/ajax/panier.php",
             {action: "nbArticles"},
             function (data) {
                 var jsonData = JSON.parse(data);
@@ -142,7 +142,7 @@ $(document).ready(function () {
         var div_articles = $("#myPanier");
         var totalPrice = 0;
         var totalQte = 0;
-        $.post("../assets/php/ajax/panier.php",
+        $.post("assets/php/ajax/panier.php",
             {action: "contenuPanier"},
             function (data) {
                 var jsonData = JSON.parse(data);
@@ -163,7 +163,7 @@ $(document).ready(function () {
                         var qtField = input.children(".qtField");
 
                         var imgDiv = jQ.children("#imgItem");
-                        imgDiv.children("img").attr("src", "../assets/img/logo/" + jsonData["panier"][i]["pneu"]["marque"] + ".png");
+                        imgDiv.children("img").attr("src", "assets/img/logo/" + jsonData["panier"][i]["pneu"]["marque"].toLowerCase() + ".png");
                         //jQ.children(".a-ref-prod").attr("href","./produit?ref="+pneu_reference);
                         jQ.children("#infoItem").children(".a-ref-prod").html(pneu_description).attr("href","./produit?ref="+pneu_reference);
                         //jQ.children("#refItem").html(pneu_reference);
@@ -193,7 +193,7 @@ $(document).ready(function () {
     }
 
     function ajouterArticle(reference, qt) {
-        $.post("../assets/php/ajax/panier.php",
+        $.post("assets/php/ajax/panier.php",
             {action: "ajouterArticle", referencePneu: reference, quantite: qt},
             function (data) {
                 //generatePanier();

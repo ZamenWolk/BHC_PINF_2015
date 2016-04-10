@@ -9,7 +9,7 @@ $(document).ready(function () {
     $("#echecOldPasse").hide();
     $("#echecNewPasse").hide();
     $.post(
-        "../assets/php/ajax/user.php",
+        "assets/php/ajax/user.php",
         {
             action: "getConnectedUser"
         },
@@ -81,7 +81,7 @@ $(document).ready(function () {
 
                 $('#validate').click(function () {
                     $.post(
-                        "../assets/php/ajax/user.php",
+                        "assets/php/ajax/user.php",
                         {
                             action: "changerInformations",
                             nom: name,
@@ -110,7 +110,7 @@ $(document).ready(function () {
 
 
                     $.post(
-                        "../assets/php/ajax/user.php",
+                        "assets/php/ajax/user.php",
                         {
                             action: "getConnectedUser"
                         },
@@ -134,7 +134,7 @@ $(document).ready(function () {
                                     $("#ins_newsletter").html("Vous êtes inscrit à notre newsletter");
                                 } else $("#ins_newsletter").html("Vous n'êtes pas inscrit à notre newsletter");
                                 $.post(
-                                    "../assets/php/ajax/adresse.php",
+                                    "assets/php/ajax/adresse.php",
                                     {
                                         action: "getAdresse",
                                         user_id: user_id
@@ -172,7 +172,7 @@ $(document).ready(function () {
                     $("#ins_newsletter").replaceWith('<h5 id="ins_newsletter"></h5>');
                     $("#checkbox").hide();
                     $.post(
-                        "../assets/php/ajax/user.php",
+                        "assets/php/ajax/user.php",
                         {
                             action: "getConnectedUser"
                         },
@@ -201,7 +201,7 @@ $(document).ready(function () {
 
                 });
                 $.post(
-                    "../assets/php/ajax/adresse.php",
+                    "assets/php/ajax/adresse.php",
                     {
                         action: "getAdresse",
                         user_id: user_id
@@ -235,7 +235,7 @@ $(document).ready(function () {
 
                             $('#validate').click(function () {
                                 $.post(
-                                    "../assets/php/ajax/adresse.php",
+                                    "assets/php/ajax/adresse.php",
                                     {
                                         action: "setAdresse",
                                         user_id: user_id,
@@ -251,7 +251,7 @@ $(document).ready(function () {
                             });
                             $("#cancel").click(function () {
                                 $.post(
-                                    "../assets/php/ajax/adresse.php",
+                                    "assets/php/ajax/adresse.php",
                                     {
                                         action: "getAdresse",
                                         user_id: user_id
@@ -294,7 +294,7 @@ $(document).ready(function () {
                     console.log(oldPasse,newPasse,newPasse2);
                     if (newPasse == newPasse2) {
                         $.post(
-                            "../assets/php/ajax/user.php",
+                            "assets/php/ajax/user.php",
                             {
                                 action: "changerPassword",
                                 user_id: user_id,

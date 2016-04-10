@@ -28,7 +28,7 @@ include_once("header.php");
     </div>
 
 </div>
-<script src="../assets/js/panier.js"></script>
+<script src="assets/js/panier.js"></script>
 <?php
 include_once("footer.php");
 ?>

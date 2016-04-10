@@ -19,7 +19,7 @@ $(document).ready(function () {
      * */
 
     $.post(
-        "../assets/php/ajax/recherche.php",
+        "assets/php/ajax/recherche.php",
         {
             action: "chargement",
             categorie: categorie,
@@ -75,7 +75,7 @@ $(document).ready(function () {
                         listBody.children(".list-group-item-heading").html("<b>" + pneu_description + "</b>");
                         //console.log(panelBody);
                         jQ.show();
-                        imgDiv.children("img").attr("src", "../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] + ".png");
+                        imgDiv.children("img").attr("src", "assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"].toLowerCase() + ".png");
                         var dl_specs = listBody.children("dl");
                         dl_specs.children(".largeur").html(pneu_largeur);
                         dl_specs.children(".categorie").html(pneu_categorie);
@@ -125,7 +125,7 @@ $(document).ready(function () {
                 if (activePrev) {
                     numero_page--;
                     $.post(
-                        "../assets/php/ajax/recherche.php",
+                        "assets/php/ajax/recherche.php",
                         {
                             action: "chargement",
                             categorie: categorie,
@@ -185,7 +185,7 @@ $(document).ready(function () {
                                         listBody.children(".list-group-item-heading").html("<b>" + pneu_description + "</b>");
                                         //console.log(panelBody);
                                         jQ.show();
-                                        imgDiv.children("img").attr("src", "../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] + ".png");
+                                        imgDiv.children("img").attr("src", "assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"].toLowerCase() + ".png");
                                         var dl_specs = listBody.children("dl");
                                         dl_specs.children(".largeur").html(pneu_largeur);
                                         dl_specs.children(".categorie").html(pneu_categorie);
@@ -215,7 +215,7 @@ $(document).ready(function () {
                     numero_page++;
                     activePrev = true;
                     $.post(
-                        "../assets/php/ajax/recherche.php",
+                        "assets/php/ajax/recherche.php",
                         {
                             action: "chargement",
                             categorie: categorie,
@@ -278,7 +278,7 @@ $(document).ready(function () {
                                         listBody.children(".list-group-item-heading").html("<b>" + pneu_description + "</b>");
                                         //console.log(panelBody);
                                         jQ.show();
-                                        imgDiv.children("img").attr("src", "../assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"] + ".png");
+                                        imgDiv.children("img").attr("src", "assets/img/logo/" + data["resultat"][i]["pneu"]["pneu_marque"].toLowerCase() + ".png");
                                         var dl_specs = listBody.children("dl");
                                         dl_specs.children(".largeur").html(pneu_largeur);
                                         dl_specs.children(".categorie").html(pneu_categorie);
@@ -318,7 +318,7 @@ $(document).ready(function () {
                 var image = pneu.children("a").children(".logo-img");
                 var titre = $("<div class=\"col-md-6\"><h4>" + pneu.children("a").children(".list-group-desc").children("h4").children("b").html() + "</h4></div>");
 
-                $.post("../assets/php/ajax/panier.php", {
+                $.post("assets/php/ajax/panier.php", {
                     action: "ajouterArticle",
                     referencePneu: this.value,
                     quantite: qtt

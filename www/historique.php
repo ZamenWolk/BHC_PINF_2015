@@ -32,7 +32,7 @@ include_once("header.php");
 <script>
     $(document).ready(function () {
         $.post(
-            "../assets/php/ajax/user.php",
+            "assets/php/ajax/user.php",
             {
                 action: "getConnectedUser"
             },

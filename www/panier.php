@@ -69,12 +69,12 @@ include_once("header.php");
     <script>
         $(document).ready(function(){
             $("#confirmOrder").click(function () {
-                $.post("../assets/php/ajax/panier.php", {action: "contenuPanier"}, function(data) {
+                $.post("assets/php/ajax/panier.php", {action: "contenuPanier"}, function(data) {
                     data = JSON.parse(data);
                     //console.log(data);
 
 
-                    $.post("../assets/php/ajax/user.php",
+                    $.post("assets/php/ajax/user.php",
                         {
                             action: "getConnectedUser"
                         },
@@ -82,7 +82,7 @@ include_once("header.php");
 
                             data2 = JSON.parse(data2);
                             //console.log(data2);
-                            $.post("../assets/php/ajax/adresse.php",{action:"getAdresse", user_id:data2.user["ID"]},
+                            $.post("assets/php/ajax/adresse.php",{action:"getAdresse", user_id:data2.user["ID"]},
                                 function(data4){
                                     data4 = JSON.parse(data4);
 
