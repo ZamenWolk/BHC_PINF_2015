@@ -52,6 +52,7 @@ $(document).ready(function () {
     $(document).on("click",".deleteButton", function () {
         var ref = $(this).attr("id");
         console.log(ref);
+        $(".item-panier").remove();
         $.post("assets/php/ajax/panier.php",
             {
                 action:"retirerArticle",
