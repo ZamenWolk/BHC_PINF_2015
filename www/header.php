@@ -275,10 +275,17 @@ session_start();
                                     case "MISSING_ARGUMENT":
                                         $("#ins_alert_success").hide('slow');
                                         $("#ins_alert_mail").hide('slow');
+                                        $("#ins_alert_miss").show('slow');
+                                        $("#ins_alert_conditions").hide('slow');
+                                        $("#ins_alert_pass").hide('slow');
                                         break;
                                     case "MAIL_IN_USE":
                                         $("#ins_alert_mail").show('slow');
                                         $("#ins_alert_success").hide('slow');
+                                        $("#ins_alert_conditions").hide('slow');
+                                        $("#ins_alert_miss").hide('slow');
+                                        $("#ins_alert_pass").hide('slow');
+
                                         break;
                                     default:
                                         break;
@@ -302,8 +309,21 @@ session_start();
                         });
                     }
                     else
-                        console.log("Mots de passe différent")
-                } else $("#ins_alert_conditions").show('slow');
+                    {
+                        $("#ins_alert_pass").show('slow');
+                        $("#ins_alert_success").hide('slow');
+                        $("#ins_alert_conditions").hide('slow');
+                        $("#ins_alert_miss").hide('slow');
+                        $("#ins_alert_mail").hide('slow');
+                    }
+                }
+                else {
+                    $("#ins_alert_conditions").show('slow');
+                    $("#ins_alert_success").hide('slow');
+                    $("#ins_alert_miss").hide('slow');
+                    $("#ins_alert_mail").hide('slow');
+                    $("#ins_alert_pass").hide('slow');
+                }
 
             });
 

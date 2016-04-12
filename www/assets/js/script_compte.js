@@ -97,10 +97,14 @@ $(document).ready(function () {
                             $("#succesRequete").slideDown().delay(6000).slideUp();
                         }
                     );
+
+
                     $('input.champs').each(function () {
                         var input = $(this);
                         input.replaceWith("<h5 id=" + $(this).attr("id") + "></h5>");
                     });
+
+
                     $("#ins_newsletter").replaceWith('<h5 id="ins_newsletter"></h5>');
                     $("#checkbox").hide();
                     $("#validate").hide();
@@ -200,6 +204,9 @@ $(document).ready(function () {
                         });
 
                 });
+
+
+
                 $.post(
                     "assets/php/ajax/adresse.php",
                     {

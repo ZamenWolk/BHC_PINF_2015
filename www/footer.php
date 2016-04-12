@@ -196,7 +196,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" name="checkbox1" id="checkbox1" autocomplete="off"/>
+                        <input type="checkbox" name="checkbox1" id="checkbox1" autocomplete="off" checked/>
                         <div class="btn-group">
                             <label for="checkbox1" class="btn btn-default active">
                                 <span class="fa fa-check fa-fw"></span>
@@ -215,6 +215,12 @@
                 </div>
                 <div style="display:none" id="ins_alert_mail" class="alert alert-danger" role="alert">Cet e-mail est
                     déja utilisé.
+                </div>
+                <div style="display:none" id="ins_alert_miss" class="alert alert-danger" role="alert">
+                    Des champs sont manquants.
+                </div>
+                <div style="display:none" id="ins_alert_pass" class="alert alert-danger" role="alert">
+                    Les deux mots de passe que vous avez entré sont différent.
                 </div>
                 <div class="modal-footer">
                     <button id="ins_submit" type="button" name="action" value="subscribe"

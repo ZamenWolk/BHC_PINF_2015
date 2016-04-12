@@ -1,5 +1,5 @@
 <?php
-include_once "../secret/credentials.php";
+include_once "secret/credentials.php";
 include_once("header.php");
 ?>
 <a id="back" type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Retour au catalogue</a>

@@ -10,6 +10,7 @@ $(document).ready(function () {
 
     $(document).on('change', '.qtField', function () {
         console.log("png");
+        $(".item-panier").remove();
         var oldQte = $(this).val();
         $.post("assets/php/ajax/panier.php", {
             action:"changerQuantite",
@@ -155,6 +156,8 @@ $(document).ready(function () {
                         var prix_unit = jsonData["panier"][i]["prixUnitaire"];
                         var prix_lot = jsonData["panier"][i]["prixLot"];
                         var jQ = model.clone();
+                        jQ.attr("id", "");
+                        jQ.addClass("item-panier"); // sert pour l'actualisation
                         var priceDiv = jQ.children("#priceDiv");
                         var priceUnit = priceDiv.children("#priceItem");
                         var priceLotDiv = jQ.children("#lotPriceDiv");
