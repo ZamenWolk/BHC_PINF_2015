@@ -1,5 +1,5 @@
 <?php
-include_once "../secret/credentials.php";
+include_once "secret/credentials.php";
 include_once("header.php");
 ?>
     <div class="container-fluid">

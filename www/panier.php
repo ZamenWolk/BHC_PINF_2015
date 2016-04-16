@@ -69,6 +69,8 @@ include_once("header.php");
 
     <script>
         $(document).ready(function(){
+
+            /* génération du pdf de la commande à garder pour plus tard */
             $("#confirmOrder").click(function () {
                 $.post("assets/php/ajax/panier.php", {action: "contenuPanier"}, function(data) {
                     data = JSON.parse(data);

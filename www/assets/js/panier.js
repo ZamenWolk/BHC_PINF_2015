@@ -39,7 +39,7 @@ $(document).ready(function () {
             function (data) {
                 data = JSON.parse(data);
                 if(data["etat"] == "reussite") {
-                   // document.location.href = "./commande";
+                   document.location.href = "./commande";
                 }
                 else $("#notConnected").slideDown();
             });

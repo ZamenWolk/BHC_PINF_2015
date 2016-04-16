@@ -50,7 +50,7 @@ else
  
 /**
  * "getAdresse"
- * #Récupère l'adresse d'un utilisateur#
+ * #Récupère l'adresse d'un utilisateur
  * Arguments : 
  * [    "user_id" => #ID de l'utilisateur dont l'adresse doit être récupérée#,]
  * Renvoi :
